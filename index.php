@@ -7,8 +7,6 @@
         <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet/less" type="text/css" href="css/style.less">
-	    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
-        <!-- <link rel="stylesheet" href="js/script.js"> -->
     </head>
     <body class="page">
         <div class="search">
@@ -23,12 +21,11 @@
             </div>
             <div class="search__form">
                 <form action="result.php" method="POST">
-                    <input type="text" name="title" placeholder="Cercare libri nella piccola biblioteca della Pigna" autofocus class="">
-	                <input type="submit" value="Отправить">
+                    <input type="text" name="title" placeholder="Cercare libri nella piccola biblioteca della Pigna" autofocus class="" id="searchInput">
                 </form>
             </div>
         </div>
-        <div class="grid">
+        <div class="grid" id="results">
             <?php
 	            $ini = parse_ini_file('app.ini', true);
 
@@ -50,5 +47,7 @@ HERE;
 	            }
             ?>
         </div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>
