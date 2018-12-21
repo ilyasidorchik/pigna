@@ -4,29 +4,31 @@ document.addEventListener('DOMContentLoaded', start); // когда HTML буд�
 function start() {
     let bookTitle;
 
-    searchInput.addEventListener('keypress',()=>{if(event.key==='Enter'){event.preventDefault();searchBook(bookTitle)}}); // поиск по Энтеру
+    // поиск по началу печати
+    searchInput.addEventListener('keyup',()=>{
+        bookTitle = searchInput.value;
+        if (bookTitle.length != 1) {
+            event.preventDefault();
+            searchBook(bookTitle);
+        }
+    });
 }
 
 function searchBook(bookTitle) {
-    if ((bookTitle == '[object MouseEvent]') || (bookTitle == undefined)) {
-        bookTitle = searchInput.value;
-    }
-    if (bookTitle != '') {
-        let xhr = new XMLHttpRequest();
-        let params = 'bookTitle=' + bookTitle;
-        document.getElementById('results').innerHTML = ''; // очищаем контейнер для результатов
+    let xhr = new XMLHttpRequest();
+    let params = 'bookTitle=' + bookTitle;
+    document.getElementById('results').innerHTML = ''; // очищаем контейнер для результатов
 
-        xhr.open('POST', '../php/search.php');
-        xhr.onreadystatechange=()=>{
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    document.getElementById('results').innerHTML = xhr.responseText;
-                }
-                else
-                    console.log('Ошибка: ' + xhr.status);
+    xhr.open('POST', '../php/search.php');
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                document.getElementById('results').innerHTML = xhr.responseText;
             }
-        };
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send(params);
-    }
+            else
+                console.log('Ошибка: ' + xhr.status);
+        }
+    };
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
 }

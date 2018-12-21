@@ -21,7 +21,7 @@
             </div>
             <div class="search__form">
                 <form action="result.php" method="POST">
-                    <input type="text" name="title" placeholder="Cercare libri nella piccola biblioteca della Pigna" autofocus class="" id="searchInput">
+                    <input type="text" name="title" placeholder="Cercare libri nella piccola biblioteca della Pigna" autofocus class="" id="searchInput" autocomplete="off">
                 </form>
             </div>
         </div>
