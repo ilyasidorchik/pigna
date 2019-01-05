@@ -64,22 +64,100 @@ function toggleAppearingBlock() {
 }
 
 function addBook() {
-    let author = document.querySelector('.form__element__input-author').value;
-    let title = document.querySelector('.form__element__input-title').value;
-    let publishing = document.querySelector('.form__element__input-publishing-city').value + ', ' + document.querySelector('.form__element__input-publishing-year').value;
+    // Обязательные поля
+    // Если не заполнено поле — у него появляется фокус и обводка
+    let authorInput = document.querySelector('.form__element__input-author');
+    let author = authorInput.value;
+
+    let titleInput = document.querySelector('.form__element__input-title');
+    let title = titleInput.value;
+
+    if (author == '') {
+        authorInput.focus();
+        authorInput.classList.add('form__element__input-invalid');
+        return;
+    }
+    else {
+        authorInput.classList.remove('form__element__input-invalid');
+    }
+
+    if (title == '') {
+        titleInput.focus();
+        titleInput.classList.add('form__element__input-invalid');
+        return;
+    }
+    else {
+        titleInput.classList.remove('form__element__input-invalid');
+    }
+
+    let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
+    let publishingCity = publishingCityInput.value;
+
+    if (publishingCity == '') {
+        publishingCityInput.focus();
+        publishingCityInput.classList.add('form__element__input-invalid');
+        return;
+    }
+    else {
+        publishingCityInput.classList.remove('form__element__input-invalid');
+    }
+
+    let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
+    let publishingYear = publishingYearInput.value;
+
+    if (publishingYear == '') {
+        publishingYearInput.focus();
+        publishingYearInput.classList.add('form__element__input-invalid');
+        return;
+    }
+    else {
+        publishingYearInput.classList.remove('form__element__input-invalid');
+    }
+
+    let publishing = publishingCity + ', ' + publishingYear;
+
+
+    // Необязательные поля
     let monthBook = document.querySelector('.form__element__label-description').checked;
+    let descriptionBlock = document.querySelector('.form__element__input-month-book-description');
+    let description = descriptionBlock.value;
     if (monthBook == true) {
         monthBook = 1;
+
+        if (description == '') {
+            descriptionBlock.focus();
+            descriptionBlock.classList.add('form__element__input-invalid');
+            return;
+        }
+        else {
+            descriptionBlock.classList.remove('form__element__input-invalid');
+        }
     }
     else {
         monthBook = 0;
+        description = '';
     }
-    let description = document.querySelector('.form__element__input-month-book-description').value;
 
-    let price = document.querySelector('.form__element__input-price').value;
-    if (price == '') {
-        price = 0;
+    let priceCheckbox = document.querySelector('.form__element__label-price');
+    let priceBlock = document.querySelector('.form__element__input-price');
+    let price = priceBlock.value;
+
+    if (priceCheckbox.checked == true) {
+        if (price == '') {
+            priceBlock.focus();
+            priceBlock.classList.add('form__element__input-invalid');
+            return;
+        }
+        else {
+            priceBlock.classList.remove('form__element__input-invalid');
+        }
     }
+    else {
+        if (price == '') {
+            price = 0;
+        }
+    }
+
 
     let xhr = new XMLHttpRequest();
     let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&monthBook=' + monthBook + '&price=' + price + '&description=' + description;
