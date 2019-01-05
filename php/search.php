@@ -1,5 +1,4 @@
 <?php
-    //sleep(3);
     $bookTitle = $_POST['bookTitle'];
 
     $ini = parse_ini_file('../app.ini', true);
@@ -11,10 +10,13 @@
 
     while ($row = mysqli_fetch_assoc($result)) {
         if ($bookTitle == '' || stripos($row[title], $bookTitle) !== false) {
+            if ($row[author] != '')
+                $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
             echo <<<HERE
                 <div class="grid__item">
                     <div class="grid__item__authortitle">
-                        <div class="grid__item__authortitle__author">$row[author]</div>
+                        $row[author]
                         <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
                     </div>
                     <div class="grid__item__publishing">$row[publishing]</div>

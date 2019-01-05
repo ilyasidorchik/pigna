@@ -11,13 +11,14 @@
     <body class="page">
         <div class="search">
             <div class="search__icon">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-                    <style type="text/css">
-                        .st0{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-                    </style>
-                    <circle class="st0" cx="14.8" cy="20.7" r="13.2"/>
-                    <rect x="29.4" y="27.7" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -16.4428 32.4079)" width="3" height="16.7"/>
-                </svg>
+	            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                 viewBox="0 0 27.9 50" style="enable-background:new 0 0 27.9 50;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
+					</style>
+		            <circle class="st0" cx="10.9" cy="24.1" r="9.4"/>
+		            <rect x="20" y="27.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -18.3066 25.467)" width="3.2" height="14.5"/>
+				</svg>
             </div>
             <div class="search__form">
                 <form action="result.php" method="POST">
@@ -35,10 +36,13 @@
 	            $result = mysqli_query($link, "SELECT * FROM catalogue");
 
 	            while ($row = mysqli_fetch_assoc($result)) {
+	            	if ($row[author] != '')
+                        $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
                     echo <<<HERE
 						<div class="grid__item">
 			                <div class="grid__item__authortitle">
-			                    <div class="grid__item__authortitle__author">$row[author]</div>
+			                    $row[author]
 			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
 			                </div>
 			                <div class="grid__item__publishing">$row[publishing]</div>
