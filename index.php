@@ -34,11 +34,46 @@
 	            $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
 
-	            $result = mysqli_query($link, "SELECT * FROM catalogue");
 
+                // Книга месяца
+	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = '1'");
+	            while ($row = mysqli_fetch_assoc($result)) {
+	                if ($row[author] != '')
+	                    $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+	                echo <<<HERE
+							<div class="grid__item grid__item-month-book-color">
+				                <div class="grid__item__authortitle">
+				                    $row[author]
+				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+				                </div>
+				                <div class="grid__item__publishing">$row[publishing]</div>
+				            </div>
+
+							<div class="month-book">
+						        <div class="month-book__wrap">
+							        <div class="month-book__wrap__label">
+								        <span class="month-book__wrap__label__text">Libro del mese</span>
+							        </div>
+							        <p class="month-book__wrap__description">$row[description]</p>
+						        </div>
+					        </div>
+HERE;
+	            }
+
+
+	            // Все остальные книги
+	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = '0'");
 	            while ($row = mysqli_fetch_assoc($result)) {
 	            	if ($row[author] != '')
                         $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+	            	if ($row[price] != 0) {
+                        $row[price] = '<div class="grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
+		            }
+		            else {
+                        $row[price] = '';
+		            }
 
                     echo <<<HERE
 						<div class="grid__item">
@@ -47,6 +82,7 @@
 			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
 			                </div>
 			                <div class="grid__item__publishing">$row[publishing]</div>
+			                $row[price]
 			            </div>
 HERE;
 	            }

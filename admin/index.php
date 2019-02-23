@@ -85,9 +85,17 @@
 				        <div class="grid__item__authortitle__title"></div>
 			        </div>
 			        <div class="grid__item__publishing"></div>
+			        <div class="grid__item__sticker-for-price" style="display: none;"></div>
 		        </div>
 	        </div>
-	        <div class="book-adding__book-month"></div>
+	        <div class="month-book" style="display: none;">
+		        <div class="month-book__wrap">
+			        <div class="month-book__wrap__label">
+				        <span class="month-book__wrap__label__text">Libro del mese</span>
+			        </div>
+			        <p class="month-book__wrap__description"></p>
+		        </div>
+	        </div>
         </div>
 
         <div class="book-editing">

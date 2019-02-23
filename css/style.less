@@ -98,6 +98,7 @@
 		grid-gap: 15px;
 
 		&__item {
+			position: relative;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -105,6 +106,10 @@
 			min-height: 255px;
 			padding: 5px;
 			background: #fff2d5;
+
+			&-month-book-color {
+				background: #fcc;
+			}
 
 			&__authortitle {
 				&__author {
@@ -130,6 +135,21 @@
 				font-family: 'IBM Plex Serif';
 				font-size: .75rem;
 			}
+
+			&__sticker-for {
+				&-price {
+					font-family: 'IBM Plex Sans';
+					position: absolute;
+					bottom: -5px;
+					right: -5px;
+					background: url('../img/sticker-for-price.svg');
+					width: 50px;
+					height: 35px;
+					padding-top: 15px;
+					text-align: center;
+					color: #fff;
+				}
+			}
 		}
 
 		&__map {
@@ -143,6 +163,31 @@
 			font-family: 'IBM Plex Serif';
 			grid-column-start: 4;
 			grid-column-end: 8;
+		}
+	}
+
+	.month-book {
+		font-family: 'IBM Plex Sans';
+
+		&__wrap {
+			margin-left: -8px;
+
+			&__label {
+				margin-top: -3px;
+
+				&__text {
+					border: 1px solid #000;
+					border-radius: 3px;
+					padding: 0px 3px;
+					font-size: .75rem;
+				}
+			}
+
+			&__description {
+				margin-top: 10px;
+				font-size: 1.2rem;
+				line-height: 1.5rem;
+			}
 		}
 	}
 
@@ -168,7 +213,7 @@
 			grid-column-end: 13;
 		}
 
-		&__month-book {
+		.month-book {
 			grid-column-start: 13;
 			grid-column-end: 15;
 		}

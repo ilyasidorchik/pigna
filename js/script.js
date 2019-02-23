@@ -15,22 +15,19 @@ function start() {
         });
     }
 
-    document.querySelector('.form__element__label-description').addEventListener("click", toggleAppearingBlock);
-    document.querySelector('.form__element__label-price').addEventListener("click", toggleAppearingBlock);
-
 
     // Форма добавления книги
     let bookCover = document.querySelector('.book-adding__cover .grid__item');
 
     let authorInput = document.querySelector('.form__element__input-author');
-    let bookCoverAuthorInput = document.querySelector('.grid__item__authortitle__author');
+    let bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
 
     let titleInput = document.querySelector('.form__element__input-title');
-    let bookCoverTitleInput = document.querySelector('.grid__item__authortitle__title');
+    let bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
 
     let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
 
-    let bookCoverPublishingInput = document.querySelector('.grid__item__publishing');
+    let bookCoverPublishing = document.querySelector('.grid__item__publishing');
 
     let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
 
@@ -46,7 +43,7 @@ function start() {
             }
         }
 
-        bookCoverAuthorInput.innerHTML = authorInput.value;
+        bookCoverAuthor.innerHTML = authorInput.value;
     });
 
 
@@ -62,7 +59,7 @@ function start() {
             }
         }
 
-        bookCoverTitleInput.innerHTML = titleInput.value;
+        bookCoverTitle.innerHTML = titleInput.value;
     });
 
 
@@ -91,7 +88,7 @@ function start() {
             }
         }
 
-        bookCoverPublishingInput.innerHTML = bookCoverPuslishingData;
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
     });
 
     publishingYearInput.addEventListener('keyup', ()=>{
@@ -123,11 +120,50 @@ function start() {
             }
         }
 
-        bookCoverPublishingInput.innerHTML = bookCoverPuslishingData;
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+    });
+
+    document.querySelector('.form__element__label-description').addEventListener("click", toggleAppearingBlock);
+    document.querySelector('.form__element__label-description').addEventListener("click", ()=>{
+        bookCover.classList.toggle('grid__item-month-book-color');
+
+        let bookCoverMonthBook = document.querySelector('.month-book');
+        if (bookCoverMonthBook.style.display == 'none') {
+            bookCoverMonthBook.style.display = 'block';
+        }
+        else {
+            bookCoverMonthBook.style.display = 'none';
+        }
+    });
+
+    let monthBookDescInput = document.querySelector('.form__element__input-month-book-description');
+    let bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
+    monthBookDescInput.addEventListener('keyup', ()=>{
+        bookCoverMonthBookDesc.innerHTML = monthBookDescInput.value;
     });
 
 
     document.querySelector('.form__element__label-price').addEventListener("click", toggleAppearingBlock);
+    var stickerForPrice = document.querySelector('.grid__item__sticker-for-price');
+    document.querySelector('.form__element__label-price').addEventListener("click", ()=>{
+        if (stickerForPrice.style.display == 'none') {
+            stickerForPrice.style.display = 'block';
+        }
+        else {
+            stickerForPrice.style.display = 'none';
+        }
+    });
+
+    let priceInput = document.querySelector('.form__element__input-price');
+    priceInput.addEventListener('keyup', ()=>{
+        if (priceInput.value == '') {
+            stickerForPrice.innerHTML = '';
+        }
+        else {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+        }
+    });
+
 
     document.querySelector('.book-adding__button').addEventListener("click", ()=>{
         event.preventDefault();
@@ -255,7 +291,7 @@ function addBook() {
 
 
     let xhr = new XMLHttpRequest();
-    let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&monthBook=' + monthBook + '&price=' + price + '&description=' + description;
+    let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
 
     xhr.open('POST', '../php/addBook.php');
     xhr.onreadystatechange=()=>{
