@@ -239,16 +239,16 @@ function addBook() {
         titleInput.classList.remove('form__element__input-invalid');
     }
 
+    // Необязательные поля
     let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
     let publishingCity = publishingCityInput.value;
 
     let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
     let publishingYear = publishingYearInput.value;
 
-    let publishing = publishingCity + publishingYear;
+    let publishing = publishingCity + ', ' + publishingYear;
 
 
-    // Необязательные поля
     let monthBook = document.querySelector('.form__element__label-description').checked;
     let descriptionBlock = document.querySelector('.form__element__input-month-book-description');
     let description = descriptionBlock.value;
@@ -292,6 +292,8 @@ function addBook() {
 
     let xhr = new XMLHttpRequest();
     let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
+
+    console.log(params);
 
     xhr.open('POST', '../php/addBook.php');
     xhr.onreadystatechange=()=>{

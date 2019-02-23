@@ -32,14 +32,14 @@
 				        <div class="form__label">
 					        <label for="publishing-city">Città editore</label>
 				        </div>
-				        <div class="form__element form__element-short">
+				        <div class="form__element">
 					        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input-publishing-city">
 				        </div>
 
 				        <div class="form__label" style="margin-top: -1.05rem;">
 					        <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label>
 				        </div>
-				        <div class="form__element form__element-very-short" style="margin-top: -1rem;">
+				        <div class="form__element form__element-short" style="margin-top: -1rem;">
 					        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input-publishing-year">
 				        </div>
 
@@ -65,7 +65,7 @@
 				        <div class="form__label form__close-to-checkbox form__label-price" style="display: none;">
 					        <label for="price">Prezzo</label>
 				        </div>
-				        <div class="form__element form__element-short form__close-to-checkbox form__element-price" style="display: none;">
+				        <div class="form__element form__close-to-checkbox form__element-price" style="display: none;">
 					        <div class="form__element__wrap-for-price">
 						        <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input-price">
 						        <div class="form__element__note form__element__wrap-for-price__currency-sign">€</div>
