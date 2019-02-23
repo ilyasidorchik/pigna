@@ -5,15 +5,128 @@ function start() {
     let bookTitle;
 
     // поиск по началу печати
-    searchInput.addEventListener('keyup',()=>{
-        bookTitle = searchInput.value;
-        if (bookTitle.length != 1) {
-            event.preventDefault();
-            searchBook(bookTitle);
-        }
-    });
+    if (searchInput != null) {
+        searchInput.addEventListener('keyup',()=>{
+            bookTitle = searchInput.value;
+            if (bookTitle.length != 1) {
+                event.preventDefault();
+                searchBook(bookTitle);
+            }
+        });
+    }
 
     document.querySelector('.form__element__label-description').addEventListener("click", toggleAppearingBlock);
+    document.querySelector('.form__element__label-price').addEventListener("click", toggleAppearingBlock);
+
+
+    // Форма добавления книги
+    let bookCover = document.querySelector('.book-adding__cover .grid__item');
+
+    let authorInput = document.querySelector('.form__element__input-author');
+    let bookCoverAuthorInput = document.querySelector('.grid__item__authortitle__author');
+
+    let titleInput = document.querySelector('.form__element__input-title');
+    let bookCoverTitleInput = document.querySelector('.grid__item__authortitle__title');
+
+    let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
+
+    let bookCoverPublishingInput = document.querySelector('.grid__item__publishing');
+
+    let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
+
+    authorInput.addEventListener('keyup',()=>{
+        // При заполнении полей появляется обложка
+        // Если поля снова очищаются, обложка пропадает
+        if (bookCover.style.display == 'none') {
+            bookCover.style.display = 'flex';
+        }
+        else {
+            if (authorInput.value == '' && titleInput.value == '' && publishingCityInput.value == '' && publishingYearInput.value == '') {
+                bookCover.style.display = 'none';
+            }
+        }
+
+        bookCoverAuthorInput.innerHTML = authorInput.value;
+    });
+
+
+    titleInput.addEventListener('keyup', ()=>{
+        // При заполнении полей появляется обложка
+        // Если поля снова очищаются, обложка пропадает
+        if (bookCover.style.display == 'none') {
+            bookCover.style.display = 'flex';
+        }
+        else {
+            if (authorInput.value == '' && titleInput.value == '' && publishingCityInput.value == '' && publishingYearInput.value == '') {
+                bookCover.style.display = 'none';
+            }
+        }
+
+        bookCoverTitleInput.innerHTML = titleInput.value;
+    });
+
+
+    let bookCoverPuslishingData = '';
+    publishingCityInput.addEventListener('keyup', ()=>{
+        // При заполнении полей появляется обложка
+        // Если поля снова очищаются, обложка пропадает
+        if (bookCover.style.display == 'none') {
+            bookCover.style.display = 'flex';
+        }
+        else {
+            if (authorInput.value == '' && titleInput.value == '' && publishingCityInput.value == '' && publishingYearInput.value == '') {
+                bookCover.style.display = 'none';
+            }
+        }
+
+        if (publishingYearInput.value == '') {
+            bookCoverPuslishingData = publishingCityInput.value;
+        }
+        else {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = publishingYearInput.value;
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+
+        bookCoverPublishingInput.innerHTML = bookCoverPuslishingData;
+    });
+
+    publishingYearInput.addEventListener('keyup', ()=>{
+        // При заполнении полей появляется обложка
+        // Если поля снова очищаются, обложка пропадает
+        if (bookCover.style.display == 'none') {
+            bookCover.style.display = 'flex';
+        }
+        else {
+            if (authorInput.value == '' && titleInput.value == '' && publishingCityInput.value == '' && publishingYearInput.value == '') {
+                bookCover.style.display = 'none';
+            }
+        }
+
+        if (publishingYearInput.value == '') {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = '';
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value;
+            }
+        }
+        else {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = publishingYearInput.value;
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+
+        bookCoverPublishingInput.innerHTML = bookCoverPuslishingData;
+    });
+
+
     document.querySelector('.form__element__label-price').addEventListener("click", toggleAppearingBlock);
 
     document.querySelector('.book-adding__button').addEventListener("click", ()=>{
@@ -25,7 +138,7 @@ function start() {
 function searchBook(bookTitle) {
     let xhr = new XMLHttpRequest();
     let params = 'bookTitle=' + bookTitle;
-    let results = document.getElementById('results');
+    let results = document.querySelector('.grid');
 
     xhr.open('POST', '../php/search.php');
     xhr.onreadystatechange=()=>{
@@ -93,28 +206,10 @@ function addBook() {
     let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
     let publishingCity = publishingCityInput.value;
 
-    if (publishingCity == '') {
-        publishingCityInput.focus();
-        publishingCityInput.classList.add('form__element__input-invalid');
-        return;
-    }
-    else {
-        publishingCityInput.classList.remove('form__element__input-invalid');
-    }
-
     let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
     let publishingYear = publishingYearInput.value;
 
-    if (publishingYear == '') {
-        publishingYearInput.focus();
-        publishingYearInput.classList.add('form__element__input-invalid');
-        return;
-    }
-    else {
-        publishingYearInput.classList.remove('form__element__input-invalid');
-    }
-
-    let publishing = publishingCity + ', ' + publishingYear;
+    let publishing = publishingCity + publishingYear;
 
 
     // Необязательные поля

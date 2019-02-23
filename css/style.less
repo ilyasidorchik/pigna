@@ -34,6 +34,17 @@
 	border-radius: @radius;
 }
 
+.link {
+	text-decoration: none;
+	color: #000;
+	border-bottom: 1px solid #000;
+
+	&:hover {
+		color: #f00;
+		border-bottom-color: #f00;
+	}
+}
+
 
 .page {
 	margin: 15px;
@@ -43,6 +54,15 @@
 		width: 1200px;
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	.h1 {
+		margin-top: 21px;
+	}
+
+	.input-h1 {
+		font-family: 'IBM Plex Sans Medium';
+		font-size: 1.75rem;
 	}
 
 	.search {
@@ -59,12 +79,9 @@
 		&__form {
 			width: calc(100% - 40px);
 
-			input {
+			.input {
 				width: 100%;
-				font-family: 'IBM Plex Sans Medium';
-				font-size: 1.75rem;
 				padding: 0.4rem 0 0.4rem;
-				//height: 50px;
 				border: 0;
 				outline: none;
 
@@ -114,58 +131,99 @@
 				font-size: .75rem;
 			}
 		}
+
+		&__map {
+			margin-top: 15px;
+			grid-column-start: 1;
+			grid-column-end: 4;
+		}
+
+		&__description {
+			margin-top: -1px;
+			font-family: 'IBM Plex Serif';
+			grid-column-start: 4;
+			grid-column-end: 8;
+		}
 	}
 
 	.book-adding {
 		font-family: 'IBM Plex Sans';
 		margin-bottom: 75px;
+		display: grid;
+		grid-template-columns: repeat(14, 1fr);
+		grid-gap: 15px;
 
-		.two-cols {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			grid-gap: 15px;
+		h2 {
+			grid-column-start: 1;
+			grid-column-end: 14;
+		}
 
-			&__right {
-				display: grid;
-				grid-template-columns: repeat(7, 1fr);
-				grid-gap: 15px;
+		&__form {
+			grid-column-start: 1;
+			grid-column-end: 10;
+		}
 
-				&__block {
-					grid-column-start: 2;
-					grid-column-end: 4;
-				}
-			}
+		&__cover {
+			grid-column-start: 11;
+			grid-column-end: 13;
+		}
+
+		&__month-book {
+			grid-column-start: 13;
+			grid-column-end: 15;
+		}
+	}
+
+	.book-editing {
+		font-family: 'IBM Plex Sans';
+		margin-bottom: 50px;
+
+		display: grid;
+		grid-template-columns: repeat(14, 1fr);
+		grid-gap: 15px;
+
+		&__cover {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+
+		&__book-month {
+			grid-column-start: 3;
+			grid-column-end: 5;
+		}
+
+		&__form {
+			grid-column-start: 5;
+			grid-column-end: 15;
 		}
 	}
 }
+
 
 .form {
 	@form-font-size: 1.2rem;
 	@input-background-color: #f2f1f1;
 	@input-border-radius: 4px;
 
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	grid-column-gap: 15px;
-	grid-row-gap: 27.5px;
 	font-size: @form-font-size;
 
+	display: grid;
+	grid-template-columns: repeat(11, 1fr);
+	grid-column-gap: 15px;
+	grid-row-gap: 27px;
+
 	&__label {
+		padding-top: .6rem;
 		grid-column-start: 1;
 		grid-column-end: 2;
-		padding-top: .6rem;
 	}
 
 	&__element {
 		grid-column-start: 2;
-		grid-column-end: 8;
+		grid-column-end: 12;
 
-		&-short {
+		&__short {
 			grid-column-end: 5;
-		}
-
-		&-very-short {
-			grid-column-end: 3;
 		}
 
 		&__input {
@@ -190,17 +248,11 @@
 
 		&__wrap-for-price {
 			display: grid;
-			grid-template-columns: repeat(5, 1fr);
-			grid-gap: 5px;
+			grid-template-columns: repeat(10, 1fr);
+			grid-gap: 15px;
 
-			&__number {
-				grid-column-start: 1;
-				grid-column-end: 2;
-			}
 
 			&__currency-sign {
-				grid-column-start: 2;
-				grid-column-end: 3;
 				padding-top: .6rem;
 			}
 		}
