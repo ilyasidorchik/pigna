@@ -167,6 +167,8 @@
 	}
 
 	.month-book {
+		font-family: 'IBM Plex Sans';
+
 		&__wrap {
 			margin-left: -8px;
 
@@ -204,6 +206,20 @@
 		&__form {
 			grid-column-start: 1;
 			grid-column-end: 10;
+			position: relative;
+
+			&__alert-success {
+				position: absolute;
+				top: 0;
+				z-index: 1;
+				box-sizing: border-box;
+				width: 100%;
+				padding: .75rem 7.2rem;
+				border-radius: .25rem;
+				color: #155724;
+				background: #d4edda;
+				font-size: 1.2rem;
+			}
 		}
 
 		&__cover {

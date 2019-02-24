@@ -319,11 +319,20 @@ function addBook() {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                // results.innerHTML = xhr.responseText;
+                let formWrap = document.querySelector('.book-adding__form');
+                let form = document.querySelector('.book-adding__form .form');
 
+                form.style.opacity = '0';
+                form.style.visibility = 'hidden';
+
+                let alertSuccess = document.createElement('div');
+                alertSuccess.className = "book-adding__form__alert-success";
+                alertSuccess.innerHTML = 'Libro aggiunto al catalogo';
+                formWrap.appendChild(alertSuccess);
             }
-            else
+            else {
                 console.log('Ошибка: ' + xhr.status);
+            }
         }
     };
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

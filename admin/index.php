@@ -98,6 +98,7 @@
 	        </div>
         </div>
 
+        <!--
         <div class="book-editing">
 	        <div class="book-editing__cover">
 		        <div class="grid__item">
@@ -197,6 +198,8 @@ HERE;
                 }
             ?>
         </div>
+
+        -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
         <script src="/js/script.js"></script>
     </body>
