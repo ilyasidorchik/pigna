@@ -85,7 +85,7 @@
 				        <div class="grid__item__authortitle__title"></div>
 			        </div>
 			        <div class="grid__item__publishing"></div>
-			        <div class="grid__item__sticker-for-price" style="display: none;"></div>
+			        <div class="grid__item__sticker grid__item__sticker-for-price" style="display: none;"></div>
 		        </div>
 	        </div>
 	        <div class="month-book" style="display: none;">

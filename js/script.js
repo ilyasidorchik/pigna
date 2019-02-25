@@ -1,4 +1,25 @@
 let searchInput = document.getElementById('searchInput');
+
+let formWrap = document.querySelector('.book-adding__form');
+let form = document.querySelector('.book-adding__form .form');
+
+let authorInput = document.querySelector('.form__element__input-author');
+let titleInput = document.querySelector('.form__element__input-title');
+let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
+let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
+let monthBookCheckbox = document.querySelector('.form__element__label-description');
+let monthBookDescInput = document.querySelector('.form__element__input-month-book-description');
+let priceCheckbox = document.querySelector('.form__element__label-price');
+let priceInput = document.querySelector('.form__element__input-price');
+
+let bookCover = document.querySelector('.book-adding__cover .grid__item');
+let bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
+let bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
+let bookCoverPublishing = document.querySelector('.grid__item__publishing');
+let bookCoverMonthBook = document.querySelector('.month-book');
+let bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
+let stickerForPrice = document.querySelector('.grid__item__sticker-for-price');
+
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
 function start() {
@@ -15,24 +36,8 @@ function start() {
         });
     }
 
-
     // Форма добавления книги
-    let bookCover = document.querySelector('.book-adding__cover .grid__item');
-
-    let authorInput = document.querySelector('.form__element__input-author');
-    let bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
-
-    let titleInput = document.querySelector('.form__element__input-title');
-    let bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
-
-    let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
-
-    let bookCoverPublishing = document.querySelector('.grid__item__publishing');
-
-    let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
-
-
-    // Поле с годом издания только для цифр
+        // Поле с годом издания только для цифр
     publishingYearInput.onkeypress = function(e) {
         e = e || event;
 
@@ -143,11 +148,10 @@ function start() {
         bookCoverPublishing.innerHTML = bookCoverPuslishingData;
     });
 
-    document.querySelector('.form__element__label-description').addEventListener("click", toggleAppearingBlock);
-    document.querySelector('.form__element__label-description').addEventListener("click", ()=>{
+    monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
+    monthBookCheckbox.addEventListener("click", ()=>{
         bookCover.classList.toggle('grid__item-month-book-color');
 
-        let bookCoverMonthBook = document.querySelector('.month-book');
         if (bookCoverMonthBook.style.display == 'none') {
             bookCoverMonthBook.style.display = 'block';
         }
@@ -156,16 +160,13 @@ function start() {
         }
     });
 
-    let monthBookDescInput = document.querySelector('.form__element__input-month-book-description');
-    let bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
     monthBookDescInput.addEventListener('keyup', ()=>{
         bookCoverMonthBookDesc.innerHTML = monthBookDescInput.value;
     });
 
 
-    document.querySelector('.form__element__label-price').addEventListener("click", toggleAppearingBlock);
-    var stickerForPrice = document.querySelector('.grid__item__sticker-for-price');
-    document.querySelector('.form__element__label-price').addEventListener("click", ()=>{
+    priceCheckbox.addEventListener("click", toggleAppearingBlock);
+    priceCheckbox.addEventListener("click", ()=>{
         if (stickerForPrice.style.display == 'none') {
             stickerForPrice.style.display = 'block';
         }
@@ -174,7 +175,6 @@ function start() {
         }
     });
 
-    let priceInput = document.querySelector('.form__element__input-price');
     priceInput.addEventListener('keyup', ()=>{
         if (priceInput.value == '') {
             stickerForPrice.innerHTML = '';
@@ -235,10 +235,7 @@ function toggleAppearingBlock() {
 function addBook() {
     // Обязательные поля
     // Если не заполнено поле — у него появляется фокус и обводка
-    let authorInput = document.querySelector('.form__element__input-author');
     let author = authorInput.value;
-
-    let titleInput = document.querySelector('.form__element__input-title');
     let title = titleInput.value;
 
     if (author == '') {
@@ -260,28 +257,25 @@ function addBook() {
     }
 
     // Необязательные поля
-    let publishingCityInput = document.querySelector('.form__element__input-publishing-city');
     let publishingCity = publishingCityInput.value;
 
-    let publishingYearInput = document.querySelector('.form__element__input-publishing-year');
     let publishingYear = publishingYearInput.value;
 
     let publishing = publishingCity + ', ' + publishingYear;
 
 
-    let monthBook = document.querySelector('.form__element__label-description').checked;
-    let descriptionBlock = document.querySelector('.form__element__input-month-book-description');
-    let description = descriptionBlock.value;
+    let monthBook = monthBookCheckbox.checked;
+    let description = monthBookDescInput.value;
     if (monthBook == true) {
         monthBook = 1;
 
         if (description == '') {
-            descriptionBlock.focus();
-            descriptionBlock.classList.add('form__element__input-invalid');
+            monthBookDescInput.focus();
+            monthBookDescInput.classList.add('form__element__input-invalid');
             return;
         }
         else {
-            descriptionBlock.classList.remove('form__element__input-invalid');
+            monthBookDescInput.classList.remove('form__element__input-invalid');
         }
     }
     else {
@@ -289,18 +283,15 @@ function addBook() {
         description = '';
     }
 
-    let priceCheckbox = document.querySelector('.form__element__label-price');
-    let priceBlock = document.querySelector('.form__element__input-price');
-    let price = priceBlock.value;
-
+    let price = priceInput.value;
     if (priceCheckbox.checked == true) {
         if (price == '') {
-            priceBlock.focus();
-            priceBlock.classList.add('form__element__input-invalid');
+            priceInput.focus();
+            priceInput.classList.add('form__element__input-invalid');
             return;
         }
         else {
-            priceBlock.classList.remove('form__element__input-invalid');
+            priceInput.classList.remove('form__element__input-invalid');
         }
     }
     else {
@@ -313,22 +304,18 @@ function addBook() {
     let xhr = new XMLHttpRequest();
     let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
 
-    console.log(params);
-
     xhr.open('POST', '../php/addBook.php');
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                let formWrap = document.querySelector('.book-adding__form');
-                let form = document.querySelector('.book-adding__form .form');
-
                 form.style.opacity = '0';
                 form.style.visibility = 'hidden';
 
                 let alertSuccess = document.createElement('div');
                 alertSuccess.className = "book-adding__form__alert-success";
-                alertSuccess.innerHTML = 'Libro aggiunto al catalogo';
+                alertSuccess.innerHTML = 'Libro aqqiunto al catalogo. <a class="link-for-form-clearing">Aggiungere un altro libro</a>';
                 formWrap.appendChild(alertSuccess);
+                document.querySelector('.link-for-form-clearing').addEventListener("click", clearBookAddingForm);
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -337,6 +324,48 @@ function addBook() {
     };
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(params);
+}
+
+function clearBookAddingForm() {
+    authorInput.value = '';
+    titleInput.value = '';
+    publishingCityInput.value = '';
+    publishingYearInput.value = '';
+
+    monthBookCheckbox.checked = false;
+    monthBookDescInput.value = '';
+    let monthBookDescLabel = document.querySelector('.form__label-description');
+    let monthBookDescInputBlock = document.querySelector('.form__element-description');
+    if (monthBookDescInputBlock.style.display == 'block') {
+        monthBookDescLabel.style.display = 'none';
+        monthBookDescInputBlock.style.display = 'none';
+    }
+
+    priceCheckbox.checked = false
+    priceInput.value = '';
+    let priceLabel = document.querySelector('.form__label-price');
+    let priceInputBlock = document.querySelector('.form__element-price');
+    if (priceInputBlock.style.display == 'block') {
+        priceLabel.style.display = 'none';
+        priceInputBlock.style.display = 'none';
+    }
+
+    let alertSuccess = document.querySelector('.book-adding__form__alert-success');
+    formWrap.removeChild(alertSuccess);
+
+    bookCoverAuthor.innerHTML = '';
+    bookCoverTitle.innerHTML = '';
+    bookCoverPublishing.innerHTML = '';
+    bookCoverMonthBookDesc.innerHTML = '';
+    bookCoverMonthBook.style.display = 'none';
+    bookCover.classList.remove('grid__item-month-book-color');
+    bookCover.style.display = 'none';
+    stickerForPrice.innerHTML = '';
+    stickerForPrice.style.display = 'none';
+    form.style.opacity = '1';
+    form.style.visibility = 'visible';
+
+    authorInput.focus();
 }
 
 function getChar(event) {

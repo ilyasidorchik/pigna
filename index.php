@@ -36,10 +36,15 @@
 
 
                 // Книга месяца
-	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = '1'");
+	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
 	            while ($row = mysqli_fetch_assoc($result)) {
 	                if ($row[author] != '')
 	                    $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+                    if ($row[price] != 0)
+                        $row[price] = '<div class="grid__item__sticker grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
+                    else
+                        $row[price] = '';
 
 	                echo <<<HERE
 							<div class="grid__item grid__item-month-book-color">
@@ -48,6 +53,7 @@
 				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
 				                </div>
 				                <div class="grid__item__publishing">$row[publishing]</div>
+				                $row[price]
 				            </div>
 
 							<div class="month-book">
@@ -61,19 +67,16 @@
 HERE;
 	            }
 
-
 	            // Все остальные книги
-	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = '0'");
+	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0");
 	            while ($row = mysqli_fetch_assoc($result)) {
 	            	if ($row[author] != '')
                         $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
-	            	if ($row[price] != 0) {
-                        $row[price] = '<div class="grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
-		            }
-		            else {
+	            	if ($row[price] != 0)
+                        $row[price] = '<div class="grid__item__sticker grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
+		            else
                         $row[price] = '';
-		            }
 
                     echo <<<HERE
 						<div class="grid__item">

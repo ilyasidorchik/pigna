@@ -136,18 +136,31 @@
 				font-size: .75rem;
 			}
 
-			&__sticker-for {
-				&-price {
-					font-family: 'IBM Plex Sans';
-					position: absolute;
+			&__sticker {
+				font-family: 'IBM Plex Sans';
+				position: absolute;
+				text-align: center;
+				color: #fff;
+
+				&-for-new {
+					z-index: 1;
+					top: -25px;
+					right: -20px;
+					background: url('../img/sticker-for-new.svg');
+					width: 75px;
+					height: 50px;
+					padding-top: 25px;
+					transform: rotate(25deg);
+				}
+
+				&-for-price {
+					z-index: 2;
 					bottom: -5px;
 					right: -5px;
 					background: url('../img/sticker-for-price.svg');
 					width: 50px;
 					height: 35px;
 					padding-top: 15px;
-					text-align: center;
-					color: #fff;
 				}
 			}
 		}
@@ -219,6 +232,16 @@
 				color: #155724;
 				background: #d4edda;
 				font-size: 1.2rem;
+
+				.link-for-form-clearing {
+					border-bottom: 1px dashed rgb(21, 87, 36);
+
+					&:hover {
+						cursor: pointer;
+						color: #f00;
+						border-bottom-color: #f00;
+					}
+				}
 			}
 		}
 
