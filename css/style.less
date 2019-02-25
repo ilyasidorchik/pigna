@@ -47,6 +47,7 @@
 
 
 .page {
+	overflow-x: scroll;
 	margin: 15px;
 	font-size: 16px;
 
@@ -63,6 +64,10 @@
 	.input-h1 {
 		font-family: 'IBM Plex Sans Medium';
 		font-size: 1.75rem;
+	}
+
+	.h2 {
+		font-weight: normal;
 	}
 
 	.search {
@@ -156,8 +161,9 @@
 				&-for-price {
 					z-index: 2;
 					bottom: -5px;
-					right: -5px;
-					background: url('../img/sticker-for-price.svg');
+					right: -10px;
+					background: linear-gradient(#777 0%, #000 100%);
+					border-radius: 50%;
 					width: 50px;
 					height: 35px;
 					padding-top: 15px;
@@ -296,10 +302,10 @@
 	display: grid;
 	grid-template-columns: repeat(11, 1fr);
 	grid-column-gap: 15px;
-	grid-row-gap: 27px;
+	grid-row-gap: 25px;
 
 	&__label {
-		padding-top: .6rem;
+		padding-top: .65rem;
 		grid-column-start: 1;
 		grid-column-end: 2;
 	}
@@ -314,6 +320,7 @@
 		}
 
 		&__input {
+			font-family: 'IBM Plex Sans';
 			outline: none;
 			box-sizing: border-box;
 			width: 100%;
@@ -376,6 +383,7 @@
 		}
 
 		&__button {
+			font-family: 'IBM Plex Sans';
 			outline: none;
 			cursor: pointer;
 			border: none;

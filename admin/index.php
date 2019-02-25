@@ -11,11 +11,11 @@
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
         <div class="book-adding">
-	        <h2>Nuovo libro</h2>
+	        <h2 class="h2">Nuovo libro</h2>
 	        <div class="book-adding__form">
 		        <form>
 			        <div class="form">
-				        <div class="form__label" style="padding-top: .55rem;">
+				        <div class="form__label">
 					        <label for="title">Titolo</label>
 				        </div>
 				        <div class="form__element">
@@ -36,10 +36,10 @@
 					        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input-publishing-city">
 				        </div>
 
-				        <div class="form__label" style="margin-top: -1.05rem;">
+				        <div class="form__label" style="margin-top: -.95rem;">
 					        <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label>
 				        </div>
-				        <div class="form__element form__element-short" style="margin-top: -1rem;">
+				        <div class="form__element form__element-short" style="margin-top: -.95rem;">
 					        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input-publishing-year">
 				        </div>
 
@@ -52,7 +52,7 @@
 				        <div class="form__label form__label-description form__close-to-checkbox" style="display: none;">
 					        <label for="book_description">Descri-<br>zione</label>
 				        </div>
-				        <div class="form__element form__element-description form__close-to-checkbox" style="display: none;">
+				        <div class="form__element form__element-description form__close-to-checkbox" style="display: none; margin-bottom: -.3rem;">
 					        <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input-month-book-description"></textarea>
 				        </div>
 
