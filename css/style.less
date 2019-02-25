@@ -40,8 +40,8 @@
 	border-bottom: 1px solid #000;
 
 	&:hover {
-		color: #f00;
-		border-bottom-color: #f00;
+		color: #CD0404;
+		border-bottom-color: #CD0404;
 	}
 }
 
@@ -238,8 +238,8 @@
 
 					&:hover {
 						cursor: pointer;
-						color: #f00;
-						border-bottom-color: #f00;
+						color: #CD0404;
+						border-bottom-color: #CD0404;
 					}
 				}
 			}
@@ -259,10 +259,14 @@
 	.book-editing {
 		font-family: 'IBM Plex Sans';
 		margin-bottom: 50px;
-
 		display: grid;
 		grid-template-columns: repeat(14, 1fr);
 		grid-gap: 15px;
+
+		h2 {
+			grid-column-start: 1;
+			grid-column-end: 14;
+		}
 
 		&__cover {
 			grid-column-start: 1;
@@ -389,6 +393,13 @@
 
 			&:active {
 				background: #e04040;
+			}
+
+			&-disabled {
+				cursor: default;
+				background: #ec6040 !important;
+				box-shadow: none !important;
+				color: rgba(0, 0, 0, .25);
 			}
 		}
 	}

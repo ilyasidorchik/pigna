@@ -11,22 +11,22 @@
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
         <div class="book-adding">
-	        <h2>Aggiungere un nuovo libro al catalogo</h2>
+	        <h2>Nuovo libro</h2>
 	        <div class="book-adding__form">
 		        <form>
 			        <div class="form">
-				        <div class="form__label">
-					        <label for="author">Autore</label>
-				        </div>
-				        <div class="form__element">
-					        <input type="text" name="author" id="author" autocomplete="off" autofocus class="form__element__input form__element__input-author">
-				        </div>
-
 				        <div class="form__label" style="padding-top: .55rem;">
 					        <label for="title">Titolo</label>
 				        </div>
 				        <div class="form__element">
-					        <input type="text" name="title" id="title" autocomplete="off" class="form__element__input form__element__input-title">
+					        <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input-title">
+				        </div>
+
+				        <div class="form__label">
+					        <label for="author">Autore</label>
+				        </div>
+				        <div class="form__element">
+					        <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input-author">
 				        </div>
 
 				        <div class="form__label">
@@ -73,15 +73,15 @@
 				        </div>
 
 				        <div class="form__element">
-					        <button class="form__element__button book-adding__button">Aggiornare</button>
+					        <button class="form__element__button form__element__button-disabled book-adding__button">Aggiungere</button>
 				        </div>
 			        </div>
 		        </form>
 	        </div>
 	        <div class="book-adding__cover">
-		        <div class="grid__item" style="display: none;">
+		        <div class="grid__item">
 			        <div class="grid__item__authortitle">
-				        <div class="grid__item__authortitle__author"></div>
+				        <div class="grid__item__authortitle__author" style="display: none;"></div>
 				        <div class="grid__item__authortitle__title"></div>
 			        </div>
 			        <div class="grid__item__publishing"></div>
@@ -100,6 +100,7 @@
 
         <!--
         <div class="book-editing">
+	        <h2>Modifica di libri in un catalogo</h2>
 	        <div class="book-editing__cover">
 		        <div class="grid__item">
 			        <div class="grid__item__authortitle">
@@ -129,15 +130,15 @@
 			        <div class="form__label">
 				        <label for="publishing-city">Città editore</label>
 			        </div>
-			        <div class="form__element form__element-short">
+			        <div class="form__element">
 				        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input-publishing-city">
 			        </div>
 
 			        <div class="form__label" style="margin-top: -1.05rem;">
 				        <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label>
 			        </div>
-			        <div class="form__element form__element-very-short" style="margin-top: -1rem;">
-				        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" maxlength="4" class="form__element__input form__element__input-publishing-year">
+			        <div class="form__element form__element-short" style="margin-top: -1rem;">
+				        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input-publishing-year">
 			        </div>
 
 			        <div class="form__element" style="margin-top: -1.2rem;">
@@ -162,11 +163,18 @@
 			        <div class="form__label form__close-to-checkbox form__label-price" style="display: none;">
 				        <label for="price">Prezzo</label>
 			        </div>
-			        <div class="form__element form__element-short form__close-to-checkbox form__element-price" style="display: none;">
+			        <div class="form__element form__close-to-checkbox form__element-price" style="display: none;">
 				        <div class="form__element__wrap-for-price">
 					        <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input-price">
 					        <div class="form__element__note form__element__wrap-for-price__currency-sign">€</div>
 				        </div>
+			        </div>
+
+			        <div class="form__element" style="margin-top: -.3rem;">
+				        <label class="form__element__label">
+					        <input type="checkbox" name="book_on_hands" value="book_on_hands" autocomplete="off" class="form__element__label__checkbox form__element__label-taken">
+					        <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+				        </label>
 			        </div>
 		        </div>
 	        </form>
@@ -199,7 +207,7 @@ HERE;
             ?>
         </div>
 
-        -->
+		-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
         <script src="/js/script.js"></script>
     </body>
