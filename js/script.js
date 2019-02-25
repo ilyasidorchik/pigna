@@ -238,15 +238,6 @@ function addBook() {
     let author = authorInput.value;
     let title = titleInput.value;
 
-    if (author == '') {
-        authorInput.focus();
-        authorInput.classList.add('form__element__input-invalid');
-        return;
-    }
-    else {
-        authorInput.classList.remove('form__element__input-invalid');
-    }
-
     if (title == '') {
         titleInput.focus();
         titleInput.classList.add('form__element__input-invalid');
@@ -341,7 +332,7 @@ function clearBookAddingForm() {
         monthBookDescInputBlock.style.display = 'none';
     }
 
-    priceCheckbox.checked = false
+    priceCheckbox.checked = false;
     priceInput.value = '';
     let priceLabel = document.querySelector('.form__label-price');
     let priceInputBlock = document.querySelector('.form__element-price');
