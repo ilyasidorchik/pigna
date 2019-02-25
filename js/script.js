@@ -206,11 +206,10 @@ function toggleAppearingBlock() {
 }
 
 function addBook() {
-    // Если не заполнено поле — у него появляется фокус и обводка
-    // Обязательные поля
+    // Обязательное поле
     let title = titleInput.value;
-    let author = authorInput.value;
 
+    // Если не заполнено поле — у него появляется фокус и обводка
     if (title == '') {
         titleInput.focus();
         titleInput.classList.add('form__element__input-invalid');
@@ -221,6 +220,8 @@ function addBook() {
     }
 
     // Необязательные поля
+    let author = authorInput.value;
+
     let publishingCity = publishingCityInput.value;
 
     let publishingYear = publishingYearInput.value;
@@ -266,7 +267,6 @@ function addBook() {
         }
     }
 
-
     let xhr = new XMLHttpRequest();
     let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
 
@@ -277,10 +277,59 @@ function addBook() {
                 form.style.visibility = 'hidden';
 
                 let alertSuccess = document.createElement('div');
-                alertSuccess.className = "book-adding__form__alert-success";
-                alertSuccess.innerHTML = 'Libro aggiunto al catalogo. <a class="link-for-form-clearing">Aggiungere un altro libro</a>';
+                alertSuccess.className = "book-adding__form__success";
+                alertSuccess.innerHTML = '<div class="book-adding__form__success__alert">Libro aggiunto al catalogo. <a class="book-adding__form__success__alert__returning pseudolink">Annulla aggiunta</a></div><div class="book-adding__form__success__clearingWrap"><a class="book-adding__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
                 formWrap.appendChild(alertSuccess);
-                document.querySelector('.link-for-form-clearing').addEventListener("click", clearBookAddingForm);
+
+                document.querySelector('.book-adding__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
+                document.querySelector('.book-adding__form__success__clearingWrap__link').addEventListener("click", clearBookAddingForm);
+            }
+            else {
+                console.log('Ошибка: ' + xhr.status);
+            }
+        }
+    };
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+}
+
+function returnBookAddingForm() {
+    let title = titleInput.value;
+    let author = authorInput.value;
+    let publishingCity = publishingCityInput.value;
+    let publishingYear = publishingYearInput.value;
+
+    let publishing = publishingCity;
+    if (publishingYear != '') {
+        publishing += ', ' + publishingYear;
+    }
+
+    let monthBook = monthBookCheckbox.checked;
+    let description = monthBookDescInput.value;
+    if (monthBook == true) {
+        monthBook = 1;
+    }
+    else {
+        monthBook = 0;
+        description = '';
+    }
+
+    let price = priceInput.value;
+    if (price == '') {
+        price = 0;
+    }
+
+    let xhr = new XMLHttpRequest();
+    let params = 'title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
+
+    xhr.open('POST', '../php/removeBook.php');
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let alertSuccess = document.querySelector('.book-adding__form__success');
+                formWrap.removeChild(alertSuccess);
+
+                form.style.visibility = 'visible';
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -315,7 +364,7 @@ function clearBookAddingForm() {
         priceInputBlock.style.display = 'none';
     }
 
-    let alertSuccess = document.querySelector('.book-adding__form__alert-success');
+    let alertSuccess = document.querySelector('.book-adding__form__success');
     formWrap.removeChild(alertSuccess);
 
     bookCoverAuthor.innerHTML = '';

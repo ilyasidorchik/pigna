@@ -1,14 +1,10 @@
 <?php
-    $title = $_POST['title'];
-    $author = $_POST['author'];
+    $title = str_replace("'", "\'", $_POST['title']);
+    $author = str_replace("'", "\'", $_POST['author']);
     $publishing = $_POST['publishing'];
     $price = $_POST['price'];
     $monthBook = $_POST['monthBook'];
-    $description = $_POST['description'];
-
-    $title = str_replace("'", "\'", $title);
-    $author = str_replace("'", "\'", $author);
-    $description = str_replace("'", "\'", $description);
+    $description = str_replace("'", "\'", $_POST['description']);
 
     $ini = parse_ini_file('../app.ini', true);
 
