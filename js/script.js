@@ -104,6 +104,10 @@ function start() {
 
     monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
     monthBookCheckbox.addEventListener("click", ()=>{
+        if (monthBookDescInput.value == '') {
+            bookAddingButton.classList.toggle('form__element__button-disabled');
+        }
+
         bookCover.classList.toggle('grid__item-month-book-color');
 
         if (bookCoverMonthBook.style.display == 'none') {
@@ -115,12 +119,23 @@ function start() {
     });
 
     monthBookDescInput.addEventListener('keyup', ()=>{
+        if (monthBookDescInput.value != '') {
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
         bookCoverMonthBookDesc.innerHTML = monthBookDescInput.value;
     });
 
 
     priceCheckbox.addEventListener("click", toggleAppearingBlock);
     priceCheckbox.addEventListener("click", ()=>{
+        if (priceInput.value == '') {
+            bookAddingButton.classList.toggle('form__element__button-disabled');
+        }
+
         if (stickerForPrice.style.display == 'none') {
             stickerForPrice.style.display = 'block';
         }
@@ -132,9 +147,11 @@ function start() {
     priceInput.onkeypress = allowDigit;
     priceInput.addEventListener('keyup', ()=>{
         if (priceInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
             stickerForPrice.innerHTML = '';
         }
         else {
+            bookAddingButton.classList.remove('form__element__button-disabled');
             stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
         }
     });
@@ -278,7 +295,7 @@ function addBook() {
 
                 let alertSuccess = document.createElement('div');
                 alertSuccess.className = "book-adding__form__success";
-                alertSuccess.innerHTML = '<div class="book-adding__form__success__alert">Libro aggiunto al catalogo. <a class="book-adding__form__success__alert__returning pseudolink">Annulla aggiunta</a></div><div class="book-adding__form__success__clearingWrap"><a class="book-adding__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
+                alertSuccess.innerHTML = '<div class="book-adding__form__success__alert">Libro aggiunto al catalogo. <a class="book-adding__form__success__alert__returning pseudolink">Annulla</a></div><div class="book-adding__form__success__clearingWrap"><a class="book-adding__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
                 formWrap.appendChild(alertSuccess);
 
                 document.querySelector('.book-adding__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
