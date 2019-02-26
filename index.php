@@ -42,12 +42,12 @@
 	                    $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
                     if ($row[price] != 0)
-                        $row[price] = '<div class="grid__item__sticker grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
+                        $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
                     else
                         $row[price] = '';
 
 	                echo <<<HERE
-							<div class="grid__item grid__item-month-book-color">
+							<div class="grid__item grid__item_month-book-color">
 				                <div class="grid__item__authortitle">
 				                    $row[author]
 				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
@@ -74,7 +74,7 @@ HERE;
                         $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
 	            	if ($row[price] != 0)
-                        $row[price] = '<div class="grid__item__sticker \grid__item__sticker-for-price">'.$row[price].'&thinsp;€</div>';
+                        $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
 		            else
                         $row[price] = '';
 

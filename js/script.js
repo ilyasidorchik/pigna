@@ -1,26 +1,26 @@
 let searchInput = document.getElementById('searchInput');
 
 // Форма добавления книги
-let formWrap = document.querySelector('.book-adding__form');
-let form = document.querySelector('.book-adding__form .form');
+let formWrap = document.querySelector('.book-editing__form');
+let form = document.querySelector('.book-editing__form .form');
 
-let authorInput = document.querySelectorAll('.form__element__input-author')[0];
-let titleInput = document.querySelectorAll('.form__element__input-title')[0];
-let publishingCityInput = document.querySelectorAll('.form__element__input-publishing-city')[0];
-let publishingYearInput = document.querySelectorAll('.form__element__input-publishing-year')[0];
-let monthBookCheckbox = document.querySelectorAll('.form__element__label-description')[0];
-let monthBookDescInput = document.querySelectorAll('.form__element__input-month-book-description')[0];
-let priceCheckbox = document.querySelectorAll('.form__element__label-price')[0];
-let priceInput = document.querySelectorAll('.form__element__input-price')[0];
-let bookAddingButton = document.querySelector('.book-adding__button');
+let authorInput = document.querySelectorAll('.form__element__input_author')[0];
+let titleInput = document.querySelectorAll('.form__element__input_title')[0];
+let publishingCityInput = document.querySelectorAll('.form__element__input_publishing-city')[0];
+let publishingYearInput = document.querySelectorAll('.form__element__input_publishing-year')[0];
+let monthBookCheckbox = document.querySelectorAll('.form__element__label__checkbox_description')[0];
+let monthBookDescInput = document.querySelectorAll('.form__element__input_month-book-description')[0];
+let priceCheckbox = document.querySelectorAll('.form__element__label__checkbox_price')[0];
+let priceInput = document.querySelectorAll('.form__element__input_price')[0];
+let bookAddingButton = document.querySelector('.book-editing__button');
 
-let bookCover = document.querySelectorAll('.book-adding__cover .grid__item')[0];
+let bookCover = document.querySelectorAll('.book-editing__cover .grid__item')[0];
 let bookCoverAuthor = document.querySelectorAll('.grid__item__authortitle__author')[0];
 let bookCoverTitle = document.querySelectorAll('.grid__item__authortitle__title')[0];
 let bookCoverPublishing = document.querySelectorAll('.grid__item__publishing')[0];
 let bookCoverMonthBook = document.querySelectorAll('.month-book')[0];
 let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__description')[0];
-let stickerForPrice = document.querySelectorAll('.grid__item__sticker-for-price')[0];
+let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
 
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
@@ -108,7 +108,7 @@ function start() {
             bookAddingButton.classList.toggle('form__element__button-disabled');
         }
 
-        bookCover.classList.toggle('grid__item-month-book-color');
+        bookCover.classList.toggle('grid__item_month-book-color');
 
         if (bookCoverMonthBook.style.display == 'none') {
             bookCoverMonthBook.style.display = 'block';
@@ -201,15 +201,15 @@ function searchBook(bookTitle) {
 }
 
 function toggleAppearingBlock() {
-    let elementIdentifier = this.classList.value.split("-")[1]; // e.g. description
+    let elementIdentifier = this.classList.value.split("checkbox_")[1]; // e.g. description
 
-    let label = '.form__label-' + elementIdentifier;
+    let label = '.form__label_' + elementIdentifier;
     let appearingLabel = document.querySelector(label);
 
-    let inputBlock = '.form__element-' + elementIdentifier;
+    let inputBlock = '.form__element_' + elementIdentifier;
     let appearingInputBlock = document.querySelector(inputBlock);
 
-    let input = '.form__element-' + elementIdentifier + ' .form__element__input';
+    let input = '.form__element_' + elementIdentifier + ' .form__element__input';
 
     if (appearingInputBlock.style.display == 'none') {
         appearingLabel.style.display = 'block';
@@ -294,12 +294,12 @@ function addBook() {
                 form.style.visibility = 'hidden';
 
                 let alertSuccess = document.createElement('div');
-                alertSuccess.className = "book-adding__form__success";
-                alertSuccess.innerHTML = '<div class="book-adding__form__success__alert">Libro aggiunto al catalogo. <a class="book-adding__form__success__alert__returning pseudolink">Annulla</a></div><div class="book-adding__form__success__clearingWrap"><a class="book-adding__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
+                alertSuccess.className = "book-editing__form__success";
+                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro aggiunto al catalogo. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div><div class="book-editing__form__success__clearingWrap"><a class="book-editing__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
                 formWrap.appendChild(alertSuccess);
 
-                document.querySelector('.book-adding__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
-                document.querySelector('.book-adding__form__success__clearingWrap__link').addEventListener("click", clearBookAddingForm);
+                document.querySelector('.book-editing__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
+                document.querySelector('.book-editing__form__success__clearingWrap__link').addEventListener("click", clearBookAddingForm);
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -343,7 +343,7 @@ function returnBookAddingForm() {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                let alertSuccess = document.querySelector('.book-adding__form__success');
+                let alertSuccess = document.querySelector('.book-editing__form__success');
                 formWrap.removeChild(alertSuccess);
 
                 form.style.visibility = 'visible';
@@ -381,7 +381,7 @@ function clearBookAddingForm() {
         priceInputBlock.style.display = 'none';
     }
 
-    let alertSuccess = document.querySelector('.book-adding__form__success');
+    let alertSuccess = document.querySelector('.book-editing__form__success');
     formWrap.removeChild(alertSuccess);
 
     bookCoverAuthor.innerHTML = '';
@@ -389,7 +389,7 @@ function clearBookAddingForm() {
     bookCoverPublishing.innerHTML = '';
     bookCoverMonthBookDesc.innerHTML = '';
     bookCoverMonthBook.style.display = 'none';
-    bookCover.classList.remove('grid__item-month-book-color');
+    bookCover.classList.remove('grid__item_month-book-color');
     stickerForPrice.innerHTML = '';
     stickerForPrice.style.display = 'none';
     form.style.visibility = 'visible';

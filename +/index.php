@@ -10,93 +10,123 @@
     </head>
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
-        <div class="book-adding">
-	        <h2 class="h2">Nuovo libro</h2>
-	        <div class="book-adding__form">
-		        <form>
-			        <div class="form">
-				        <div class="form__label">
-					        <label for="title">Titolo</label>
+        <?php
+            if ($_COOKIE["admin_rights"] == 'password') {
+            	echo <<<HERE
+					<div class="book-adding">
+				        <h2 class="h2">Accesso all'area di amministrazione</h2>
+				        <div class="book-adding__form">
+					        <form>
+						        <div class="form">
+							        <div class="form__label">
+								        <label for="password">Password</label>
+							        </div>
+							        <div class="form__element">
+								        <input type="text" name="password" id="password" autofocus autocomplete="off" class="form__element__input form__element__input_password">
+							        </div>
+			
+							        <div class="form__element">
+								        <button class="form__element__button form__element__button-disabled book-adding__button">Entrare</button>
+							        </div>
+						        </div>
+					        </form>
 				        </div>
-				        <div class="form__element">
-					        <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input-title">
-				        </div>
+					</div>
+HERE;
 
-				        <div class="form__label">
-					        <label for="author">Autore</label>
+            }
+            else {
+                echo <<<HERE
+					<div class="book-editing">
+				        <h2 class="h2">Nuovo libro</h2>
+				        <div class="book-editing__form">
+					        <form>
+						        <div class="form">
+							        <div class="form__label">
+								        <label for="title">Titolo</label>
+							        </div>
+							        <div class="form__element">
+								        <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title">
+							        </div>
+			
+							        <div class="form__label">
+								        <label for="author">Autore</label>
+							        </div>
+							        <div class="form__element">
+								        <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author">
+							        </div>
+			
+							        <div class="form__label">
+								        <label for="publishing-city">Città editore</label>
+							        </div>
+							        <div class="form__element">
+								        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city">
+							        </div>
+			
+							        <div class="form__label" style="margin-top: -.95rem;">
+								        <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label>
+							        </div>
+							        <div class="form__element form__element-short" style="margin-top: -.95rem;">
+								        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input_publishing-year">
+							        </div>
+			
+							        <div class="form__element" style="margin-top: -1.2rem;">
+								        <label class="form__element__label">
+									        <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description">
+									        <span class="form__element__label__fake-checkbox"></span> Libro del mese
+								        </label>
+							        </div>
+							        <div class="form__label form__close-to-checkbox form__label_description" style="display: none;">
+								        <label for="book_description">Descri-<br>zione</label>
+							        </div>
+							        <div class="form__element form__close-to-checkbox form__element_description" style="display: none; margin-bottom: -.3rem;">
+								        <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description"></textarea>
+							        </div>
+			
+							        <div class="form__element" style="margin-top: -.3rem;">
+								        <label class="form__element__label">
+									        <input type="checkbox" name="book_for_sale" value="book_for_sale" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_price">
+									        <span class="form__element__label__fake-checkbox"></span> In vendita
+								        </label>
+							        </div>
+							        <div class="form__label form__close-to-checkbox form__label_price" style="display: none;">
+								        <label for="price">Prezzo</label>
+							        </div>
+							        <div class="form__element form__close-to-checkbox form__element_price" style="display: none;">
+								        <div class="form__element__wrap-for-price">
+									        <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price">
+									        <div class="form__element__wrap-for-price__currency-sign">€</div>
+								        </div>
+							        </div>
+			
+							        <div class="form__element">
+								        <button class="form__element__button form__element__button-disabled book-editing__button">Aggiungere</button>
+							        </div>
+						        </div>
+					        </form>
 				        </div>
-				        <div class="form__element">
-					        <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input-author">
-				        </div>
-
-				        <div class="form__label">
-					        <label for="publishing-city">Città editore</label>
-				        </div>
-				        <div class="form__element">
-					        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input-publishing-city">
-				        </div>
-
-				        <div class="form__label" style="margin-top: -.95rem;">
-					        <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label>
-				        </div>
-				        <div class="form__element form__element-short" style="margin-top: -.95rem;">
-					        <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input-publishing-year">
-				        </div>
-
-				        <div class="form__element" style="margin-top: -1.2rem;">
-					        <label class="form__element__label">
-						        <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label-description">
-						        <span class="form__element__label__fake-checkbox"></span> Libro del mese
-					        </label>
-				        </div>
-				        <div class="form__label form__label-description form__close-to-checkbox" style="display: none;">
-					        <label for="book_description">Descri-<br>zione</label>
-				        </div>
-				        <div class="form__element form__element-description form__close-to-checkbox" style="display: none; margin-bottom: -.3rem;">
-					        <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input-month-book-description"></textarea>
-				        </div>
-
-				        <div class="form__element" style="margin-top: -.3rem;">
-					        <label class="form__element__label">
-						        <input type="checkbox" name="book_for_sale" value="book_for_sale" autocomplete="off" class="form__element__label__checkbox form__element__label-price">
-						        <span class="form__element__label__fake-checkbox"></span> In vendita
-					        </label>
-				        </div>
-				        <div class="form__label form__close-to-checkbox form__label-price" style="display: none;">
-					        <label for="price">Prezzo</label>
-				        </div>
-				        <div class="form__element form__close-to-checkbox form__element-price" style="display: none;">
-					        <div class="form__element__wrap-for-price">
-						        <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input-price">
-						        <div class="form__element__note form__element__wrap-for-price__currency-sign">€</div>
+				        <div class="book-editing__cover">
+					        <div class="grid__item">
+						        <div class="grid__item__authortitle">
+							        <div class="grid__item__authortitle__author" style="display: none;"></div>
+							        <div class="grid__item__authortitle__title"></div>
+						        </div>
+						        <div class="grid__item__publishing"></div>
+						        <div class="grid__item__sticker grid__item__sticker_price" style="display: none;"></div>
 					        </div>
 				        </div>
-
-				        <div class="form__element">
-					        <button class="form__element__button form__element__button-disabled book-adding__button">Aggiungere</button>
+				        <div class="month-book" style="display: none;">
+					        <div class="month-book__wrap">
+						        <div class="month-book__wrap__label">
+							        <span class="month-book__wrap__label__text">Libro del mese</span>
+						        </div>
+						        <p class="month-book__wrap__description"></p>
+					        </div>
 				        </div>
 			        </div>
-		        </form>
-	        </div>
-	        <div class="book-adding__cover">
-		        <div class="grid__item">
-			        <div class="grid__item__authortitle">
-				        <div class="grid__item__authortitle__author" style="display: none;"></div>
-				        <div class="grid__item__authortitle__title"></div>
-			        </div>
-			        <div class="grid__item__publishing"></div>
-			        <div class="grid__item__sticker grid__item__sticker-for-price" style="display: none;"></div>
-		        </div>
-	        </div>
-	        <div class="month-book" style="display: none;">
-		        <div class="month-book__wrap">
-			        <div class="month-book__wrap__label">
-				        <span class="month-book__wrap__label__text">Libro del mese</span>
-			        </div>
-			        <p class="month-book__wrap__description"></p>
-		        </div>
-	        </div>
-        </div>
+HERE;
+            }
+        ?>
 
         <!--
         <div class="book-editing">
