@@ -12,7 +12,7 @@ let monthBookCheckbox = document.querySelectorAll('.form__element__label__checkb
 let monthBookDescInput = document.querySelectorAll('.form__element__input_month-book-description')[0];
 let priceCheckbox = document.querySelectorAll('.form__element__label__checkbox_price')[0];
 let priceInput = document.querySelectorAll('.form__element__input_price')[0];
-let bookAddingButton = document.querySelector('.book-editing__button');
+let bookAddingButton = document.querySelector('.form__element__button_book-adding');
 
 let bookCover = document.querySelectorAll('.book-editing__cover .grid__item')[0];
 let bookCoverAuthor = document.querySelectorAll('.grid__item__authortitle__author')[0];
@@ -38,14 +38,44 @@ function start() {
         });
     }
 
-    // Форма добавления книги
-    publishingYearInput.onkeypress = allowDigit;
+    // Форма входа в админку
+    let passwordInput = document.querySelector('.form__element__input_password');
+    if (passwordInput != null) {
+        passwordInput.focus();
 
+        let enterButton = document.querySelector('.form__element__button_entering');
+        enterButton.addEventListener('click', preventDefault);
+
+        passwordInput.addEventListener('keyup', ()=>{
+            if (passwordInput.value != '') {
+                passwordInput.classList.remove('form__element__input_invalid');
+
+                enterButton.removeEventListener('click', preventDefault);
+                enterButton.classList.remove('form__element__button-disabled');
+            }
+            else {
+                enterButton.addEventListener('click', preventDefault);
+                enterButton.classList.add('form__element__button-disabled');
+            }
+        });
+    }
+
+    // Форма добавления книги
+    titleInput.focus();
     titleInput.addEventListener('keyup', ()=>{
         if (titleInput.value != '') {
+            titleInput.classList.remove('form__element__input_invalid');
             bookAddingButton.classList.remove('form__element__button-disabled');
         }
         else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
@@ -81,6 +111,7 @@ function start() {
         bookCoverPublishing.innerHTML = bookCoverPuslishingData;
     });
 
+    publishingYearInput.onkeypress = allowDigit;
     publishingYearInput.addEventListener('keyup', ()=>{
         if (publishingYearInput.value == '') {
             if (publishingCityInput.value == '') {
@@ -104,8 +135,14 @@ function start() {
 
     monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
     monthBookCheckbox.addEventListener("click", ()=>{
-        if (monthBookDescInput.value == '') {
-            bookAddingButton.classList.toggle('form__element__button-disabled');
+        if (titleInput.value != '') {
+            if (monthBookDescInput.value == '') {
+                bookAddingButton.classList.toggle('form__element__button-disabled');
+            }
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
         }
 
         bookCover.classList.toggle('grid__item_month-book-color');
@@ -119,10 +156,15 @@ function start() {
     });
 
     monthBookDescInput.addEventListener('keyup', ()=>{
-        if (monthBookDescInput.value != '') {
+        if (titleInput.value != '' && monthBookDescInput.value != '') {
+            monthBookDescInput.classList.remove('form__element__input_invalid');
             bookAddingButton.classList.remove('form__element__button-disabled');
         }
         else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
@@ -132,8 +174,14 @@ function start() {
 
     priceCheckbox.addEventListener("click", toggleAppearingBlock);
     priceCheckbox.addEventListener("click", ()=>{
-        if (priceInput.value == '') {
-            bookAddingButton.classList.toggle('form__element__button-disabled');
+        if (titleInput.value != '') {
+            if (priceInput.value == '') {
+                bookAddingButton.classList.toggle('form__element__button-disabled');
+            }
+        }
+
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
         }
 
         if (stickerForPrice.style.display == 'none') {
@@ -146,12 +194,22 @@ function start() {
 
     priceInput.onkeypress = allowDigit;
     priceInput.addEventListener('keyup', ()=>{
-        if (priceInput.value == '') {
+        if (titleInput.value != '' && priceInput.value != '') {
+            priceInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
             bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceInput.value == '') {
             stickerForPrice.innerHTML = '';
         }
         else {
-            bookAddingButton.classList.remove('form__element__button-disabled');
             stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
         }
     });
@@ -229,11 +287,11 @@ function addBook() {
     // Если не заполнено поле — у него появляется фокус и обводка
     if (title == '') {
         titleInput.focus();
-        titleInput.classList.add('form__element__input-invalid');
+        titleInput.classList.add('form__element__input_invalid');
         return;
     }
     else {
-        titleInput.classList.remove('form__element__input-invalid');
+        titleInput.classList.remove('form__element__input_invalid');
     }
 
     // Необязательные поля
@@ -255,11 +313,11 @@ function addBook() {
 
         if (description == '') {
             monthBookDescInput.focus();
-            monthBookDescInput.classList.add('form__element__input-invalid');
+            monthBookDescInput.classList.add('form__element__input_invalid');
             return;
         }
         else {
-            monthBookDescInput.classList.remove('form__element__input-invalid');
+            monthBookDescInput.classList.remove('form__element__input_invalid');
         }
     }
     else {
@@ -271,11 +329,11 @@ function addBook() {
     if (priceCheckbox.checked == true) {
         if (price == '') {
             priceInput.focus();
-            priceInput.classList.add('form__element__input-invalid');
+            priceInput.classList.add('form__element__input_invalid');
             return;
         }
         else {
-            priceInput.classList.remove('form__element__input-invalid');
+            priceInput.classList.remove('form__element__input_invalid');
         }
     }
     else {
@@ -295,7 +353,7 @@ function addBook() {
 
                 let alertSuccess = document.createElement('div');
                 alertSuccess.className = "book-editing__form__success";
-                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro aggiunto al catalogo. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div><div class="book-editing__form__success__clearingWrap"><a class="book-editing__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro</a></div>';
+                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro aggiunto al catalogo. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div><div class="book-editing__form__success__clearingWrap"><a class="book-editing__form__success__clearingWrap__link pseudolink">Aggiungere un altro libro…</a></div>';
                 formWrap.appendChild(alertSuccess);
 
                 document.querySelector('.book-editing__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
@@ -395,6 +453,10 @@ function clearBookAddingForm() {
     form.style.visibility = 'visible';
 
     titleInput.focus();
+}
+
+function preventDefault() {
+    event.preventDefault();
 }
 
 function getChar(event) {

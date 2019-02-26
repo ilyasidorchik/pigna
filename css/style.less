@@ -71,7 +71,7 @@
 	}
 
 	.pseudolink {
-		border-bottom: 1px dashed rgb(21, 87, 36);
+		border-bottom: 1px dashed #000;
 
 		&:hover {
 			cursor: pointer;
@@ -321,6 +321,7 @@
 	&__element {
 		grid-column-start: 2;
 		grid-column-end: 12;
+		position: relative;
 
 		&-short {
 			grid-column-end: 3;
@@ -338,7 +339,7 @@
 			padding: 10px;
 			font-size: @form-font-size;
 
-			&-invalid {
+			&_invalid {
 				box-shadow: 0px 0px 0px 1px #ec6040 inset;
 			}
 		}
@@ -357,6 +358,12 @@
 			&__currency-sign {
 				padding-top: .6rem;
 			}
+		}
+
+		&__warning {
+			position: absolute;
+			color: #ec6040;
+			white-space: nowrap;
 		}
 
 		&__label {
@@ -399,8 +406,8 @@
 			font-size: @form-font-size;
 			margin-top: .85rem;
 			padding: 10px 30px;
-			background: #ec6040;
-			background: linear-gradient(to bottom, #f88040 0%, #e04040 100%);
+			background: #6FFC3E;
+			background: linear-gradient(to bottom, #6FFC3E 0%, #1E6B07 100%);
 			color: #fff;
 
 			&:hover {
@@ -408,12 +415,12 @@
 			}
 
 			&:active {
-				background: #e04040;
+				background: #1E6B07;
 			}
 
 			&-disabled {
 				cursor: default;
-				background: #ec6040 !important;
+				background: #6de443 !important;
 				box-shadow: none !important;
 				color: rgba(0, 0, 0, .25);
 			}

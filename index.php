@@ -97,16 +97,15 @@ HERE;
 		        <div class="likely likely-big">
 			        <div class="twitter">Twittare</div>
 			        <div class="facebook">Condividere</div>
-			        <div class="linkedin"></div>
 			        <div class="whatsapp"></div>
-			        <div class="telegram">Inviare</div>
+			        <div class="telegram">Condividere</div>
 			        <div class="pinterest">Pinteressarsi</div>
 		        </div>
-		        <p>Piazza del Capitolo, 1, Sanremo · <a href="tel:+390184501132" class="link">+39 0184 501132</a> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
+		        <p>Piazza del Capitolo, 1, Sanremo · <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
 		        <p>Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
 		        <p>
-			        Sito creato da direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
-			        <br>e autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>
+			        Autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>,
+			        <br>direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
 		        </p>
 	        </div>
         </div>

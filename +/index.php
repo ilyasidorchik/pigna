@@ -1,3 +1,12 @@
+<?php
+	$rightPassword = 'UT92?aHh8j5%x';
+	$hash = password_hash($rightPassword, PASSWORD_DEFAULT);
+
+	$password = $_POST['password'];
+
+	if ($password == $rightPassword && !isset($_COOKIE["admin_rights"]))
+        SetCookie('admin_rights', $hash, time()+60*60*24*365*10, '/');
+?>
 <!DOCTYPE html>
     <html lang="it">
     <head>
@@ -11,32 +20,8 @@
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
         <?php
-            if ($_COOKIE["admin_rights"] == 'password') {
+            if (password_verify($rightPassword, $_COOKIE['admin_rights']) || $password == $rightPassword) {
             	echo <<<HERE
-					<div class="book-adding">
-				        <h2 class="h2">Accesso all'area di amministrazione</h2>
-				        <div class="book-adding__form">
-					        <form>
-						        <div class="form">
-							        <div class="form__label">
-								        <label for="password">Password</label>
-							        </div>
-							        <div class="form__element">
-								        <input type="text" name="password" id="password" autofocus autocomplete="off" class="form__element__input form__element__input_password">
-							        </div>
-			
-							        <div class="form__element">
-								        <button class="form__element__button form__element__button-disabled book-adding__button">Entrare</button>
-							        </div>
-						        </div>
-					        </form>
-				        </div>
-					</div>
-HERE;
-
-            }
-            else {
-                echo <<<HERE
 					<div class="book-editing">
 				        <h2 class="h2">Nuovo libro</h2>
 				        <div class="book-editing__form">
@@ -100,7 +85,7 @@ HERE;
 							        </div>
 			
 							        <div class="form__element">
-								        <button class="form__element__button form__element__button-disabled book-editing__button">Aggiungere</button>
+								        <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button>
 							        </div>
 						        </div>
 					        </form>
@@ -124,6 +109,34 @@ HERE;
 					        </div>
 				        </div>
 			        </div>
+HERE;
+            }
+            else {
+            	if ($password != '' && $password != $rightPassword) {
+            		$inputInvalid = 'form__element__input_invalid';
+            		$warningPassword = '<div class="form__element__warning">Chiave di accesso sbagliata</div>';
+	            }
+
+                echo <<<HERE
+					<div class="book-editing">
+				        <h2 class="h2">Accesso all'area di pannelo amministrativo</h2>
+				        <div class="book-editing__form">
+					        <form method="POST" action="">
+						        <div class="form">
+							        <div class="form__label">
+								        <label for="password">Chiave di accesso</label>
+							        </div>
+							        <div class="form__element" style="grid-column-end: 5;">
+								        <input type="text" name="password" id="password" autocomplete="off" class="form__element__input form__element__input_password $inputInvalid" value="$password">$warningPassword
+							        </div>
+			
+							        <div class="form__element">
+								        <button class="form__element__button form__element__button_entering form__element__button-disabled" name="enter">Entrare</button>
+							        </div>
+						        </div>
+					        </form>
+				        </div>
+					</div>
 HERE;
             }
         ?>
