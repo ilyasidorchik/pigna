@@ -423,8 +423,8 @@ function clearBookAddingForm() {
 
     monthBookCheckbox.checked = false;
     monthBookDescInput.value = '';
-    let monthBookDescLabel = document.querySelector('.form__label-description');
-    let monthBookDescInputBlock = document.querySelector('.form__element-description');
+    let monthBookDescLabel = document.querySelector('.form__label_description');
+    let monthBookDescInputBlock = document.querySelector('.form__element_description');
     if (monthBookDescInputBlock.style.display == 'block') {
         monthBookDescLabel.style.display = 'none';
         monthBookDescInputBlock.style.display = 'none';
@@ -432,8 +432,8 @@ function clearBookAddingForm() {
 
     priceCheckbox.checked = false;
     priceInput.value = '';
-    let priceLabel = document.querySelector('.form__label-price');
-    let priceInputBlock = document.querySelector('.form__element-price');
+    let priceLabel = document.querySelector('.form__label_price');
+    let priceInputBlock = document.querySelector('.form__element_price');
     if (priceInputBlock.style.display == 'block') {
         priceLabel.style.display = 'none';
         priceInputBlock.style.display = 'none';
