@@ -1,10 +1,10 @@
 <?php
-	$rightPassword = 'UT92?aHh8j5%x';
-	$hash = password_hash($rightPassword, PASSWORD_DEFAULT);
+	$ini = parse_ini_file('../app.ini', true);
+	$hash = password_hash($ini[admin][password], PASSWORD_DEFAULT);
 
 	$password = $_POST['password'];
 
-	if ($password == $rightPassword && !isset($_COOKIE["admin_rights"]))
+	if ($password == $ini[admin][password] && !isset($_COOKIE["admin_rights"]))
         SetCookie('admin_rights', $hash, time()+60*60*24*365*10, '/');
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
         <?php
-            if (password_verify($rightPassword, $_COOKIE['admin_rights']) || $password == $rightPassword) {
+            if (password_verify($ini[admin][password], $_COOKIE['admin_rights']) || $password == $ini[admin][password]) {
             	echo <<<HERE
 					<div class="book-editing">
 				        <h2 class="h2">Nuovo libro</h2>
@@ -112,7 +112,7 @@
 HERE;
             }
             else {
-            	if ($password != '' && $password != $rightPassword) {
+            	if ($password != '' && $password != $ini[admin][password]) {
             		$inputInvalid = 'form__element__input_invalid';
             		$warningPassword = '<div class="form__element__warning">Chiave di accesso sbagliata</div>';
 	            }

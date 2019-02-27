@@ -29,11 +29,22 @@
         </div>
         <div class="grid">
             <?php
-	            $ini = parse_ini_file('app.ini', true);
+                $ini = parse_ini_file('app.ini', true);
 
 	            $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
 
+                if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
+                	$bookAdmin = '<div class="grid__item__admin">
+											<div class="form__element">
+								                <label class="form__element__label">
+									                <input type="checkbox" name="on_hands" value="on_hands" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on_hands">
+									                <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+								                </label>
+							                </div>
+							                <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
+							            </div>';
+                }
 
                 // Книга месяца
 	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
@@ -86,6 +97,7 @@ HERE;
 			                </div>
 			                <div class="grid__item__publishing">$row[publishing]</div>
 			                $row[price]
+			                $bookAdmin
 			            </div>
 HERE;
 	            }
