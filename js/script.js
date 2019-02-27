@@ -60,6 +60,13 @@ function start() {
         });
     }
 
+    // Редактирование книги
+    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+    for (var i = 0; i < onHandsCheckbox.length; i++) {
+        let id = document.querySelectorAll('.grid__item')[i].getAttribute('data-id');
+        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id});
+    }
+
     // Форма добавления книги
     titleInput.focus();
     titleInput.addEventListener('keyup', ()=>{
@@ -453,6 +460,32 @@ function clearBookAddingForm() {
     form.style.visibility = 'visible';
 
     titleInput.focus();
+}
+
+function toggleBookOnHands(e) {
+    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands')[this.number];
+
+    let onHandsStatus = 1;
+    if (onHandsCheckbox.checked == false) {
+        onHandsStatus = 0;
+    }
+
+    let xhr = new XMLHttpRequest();
+    let params = 'id=' + this.id + '&onHandsStatus=' + onHandsStatus;
+
+    xhr.open('POST', '../php/toggleBookOnHands.php');
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+
+            }
+            else {
+                console.log('Ошибка: ' + xhr.status);
+            }
+        }
+    };
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
 }
 
 function preventDefault() {

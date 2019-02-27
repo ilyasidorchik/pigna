@@ -36,14 +36,14 @@
 
                 if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
                 	$bookAdmin = '<div class="grid__item__admin">
-											<div class="form__element">
-								                <label class="form__element__label">
-									                <input type="checkbox" name="on_hands" value="on_hands" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on_hands">
-									                <span class="form__element__label__fake-checkbox"></span> Dato al lettore
-								                </label>
-							                </div>
-							                <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
-							            </div>';
+								      <div class="form__element">
+								          <label class="form__element__label">
+									          <input type="checkbox" name="on_hands" value="on_hands" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
+									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+								          </label>
+							          </div>
+							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
+							       </div>';
                 }
 
                 // Книга месяца
@@ -90,7 +90,7 @@ HERE;
                         $row[price] = '';
 
                     echo <<<HERE
-						<div class="grid__item">
+						<div class="grid__item" data-id="$row[id]">
 			                <div class="grid__item__authortitle">
 			                    $row[author]
 			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
