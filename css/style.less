@@ -327,6 +327,32 @@
 
 		.book-editing {
 			padding: 15px;
+
+			&__delete {
+				cursor: pointer;
+				display: block;
+				position: absolute;
+				top: 99px;
+				right: 9px;
+				width: 32px;
+				height: 32px;
+
+				&__icon {
+					display: block;
+					width: 23px;
+					margin: 4px auto 0;
+
+					&__path {
+						fill: #000;
+					}
+				}
+
+				&:hover {
+					.book-editing__delete__icon__path {
+						fill: #cd0404;
+					}
+				}
+			}
 		}
 	}
 }
