@@ -124,6 +124,32 @@
 
 			&_month-book-color {
 				background: #fcc;
+
+				.grid__item__admin {
+					background: rgba(255, 255, 255, .5);
+				}
+			}
+
+			&_on-hands {
+				background: rgba(255, 242, 213, .5);
+
+				.grid__item__authortitle {
+					opacity: .5;
+				}
+
+				.grid__item__publishing {
+					opacity: .5;
+				}
+
+				&__text {
+					font-family: 'IBM Plex Sans';
+					font-size: 1.2rem;
+					position: absolute;
+					bottom: 30px;
+					left: 0;
+					right: 0;
+					padding-left: 6px;
+				}
 			}
 
 			&__authortitle {
@@ -184,8 +210,8 @@
 				bottom: 0;
 				left: 0;
 				right: 0;
-				height: 26%;
-				padding: 7px 5px;
+				height: 28%;
+				padding: 11px 5px 0;
 				background: rgba(255, 255, 255, .75);
 
 				&__editLinkWrap {
@@ -193,6 +219,10 @@
 					padding-left: 28.75px;
 				}
 			}
+		}
+
+		.grid__item_month-book-color.grid__item_on-hands {
+			background: rgba(255, 204, 204, .5);
 		}
 
 		&__map {
@@ -287,33 +317,18 @@
 		}
 	}
 
-	/*.book-editing {
-		font-family: 'IBM Plex Sans';
-		margin-bottom: 50px;
-		display: grid;
-		grid-template-columns: repeat(14, 1fr);
-		grid-gap: 15px;
+	.modal {
+		position: fixed;
+		top: 20px;
+		z-index: 10;
+		background: #fff;
+		width: 1200px;
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.25);
 
-		h2 {
-			grid-column-start: 1;
-			grid-column-end: 14;
+		.book-editing {
+			padding: 15px;
 		}
-
-		&__cover {
-			grid-column-start: 1;
-			grid-column-end: 3;
-		}
-
-		&__book-month {
-			grid-column-start: 3;
-			grid-column-end: 5;
-		}
-
-		&__form {
-			grid-column-start: 5;
-			grid-column-end: 15;
-		}
-	}*/
+	}
 }
 
 

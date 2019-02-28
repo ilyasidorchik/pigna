@@ -8,4 +8,4 @@
     mysqli_set_charset($link, 'utf8');
 
     // Отметка, что книга на руках
-    mysqli_query($link, "UPDATE catalogue SET `on-hands` = '$onHandsStatus' WHERE id = '$id'");
+    mysqli_query($link, "UPDATE catalogue SET onHands = '$onHandsStatus' WHERE id = '$id'");

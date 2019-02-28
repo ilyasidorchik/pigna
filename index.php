@@ -35,36 +35,38 @@
                 mysqli_set_charset($link, 'utf8');
 
                 if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
-                	$bookAdmin = '<div class="grid__item__admin">
-								      <div class="form__element">
-								          <label class="form__element__label">
-									          <input type="checkbox" name="on_hands" value="on_hands" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
-									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
-								          </label>
-							          </div>
-							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
-							       </div>';
-                }
+                    // Книга месяца
+                    $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
-                // Книга месяца
-	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
-	            while ($row = mysqli_fetch_assoc($result)) {
-	                if ($row[author] != '')
-	                    $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                        else
+                            $row[price] = '';
 
-                    if ($row[price] != 0)
-                        $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
-                    else
-                        $row[price] = '';
+                        $bookOnHands = '';
+                        if ($row[onHands] == 1)
+                            $bookOnHands = 'checked';
 
-	                echo <<<HERE
-							<div class="grid__item grid__item_month-book-color">
+                        echo <<<HERE
+							<div class="grid__item grid__item_month-book-color" data-id="$row[id]">
 				                <div class="grid__item__authortitle">
 				                    $row[author]
 				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
 				                </div>
 				                <div class="grid__item__publishing">$row[publishing]</div>
 				                $row[price]
+				                <div class="grid__item__admin">
+								      <div class="form__element">
+								          <label class="form__element__label">
+									          <input type="checkbox" name="on_hands" value="on_hands" $bookOnHands autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
+									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+								          </label>
+							          </div>
+							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
+								</div>
 				            </div>
 
 							<div class="month-book">
@@ -76,20 +78,24 @@
 						        </div>
 					        </div>
 HERE;
-	            }
+                    }
 
-	            // Все остальные книги
-	            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0");
-	            while ($row = mysqli_fetch_assoc($result)) {
-	            	if ($row[author] != '')
-                        $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+                	// Все остальные книги
+                    $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
-	            	if ($row[price] != 0)
-                        $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
-		            else
-                        $row[price] = '';
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                        else
+                            $row[price] = '';
 
-                    echo <<<HERE
+                        $bookOnHands = '';
+                        if ($row[onHands] == 1)
+                            $bookOnHands = 'checked';
+
+                        echo <<<HERE
 						<div class="grid__item" data-id="$row[id]">
 			                <div class="grid__item__authortitle">
 			                    $row[author]
@@ -97,10 +103,105 @@ HERE;
 			                </div>
 			                <div class="grid__item__publishing">$row[publishing]</div>
 			                $row[price]
-			                $bookAdmin
+			                <div class="grid__item__admin">
+								      <div class="form__element">
+								          <label class="form__element__label">
+									          <input type="checkbox" name="on_hands" value="on_hands" $bookOnHands autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
+									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+								          </label>
+							          </div>
+							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
+							 </div>
 			            </div>
 HERE;
-	            }
+                    }
+                }
+                else {
+                    // Книга месяца
+                    $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                        else
+                            $row[price] = '';
+
+                        if ($row[onHands] == 1) {
+                            $onHandsClass = 'grid__item_on-hands';
+                            $onHandsText = '<div class="grid__item_on-hands__text">Libro dato<br>a un lettore</div>';
+                        }
+
+                        echo <<<HERE
+							<div class="grid__item grid__item_month-book-color $onHandsClass">
+				                <div class="grid__item__authortitle">
+				                    $row[author]
+				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+				                </div>
+				                <div class="grid__item__publishing">$row[publishing]</div>
+				                $row[price]
+				                $onHandsText
+				            </div>
+
+							<div class="month-book">
+						        <div class="month-book__wrap">
+							        <div class="month-book__wrap__label">
+								        <span class="month-book__wrap__label__text">Libro del mese</span>
+							        </div>
+							        <p class="month-book__wrap__description">$row[description]</p>
+						        </div>
+					        </div>
+HERE;
+                    }
+
+                    // Все остальные книги, которые не на руках
+                    $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 0");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                        else
+                            $row[price] = '';
+
+                        echo <<<HERE
+						<div class="grid__item">
+			                <div class="grid__item__authortitle">
+			                    $row[author]
+			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+			                </div>
+			                <div class="grid__item__publishing">$row[publishing]</div>
+			                $row[price]
+			            </div>
+HERE;
+                    }
+
+                    // Книги, которые на руках
+                    $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 1");
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                        else
+                            $row[price] = '';
+
+                        echo <<<HERE
+							<div class="grid__item grid__item_on-hands">
+				                <div class="grid__item__authortitle">
+				                    $row[author]
+				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+				                </div>
+				                <div class="grid__item__publishing">$row[publishing]</div>
+				                $row[price]
+				                <div class="grid__item_on-hands__text">Libro dato<br>a un lettore</div>
+				            </div>
+HERE;
+                    }
+                }
             ?>
 	        <div class="grid__map">
 		        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33173.89690284556!2d7.755294541201746!3d43.825032715927975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf544cdcf4413%3A0x6fdc27853a84168!2zVmljb2xvIEJhbGlsbGEsIDEsIDE4MDM4IFNhbnJlbW8gSU0sINCY0YLQsNC70LjRjw!5e0!3m2!1sru!2sru!4v1548087749546" width="100%" height="156" frameborder="0" style="border:0" allowfullscreen></iframe>

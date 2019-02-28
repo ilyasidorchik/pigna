@@ -119,7 +119,7 @@ HERE;
 
                 echo <<<HERE
 					<div class="book-editing">
-				        <h2 class="h2">Accesso all'area di pannelo amministrativo</h2>
+				        <h2 class="h2">Accesso al pannello amministrativo</h2>
 				        <div class="book-editing__form">
 					        <form method="POST" action="">
 						        <div class="form">
@@ -127,7 +127,7 @@ HERE;
 								        <label for="password">Chiave di accesso</label>
 							        </div>
 							        <div class="form__element" style="grid-column-end: 5;">
-								        <input type="text" name="password" id="password" autocomplete="off" class="form__element__input form__element__input_password $inputInvalid" value="$password">$warningPassword
+								        <input type="password" name="password" id="password" autocomplete="off" class="form__element__input form__element__input_password $inputInvalid" value="$password">$warningPassword
 							        </div>
 			
 							        <div class="form__element">
