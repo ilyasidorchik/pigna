@@ -152,6 +152,10 @@
 				}
 			}
 
+			&_removed {
+				background: #fffbf3;
+			}
+
 			&__authortitle {
 				&__author {
 					font-family: 'IBM Plex Serif Italic';
@@ -219,10 +223,30 @@
 					padding-left: 28.75px;
 				}
 			}
+
+			&__return {
+				background: transparent;
+			}
 		}
 
 		.grid__item_month-book-color.grid__item_on-hands {
 			background: rgba(255, 204, 204, .5);
+		}
+
+		.grid__item_removed {
+			background: #fffbf3;
+
+			.grid__item__authortitle {
+				opacity: .25;
+			}
+
+			.grid__item__publishing {
+				opacity: .25;
+			}
+
+			.grid__item__sticker {
+				opacity: .25;
+			}
 		}
 
 		&__map {
@@ -333,7 +357,7 @@
 				display: block;
 				position: absolute;
 				top: 99px;
-				right: 9px;
+				right: 12px;
 				width: 32px;
 				height: 32px;
 

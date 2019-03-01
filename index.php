@@ -95,8 +95,12 @@ HERE;
                         if ($row[onHands] == 1)
                             $bookOnHands = 'checked';
 
+                        $description = '';
+                        if ($row[description] != '')
+                            $description = 'data-description="'.$row[description].'"';
+
                         echo <<<HERE
-						<div class="grid__item" data-id="$row[id]">
+						<div class="grid__item" data-id="$row[id]" $description>
 			                <div class="grid__item__authortitle">
 			                    $row[author]
 			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
