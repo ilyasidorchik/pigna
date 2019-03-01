@@ -538,6 +538,7 @@ function editBook(e) {
         priceCheckbox = 'checked';
         priceStatus = 'block';
         price = price.innerHTML;
+        price = parseInt(price, 10);
     }
     else {
         price = '';
@@ -545,9 +546,10 @@ function editBook(e) {
 
     // Добавление модального окна с формой для редактирования на страницу
     let page = document.querySelector('.page');
+    let grid = document.querySelector('.grid');
     let modal = document.createElement('div');
     modal.className = 'modal';
-    modal.innerHTML = '<div class="book-editing"> <h2 class="h2">Modifica di una cartella di lavoro</h2> <div class="book-editing__form"> <form> <div class="form"> <div class="form__label"> <label for="title">Titolo</label> </div> <div class="form__element"> <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title" value="' + title +'"> </div> <div class="form__label"> <label for="author">Autore</label> </div> <div class="form__element"> <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="' + author + '"> </div> <div class="form__label"> <label for="publishing-city">Città editore</label> </div> <div class="form__element"> <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city" value="' + publishingCity + '"> </div> <div class="form__label" style="margin-top: -.95rem;"> <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label> </div> <div class="form__element form__element-short" style="margin-top: -.95rem; margin-right: -16px;"> <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input_publishing-year"  value="' + publishingYear + '"> </div> <div class="form__element" style="margin-top: -1.2rem;"> <label class="form__element__label"> <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description" ' + monthBookCheckbox + '> <span class="form__element__label__fake-checkbox"></span> Libro del mese </label> </div> <div class="form__label form__close-to-checkbox form__label_description" style="display: ' + monthBookStatus + ';"> <label for="book_description">Descri-<br>zione</label> </div> <div class="form__element form__close-to-checkbox form__element_description" style="display: ' + monthBookStatus + ';margin-bottom: -.3rem;"> <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description">' + monthBookDesc + '</textarea> </div> <div class="form__element" style="margin-top: -.3rem;"> <label class="form__element__label"> <input type="checkbox" name="book_for_sale" value="book_for_sale" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_price" ' + priceCheckbox + '> <span class="form__element__label__fake-checkbox"></span> In vendita </label> </div> <div class="form__label form__close-to-checkbox form__label_price" style="display: ' + priceStatus + ';"> <label for="price">Prezzo</label> </div> <div class="form__element form__close-to-checkbox form__element_price" style="display: ' + priceStatus + ';"> <div class="form__element__wrap-for-price"> <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price" value="' + price + '"> <div class="form__element__wrap-for-price__currency-sign">€</div> </div> </div> <div class="form__element" style="display: none;"> <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button> </div> </div> </form> </div> <div class="book-editing__cover"> <div class="grid__item ' + monthBookClass + '"> <div class="grid__item__authortitle"> <div class="grid__item__authortitle__author" style="display: ' + authorStatus + ';">' + author + '</div> <div class="grid__item__authortitle__title">' + title + '</div> </div> <div class="grid__item__publishing">' + publishing + '</div> <div class="grid__item__sticker grid__item__sticker_price" style="display: ' + priceStatus + ';">' + price + '</div> </div> </div> <div class="month-book" style="display: ' + monthBookStatus + ';"> <div class="month-book__wrap"> <div class="month-book__wrap__label"> <span class="month-book__wrap__label__text">Libro del mese</span> </div> <p class="month-book__wrap__description">' + monthBookDesc + '</p> </div> </div> <a class="book-editing__delete" title="Rimuovere"><?xml version="1.0" encoding="iso-8859-1"?> <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve" class="book-editing__delete__icon"> <g> <g> <path class="book-editing__delete__icon__path" d="M76.5,408c0,28.05,22.95,51,51,51h204c28.05,0,51-22.95,51-51V102h-306V408z M408,25.5h-89.25L293.25,0h-127.5l-25.5,25.5 H51v51h357V25.5z"/> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></a></div>';
+    modal.innerHTML = '<div class="book-editing"> <h2 class="h2 book-editing__h2"><div>Modifica di una cartella di lavoro</div><div class="book-editing__h2__close"><?xml version="1.0" encoding="iso-8859-1"?> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32.526 32.526" style="enable-background:new 0 0 32.526 32.526;" xml:space="preserve" class="book-editing__h2__close__icon"> <polygon points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091 29.698,32.526 32.526,29.698 19.091,16.263 " class="book-editing__h2__close__icon__polygon" /> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></div></h2> <div class="book-editing__form"> <form> <div class="form"> <div class="form__label"> <label for="title">Titolo</label> </div> <div class="form__element"> <input type="text" name="title" id="title" autocomplete="off" class="form__element__input form__element__input_title" value="' + title +'"> </div> <div class="form__label"> <label for="author">Autore</label> </div> <div class="form__element"> <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="' + author + '"> </div> <div class="form__label"> <label for="publishing-city">Città editore</label> </div> <div class="form__element"> <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city" value="' + publishingCity + '"> </div> <div class="form__label" style="margin-top: -.95rem;"> <label for="publishing-year">Anno&nbsp;pub-<br>blicazione</label> </div> <div class="form__element form__element-short" style="margin-top: -.95rem; margin-right: -16px;"> <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input_publishing-year"  value="' + publishingYear + '"> </div> <div class="form__element" style="margin-top: -1.2rem;"> <label class="form__element__label"> <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description" ' + monthBookCheckbox + '> <span class="form__element__label__fake-checkbox"></span> Libro del mese </label> </div> <div class="form__label form__close-to-checkbox form__label_description" style="display: ' + monthBookStatus + ';"> <label for="book_description">Descri-<br>zione</label> </div> <div class="form__element form__close-to-checkbox form__element_description" style="display: ' + monthBookStatus + ';margin-bottom: -.3rem;"> <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description">' + monthBookDesc + '</textarea> </div> <div class="form__element" style="margin-top: -.3rem;"> <label class="form__element__label"> <input type="checkbox" name="book_for_sale" value="book_for_sale" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_price" ' + priceCheckbox + '> <span class="form__element__label__fake-checkbox"></span> In vendita </label> </div> <div class="form__label form__close-to-checkbox form__label_price" style="display: ' + priceStatus + ';"> <label for="price">Prezzo</label> </div> <div class="form__element form__close-to-checkbox form__element_price" style="display: ' + priceStatus + ';"> <div class="form__element__wrap-for-price"> <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price" value="' + price + '"> <div class="form__element__wrap-for-price__currency-sign">€</div> </div> </div> <div class="form__element" style="display: none;"> <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button> </div> </div> </form> </div> <div class="book-editing__cover"> <div class="grid__item ' + monthBookClass + '"> <div class="grid__item__authortitle"> <div class="grid__item__authortitle__author" style="display: ' + authorStatus + ';">' + author + '</div> <div class="grid__item__authortitle__title">' + title + '</div> </div> <div class="grid__item__publishing">' + publishing + '</div> <div class="grid__item__sticker grid__item__sticker_price" style="display: ' + priceStatus + ';">' + price + '</div> </div> </div> <div class="month-book" style="display: ' + monthBookStatus + ';"> <div class="month-book__wrap"> <div class="month-book__wrap__label"> <span class="month-book__wrap__label__text">Libro del mese</span> </div> <p class="month-book__wrap__description">' + monthBookDesc + '</p> </div> </div> <a class="book-editing__delete" title="Rimuovere"><?xml version="1.0" encoding="iso-8859-1"?> <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve" class="book-editing__delete__icon"> <g> <g> <path class="book-editing__delete__icon__path" d="M76.5,408c0,28.05,22.95,51,51,51h204c28.05,0,51-22.95,51-51V102h-306V408z M408,25.5h-89.25L293.25,0h-127.5l-25.5,25.5 H51v51h357V25.5z"/> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></a></div>';
     page.appendChild(modal);
 
     // Редактирование книги
@@ -569,14 +571,13 @@ function editBook(e) {
     bookCoverMonthBookDesc = modal.querySelector('.month-book__wrap__description');
     stickerForPrice = modal.querySelector('.grid__item__sticker_price');
 
-
-    titleInput.focus();
     titleInput.addEventListener('keyup', ()=>{
         if (titleInput.value != '') {
             titleInput.classList.remove('form__element__input_invalid');
         }
 
         bookCoverTitle.innerHTML = titleInput.value;
+        book.querySelector('.grid__item__authortitle__title').innerHTML = titleInput.value;
 
         // Изменение в базе данных
         let xhr = new XMLHttpRequest();
@@ -588,12 +589,27 @@ function editBook(e) {
 
 
     authorInput.addEventListener('keyup',()=>{
+        authortitle = book.querySelector('.grid__item__authortitle');
+        author = book.querySelector('.grid__item__authortitle__author');
+
         if (authorInput.value != '') {
             bookCoverAuthor.style.display = 'block';
             bookCoverAuthor.innerHTML = authorInput.value;
+
+            if (author == null) {
+                let authorBlock = document.createElement('div');
+                authorBlock.className = 'grid__item__authortitle__author';
+                authorBlock.innerHTML = authorInput.value;
+                authortitle.insertBefore(authorBlock, authortitle.firstChild);
+            }
+            else {
+                author.innerHTML = authorInput.value;
+            }
         }
         else {
             bookCoverAuthor.style.display = 'none';
+
+            authortitle.removeChild(author);
         }
 
         // Изменение в базе данных
@@ -620,6 +636,7 @@ function editBook(e) {
         }
 
         bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+        book.querySelector('.grid__item__publishing').innerHTML = bookCoverPuslishingData;
 
         // Изменение в базе данных
         let xhr = new XMLHttpRequest();
@@ -649,6 +666,7 @@ function editBook(e) {
         }
 
         bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+        book.querySelector('.grid__item__publishing').innerHTML = bookCoverPuslishingData;
 
         // Изменение в базе данных
         let xhr = new XMLHttpRequest();
@@ -682,12 +700,27 @@ function editBook(e) {
 
         if (monthBookCheckbox.checked == false) {
             monthBookStatus = 0;
+
+            book.classList.remove('grid__item_month-book-color');
+            grid.removeChild(grid.querySelector('.month-book'));
+            grid.insertBefore(book, grid.querySelector('.grid__map'));
         }
         else {
             if (bookCoverMonthBookDesc.innerHTML == '') {
                 monthBookStatus = 0;
             }
             else {
+                let catalogMonthBook = grid.querySelector('.month-book');
+                let catalogMonthBookDesc = '';
+                if (catalogMonthBook == null) {
+                    grid.insertBefore(book, grid.firstChild);
+                    book.classList.add('grid__item_month-book-color');
+                    catalogMonthBook = document.createElement('div');
+                    catalogMonthBook.className = 'month-book';
+                    catalogMonthBook.innerHTML = '<div class="month-book__wrap"> <div class="month-book__wrap__label"> <span class="month-book__wrap__label__text">Libro del mese</span> </div> <p class="month-book__wrap__description">' + bookCoverMonthBookDesc.innerHTML + '</p> </div>';
+                    grid.insertBefore(catalogMonthBook, grid.children[1]);
+                }
+
                 monthBookStatus = 1;
             }
         }
@@ -714,6 +747,28 @@ function editBook(e) {
         }
 
         bookCoverMonthBookDesc.innerHTML = monthBookDescInput.value;
+
+
+        let catalogMonthBook = grid.querySelector('.month-book');
+        let catalogMonthBookDesc = '';
+        if (monthBookDescInput.value != '') {
+            if (catalogMonthBook == null) {
+                grid.insertBefore(book, grid.firstChild);
+                book.classList.add('grid__item_month-book-color');
+                catalogMonthBook = document.createElement('div');
+                catalogMonthBook.className = 'month-book';
+                catalogMonthBook.innerHTML = '<div class="month-book__wrap"> <div class="month-book__wrap__label"> <span class="month-book__wrap__label__text">Libro del mese</span> </div> <p class="month-book__wrap__description">' + bookCoverMonthBookDesc.innerHTML + '</p> </div>';
+                grid.insertBefore(catalogMonthBook, grid.children[1]);
+            }
+            else {
+                catalogMonthBookDesc = catalogMonthBook.querySelector('.month-book__wrap__description');
+                catalogMonthBookDesc.innerHTML = monthBookDescInput.value;
+            }
+        }
+        else {
+            catalogMonthBookDesc = catalogMonthBook.querySelector('.month-book__wrap__description');
+            catalogMonthBookDesc.innerHTML = monthBookDescInput.value;
+        }
 
 
         if (monthBookCheckbox.checked == false) {
@@ -763,8 +818,27 @@ function editBook(e) {
             stickerForPrice.style.display = 'none';
         }
 
+        let price = book.querySelector('.grid__item__sticker_price');
+        if (priceCheckbox.checked == true && priceInput.value != '') {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
 
-        let price = 0;
+            if (price == null) {
+                price = document.createElement('div');
+                price.className = 'grid__item__sticker grid__item__sticker_price';
+                price.innerHTML = stickerForPrice.innerHTML;
+                book.insertBefore(price, book.children[2]);
+            }
+            else {
+                price.innerHTML = stickerForPrice.innerHTML;
+            }
+        }
+        else {
+            stickerForPrice.innerHTML = '';
+
+            book.removeChild(price);
+        }
+
+        price = 0;
         if (priceCheckbox.checked == true && priceInput.value != '') {
             price = priceInput.value;
         }
@@ -791,15 +865,29 @@ function editBook(e) {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (priceInput.value == '') {
-            stickerForPrice.innerHTML = '';
+
+        let price = book.querySelector('.grid__item__sticker_price');
+        if (priceInput.value != '') {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+
+            if (price == null) {
+                price = document.createElement('div');
+                price.className = 'grid__item__sticker grid__item__sticker_price';
+                price.innerHTML = stickerForPrice.innerHTML;
+                book.insertBefore(price, book.children[2]);
+            }
+            else {
+                price.innerHTML = stickerForPrice.innerHTML;
+            }
         }
         else {
-            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+            stickerForPrice.innerHTML = '';
+
+            book.removeChild(price);
         }
 
 
-        let price = 0;
+        price = 0;
         if (priceInput.value != '') {
             price = priceInput.value;
         }
@@ -812,9 +900,65 @@ function editBook(e) {
         xhr.send(params);
     });
 
+    // Закрытие модального окна с формой
+    let closeLink = modal.querySelector('.book-editing__h2__close');
+    closeLink.addEventListener('click', ()=>{
+        if (titleInput.value != '') {
+            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+                monthBookDescInput.classList.add('form__element__input_invalid');
+                monthBookDescInput.focus();
+            }
+            else {
+                if (priceCheckbox.checked == true && priceInput.value == '') {
+                    priceInput.classList.add('form__element__input_invalid');
+                    priceInput.focus();
+                }
+                else {
+                    page.removeChild(modal);
+                }
+            }
+        }
+        else {
+            titleInput.classList.add('form__element__input_invalid');
+            titleInput.focus();
+        }
+    });
 
+    document.onkeydown = closeModal;
+
+    // Удаление книги
     let deleteLink = modal.querySelector('.book-editing__delete');
     deleteLink.addEventListener('click', {handleEvent: removeBook, id: id});
+}
+
+function closeModal(event) {
+    if (event.keyCode == 27) {
+        titleInput = document.querySelector('.form__element__input_title');
+        monthBookCheckbox = document.querySelector('.form__element__label__checkbox_description');
+        monthBookDescInput = document.querySelector('.form__element__input_month-book-description');
+        priceCheckbox = document.querySelector('.form__element__label__checkbox_price');
+        priceInput = document.querySelector('.form__element__input_price');
+
+        if (titleInput.value != '') {
+            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+                monthBookDescInput.classList.add('form__element__input_invalid');
+                monthBookDescInput.focus();
+            }
+            else {
+                if (priceCheckbox.checked == true && priceInput.value == '') {
+                    priceInput.classList.add('form__element__input_invalid');
+                    priceInput.focus();
+                }
+                else {
+                    document.querySelector('.page').removeChild(document.querySelector('.modal'));
+                }
+            }
+        }
+        else {
+            titleInput.classList.add('form__element__input_invalid');
+            titleInput.focus();
+        }
+    }
 }
 
 function removeBook() {

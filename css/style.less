@@ -297,7 +297,7 @@
 
 		h2 {
 			grid-column-start: 1;
-			grid-column-end: 14;
+			grid-column-end: 15;
 		}
 
 		&__form {
@@ -352,6 +352,28 @@
 		.book-editing {
 			padding: 15px;
 
+			&__h2 {
+				display: flex;
+				justify-content: space-between;
+
+				&__close {
+					cursor: pointer;
+					box-sizing: border-box;
+					width: 32px;
+					margin-right: -5px;
+					padding-left: 5px;
+
+					&__icon {
+						width: 19px;
+						padding-right: 3px;
+
+						&__polygon {
+							fill: #000;
+						}
+					}
+				}
+			}
+
 			&__delete {
 				cursor: pointer;
 				display: block;
@@ -376,6 +398,12 @@
 						fill: #cd0404;
 					}
 				}
+			}
+		}
+
+		.book-editing__h2__close:hover {
+			.book-editing__h2__close__icon__polygon {
+				fill: #cd0404;
 			}
 		}
 	}
