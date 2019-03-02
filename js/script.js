@@ -1,3 +1,4 @@
+let searchForm = document.querySelector('.search__form form');
 let searchInput = document.getElementById('searchInput');
 
 // Форма добавления книги
@@ -26,6 +27,12 @@ document.addEventListener('DOMContentLoaded', start); // когда HTML буд�
 
 function start() {
     let bookTitle;
+
+    searchForm.addEventListener('keydown', function(event) {
+        if(event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
 
     // поиск по началу печати
     if (searchInput != null) {
@@ -236,13 +243,13 @@ function start() {
 function searchBook(bookTitle) {
     let xhr = new XMLHttpRequest();
     let params = 'bookTitle=' + bookTitle;
-    let results = document.querySelector('.grid');
+    let grid = document.querySelectorAll('.grid')[0];
 
     xhr.open('POST', '../php/search.php');
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                results.innerHTML = xhr.responseText;
+                grid.innerHTML = xhr.responseText;
             }
             else
                 console.log('Ошибка: ' + xhr.status);

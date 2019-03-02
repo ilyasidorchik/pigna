@@ -34,7 +34,7 @@
 	            $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
 
-                if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
+                /*if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
                     // Книга месяца
                     $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -120,7 +120,7 @@ HERE;
 HERE;
                     }
                 }
-                else {
+                else {*/
                     // Книга месяца
                     $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -205,8 +205,9 @@ HERE;
 				            </div>
 HERE;
                     }
-                }
             ?>
+        </div>
+        <div class="grid">
 	        <div class="grid__map">
 		        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33173.89690284556!2d7.755294541201746!3d43.825032715927975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf544cdcf4413%3A0x6fdc27853a84168!2zVmljb2xvIEJhbGlsbGEsIDEsIDE4MDM4IFNhbnJlbW8gSU0sINCY0YLQsNC70LjRjw!5e0!3m2!1sru!2sru!4v1548087749546" width="100%" height="156" frameborder="0" style="border:0" allowfullscreen></iframe>
 	        </div>
