@@ -5,6 +5,7 @@
     $wordsCount = str_word_count($bookTitle, 0);
     $bookTitleWords = explode(' ', $bookTitle);
     $bookTitleWithAccent = '';
+    $partsCount = substr_count($bookTitle, ' ') + 1;
     for ($wordIndex = 0; $wordIndex < $wordsCount; $wordIndex++) {
         $word = $bookTitleWords[$wordIndex];
 
@@ -67,11 +68,12 @@ HERE;
             }
         }
 
+        // Массив айдишников книг, чтобы не выводить книгу по два раза, если поисковое выражение есть и в авторе, и названии книги
+        $arrayID = array();
 
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 0");
-
         while ($row = mysqli_fetch_assoc($result)) {
-            if (stripos($row[author], $bookTitle) !== false || stripos($row[title], $bookTitle) !== false || stripos($row[title], $bookTitleWithAccent) !== false || stripos($row[publishing], $bookTitle) !== false) {
+            if (stripos($row[author], $bookTitle) !== false) {
                 if ($row[author] != '')
                     $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
@@ -81,23 +83,99 @@ HERE;
                     $row[price] = '';
 
                 echo <<<HERE
-                    <div class="grid__item">
-                        <div class="grid__item__authortitle">
-                            $row[author]
-                            <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
-                        </div>
-                        <div class="grid__item__publishing">$row[publishing]</div>
-                        $row[price]
-                    </div>
+                                <div class="grid__item">
+                                    <div class="grid__item__authortitle">
+                                        $row[author]
+                                        <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+                                    </div>
+                                    <div class="grid__item__publishing">$row[publishing]</div>
+                                    $row[price]
+                                </div>
 HERE;
+
+                array_push($arrayID, $row[id]);
+            }
+        }
+
+
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 0");
+        while ($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row[id], $arrayID)) {
+                if ($partsCount > 1) {
+                    if ($bookTitleWords[1] != '') {
+                        if ((stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false) && (stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)) {
+                            if ($row[author] != '')
+                                $row[author] = '<div class="grid__item__authortitle__author">' . $row[author] . '</div>';
+
+                            if ($row[price] != 0)
+                                $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">' . $row[price] . '&thinsp;€</div>';
+                            else
+                                $row[price] = '';
+
+                            echo <<<HERE
+                                    <div class="grid__item">
+                                        <div class="grid__item__authortitle">
+                                            $row[author]
+                                            <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+                                        </div>
+                                        <div class="grid__item__publishing">$row[publishing]</div>
+                                        $row[price]
+                                    </div>
+HERE;
+                        }
+                    }
+                    else {
+                        if (stripos($row[title], $bookTitle) !== false || stripos($row[title], $bookTitleWithAccent) !== false || stripos($row[publishing], $bookTitle) !== false) {
+                            if ($row[author] != '')
+                                $row[author] = '<div class="grid__item__authortitle__author">' . $row[author] . '</div>';
+
+                            if ($row[price] != 0)
+                                $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">' . $row[price] . '&thinsp;€</div>';
+                            else
+                                $row[price] = '';
+
+                            echo <<<HERE
+                                    <div class="grid__item">
+                                        <div class="grid__item__authortitle">
+                                            $row[author]
+                                            <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+                                        </div>
+                                        <div class="grid__item__publishing">$row[publishing]</div>
+                                        $row[price]
+                                    </div>
+HERE;
+                        }
+                    }
+                }
+                else {
+                    if (stripos($row[title], $bookTitle) !== false || stripos($row[title], $bookTitleWithAccent) !== false || stripos($row[publishing], $bookTitle) !== false) {
+                        if ($row[author] != '')
+                            $row[author] = '<div class="grid__item__authortitle__author">' . $row[author] . '</div>';
+
+                        if ($row[price] != 0)
+                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">' . $row[price] . '&thinsp;€</div>';
+                        else
+                            $row[price] = '';
+
+                        echo <<<HERE
+                                        <div class="grid__item">
+                                            <div class="grid__item__authortitle">
+                                                $row[author]
+                                                <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+                                            </div>
+                                            <div class="grid__item__publishing">$row[publishing]</div>
+                                            $row[price]
+                                        </div>
+HERE;
+                    }
+                }
             }
         }
 
 
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 1");
-
         while ($row = mysqli_fetch_assoc($result)) {
-            if (stripos($row[author], $bookTitle) !== false || stripos($row[title], $bookTitle) !== false || stripos($row[publishing], $bookTitle) !== false) {
+            if (stripos($row[author], $bookTitle) !== false) {
                 if ($row[author] != '')
                     $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
 
@@ -122,6 +200,39 @@ HERE;
 				        $onHandsText
                     </div>
 HERE;
+                array_push($arrayID, $row[id]);
+            }
+        }
+
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 1");
+        while ($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row[id], $arrayID)) {
+                if (stripos($row[title], $bookTitle) !== false || stripos($row[publishing], $bookTitle) !== false) {
+                    if ($row[author] != '')
+                        $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
+
+                    if ($row[price] != 0)
+                        $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
+                    else
+                        $row[price] = '';
+
+                    if ($row[onHands] == 1) {
+                        $onHandsClass = 'grid__item_on-hands';
+                        $onHandsText = '<div class="grid__item_on-hands__text">Libro dato<br>a un lettore</div>';
+                    }
+
+                    echo <<<HERE
+                    <div class="grid__item $onHandsClass">
+                        <div class="grid__item__authortitle">
+                            $row[author]
+                            <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
+                        </div>
+                        <div class="grid__item__publishing">$row[publishing]</div>
+                        $row[price]
+				        $onHandsText
+                    </div>
+HERE;
+                }
             }
         }
     }

@@ -252,6 +252,16 @@ function searchBook(bookTitle) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 grid.innerHTML = xhr.responseText;
+
+                let footer = document.querySelectorAll('.grid')[1];
+                if (xhr.responseText == '') {
+                    footer.classList.add('grid_bottom-sticked');
+                }
+                else {
+                    if (footer.classList.contains('grid_bottom-sticked')) {
+                        footer.classList.remove('grid_bottom-sticked');
+                    }
+                }
             }
             else
                 console.log('Ошибка: ' + xhr.status);
