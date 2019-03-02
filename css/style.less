@@ -62,21 +62,27 @@
 	.link {
 		text-decoration: none;
 		color: #000;
-		border-bottom: 1px solid #000;
+		border-bottom: .3px solid transparent;
+		border-bottom-color: rgba(0, 0, 0, .75);
+		transition: border-bottom-color .35s ease-out, color .35s ease-out;
 
 		&:hover {
 			color: #CD0404;
-			border-bottom-color: #CD0404;
+			border-bottom-color: rgba(205, 4, 4, .75);
+			transition: none;
 		}
 	}
 
 	.pseudolink {
-		border-bottom: 1px dashed #000;
+		border-bottom: .3px dashed;
+		border-bottom-color: rgba(0, 0, 0, .5);
+		transition: border-bottom-color .35s ease-out, color .35s ease-out;
 
 		&:hover {
 			cursor: pointer;
 			color: #CD0404;
-			border-bottom-color: #CD0404;
+			border-bottom-color: rgba(205, 4, 4, .5);
+			transition: none;
 		}
 	}
 
@@ -165,7 +171,7 @@
 				}
 
 				&__title {
-					max-height: 142px;
+					max-height: 167px;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					font-family: 'IBM Plex Serif';
@@ -257,9 +263,13 @@
 
 		&__description {
 			margin-top: 16px;
-			font-family: 'IBM Plex Serif';
 			grid-column-start: 4;
 			grid-column-end: 8;
+			font-family: 'IBM Plex Sans';
+
+			p {
+				line-height: 1.5rem;
+			}
 		}
 	}
 
@@ -320,7 +330,7 @@
 					background: #d4edda;
 
 					&__returning {
-						border-bottom: 1px dashed rgb(21, 87, 36);
+						border-bottom-color: rgba(21, 87, 36, .5);
 					}
 				}
 

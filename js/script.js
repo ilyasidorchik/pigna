@@ -28,11 +28,13 @@ document.addEventListener('DOMContentLoaded', start); // когда HTML буд�
 function start() {
     let bookTitle;
 
-    searchForm.addEventListener('keydown', function(event) {
-        if(event.keyCode == 13) {
-            event.preventDefault();
-        }
-    });
+    if (searchForm != null) {
+        searchForm.addEventListener('keydown', function(event) {
+            if(event.keyCode == 13) {
+                event.preventDefault();
+            }
+        });
+    }
 
     // поиск по началу печати
     if (searchInput != null) {
