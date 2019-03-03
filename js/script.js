@@ -26,6 +26,18 @@ let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0]
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
 function start() {
+    window.onscroll = function() {
+        let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+        let footer = document.querySelector('.footer');
+        if (scrolled > 0) {
+            footer.classList.add('footer_bottom-sticked-fixed');
+        }
+        else {
+            footer.classList.remove('footer_bottom-sticked-fixed');
+        }
+    }
+
     let bookTitle;
 
     if (searchForm != null) {
@@ -253,7 +265,7 @@ function searchBook(bookTitle) {
             if (xhr.status === 200) {
                 grid.innerHTML = xhr.responseText;
 
-                let footer = document.querySelectorAll('.grid')[1];
+                let footer = document.querySelector('.footer');
                 if (xhr.responseText == '') {
                     footer.classList.add('grid_bottom-sticked');
                 }

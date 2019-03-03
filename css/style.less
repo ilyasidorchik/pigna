@@ -74,14 +74,14 @@
 	}
 
 	.pseudolink {
-		border-bottom: .3px dashed;
-		border-bottom-color: rgba(0, 0, 0, .5);
+		border-bottom: 1px dashed;
+		border-bottom-color: rgba(0, 0, 0, .75);
 		transition: border-bottom-color .35s ease-out, color .35s ease-out;
 
 		&:hover {
 			cursor: pointer;
 			color: #CD0404;
-			border-bottom-color: rgba(205, 4, 4, .5);
+			border-bottom-color: rgba(205, 4, 4, .75);
 			transition: none;
 		}
 	}
@@ -114,15 +114,10 @@
 	}
 
 	.grid {
+		position: relative;
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
 		grid-gap: 15px;
-
-		&_bottom-sticked {
-			position: absolute;
-			bottom: 0;
-			width: 1200px;
-		}
 
 		&__item {
 			position: relative;
@@ -177,7 +172,7 @@
 				}
 
 				&__title {
-					max-height: 167px;
+					max-height: 165px;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					font-family: 'IBM Plex Serif';
@@ -262,13 +257,13 @@
 		}
 
 		&__map {
-			margin-top: 30px;
+			margin-top: 15px;
 			grid-column-start: 1;
 			grid-column-end: 4;
 		}
 
 		&__description {
-			margin-top: 16px;
+			margin-top: -1px;
 			grid-column-start: 4;
 			grid-column-end: 8;
 			font-family: 'IBM Plex Sans';
@@ -278,6 +273,45 @@
 			}
 		}
 	}
+
+	.books {
+		padding-bottom: 224px;
+	}
+
+	.footer {
+		&_bottom-sticked {
+			position: absolute;
+			bottom: 0;
+		}
+
+		&_bottom-sticked-fixed {
+			z-index: 2;
+			position: fixed;
+			bottom: 0;
+			animation: showFooter .25s linear;
+			background: #fff;
+			box-shadow: 0px -5px 15px rgba(0, 0, 0, .25);
+		}
+	}
+	.footer_bottom-sticked, .footer_bottom-sticked-fixed {
+		width: 1200px;
+	}
+	.footer_bottom-sticked-fixed .grid::before, .footer_bottom-sticked-fixed .grid::after {
+		display: block;
+		position: absolute;
+		top: -15px;
+		bottom: 0;
+		content: '';
+		width: 15px;
+		background: #fff;
+	}
+	.footer_bottom-sticked-fixed .grid::before {
+		left: -15px;
+	}
+	.footer_bottom-sticked-fixed .grid::after {
+		right: -15px;
+	}
+
 
 	.month-book {
 		font-family: 'IBM Plex Sans';
@@ -556,4 +590,9 @@
 	&__close-to-checkbox {
 		margin-top: -.75rem;
 	}
+}
+
+@keyframes showFooter {
+	from {bottom: -224px;}
+	to {bottom: 0;}
 }

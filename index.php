@@ -27,7 +27,7 @@
                 </form>
             </div>
         </div>
-        <div class="grid">
+        <div class="grid books">
             <?php
                 $ini = parse_ini_file('app.ini', true);
 
@@ -62,7 +62,7 @@
 								      <div class="form__element">
 								          <label class="form__element__label">
 									          <input type="checkbox" name="on_hands" value="on_hands" $bookOnHands autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
-									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+									          <span class="form__element__label__fake-checkbox"></span> In prestito
 								          </label>
 							          </div>
 							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
@@ -111,7 +111,7 @@ HERE;
 								      <div class="form__element">
 								          <label class="form__element__label">
 									          <input type="checkbox" name="on_hands" value="on_hands" $bookOnHands autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_on-hands">
-									          <span class="form__element__label__fake-checkbox"></span> Dato al lettore
+									          <span class="form__element__label__fake-checkbox"></span> In prestito
 								          </label>
 							          </div>
 							          <div class="grid__item__admin__editLinkWrap"><a class="pseudolink grid__item__admin__editLinkWrap__link">Redigere</a></div>
@@ -207,24 +207,26 @@ HERE;
                     }
             ?>
         </div>
-        <div class="grid">
-	        <div class="grid__map">
-		        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="173" frameborder="0" style="border:0" allowfullscreen></iframe>
-	        </div>
-	        <div class="grid__description">
-		        <div class="likely likely-big">
-			        <div class="twitter">Twittare</div>
-			        <div class="facebook">Condividere</div>
-			        <div class="whatsapp"></div>
-			        <div class="telegram">Condividere</div>
-			        <div class="pinterest">Pinteressarsi</div>
+        <div class="footer">
+	        <div class="grid">
+		        <div class="grid__map">
+			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="173" frameborder="0" style="border:0" allowfullscreen></iframe>
 		        </div>
-		        <p>Piazza del Capitolo, 1, Sanremo · <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-		        <p>Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
-		        <p>
-			        Autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>,
-			        <br>direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
-		        </p>
+		        <div class="grid__description">
+			        <div class="likely likely-big">
+				        <div class="twitter">Twittare</div>
+				        <div class="facebook">Condividere</div>
+				        <div class="whatsapp"></div>
+				        <div class="telegram">Inviare</div>
+				        <div class="pinterest">Pinteressarsi</div>
+			        </div>
+			        <p>Piazza del Capitolo, 1, Sanremo · <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
+			        <p>Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
+			        <p>
+				        Autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>,
+				        <br>direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
+			        </p>
+		        </div>
 	        </div>
         </div>
         <script src="js/likely.js"></script>

@@ -321,25 +321,3 @@ HERE;
 HERE;
         }
     }
-
-    /*echo <<<HERE
-            <div class="grid__map">
-		        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33173.89690284556!2d7.755294541201746!3d43.825032715927975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf544cdcf4413%3A0x6fdc27853a84168!2zVmljb2xvIEJhbGlsbGEsIDEsIDE4MDM4IFNhbnJlbW8gSU0sINCY0YLQsNC70LjRjw!5e0!3m2!1sru!2sru!4v1548087749546" width="100%" height="156" frameborder="0" style="border:0" allowfullscreen></iframe>
-	        </div>
-	        <div class="grid__description">
-		        <div class="likely likely-big">
-			        <div class="twitter">Twittare</div>
-			        <div class="facebook">Condividere</div>
-			        <div class="whatsapp"></div>
-			        <div class="telegram">Condividere</div>
-			        <div class="pinterest">Pinteressarsi</div>
-		        </div>
-		        <p>Piazza del Capitolo, 1, Sanremo · <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-		        <p>Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
-		        <p>
-			        Autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>,
-			        <br>direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
-		        </p>
-	        </div>
-            <script src="../js/likely.js"></script>
-HERE;*/
