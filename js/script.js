@@ -26,22 +26,25 @@ let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0]
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
 function start() {
+    let bookTitle;
+    let books = document.querySelectorAll('.grid')[0];
+    let footer = document.querySelector('.footer');
+
     window.onscroll = function() {
         let scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
-        let footer = document.querySelector('.footer');
-        if (scrolled > 0) {
+        if (scrolled > 0 && searchInput.value.length <= 1) {
+            books.classList.add('books');
             footer.classList.add('footer_bottom-sticked-fixed');
         }
         else {
+            books.classList.remove('books');
             footer.classList.remove('footer_bottom-sticked-fixed');
         }
-    }
-
-    let bookTitle;
+    };
 
     if (searchForm != null) {
-        searchForm.addEventListener('keydown', function(event) {
+        searchForm.addEventListener('keydown', ()=>{
             if(event.keyCode == 13) {
                 event.preventDefault();
             }
@@ -50,7 +53,11 @@ function start() {
 
     // поиск по началу печати
     if (searchInput != null) {
-        searchInput.addEventListener('keyup',()=>{
+        window.addEventListener('keydown', ()=>{
+            searchInput.focus();
+        });
+
+        searchInput.addEventListener('keyup', ()=>{
             bookTitle = searchInput.value;
             if (bookTitle.length != 1) {
                 event.preventDefault();
@@ -94,7 +101,9 @@ function start() {
     }
 
     // Форма добавления книги
-    titleInput.focus();
+    if (titleInput != null) {
+        titleInput.focus();
+    }
     titleInput.addEventListener('keyup', ()=>{
         if (titleInput.value != '') {
             titleInput.classList.remove('form__element__input_invalid');
@@ -267,11 +276,11 @@ function searchBook(bookTitle) {
 
                 let footer = document.querySelector('.footer');
                 if (xhr.responseText == '') {
-                    footer.classList.add('grid_bottom-sticked');
+                    footer.classList.add('footer_bottom-sticked');
                 }
                 else {
-                    if (footer.classList.contains('grid_bottom-sticked')) {
-                        footer.classList.remove('grid_bottom-sticked');
+                    if (footer.classList.contains('footer_bottom-sticked')) {
+                        footer.classList.remove('footer_bottom-sticked');
                     }
                 }
             }
