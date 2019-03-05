@@ -305,9 +305,10 @@ function searchBook(bookTitle) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 grid.innerHTML = xhr.responseText;
+                let gridItemCount = grid.querySelectorAll('.grid__item').length;
 
                 let footer = document.querySelector('.footer');
-                if (xhr.responseText == '') {
+                if (xhr.responseText == '' || gridItemCount <= 7) {
                     footer.classList.add('footer_bottom-sticked');
                 }
                 else {
