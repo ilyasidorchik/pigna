@@ -1,13 +1,32 @@
 <?php
+    include 'remotetypograf.php';
+    function typograf($str) {
+        $remoteTypograf = new RemoteTypograf('UTF-8');
+
+        $remoteTypograf->htmlEntities();
+        $remoteTypograf->br (false);
+        $remoteTypograf->p (false);
+        $remoteTypograf->nobr (3);
+        $remoteTypograf->quotA ('laquo raquo');
+        $remoteTypograf->quotB ('bdquo ldquo');
+
+        $strTypografed = $remoteTypograf->processText($str);
+        return $strTypografed;
+    }
+
     $id = $_POST['id'];
 
     if ($id == '') {
         $title = str_replace("'", "\'", $_POST['title']);
+        $titleTypografed = typograf($title);
+
         $author = str_replace("'", "\'", $_POST['author']);
         $publishing = $_POST['publishing'];
         $price = $_POST['price'];
         $monthBook = $_POST['monthBook'];
+
         $description = str_replace("'", "\'", $_POST['description']);
+        $descriptionTypografed = typograf($description);
     }
 
     $ini = parse_ini_file('../app.ini', true);
@@ -17,6 +36,6 @@
 
     // Удаление книги из базы данных
     if ($id == '')
-        mysqli_query($link, "DELETE FROM catalogue WHERE title = '$title' AND author = '$author' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$description'");
+        mysqli_query($link, "DELETE FROM catalogue WHERE title = '$titleTypografed' AND author = '$author' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$descriptionTypografed'");
     else
         mysqli_query($link, "DELETE FROM catalogue WHERE id = '$id'");

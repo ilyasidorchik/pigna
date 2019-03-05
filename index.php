@@ -1,3 +1,36 @@
+<?php
+	/*include 'php/remotetypograf.php';
+	function typograf($str) {
+	    $remoteTypograf = new RemoteTypograf('UTF-8');
+
+	    $remoteTypograf->htmlEntities();
+	    $remoteTypograf->br (false);
+	    $remoteTypograf->p (false);
+	    $remoteTypograf->nobr (3);
+	    $remoteTypograf->quotA ('laquo raquo');
+	    $remoteTypograf->quotB ('bdquo ldquo');
+
+	    $strTypografed = $remoteTypograf->processText($str);
+	    return $strTypografed;
+	}
+
+	/*$ini = parse_ini_file('app.i', true);
+
+	$link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
+	mysqli_set_charset($link, 'utf8');
+
+	$result = mysqli_query($link, "SELECT * FROM catalogue");
+	while ($row = mysqli_fetch_assoc($result)) {
+	    $id = $row['id'];
+	    $title = $row['title'];
+	    $titleTypografed = typograf($title);
+
+	    mysqli_query($link, "UPDATE catalogue SET title = '$titleTypografed' WHERE id = '$id'");
+	}
+
+
+	exit;*/
+?>
 <!DOCTYPE html>
 <html lang="it">
     <head>
@@ -205,6 +238,8 @@ HERE;
 				            </div>
 HERE;
                     }
+
+
             ?>
         </div>
         <div class="footer">

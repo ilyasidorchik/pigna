@@ -121,7 +121,23 @@ function start() {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        bookCoverTitle.innerHTML = titleInput.value;
+        let title = titleInput.value;
+
+        let xhr = new XMLHttpRequest();
+        let params = 'str=' + title;
+
+        xhr.open('POST', '../php/typograf.php');
+        xhr.onreadystatechange=()=>{
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    bookCoverTitle.innerHTML = xhr.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhr.status);
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
     });
 
 
@@ -210,7 +226,23 @@ function start() {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        bookCoverMonthBookDesc.innerHTML = monthBookDescInput.value;
+        let description = monthBookDescInput.value;
+
+        let xhr = new XMLHttpRequest();
+        let params = 'str=' + description;
+
+        xhr.open('POST', '../php/typograf.php');
+        xhr.onreadystatechange=()=>{
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    bookCoverMonthBookDesc.innerHTML = xhr.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhr.status);
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
     });
 
 
