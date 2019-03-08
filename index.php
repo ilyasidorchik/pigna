@@ -1,4 +1,5 @@
 <?php
+	include 'php/functions.php';
 	/*include 'php/remotetypograf.php';
 	function typograf($str) {
 	    $remoteTypograf = new RemoteTypograf('UTF-8');
@@ -32,7 +33,7 @@
 	exit;*/
 ?>
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="html">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +61,7 @@
                 </form>
             </div>
         </div>
-        <div class="grid books">
+        <div class="grid">
             <?php
                 $ini = parse_ini_file('app.ini', true);
 
@@ -157,95 +158,26 @@ HERE;
                     // Книга месяца
                     $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
                     while ($row = mysqli_fetch_assoc($result)) {
-                        if ($row[author] != '')
-                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
-
-                        if ($row[price] != 0)
-                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
-                        else
-                            $row[price] = '';
-
-                        if ($row[onHands] == 1) {
-                            $onHandsClass = 'grid__item_on-hands';
-                            $onHandsText = '<div class="grid__item_on-hands__text">Libro dato<br>a un lettore</div>';
-                        }
-
-                        echo <<<HERE
-							<div class="grid__item grid__item_month-book-color $onHandsClass">
-				                <div class="grid__item__authortitle">
-				                    $row[author]
-				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
-				                </div>
-				                <div class="grid__item__publishing">$row[publishing]</div>
-				                $row[price]
-				                $onHandsText
-				            </div>
-
-							<div class="month-book">
-						        <div class="month-book__wrap">
-							        <div class="month-book__wrap__label">
-								        <span class="month-book__wrap__label__text">Libro del mese</span>
-							        </div>
-							        <p class="month-book__wrap__description">$row[description]</p>
-						        </div>
-					        </div>
-HERE;
+                        printBookTemplate($row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands]);
                     }
 
                     // Все остальные книги, которые не на руках
                     $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 0");
                     while ($row = mysqli_fetch_assoc($result)) {
-                        if ($row[author] != '')
-                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
-
-                        if ($row[price] != 0)
-                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
-                        else
-                            $row[price] = '';
-
-                        echo <<<HERE
-						<div class="grid__item">
-			                <div class="grid__item__authortitle">
-			                    $row[author]
-			                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
-			                </div>
-			                <div class="grid__item__publishing">$row[publishing]</div>
-			                $row[price]
-			            </div>
-HERE;
+                        printBookTemplate($row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands]);
                     }
 
                     // Книги, которые на руках
                     $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = 1");
                     while ($row = mysqli_fetch_assoc($result)) {
-                        if ($row[author] != '')
-                            $row[author] = '<div class="grid__item__authortitle__author">'.$row[author].'</div>';
-
-                        if ($row[price] != 0)
-                            $row[price] = '<div class="grid__item__sticker grid__item__sticker_price">'.$row[price].'&thinsp;€</div>';
-                        else
-                            $row[price] = '';
-
-                        echo <<<HERE
-							<div class="grid__item grid__item_on-hands">
-				                <div class="grid__item__authortitle">
-				                    $row[author]
-				                    <div class="grid__item__authortitle__title" title="$row[title]">$row[title]</div>
-				                </div>
-				                <div class="grid__item__publishing">$row[publishing]</div>
-				                $row[price]
-				                <div class="grid__item_on-hands__text">Libro dato<br>a un lettore</div>
-				            </div>
-HERE;
+                        printBookTemplate($row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands]);
                     }
-
-
             ?>
         </div>
         <div class="footer">
 	        <div class="grid">
 		        <div class="grid__map">
-			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="173" frameborder="0" style="border:0" allowfullscreen></iframe>
+			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="170" frameborder="0" style="border:0" allowfullscreen></iframe>
 		        </div>
 		        <div class="grid__description">
 			        <div class="likely likely-big">
@@ -255,11 +187,12 @@ HERE;
 				        <div class="telegram">Inviare</div>
 				        <div class="pinterest">Pinteressarsi</div>
 			        </div>
-			        <p>Piazza del Capitolo, 1, Sanremo · <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> · <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
+			        <p>Piazza del Capitolo, 1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr>&nbsp;· <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
 			        <p>Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
+
 			        <p>
-				        Autore dell’idea e progettista <a href="http://robertblinov.net/" class="link">Robert Blinov</a>,
-				        <br>direttore d’arte e tecnologo <a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a>
+				        Autore dell’idea e progettista <nobr><a href="http://robertblinov.net/" class="link">Robert Blinov</a>,</nobr>
+				        <br>direttore d’arte e tecnologo <nobr><a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a></nobr>
 			        </p>
 		        </div>
 	        </div>

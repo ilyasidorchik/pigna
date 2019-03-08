@@ -30,18 +30,9 @@ function start() {
     let books = document.querySelectorAll('.grid')[0];
     let footer = document.querySelector('.footer');
 
-    window.onscroll = function() {
-        let scrolled = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrolled > 0 && searchInput.value.length <= 1) {
-            books.classList.add('books');
-            footer.classList.add('footer_bottom-sticked-fixed');
-        }
-        else {
-            books.classList.remove('books');
-            footer.classList.remove('footer_bottom-sticked-fixed');
-        }
-    };
+    if (document.documentElement.clientWidth < 711) {
+        searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+    }
 
     if (searchForm != null) {
         searchForm.addEventListener('keydown', ()=>{
