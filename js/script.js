@@ -30,13 +30,87 @@ function start() {
     let books = document.querySelectorAll('.grid')[0];
     let footer = document.querySelector('.footer');
 
-    if (document.documentElement.clientWidth < 711) {
-        searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+    if (searchInput != null) {
+        if (document.documentElement.clientWidth < 711) {
+            searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+        }
+        else {
+            searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
+        }
     }
 
+    var bookEditing = document.querySelector('.book-editing');
+    var bookEditingForm = document.querySelector('.book-editing__form');
+    var bookEditingCover = document.querySelector('.book-editing__cover');
+    var bookEditingMonthBook = document.querySelector('.book-editing__month-book');
+    if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
+        if (document.documentElement.clientWidth < 892) {
+            bookEditing.insertBefore(bookEditingCover, bookEditingForm);
+            bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
+        }
+        else {
+            bookEditing.appendChild(bookEditingCover);
+            bookEditing.appendChild(bookEditingMonthBook);
+        }
+
+        let publishingYearLabel = document.querySelector('.form__label__label_publishing-year');
+        if (document.documentElement.clientWidth < 535) {
+            publishingYearLabel.innerHTML = 'Anno pubblicazione';
+        }
+        else {
+            publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
+        }
+
+        let descriptionLabel = document.querySelector('.form__label__label_description');
+        if (document.documentElement.clientWidth < 535) {
+            descriptionLabel.innerHTML = 'Descrizione';
+        }
+        else {
+            descriptionLabel.innerHTML = 'Descri-<br>zione';
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        if (searchInput != null) {
+            if (document.documentElement.clientWidth < 711) {
+                searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+            }
+            else {
+                searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
+            }
+        }
+
+        if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
+            if (document.documentElement.clientWidth < 892) {
+                bookEditing.insertBefore(bookEditingCover, bookEditingForm);
+                bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
+            }
+            else {
+                bookEditing.appendChild(bookEditingCover);
+                bookEditing.appendChild(bookEditingMonthBook);
+            }
+
+            let publishingYearLabel = document.querySelector('.form__label__label_publishing-year');
+            if (document.documentElement.clientWidth < 535) {
+                publishingYearLabel.innerHTML = 'Anno pubblicazione';
+            }
+            else {
+                publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
+            }
+
+            let descriptionLabel = document.querySelector('.form__label__label_description');
+            if (document.documentElement.clientWidth < 535) {
+                descriptionLabel.innerHTML = 'Descrizione';
+            }
+            else {
+                descriptionLabel.innerHTML = 'Descri-<br>zione';
+            }
+        }
+    });
+
     if (searchForm != null) {
-        searchForm.addEventListener('keydown', ()=>{
-            if(event.keyCode == 13) {
+        searchForm.addEventListener('keydown', () => {
+            if (event.keyCode == 13) {
                 event.preventDefault();
             }
         });
@@ -44,11 +118,11 @@ function start() {
 
     // поиск по началу печати
     if (searchInput != null) {
-        window.addEventListener('keydown', ()=>{
+        window.addEventListener('keydown', () => {
             searchInput.focus();
         });
 
-        searchInput.addEventListener('keyup', ()=>{
+        searchInput.addEventListener('keyup', () => {
             bookTitle = searchInput.value;
             if (bookTitle.length != 1) {
                 event.preventDefault();
@@ -65,7 +139,7 @@ function start() {
         let enterButton = document.querySelector('.form__element__button_entering');
         enterButton.addEventListener('click', preventDefault);
 
-        passwordInput.addEventListener('keyup', ()=>{
+        passwordInput.addEventListener('keyup', () => {
             if (passwordInput.value != '') {
                 passwordInput.classList.remove('form__element__input_invalid');
 
@@ -94,196 +168,195 @@ function start() {
     // Форма добавления книги
     if (titleInput != null) {
         titleInput.focus();
-    }
-    titleInput.addEventListener('keyup', ()=>{
-        if (titleInput.value != '') {
-            titleInput.classList.remove('form__element__input_invalid');
-            bookAddingButton.classList.remove('form__element__button-disabled');
-        }
-        else {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
 
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
+        titleInput.addEventListener('keyup', () => {
+            if (titleInput.value != '') {
+                titleInput.classList.remove('form__element__input_invalid');
+                bookAddingButton.classList.remove('form__element__button-disabled');
+            }
+            else {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
 
-        if (priceCheckbox.checked == true && priceInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
+            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
 
-        let title = titleInput.value;
+            if (priceCheckbox.checked == true && priceInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
 
-        let xhr = new XMLHttpRequest();
-        let params = 'str=' + title;
+            let title = titleInput.value;
 
-        xhr.open('POST', '../php/typograf.php');
-        xhr.onreadystatechange=()=>{
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    bookCoverTitle.innerHTML = xhr.responseText;
+            let xhr = new XMLHttpRequest();
+            let params = 'str=' + title;
+
+            xhr.open('POST', '../php/typograf.php');
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        bookCoverTitle.innerHTML = xhr.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhr.status);
                 }
-                else
-                    console.log('Ошибка: ' + xhr.status);
-            }
-        };
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send(params);
-    });
+            };
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        });
 
-
-    authorInput.addEventListener('keyup',()=>{
-        if (authorInput.value != '') {
-            bookCoverAuthor.style.display = 'block';
-            bookCoverAuthor.innerHTML = authorInput.value;
-        }
-        else {
-            bookCoverAuthor.style.display = 'none';
-        }
-    });
-
-
-    let bookCoverPuslishingData = '';
-    publishingCityInput.addEventListener('keyup', ()=>{
-        if (publishingYearInput.value == '') {
-            bookCoverPuslishingData = publishingCityInput.value;
-        }
-        else {
-            if (publishingCityInput.value == '') {
-                bookCoverPuslishingData = publishingYearInput.value;
+        authorInput.addEventListener('keyup',()=>{
+            if (authorInput.value != '') {
+                bookCoverAuthor.style.display = 'block';
+                bookCoverAuthor.innerHTML = authorInput.value;
             }
             else {
-                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+                bookCoverAuthor.style.display = 'none';
             }
-        }
+        });
 
-        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-    });
-
-    publishingYearInput.onkeypress = allowDigit;
-    publishingYearInput.addEventListener('keyup', ()=>{
-        if (publishingYearInput.value == '') {
-            if (publishingCityInput.value == '') {
-                bookCoverPuslishingData = '';
-            }
-            else {
+        let bookCoverPuslishingData = '';
+        publishingCityInput.addEventListener('keyup', ()=>{
+            if (publishingYearInput.value == '') {
                 bookCoverPuslishingData = publishingCityInput.value;
             }
-        }
-        else {
-            if (publishingCityInput.value == '') {
-                bookCoverPuslishingData = publishingYearInput.value;
+            else {
+                if (publishingCityInput.value == '') {
+                    bookCoverPuslishingData = publishingYearInput.value;
+                }
+                else {
+                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+                }
+            }
+
+            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+        });
+
+        publishingYearInput.onkeypress = allowDigit;
+        publishingYearInput.addEventListener('keyup', ()=>{
+            if (publishingYearInput.value == '') {
+                if (publishingCityInput.value == '') {
+                    bookCoverPuslishingData = '';
+                }
+                else {
+                    bookCoverPuslishingData = publishingCityInput.value;
+                }
             }
             else {
-                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
-            }
-        }
-
-        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-    });
-
-    monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
-    monthBookCheckbox.addEventListener("click", ()=>{
-        if (titleInput.value != '') {
-            if (monthBookDescInput.value == '') {
-                bookAddingButton.classList.toggle('form__element__button-disabled');
-            }
-        }
-
-        if (priceCheckbox.checked == true && priceInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        bookCover.classList.toggle('grid__item_month-book-color');
-
-        if (bookCoverMonthBook.style.display == 'none') {
-            bookCoverMonthBook.style.display = 'block';
-        }
-        else {
-            bookCoverMonthBook.style.display = 'none';
-        }
-    });
-
-    monthBookDescInput.addEventListener('keyup', ()=>{
-        if (titleInput.value != '' && monthBookDescInput.value != '') {
-            monthBookDescInput.classList.remove('form__element__input_invalid');
-            bookAddingButton.classList.remove('form__element__button-disabled');
-        }
-        else {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        if (priceCheckbox.checked == true && priceInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        let description = monthBookDescInput.value;
-
-        let xhr = new XMLHttpRequest();
-        let params = 'str=' + description;
-
-        xhr.open('POST', '../php/typograf.php');
-        xhr.onreadystatechange=()=>{
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    bookCoverMonthBookDesc.innerHTML = xhr.responseText;
+                if (publishingCityInput.value == '') {
+                    bookCoverPuslishingData = publishingYearInput.value;
                 }
-                else
-                    console.log('Ошибка: ' + xhr.status);
+                else {
+                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+                }
             }
-        };
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.send(params);
-    });
+
+            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+        });
+
+        monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
+        monthBookCheckbox.addEventListener("click", ()=>{
+            if (titleInput.value != '') {
+                if (monthBookDescInput.value == '') {
+                    bookAddingButton.classList.toggle('form__element__button-disabled');
+                }
+            }
+
+            if (priceCheckbox.checked == true && priceInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
+            bookCover.classList.toggle('grid__item_month-book-color');
+
+            if (bookCoverMonthBook.style.display == 'none') {
+                bookCoverMonthBook.style.display = 'block';
+            }
+            else {
+                bookCoverMonthBook.style.display = 'none';
+            }
+        });
+
+        monthBookDescInput.addEventListener('keyup', ()=>{
+            if (titleInput.value != '' && monthBookDescInput.value != '') {
+                monthBookDescInput.classList.remove('form__element__input_invalid');
+                bookAddingButton.classList.remove('form__element__button-disabled');
+            }
+            else {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
+            if (priceCheckbox.checked == true && priceInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
+            let description = monthBookDescInput.value;
+
+            let xhr = new XMLHttpRequest();
+            let params = 'str=' + description;
+
+            xhr.open('POST', '../php/typograf.php');
+            xhr.onreadystatechange=()=>{
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        bookCoverMonthBookDesc.innerHTML = xhr.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhr.status);
+                }
+            };
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        });
 
 
-    priceCheckbox.addEventListener("click", toggleAppearingBlock);
-    priceCheckbox.addEventListener("click", ()=>{
-        if (titleInput.value != '') {
+        priceCheckbox.addEventListener("click", toggleAppearingBlock);
+        priceCheckbox.addEventListener("click", ()=>{
+            if (titleInput.value != '') {
+                if (priceInput.value == '') {
+                    bookAddingButton.classList.toggle('form__element__button-disabled');
+                }
+            }
+
+            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
+            if (stickerForPrice.style.display == 'none') {
+                stickerForPrice.style.display = 'block';
+            }
+            else {
+                stickerForPrice.style.display = 'none';
+            }
+        });
+
+        priceInput.onkeypress = allowDigit;
+        priceInput.addEventListener('keyup', ()=>{
+            if (titleInput.value != '' && priceInput.value != '') {
+                priceInput.classList.remove('form__element__input_invalid');
+                bookAddingButton.classList.remove('form__element__button-disabled');
+            }
+            else {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
+            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+
             if (priceInput.value == '') {
-                bookAddingButton.classList.toggle('form__element__button-disabled');
+                stickerForPrice.innerHTML = '';
             }
-        }
-
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        if (stickerForPrice.style.display == 'none') {
-            stickerForPrice.style.display = 'block';
-        }
-        else {
-            stickerForPrice.style.display = 'none';
-        }
-    });
-
-    priceInput.onkeypress = allowDigit;
-    priceInput.addEventListener('keyup', ()=>{
-        if (titleInput.value != '' && priceInput.value != '') {
-            priceInput.classList.remove('form__element__input_invalid');
-            bookAddingButton.classList.remove('form__element__button-disabled');
-        }
-        else {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-            bookAddingButton.classList.add('form__element__button-disabled');
-        }
-
-        if (priceInput.value == '') {
-            stickerForPrice.innerHTML = '';
-        }
-        else {
-            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
-        }
-    });
+            else {
+                stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+            }
+        });
 
 
-    bookAddingButton.addEventListener("click", ()=>{
-        event.preventDefault();
-        addBook();
-    });
+        bookAddingButton.addEventListener("click", ()=>{
+            event.preventDefault();
+            addBook();
+        });
+    }
 }
 
 function searchBook(bookTitle) {
@@ -410,7 +483,7 @@ function addBook() {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                form.style.visibility = 'hidden';
+                form.style.display = 'none';
 
                 let alertSuccess = document.createElement('div');
                 alertSuccess.className = "book-editing__form__success";
@@ -465,7 +538,7 @@ function returnBookAddingForm() {
                 let alertSuccess = document.querySelector('.book-editing__form__success');
                 formWrap.removeChild(alertSuccess);
 
-                form.style.visibility = 'visible';
+                form.style.display = 'grid';
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -511,7 +584,7 @@ function clearBookAddingForm() {
     bookCover.classList.remove('grid__item_month-book-color');
     stickerForPrice.innerHTML = '';
     stickerForPrice.style.display = 'none';
-    form.style.visibility = 'visible';
+    form.style.display = 'grid';
 
     titleInput.focus();
 }

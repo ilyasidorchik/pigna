@@ -37,9 +37,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Cercare libri nella piccola biblioteca della Pigna</title>
-        <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <title>Piccola biblioteca della Pigna</title>
+	    <link rel="shortcut icon" href="/img/favicon.ico">
+	    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
         <link rel="stylesheet/less" type="text/css" href="css/style.less">
 	    <link rel="stylesheet" href="css/likely.css">
     </head>
