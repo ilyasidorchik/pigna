@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/img/apple-touch-icon-180x180.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery-3.3.1.slim.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/+/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/+/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
@@ -47,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
+            <state relative-caret-position="316">
+              <caret line="384" column="29" selection-start-line="384" selection-start-column="29" selection-end-line="384" selection-end-column="29" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -74,23 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/+/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="46" column="28" lean-forward="true" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+            <state relative-caret-position="139">
+              <caret line="40" column="86" lean-forward="true" selection-start-line="40" selection-start-column="86" selection-end-line="40" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -206,9 +188,9 @@
         <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/js/jquery-3.3.1.slim.min.js" />
         <option value="$PROJECT_DIR$/css/style.less" />
-        <option value="$PROJECT_DIR$/js/script.js" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/+/index.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -368,12 +350,12 @@
       <workItem from="1551516897748" duration="9416000" />
       <workItem from="1551539500948" duration="53183000" />
       <workItem from="1551898495250" duration="1376000" />
-      <workItem from="1551985654436" duration="17063000" />
+      <workItem from="1551985654436" duration="17711000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345552000" />
+    <option name="totallyTimeSpent" value="346200000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -396,7 +378,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3004292" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3004292" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -656,10 +638,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/+/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="40" column="86" lean-forward="true" selection-start-line="40" selection-start-column="86" selection-end-line="40" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="358" column="5" lean-forward="true" selection-start-line="358" selection-start-column="5" selection-end-line="358" selection-end-column="5" />
+        <state relative-caret-position="316">
+          <caret line="384" column="29" selection-start-line="384" selection-start-column="29" selection-end-line="384" selection-end-column="29" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
@@ -677,23 +676,6 @@
             <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#svg#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="46" column="28" lean-forward="true" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/+/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#13;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
