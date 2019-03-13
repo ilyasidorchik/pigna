@@ -191,7 +191,7 @@
 			&_month-book-color {
 				background: #fcc;
 
-				.grid__item__admin {
+				.grid__item__admin_on-hands {
 					background: rgba(255, 255, 255, .5);
 				}
 			}
@@ -225,6 +225,29 @@
 
 			&_removed {
 				background: #fffbf3;
+			}
+
+			&_link-to-book-adding {
+				background: none;
+				text-align: center;
+				font-size: 3.6rem;
+				height: 53px;
+				margin-top: -36px;
+				margin-left: -7px;
+
+				@media @col-3 {
+					font-size: 11.5rem;
+					margin: 0;
+					height: auto;
+				}
+
+				&__link {
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
 			}
 
 			&__authortitle {
@@ -303,45 +326,54 @@
 			}
 
 			&__admin {
-				font-family: 'IBM Plex Sans';
-				font-size: 1rem;
 				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				height: 28%;
-				padding: 11px 5px 0;
-				background: rgba(255, 255, 255, .75);
 
-				&__editLinkWrap {
-					margin-top: 3px;
-					padding-left: 28.75px;
+				&_panel {
+					font-family: 'IBM Plex Sans';
+					font-size: 1.4rem;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					padding: 11px 8px 0;
+
+					@media @col-3 {
+						font-size: 1rem;
+						padding: 11px 5px 0;
+					}
 				}
-			}
 
-			&__return {
-				background: transparent;
+				&_on-hands {
+					height: 19%;
+					background: rgba(255, 255, 255, .75);
+				}
+
+				&_return {
+					height: 17%;
+
+					@media @col-3 {
+						height: 27%;
+					}
+				}
+
+				&_edit {
+					cursor: pointer;
+					top: 0;
+					right: 0;
+					width: 40px;
+					height: 40px;
+					box-sizing: border-box;
+					padding: 8px;
+
+					@media @col-3 {
+						width: 32px;
+						height: 32px;
+					}
+				}
 			}
 		}
 
 		.grid__item_month-book-color.grid__item_on-hands {
 			background: rgba(255, 204, 204, .5);
-		}
-
-		.grid__item_removed {
-			background: #fffbf3;
-
-			.grid__item__authortitle {
-				opacity: .25;
-			}
-
-			.grid__item__publishing {
-				opacity: .25;
-			}
-
-			.grid__item__sticker {
-				opacity: .25;
-			}
 		}
 
 		&__map {
@@ -400,9 +432,23 @@
 		}
 	}
 
+	&.admin {
+		.grid__item:hover {
+			cursor: pointer;
+			color: #CD0404;
+		}
+
+		.grid__item:hover {
+			.grid__item__admin_edit__icon {
+				fill: #cd0404;
+			}
+		}
+	}
+
 	.books {
 		padding-bottom: 244px;
 	}
+
 
 	.footer {
 		&_bottom-sticked {
@@ -503,6 +549,7 @@
 		display: grid;
 		grid-template-columns: repeat(14, 1fr);
 		grid-gap: 15px;
+		position: relative;
 
 		h2 {
 			grid-column-start: 1;
@@ -580,6 +627,26 @@
 			@media @col-7 {
 				grid-column-start: 11;
 			}
+
+			.grid__item_removed {
+				background: #fffbf3;
+
+				.grid__item__authortitle {
+					opacity: .25;
+				}
+
+				.grid__item__publishing {
+					opacity: .25;
+				}
+
+				.grid__item__sticker {
+					opacity: .25;
+				}
+			}
+
+			.grid__item_month-book-color.grid__item_removed {
+				background: rgba(255, 204, 204, .5);
+			}
 		}
 
 		&__month-book {
@@ -599,6 +666,10 @@
 			@media @col-5 {
 				grid-column-start: 13;
 				grid-column-end: 15;
+			}
+
+			&_removed {
+				opacity: .25;
 			}
 
 			&__wrap {
@@ -627,71 +698,32 @@
 				}
 			}
 		}
-	}
 
-	.modal {
-		position: fixed;
-		top: 20px;
-		z-index: 10;
-		background: #fff;
-		width: 1200px;
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.25);
+		&__delete {
+			position: absolute;
+			width: 32px;
+			height: 32px;
+			box-sizing: border-box;
+			padding: 5px;
+			margin-right: -7px;
+			top: 18px;
+			right: 0;
+			cursor: pointer;
 
-		.book-editing {
-			padding: 15px;
+			@media @col-3 {
+				top: 82px;
+			}
 
-			&__h2 {
-				display: flex;
-				justify-content: space-between;
-
-				&__close {
-					cursor: pointer;
-					box-sizing: border-box;
-					width: 32px;
-					margin-right: -5px;
-					padding-left: 5px;
-
-					&__icon {
-						width: 19px;
-						padding-right: 3px;
-
-						&__polygon {
-							fill: #000;
-						}
-					}
+			&__icon {
+				&__path {
+					fill: #000;
 				}
 			}
 
-			&__delete {
-				cursor: pointer;
-				display: block;
-				position: absolute;
-				top: 99px;
-				right: 12px;
-				width: 32px;
-				height: 32px;
-
-				&__icon {
-					display: block;
-					width: 23px;
-					margin: 4px auto 0;
-
-					&__path {
-						fill: #000;
-					}
+			&:hover {
+				.book-editing__delete__icon__path {
+					fill: #cd0404;
 				}
-
-				&:hover {
-					.book-editing__delete__icon__path {
-						fill: #cd0404;
-					}
-				}
-			}
-		}
-
-		.book-editing__h2__close:hover {
-			.book-editing__h2__close__icon__polygon {
-				fill: #cd0404;
 			}
 		}
 	}
@@ -760,7 +792,7 @@
 			}
 
 			@media @col-7 {
-				margin-right: -14px;
+				margin-right: -16px;
 			}
 		}
 
@@ -844,6 +876,10 @@
 				grid-template-columns: repeat(8, 1fr);
 			}
 
+			@media @col-7 {
+				grid-template-columns: repeat(11, 1fr);
+			}
+
 			&__currency-sign {
 				padding-top: .6rem;
 			}
@@ -858,6 +894,7 @@
 		&__label {
 			cursor: pointer;
 			position: relative;
+			color: #000;
 
 			&__checkbox {
 				opacity: 0;
