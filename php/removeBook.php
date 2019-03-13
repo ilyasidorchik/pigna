@@ -26,7 +26,8 @@
         $monthBook = $_POST['monthBook'];
 
         $description = str_replace("'", "\'", $_POST['description']);
-        $descriptionTypografed = typograf($description);
+        if ($description != '')
+            $description = typograf($description);
     }
 
     $ini = parse_ini_file('../app.ini', true);
@@ -36,6 +37,6 @@
 
     // Удаление книги из базы данных
     if ($id == '')
-        mysqli_query($link, "DELETE FROM catalogue WHERE title = '$titleTypografed' AND author = '$author' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$descriptionTypografed'");
+        mysqli_query($link, "DELETE FROM catalogue WHERE title = '$titleTypografed' AND author = '$author' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$description'");
     else
         mysqli_query($link, "DELETE FROM catalogue WHERE id = '$id'");

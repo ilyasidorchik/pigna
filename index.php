@@ -22,7 +22,7 @@
         <title>Piccola biblioteca della Pigna</title>
 	    <meta name="description" content="Storia locale, scienze, letteratura e arte">
 	    <link rel="shortcut icon" href="img/favicon.ico">
-	    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+	    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
         <link rel="stylesheet/less" type="text/css" href="css/style.less">
 	    <link rel="stylesheet" href="css/likely.css">
     </head>

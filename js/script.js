@@ -897,6 +897,7 @@ function addBook() {
 
 function returnBookAddingForm() {
     let title = titleInput.value;
+
     let author = authorInput.value;
     let publishingCity = publishingCityInput.value;
     let publishingYear = publishingYearInput.value;
@@ -913,7 +914,7 @@ function returnBookAddingForm() {
     }
     else {
         monthBook = 0;
-        description = '';
+        description= '';
     }
 
     let price = priceInput.value;
