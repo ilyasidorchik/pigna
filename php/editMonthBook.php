@@ -17,7 +17,8 @@
     $id = $_POST['id'];
     $monthBook = $_POST['monthBook'];
     $description = str_replace("'", "\'", $_POST['description']);
-    $descriptionTypografed = typograf($description);
+    if ($description != '')
+        $description = typograf($description);
 
     $ini = parse_ini_file('../app.ini', true);
 
@@ -29,4 +30,4 @@
         mysqli_query($link, "UPDATE catalogue SET monthBook = 0 WHERE monthBook = 1");
 
     // Изменение у книги статуса «Книга месяца» и описания в базе данных
-    mysqli_query($link, "UPDATE catalogue SET monthBook = '$monthBook', description = '$descriptionTypografed' WHERE id = '$id'");
+    mysqli_query($link, "UPDATE catalogue SET monthBook = '$monthBook', description = '$description' WHERE id = '$id'");
