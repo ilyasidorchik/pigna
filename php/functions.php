@@ -1,4 +1,24 @@
 <?php
+    require 'remotetypograf.php';
+    function typograf($str) {
+        $remoteTypograf = new RemoteTypograf('UTF-8');
+
+        $remoteTypograf->htmlEntities();
+        $remoteTypograf->br (false);
+        $remoteTypograf->p (false);
+        $remoteTypograf->nobr (3);
+        $remoteTypograf->quotA ('laquo raquo');
+        $remoteTypograf->quotB ('bdquo ldquo');
+
+        $strTypografed = $remoteTypograf->processText($str);
+
+        $prepositions = array(" di ", " a ", " da ", " in ", " con ", " su ", " per ", " tra ", " fra ", " e ", " o ", " il ", " lo ", " la ", " i ", " gli ", " le ", " del ", " dello ", " della ", " dei ", " degli ", " delle ", " al ", " allo ", " alla ", " ai ", " agli ", " alle ", " dal ", " dallo ", " dalla ", " dai ", " dagli ", " dalle ", " nel ", " nello ", " nella ", " nei ", " negli ", " nelle ", " sul ", " col ", " sullo ", " sulla ", " sui ", " sugli ", " sulle ");
+        $prepositionsTypografed = array("di&nbsp;", " a&nbsp;", " da&nbsp;", " in&nbsp;", " con&nbsp;", " su&nbsp;", " per&nbsp;", " tra&nbsp;", " fra&nbsp;", " e&nbsp;", " o&nbsp;", " il&nbsp;", " lo&nbsp;", " la&nbsp;", " i&nbsp;", " gli&nbsp;", " le&nbsp;", " del&nbsp;", " dello&nbsp;", " della&nbsp;", " dei&nbsp;", " degli&nbsp;", " delle&nbsp;", " al&nbsp;", " allo&nbsp;", " alla&nbsp;", " ai&nbsp;", " agli&nbsp;", " alle&nbsp;", " dal&nbsp;", " dallo&nbsp;", " dalla&nbsp;", " dai&nbsp;", " dagli&nbsp;", " dalle&nbsp;", " nel&nbsp;", " nello&nbsp;", " nella&nbsp;", " nei&nbsp;", " negli&nbsp;", " nelle&nbsp;", " sul&nbsp;", " col&nbsp;", " sullo&nbsp;", " sulla&nbsp;", " sui&nbsp;", " sugli&nbsp;", " sulle&nbsp;");
+        $strTypografed = str_replace($prepositions, $prepositionsTypografed, $strTypografed);
+
+        return $strTypografed;
+    }
+
     function addAccent($word) {
         if (strlen($word) > 1) {
             switch(substr($word[strlen($word)-1], -1)) {

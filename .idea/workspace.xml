@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/addBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/addBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/editMonthBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/editMonthBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/editTitle.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/editTitle.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/removeBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/removeBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/typograf.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/typograf.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +33,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="393">
@@ -44,8 +49,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="209" column="79" selection-start-line="209" selection-start-column="79" selection-end-line="209" selection-end-column="79" />
+            <state relative-caret-position="757">
+              <caret line="730" column="5" lean-forward="true" selection-start-line="730" selection-start-column="5" selection-end-line="730" selection-end-column="5" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -57,8 +62,20 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+            <state relative-caret-position="90">
+              <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="31">
+              <caret line="3" column="54" lean-forward="true" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+              <folding>
+                <element signature="e#76#84#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,13 +93,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>book-editing__form__success__alert__returning</find>
-      <find>returnBook</find>
       <find>title</find>
       <find>typog</find>
       <find>return</find>
       <find>titleInput</find>
-      <find>search</find>
       <find>grid__item</find>
       <find>admin_on</find>
       <find>admin_on-hands</find>
@@ -106,10 +120,11 @@
       <find>map</find>
       <find>pseudol</find>
       <find>footer</find>
+      <find>search</find>
+      <find>&quot;,</find>
+      <find>, &quot;</find>
     </findStrings>
     <replaceStrings>
-      <replace>priceInput</replace>
-      <replace>_price</replace>
       <replace>price</replace>
       <replace>book-editing</replace>
       <replace>input_title</replace>
@@ -138,6 +153,8 @@
       <replace>$admin</replace>
       <replace>$admin, '');</replace>
       <replace>$row[onHands], $admin);</replace>
+      <replace>&amp;nbsp;&quot;,</replace>
+      <replace>, &quot;</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -163,21 +180,21 @@
         <option value="$PROJECT_DIR$/app.ini" />
         <option value="$PROJECT_DIR$/php/remotetypograf.php" />
         <option value="$PROJECT_DIR$/example-utf.php" />
-        <option value="$PROJECT_DIR$/php/typograf.php" />
         <option value="$PROJECT_DIR$/js/jquery-3.3.1.slim.min.js" />
         <option value="$PROJECT_DIR$/+/index.php" />
-        <option value="$PROJECT_DIR$/php/editTitle.php" />
-        <option value="$PROJECT_DIR$/php/addBook.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
-        <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/php/search.php" />
-        <option value="$PROJECT_DIR$/php/removeBook.php" />
-        <option value="$PROJECT_DIR$/php/editMonthBook.php" />
         <option value="$PROJECT_DIR$/edit/index.php" />
         <option value="$PROJECT_DIR$/css/likely.css" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/css/style.less" />
+        <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/php/addBook.php" />
+        <option value="$PROJECT_DIR$/php/editMonthBook.php" />
+        <option value="$PROJECT_DIR$/php/editTitle.php" />
+        <option value="$PROJECT_DIR$/php/removeBook.php" />
+        <option value="$PROJECT_DIR$/php/typograf.php" />
+        <option value="$PROJECT_DIR$/php/functions.php" />
       </list>
     </option>
   </component>
@@ -355,12 +372,12 @@
       <workItem from="1552504659458" duration="2755000" />
       <workItem from="1552510326507" duration="306000" />
       <workItem from="1553069792640" duration="7441000" />
-      <workItem from="1553366395150" duration="7218000" />
+      <workItem from="1553366395150" duration="9349000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403274000" />
+    <option name="totallyTimeSpent" value="405405000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -383,7 +400,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33476394" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33476394" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -497,36 +514,8 @@
     <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/toggleBookOnHands.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/editPublishing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="51" lean-forward="true" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/remotetypograf1.php" />
     <entry file="file://$PROJECT_DIR$/example-utf.php" />
-    <entry file="file://$PROJECT_DIR$/php/editAuthor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/remotetypograf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-801">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/likely.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -546,20 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/editPrice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/editTitle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -574,55 +549,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#76#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/typograf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="34" lean-forward="true" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/addBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/editMonthBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="99" lean-forward="true" selection-start-line="32" selection-start-column="99" selection-end-line="32" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/removeBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/edit/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1305">
           <caret line="87" column="90" selection-start-line="87" selection-start-column="90" selection-end-line="87" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -636,24 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="209" column="79" selection-start-line="209" selection-start-column="79" selection-end-line="209" selection-end-column="79" />
-          <folding>
-            <element signature="e#4#10#0" expanded="true" />
-            <element signature="e#4#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -661,6 +573,111 @@
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
             <element signature="e#88346#180686#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="757">
+          <caret line="730" column="5" lean-forward="true" selection-start-line="730" selection-start-column="5" selection-end-line="730" selection-end-column="5" />
+          <folding>
+            <element signature="e#4#10#0" expanded="true" />
+            <element signature="e#4#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/addBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editAuthor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editMonthBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editPrice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editPublishing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="51" lean-forward="true" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/remotetypograf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/removeBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/toggleBookOnHands.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editTitle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/typograf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="3" column="54" lean-forward="true" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+          <folding>
+            <element signature="e#76#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
