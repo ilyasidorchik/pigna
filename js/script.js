@@ -196,7 +196,29 @@ function start() {
     // Футер
     if (footer != null) {
         footer.addEventListener('mouseover', ()=>{
-            footer.style.animation = 'closeFooter .25s linear';
+            screen = document.documentElement.clientWidth;
+
+            if (screen < 535) {
+                //books.insertBefore(linkToBookAdding, books.firstChild);
+            }
+            else {
+                if (screen < 711) {
+                    //books.insertBefore(linkToBookAdding, books.children[2]);
+                }
+                else {
+                    if (screen < 892) {
+                        footer.style.animation = 'closeFooterCol5 .35s linear';
+                    }
+                    else {
+                        if (screen < 1060) {
+                            footer.style.animation = 'closeFooterCol5 .35s linear';
+                        }
+                        else {
+                            footer.style.animation = 'closeFooter .25s linear';
+                        }
+                    }
+                }
+            }
         });
     }
 
