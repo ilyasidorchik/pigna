@@ -85,7 +85,7 @@
                                                 <label for="title">Titolo</label>
                                             </div>
                                             <div class="form__element">
-                                                <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title" value="$row[title]">
+                                                <input type="text" name="title" id="title" autocomplete="off" class="form__element__input form__element__input_title" value="$row[title]">
                                             </div>
                     
                                             <div class="form__label">

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', start); // когда HTML буд�
 function start() {
     let bookTitle;
     let books = document.querySelectorAll('.grid')[0];
-    //let footer = document.querySelector('.footer');
+    let footer = document.querySelector('.footer');
 
     if (searchInput != null) {
         if (document.documentElement.clientWidth < 711) {
@@ -190,6 +190,13 @@ function start() {
                 event.preventDefault();
                 searchBook(bookTitle);
             }
+        });
+    }
+
+    // Футер
+    if (footer != null) {
+        footer.addEventListener('mouseover', ()=>{
+            footer.style.animation = 'closeFooter .25s linear';
         });
     }
 

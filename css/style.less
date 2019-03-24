@@ -51,7 +51,7 @@
 
 .page {
 	overflow-y: scroll;
-	margin: 15px auto;
+	margin: 15px auto 47px;
 	width: 290px;
 
 	@media @col-3 {
@@ -103,8 +103,7 @@
 	}
 
 	.pseudolink {
-		border-bottom: 1px dashed;
-		border-bottom-color: rgba(0, 0, 0, .75);
+		border-bottom: 1px dashed rgba(0, 0, 0, .75);
 		transition: border-bottom-color .35s ease-out, color .35s ease-out;
 
 		&:hover {
@@ -192,7 +191,7 @@
 				background: #fcc;
 
 				.grid__item__admin_on-hands {
-					background: rgba(255, 255, 255, .5);
+					// background: rgba(255, 255, 255, .5);
 				}
 			}
 
@@ -234,6 +233,7 @@
 				height: 53px;
 				margin-top: -36px;
 				margin-left: -7px;
+				box-shadow: none !important;
 
 				@media @col-3 {
 					font-size: 11.5rem;
@@ -340,11 +340,15 @@
 						font-size: 1rem;
 						padding: 11px 5px 0;
 					}
+
+					.form__element__label__fake-checkbox {
+						border: 1px solid #000;
+					}
 				}
 
 				&_on-hands {
 					height: 19%;
-					background: rgba(255, 255, 255, .75);
+					//background: rgba(255, 255, 255, .75);
 				}
 
 				&_return {
@@ -367,6 +371,7 @@
 					@media @col-3 {
 						width: 32px;
 						height: 32px;
+						padding: 9px;
 					}
 				}
 			}
@@ -377,7 +382,7 @@
 		}
 
 		&__map {
-			margin-top: 30px;
+			margin-top: 22px;
 
 			@media @col-3 {
 				grid-column-start: 1;
@@ -422,7 +427,7 @@
 			@media @col-6 {
 				grid-column-start: 3;
 				grid-column-end: 7;
-				margin-top: 14px;
+				margin-top: 6px;
 			}
 
 			@media @col-7 {
@@ -436,6 +441,7 @@
 		.grid__item:hover {
 			cursor: pointer;
 			color: #CD0404;
+			box-shadow: 0px 0px 0px 1px #ec6040 inset;
 		}
 
 		.grid__item:hover {
@@ -461,12 +467,40 @@
 		&_bottom-sticked-fixed {
 			z-index: 2;
 			position: fixed;
-			bottom: 0;
-			animation: showFooter .25s linear;
+			bottom: -217px;
+
+			&:hover {
+				animation: showFooter .25s linear !important;
+				bottom: 0;
+			}
+		}
+
+		&__hint {
+			width: 173px;
+			margin: 0 auto;
+			padding: 5px 0 7px;
+			font-family: 'IBM Plex Sans';
+			text-align: center;
+			border-radius: 30px 30px 0 0;
+			background: rgba(240, 240, 240,.9);
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+
+			.pseudolink {
+				cursor: default;
+				color: #000;
+				border-bottom-color: rgba(0, 0, 0, .75);
+			}
+		}
+
+		&__main {
 			background: #fff;
-			box-shadow: 0px -5px 15px rgba(0, 0, 0, .25);
+			border-top: 3px solid rgba(240, 240, 240, .9);
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
 		}
 	}
+
 	.footer_bottom-sticked, .footer_bottom-sticked-fixed {
 		@media @col-3 {
 			width: 505px;
@@ -904,6 +938,7 @@
 
 			&__fake-checkbox {
 				display: inline-block;
+				box-sizing: border-box;
 				width: 20px;
 				height: 20px;
 				background: @input-background-color;
@@ -965,6 +1000,11 @@
 }
 
 @keyframes showFooter {
-	from {bottom: -224px;}
+	from {bottom: -217px;}
 	to {bottom: 0;}
+}
+
+@keyframes closeFooter {
+	from {bottom: 0;}
+	to {bottom: -217px;}
 }
