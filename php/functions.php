@@ -59,7 +59,7 @@
                         <div class="month-book">
                             <div class="month-book__wrap">
                                 <div class="month-book__wrap__label">
-                                    <span class="month-book__wrap__label__text">Libro del mese</span>
+                                    <span class="month-book__wrap__label__text">★ Libro del mese</span>
                                 </div>
                                 <p class="month-book__wrap__description">$description</p>
                             </div>
