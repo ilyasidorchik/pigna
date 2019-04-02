@@ -1176,6 +1176,10 @@ function allowDigit(e) {
     if (chr < '0' || chr > '9') {
         return false;
     }
+
+    if (publishingYearInput.value == '' && chr == '0') {
+        return false;
+    }
 }
 
 function alertBeforeClose(e) {

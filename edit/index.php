@@ -106,7 +106,7 @@
                                                 <label for="publishing-year" class="form__label__label_publishing-year">Anno&nbsp;pub-<br>blicazione</label>
                                             </div>
                                             <div class="form__element form__element_short form__labelelement_publishing-year-margin-fix">
-                                                <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input_publishing-year" value="$publishingYear">
+                                                <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" maxlength="4" class="form__element__input form__element__input_publishing-year" value="$publishingYear">
                                             </div>
                     
                                             <div class="form__element form__element_checkbox form__element_checkbox-month-book">
