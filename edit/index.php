@@ -137,6 +137,9 @@
                                                     <div class="form__element__wrap-for-price__currency-sign">€</div>
                                                 </div>
                                             </div>
+                                            <div class="form__element">
+										        <button class="form__element__button form__element__button_book-editing form__element__button-disabled">Aggiornare</button>
+									        </div>
                                         </div>
                                     </form>
                                 </div>

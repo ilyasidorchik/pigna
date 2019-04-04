@@ -452,10 +452,8 @@ function start() {
 
     // Редактирование книги
     if (document.location.pathname == '/edit/') {
-        let id = document.location.search;
-        id = id.replace('?book=', '');
-
-        //modal.innerHTML = '<div class="book-editing"> <div class="book-editing__close"><?xml version="1.0" encoding="iso-8859-1"?> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 32.526 32.526" style="enable-background:new 0 0 32.526 32.526;" xml:space="preserve" class="book-editing__close__icon"> <polygon points="32.526,2.828 29.698,0 16.263,13.435 2.828,0 0,2.828 13.435,16.263 0,29.698 2.828,32.526 16.263,19.091 29.698,32.526 32.526,29.698 19.091,16.263 " class="book-editing__h2__close__icon__polygon" /> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></div> <div class="book-editing__form"> <form> <div class="form"> <div class="form__label"> <label for="title">Titolo</label> </div> <div class="form__element"> <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title" value="' + title + '"> </div> <div class="form__label"> <label for="author">Autore</label> </div> <div class="form__element"> <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="' + author + '"> </div> <div class="form__label"> <label for="publishing-city">Città editore</label> </div> <div class="form__element"> <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city" value="' + publishingCity + '"> </div> <div class="form__label form__labelelement_publishing-year-margin-fix"> <label for="publishing-year" class="form__label__label_publishing-year">Anno&nbsp;pub-<br>blicazione</label> </div> <div class="form__element form__element_short form__labelelement_publishing-year-margin-fix"> <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" class="form__element__input form__element__input_publishing-year" value="' + publishingYear + '"> </div> <div class="form__element form__element_checkbox form__element_checkbox-month-book"> <label class="form__element__label"> <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description" ' + monthBookCheckbox + '> <span class="form__element__label__fake-checkbox"></span> Libro del mese </label> </div> <div class="form__label form__close-to-checkbox form__label_description" style="display: ' + monthBookStatus + ';"> <label for="book_description" class="form__label__label_description">Descri-<br>zione</label> </div> <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: ' + monthBookStatus + ';margin-bottom: -.3rem;"> <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description">' + monthBookDesc + '</textarea> </div> <div class="form__element form__element_checkbox form__element_checkbox-price"> <label class="form__element__label"> <input type="checkbox" name="book_for_sale" value="book_for_sale" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_price" ' + priceCheckbox + '> <span class="form__element__label__fake-checkbox"></span> In vendita </label> </div> <div class="form__label form__close-to-checkbox form__label_price" style="display: ' + priceStatus + ';"> <label for="price">Prezzo</label> </div> <div class="form__element form__close-to-checkbox form__element_price form__element_by-checkbox" style="display: ' + priceStatus + ';"> <div class="form__element__wrap-for-price"> <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price" value="' + price + '"> <div class="form__element__wrap-for-price__currency-sign">€</div> </div> </div> <div class="form__element" style="display: none;"> <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button> </div> </div> </form> </div> <div class="book-editing__cover"> <div class="grid__item ' + monthBookClass + '"> <div class="grid__item__authortitle"> <div class="grid__item__authortitle__author" style="display: ' + authorStatus + ';">' + author + '</div> <div class="grid__item__authortitle__title">' + title + '</div> </div> <div class="grid__item__publishing">' + publishing + '</div> <div class="grid__item__sticker grid__item__sticker_price" style="display: ' + priceStatus + ';">' + price + '</div> </div> </div> <div class="book-editing__month-book month-book" style="display: ' + monthBookStatus + ';"> <div class="book-editing__month-book__wrap month-book__wrap"> <div class="month-book__wrap__label"> <span class="month-book__wrap__label__text">Libro del mese</span> </div> <p class=2"month-book__wrap__description">' + monthBookDesc + '</p> </div> </div> <a class="book-editing__delete" title="Rimuovere"><?xml version="1.0" encoding="iso-8859-1"?> <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve" class="book-editing__delete__icon"> <g> <g> <path class="book-editing__delete__icon__path" d="M76.5,408c0,28.05,22.95,51,51,51h204c28.05,0,51-22.95,51-51V102h-306V408z M408,25.5h-89.25L293.25,0h-127.5l-25.5,25.5 H51v51h357V25.5z"/> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></a></div>';
+        let url = document.location.search;
+        let id = url.replace('?book=', '');
 
         authorInput = document.querySelector('.form__element__input_author');
         titleInput = document.querySelector('.form__element__input_title');
@@ -474,6 +472,167 @@ function start() {
         bookCoverMonthBook = document.querySelector('.month-book');
         bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
         stickerForPrice = document.querySelector('.grid__item__sticker_price');
+
+
+        // Подстановка данных, которые не обновились для читателя
+        let titleSaved = localStorage.getItem('title' + id);
+        if (titleSaved != null) {
+            titleInput.value = titleSaved;
+
+            bookCoverTitle.innerHTML = titleSaved;
+
+            let title = titleInput.value;
+            let xhrTypograf = new XMLHttpRequest();
+            let params = 'str=' + title;
+            xhrTypograf.open('POST', '../php/typograf.php');
+            xhrTypograf.onreadystatechange = () => {
+                if (xhrTypograf.readyState === 4) {
+                    if (xhrTypograf.status === 200) {
+                        bookCoverTitle.innerHTML = xhrTypograf.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhrTypograf.status);
+                }
+            };
+            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhrTypograf.send(params);
+
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small";
+            savingInfo.innerHTML = localStorage.getItem('savingTitleInfo' + id);
+            titleInput.parentNode.appendChild(savingInfo);
+        }
+
+        let authorSaved = localStorage.getItem('author' + id);
+        if (authorSaved != null) {
+            authorInput.value = authorSaved;
+
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small";
+            savingInfo.innerHTML = localStorage.getItem('savingAuthorInfo' + id);
+            authorInput.parentNode.appendChild(savingInfo);
+
+            if (authorInput.value != '') {
+                bookCoverAuthor.style.display = 'block';
+                bookCoverAuthor.innerHTML = authorInput.value;
+            }
+            else {
+                bookCoverAuthor.style.display = 'none';
+            }
+        }
+
+        let publishingCitySaved = localStorage.getItem('publishingCity' + id);
+        if (publishingCitySaved != null) {
+            publishingCityInput.value = publishingCitySaved;
+
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small";
+            savingInfo.innerHTML = localStorage.getItem('savingPublishingCityInfo' + id);
+            publishingCityInput.parentNode.appendChild(savingInfo);
+        }
+
+        let publishingYearSaved = localStorage.getItem('publishingYear' + id);
+        if (publishingYearSaved != null) {
+            publishingYearInput.value = publishingYearSaved;
+
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small";
+            savingInfo.innerHTML = localStorage.getItem('savingPublishingYearInfo' + id);
+            publishingYearInput.parentNode.appendChild(savingInfo);
+        }
+
+        if (publishingCitySaved != null || publishingYearSaved != null) {
+            if (publishingYearInput.value == '') {
+                bookCoverPublishing.innerHTML = publishingCityInput.value;
+            }
+            else {
+                if (publishingCityInput.value == '') {
+                    bookCoverPublishing.innerHTML = publishingYearInput.value;
+                }
+                else {
+                    bookCoverPublishing.innerHTML = publishingCityInput.value + ', ' + publishingYearInput.value;
+                }
+            }
+        }
+
+        let monthBookStatusSaved = localStorage.getItem('monthBookStatus' + id);
+        if (monthBookStatusSaved != null) {
+            if (monthBookStatusSaved == '0') {
+                if (monthBookCheckbox.checked != false) {
+                    monthBookCheckbox.checked = false;
+                    toggleAppearingBlock(monthBookCheckbox);
+                    bookCover.classList.toggle('grid__item_month-book-color');
+                    bookCoverMonthBook.style.display = 'none';
+                }
+            }
+            else {
+                if (monthBookCheckbox.checked != true) {
+                    monthBookCheckbox.checked = true;
+                    toggleAppearingBlock(monthBookCheckbox);
+                    bookCover.classList.toggle('grid__item_month-book-color');
+                    bookCoverMonthBook.style.display = 'block';
+                }
+            }
+
+            let monthBookDescSaved = localStorage.getItem('monthBookDesc' + id);
+            if (monthBookDescSaved != null) {
+                bookCoverMonthBookDesc.innerHTML = monthBookDescSaved;
+                let description = monthBookDescSaved;
+                let xhrTypograf = new XMLHttpRequest();
+                let params = 'str=' + description;
+                xhrTypograf.open('POST', '../php/typograf.php');
+                xhrTypograf.onreadystatechange = () => {
+                    if (xhrTypograf.readyState === 4) {
+                        if (xhrTypograf.status === 200) {
+                            bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
+                        }
+                        else
+                            console.log('Ошибка: ' + xhrTypograf.status);
+                    }
+                };
+                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhrTypograf.send(params);
+
+                monthBookDescInput.value = monthBookDescSaved;
+
+                let savingInfo = document.createElement('div');
+                savingInfo.className = "form__element__warning-small form__element__warning-small-lower";
+                savingInfo.innerHTML = localStorage.getItem('savingMonthBookInfo' + id);
+                monthBookDescInput.parentNode.appendChild(savingInfo);
+            }
+        }
+
+        let priceSaved = localStorage.getItem('price' + id);
+        if (priceSaved != null) {
+            if (priceSaved == '0') {
+                if (priceCheckbox.checked != false) {
+                    priceCheckbox.checked = false;
+                    toggleAppearingBlock(priceCheckbox);
+                    stickerForPrice.style.display = 'none';
+                }
+            }
+            else {
+                if (priceCheckbox.checked != true) {
+                    priceCheckbox.checked = true;
+                    toggleAppearingBlock(priceCheckbox);
+                    stickerForPrice.style.display = 'block';
+                }
+
+                priceInput.value = priceSaved;
+                stickerForPrice.innerHTML = priceSaved + '&nbsp;€';
+
+                let savingInfo = document.createElement('div');
+                savingInfo.className = "form__element__warning-small";
+                savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
+                priceInput.parentNode.appendChild(savingInfo);
+            }
+        }
+
+
+        let date = new Date();
+        let day = date.getDate();
+        let month = convertMonth(date.getMonth() + 1);
+        date = "Salvato il&nbsp;" + day + "&nbsp;" + month;
 
         titleInput.addEventListener('keyup', ()=>{
             if (titleInput.value != '') {
@@ -499,14 +658,10 @@ function start() {
             xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhrTypograf.send(params);
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            params = 'id=' + id + '&title=' + titleInput.value;
-            xhr.open('POST', '../php/editTitle.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('title' + id, title);
+            localStorage.setItem('savingTitleInfo' + id, date);
         });
-
 
         authorInput.addEventListener('keyup',()=>{
             if (authorInput.value != '') {
@@ -517,12 +672,9 @@ function start() {
                 bookCoverAuthor.style.display = 'none';
             }
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&author=' + authorInput.value;
-            xhr.open('POST', '../php/editAuthor.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('author' + id, authorInput.value);
+            localStorage.setItem('savingAuthorInfo' + id, date);
         });
 
 
@@ -542,12 +694,9 @@ function start() {
 
             bookCoverPublishing.innerHTML = bookCoverPuslishingData;
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&publishing=' + bookCoverPuslishingData;
-            xhr.open('POST', '../php/editPublishing.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('publishingCity' + id, publishingCityInput.value);
+            localStorage.setItem('savingPublishingCityInfo' + id, date);
         });
 
         publishingYearInput.onkeypress = allowDigit;
@@ -571,12 +720,9 @@ function start() {
 
             bookCoverPublishing.innerHTML = bookCoverPuslishingData;
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&publishing=' + bookCoverPuslishingData;
-            xhr.open('POST', '../php/editPublishing.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('publishingYear' + id, publishingYearInput.value);
+            localStorage.setItem('savingPublishingYearInfo' + id, date);
         });
 
         monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
@@ -603,12 +749,8 @@ function start() {
                 }
             }
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&monthBook=' + monthBookStatus + '&description=' + bookCoverMonthBookDesc.innerHTML;
-            xhr.open('POST', '../php/editMonthBook.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('monthBookStatus' + id, monthBookStatus);
         });
 
         monthBookDescInput.addEventListener('keyup', ()=>{
@@ -655,12 +797,10 @@ function start() {
                 monthBookStatus = 0;
             }
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            params = 'id=' + id + '&monthBook=' + monthBookStatus + '&description=' + monthBookDescInput.value;
-            xhr.open('POST', '../php/editMonthBook.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('monthBookStatus' + id, monthBookStatus);
+            localStorage.setItem('monthBookDesc' + id, description);
+            localStorage.setItem('savingMonthBookInfo' + id, date);
         });
 
 
@@ -685,12 +825,8 @@ function start() {
                 price = priceInput.value;
             }
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&price=' + price;
-            xhr.open('POST', '../php/editPrice.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('price' + id, price);
         });
 
         priceInput.onkeypress = allowDigit;
@@ -714,16 +850,10 @@ function start() {
                 price = priceInput.value;
             }
 
-            // Изменение в базе данных
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&price=' + price;
-            xhr.open('POST', '../php/editPrice.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // Добавление в локальное хранилище
+            localStorage.setItem('price' + id, price);
+            localStorage.setItem('savingPriceInfo' + id, date);
         });
-
-        // Если не заполнено название книги, описание или цена при открытых чекбоксах — вылезает уведомление
-        window.addEventListener('beforeunload', alertBeforeClose);
 
         // Удаление книги
         let deleteLink = document.querySelector('.book-editing__delete');
@@ -811,8 +941,14 @@ function searchBook(bookTitle) {
     xhr.send(params);
 }
 
-function toggleAppearingBlock() {
-    let elementIdentifier = this.classList.value.split("checkbox_")[1]; // e.g. description
+function toggleAppearingBlock(e) {
+    let elementIdentifier;
+    if (e.type != 'checkbox') {
+        elementIdentifier = this.classList.value.split("checkbox_")[1]; // e.g. description
+    }
+    else {
+        elementIdentifier = e.classList.value.split("checkbox_")[1]; // e.g. description
+    }
 
     let label = '.form__label_' + elementIdentifier;
     let appearingLabel = document.querySelector(label);
@@ -1182,27 +1318,43 @@ function allowDigit(e) {
     }
 }
 
-function alertBeforeClose(e) {
-    if (titleInput.value != '') {
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-            monthBookDescInput.classList.add('form__element__input_invalid');
-            monthBookDescInput.focus();
-            e.preventDefault(); // Cancel the event
-            e.returnValue = ''; // Chrome requires returnValue to be set
-        }
-        else {
-            if (priceCheckbox.checked == true && priceInput.value == '') {
-                priceInput.classList.add('form__element__input_invalid');
-                priceInput.focus();
-                e.preventDefault(); // Cancel the event
-                e.returnValue = ''; // Chrome requires returnValue to be set
-            }
-        }
-    }
-    else {
-        titleInput.classList.add('form__element__input_invalid');
-        titleInput.focus();
-        e.preventDefault(); // Cancel the event
-        e.returnValue = ''; // Chrome requires returnValue to be set
+function convertMonth(month) {
+    switch (month) {
+        case 1:
+            return 'gen';
+            break;
+        case 2:
+            return 'feb';
+            break;
+        case 3:
+            return 'mar';
+            break;
+        case 4:
+            return 'apr';
+            break;
+        case 5:
+            return 'mag';
+            break;
+        case 6:
+            return 'giu';
+            break;
+        case 7:
+            return 'lug';
+            break;
+        case 8:
+            return 'ago';
+            break;
+        case 9:
+            return 'set';
+            break;
+        case 10:
+            return 'ott';
+            break;
+        case 11:
+            return 'nov';
+            break;
+        case 12:
+            return 'dic';
+            break;
     }
 }
