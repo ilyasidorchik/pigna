@@ -138,7 +138,7 @@
                                                 </div>
                                             </div>
                                             <div class="form__element">
-										        <button class="form__element__button form__element__button_book-editing form__element__button-disabled">Aggiornare</button>
+										        <button class="form__element__button form__element__button_book-adding">Aggiornare</button>
 									        </div>
                                         </div>
                                     </form>
