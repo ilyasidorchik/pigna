@@ -246,13 +246,13 @@ function start() {
 
     // Редактирование книги
     let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-    for (var i = 0; i < onHandsCheckbox.length; i++) {
-        let id = document.querySelectorAll('.grid__item')[i].getAttribute('data-id');
+    for (let i = 0; i < onHandsCheckbox.length; i++) {
+        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
 
-    let gridItems = document.querySelectorAll('.page.admin .grid__item');
-    for (var j = 0; j < gridItems.length; j++) {
+    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
+    for (let j = 0; j < gridItems.length; j++) {
         gridItems[j].addEventListener('click', {handleEvent: openEditPage, number: j}, true);
     }
 
@@ -959,14 +959,14 @@ function searchBook(bookTitle) {
                 }
 
                 // Редактирование книги
-                let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-                for (var i = 0; i < onHandsCheckbox.length; i++) {
-                    let id = document.querySelectorAll('.grid__item')[i].getAttribute('data-id');
-                    onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
+                let onHandsCheckboxes = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+                for (let i = 0; i < onHandsCheckboxes.length; i++) {
+                    let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+                    onHandsCheckboxes[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
                 }
 
-                let gridItems = document.querySelectorAll('.page.admin .grid__item');
-                for (var j = 0; j < gridItems.length; j++) {
+                let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
+                for (let j = 0; j < gridItems.length; j++) {
                     gridItems[j].addEventListener('click', {handleEvent: openEditPage, number: j}, true);
                 }
 

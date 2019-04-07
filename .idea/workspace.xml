@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/php/editBook.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +31,7 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="14670">
               <caret line="974" column="31" selection-start-line="974" selection-start-column="31" selection-end-line="974" selection-end-column="31" />
               <folding>
                 <element signature="e#50#88226#1" expanded="true" />
@@ -46,8 +44,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="837" column="53" selection-start-line="837" selection-start-column="53" selection-end-line="837" selection-end-column="53" />
+            <state relative-caret-position="231">
+              <caret line="253" column="82" lean-forward="true" selection-start-line="253" selection-start-column="82" selection-end-line="253" selection-end-column="82" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -69,8 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>swi</find>
-      <find>month</find>
       <find>title</find>
       <find>let date</find>
       <find>date</find>
@@ -86,7 +82,6 @@
       <find>bookAdding</find>
       <find>уд</find>
       <find>id</find>
-      <find>id</find>
       <find>addBook(</find>
       <find>к</find>
       <find>id)</find>
@@ -99,6 +94,9 @@
       <find>local</find>
       <find>monthBookCheck</find>
       <find>priceChec</find>
+      <find>hands</find>
+      <find>openEditPage</find>
+      <find>openEdit</find>
     </findStrings>
     <replaceStrings>
       <replace>input_title</replace>
@@ -355,11 +353,13 @@
       <workItem from="1554122601327" duration="3313000" />
       <workItem from="1554231271028" duration="2925000" />
       <workItem from="1554315466198" duration="15873000" />
+      <workItem from="1554415184726" duration="42000" />
+      <workItem from="1554665021980" duration="581000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="428867000" />
+    <option name="totallyTimeSpent" value="429490000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,7 +382,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3597997" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.369814" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -602,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="14670">
           <caret line="974" column="31" selection-start-line="974" selection-start-column="31" selection-end-line="974" selection-end-column="31" />
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
@@ -650,16 +650,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="63" column="70" lean-forward="true" selection-start-line="63" selection-start-column="70" selection-end-line="63" selection-end-column="70" />
-          <folding>
-            <element signature="e#76#84#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="837" column="53" selection-start-line="837" selection-start-column="53" selection-end-line="837" selection-end-column="53" />
+        <state relative-caret-position="231">
+          <caret line="253" column="82" lean-forward="true" selection-start-line="253" selection-start-column="82" selection-end-line="253" selection-end-column="82" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
