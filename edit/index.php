@@ -139,7 +139,7 @@
                                             </div>
                                             <div class="form__element">
 										        <button class="form__element__button form__element__button_book-adding">Aggiornare</button>
-										        <span class="form__element__remove-link">× <a class="form__element__remove-link__underline pseudolink">Eliminare</a></span>
+										        <span class="form__element__remove-link">× <a class="form__element__remove-link__underline ★ pseudolink">Eliminare</a></span>
 									        </div>
                                         </div>
                                     </form>
@@ -157,7 +157,7 @@
                                 <div class="book-editing__month-book month-book" style="display: $monthBookStatus;">
                                     <div class="book-editing__month-book__wrap month-book__wrap">
                                         <div class="month-book__wrap__label">
-                                            <span class="month-book__wrap__label__text">Libro del mese</span>
+                                            <span class="month-book__wrap__label__text">★ Libro del mese</span>
                                         </div>
                                         <p class="month-book__wrap__description">$row[description]</p>
                                     </div>

@@ -103,7 +103,7 @@
 				        <div class="book-editing__month-book month-book" style="display: none;">
 					        <div class="book-editing__month-book__wrap month-book__wrap">
 						        <div class="month-book__wrap__label">
-							        <span class="month-book__wrap__label__text">Libro del mese</span>
+							        <span class="month-book__wrap__label__text">★ Libro del mese</span>
 						        </div>
 						        <p class="month-book__wrap__description"></p>
 					        </div>

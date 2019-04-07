@@ -83,7 +83,7 @@
 				        <div class="pinterest">Pinteressarsi</div>
 			        </div>
 			        <p>Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato<span class="footer__main__space">&nbsp;</span>dalle&nbsp;9 alle 12.</p>
+			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
 
 			        <p>
 				        Autore dell’idea e progettista <nobr><a href="http://robertblinov.net/" class="link">Robert Blinov</a>,</nobr>

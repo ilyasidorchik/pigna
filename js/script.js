@@ -1320,7 +1320,7 @@ function toggleBookOnHands(e) {
 }
 
 function openEditPage(e) {
-    let book = document.querySelectorAll('.grid__item')[this.number];
+    let book = document.querySelectorAll('.grid__item[data-id]')[this.number];
     let id = book.getAttribute('data-id');
     if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
 
