@@ -112,6 +112,8 @@
 			border-bottom-color: rgba(205, 4, 4, .75);
 			transition: none;
 		}
+
+
 	}
 
 	.search {
@@ -773,34 +775,6 @@
 				}
 			}
 		}
-
-		&__delete {
-			position: absolute;
-			width: 32px;
-			height: 32px;
-			box-sizing: border-box;
-			padding: 5px;
-			margin-right: -7px;
-			top: 18px;
-			right: 0;
-			cursor: pointer;
-
-			@media @col-3 {
-				top: 82px;
-			}
-
-			&__icon {
-				&__path {
-					fill: #000;
-				}
-			}
-
-			&:hover {
-				.book-editing__delete__icon__path {
-					fill: #cd0404;
-				}
-			}
-		}
 	}
 }
 
@@ -1038,6 +1012,30 @@
 				background: #6de443 !important;
 				box-shadow: none !important;
 				color: rgba(0, 0, 0, .25);
+			}
+		}
+
+		&__remove-link {
+			cursor: pointer;
+			color: #cd0404;
+			transition: color 0.35s ease-out;
+			margin-left: 15px;
+
+			&__underline {
+				color: #cd0404 !important;
+				border-bottom-color: rgba(205, 4, 4, .75) !important;
+			}
+
+			&:hover {
+				color: lighten(#cd0404, 15%) !important;
+				border-bottom-color: lighten(rgba(205, 4, 4, .75), 15%) !important;
+				transition: none;
+
+				.form__element__remove-link__underline {
+					color: lighten(#cd0404, 15%) !important;
+					border-bottom-color: lighten(rgba(205, 4, 4, .75), 15%) !important;
+					transition: none;
+				}
 			}
 		}
 	}

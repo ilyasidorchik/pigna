@@ -903,7 +903,7 @@ function start() {
         });
 
         // Удаление книги
-        let deleteLink = document.querySelector('.book-editing__delete');
+        let deleteLink = document.querySelector('.form__element__remove-link');
         deleteLink.addEventListener('click', {handleEvent: removeBook, id: id});
     }
 }
@@ -1341,7 +1341,7 @@ function removeBook() {
                 let form = document.querySelector('.form');
                 form.style.display = 'none';
 
-                let deleteLink = document.querySelector('.book-editing__delete');
+                let deleteLink = document.querySelector('.form__element__remove-link');
                 deleteLink.style.display = 'none';
 
                 let bookCover = document.querySelector('.grid__item');
@@ -1412,7 +1412,7 @@ function returnBook() {
                 let returnBlock = document.querySelector('.grid__item__admin_return');
                 bookCover.removeChild(returnBlock);
 
-                let deleteLink = document.querySelector('.book-editing__delete');
+                let deleteLink = document.querySelector('.form__element__remove-link');
                 deleteLink.style.display = 'block';
             }
             else {
