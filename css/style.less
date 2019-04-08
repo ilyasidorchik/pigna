@@ -109,7 +109,7 @@
 		&:hover {
 			cursor: pointer;
 			color: #CD0404;
-			border-bottom-color: rgba(205, 4, 4, .75);
+			border-bottom-color: rgba(205, 4, 4, .75) !important;
 			transition: none;
 		}
 
@@ -657,6 +657,17 @@
 
 				@media @col-4 {
 					margin-left: -1rem;
+				}
+
+				&-remove {
+					.book-editing__form__success__alert {
+						background: #f8d7da;
+						color: #721c24;
+
+						&__removing {
+							border-bottom-color: rgba(114, 28, 36, .5);
+						}
+					}
 				}
 
 				&__alert {

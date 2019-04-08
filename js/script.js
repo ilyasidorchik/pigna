@@ -1341,21 +1341,12 @@ function removeBook() {
                 let form = document.querySelector('.form');
                 form.style.display = 'none';
 
-                let deleteLink = document.querySelector('.form__element__remove-link');
-                deleteLink.style.display = 'none';
+                let alertSuccess = document.createElement('div');
+                alertSuccess.className = "book-editing__form__success book-editing__form__success-remove";
+                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro eliminato. <a class="book-editing__form__success__alert__removing pseudolink">Annulla</a></div>';
+                formWrap.appendChild(alertSuccess);
 
-                let bookCover = document.querySelector('.grid__item');
-                bookCover.classList.add('grid__item_removed');
-
-                let monthBookCover = document.querySelector('.month-book');
-                monthBookCover.classList.add('book-editing__month-book_removed');
-
-                let returnBlock = document.createElement('div');
-                returnBlock.className = 'grid__item__admin grid__item__admin_panel grid__item__admin_return grid__item__return';
-                returnBlock.innerHTML = '<a class="pseudolink grid__item__return__link">Annulla eliminazione</a>';
-                bookCover.appendChild(returnBlock);
-
-                let returnLink = bookCover.querySelector('.grid__item__return__link');
+                let returnLink = document.querySelector('.book-editing__form__success__alert__removing');
                 returnLink.addEventListener('click', {handleEvent: returnBook, id: this.id});
             }
             else {
@@ -1403,17 +1394,8 @@ function returnBook() {
                 let form = document.querySelector('.form');
                 form.style.display = 'grid';
 
-                let bookCover = document.querySelector('.grid__item');
-                bookCover.classList.remove('grid__item_removed');
-
-                let monthBookCover = document.querySelector('.month-book');
-                monthBookCover.classList.remove('book-editing__month-book_removed');
-
-                let returnBlock = document.querySelector('.grid__item__admin_return');
-                bookCover.removeChild(returnBlock);
-
-                let deleteLink = document.querySelector('.form__element__remove-link');
-                deleteLink.style.display = 'block';
+                let alertSuccess = document.querySelector('.book-editing__form__success');
+                formWrap.removeChild(alertSuccess);
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
