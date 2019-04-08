@@ -181,7 +181,7 @@
 			height: 465px;
 			padding: .5rem;
 			background: #fff2d5;
-			transition: box-shadow .35s ease-out, color .35s ease-out, -webkit-text-fill-color .35s ease-out;
+			transition: box-shadow .35s ease-out, color .35s ease-out;
 
 			@media @col-3 {
 				max-width: 159px;
@@ -237,15 +237,24 @@
 				margin-top: -36px;
 				margin-left: -7px;
 				box-shadow: none !important;
-				background: linear-gradient(to bottom, #6FFC3E 0%, #1E6B07 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				//color: #6FFC3E;
 
 				@media @col-3 {
 					font-size: 10rem;
 					margin: 0;
 					height: auto;
+				}
+
+				&:hover {
+					.grid__item_link-to-book-adding__icon__gradient-color {
+						transition: none;
+
+						&_1 {
+							stop-color: #83d955;
+						}
+						&_2 {
+							stop-color: #305d1a;
+						}
+					}
 				}
 
 				&__link {
@@ -254,6 +263,22 @@
 					right: 0;
 					bottom: 0;
 					left: 0;
+				}
+
+				&__icon {
+					width: 75px;
+					margin: auto auto;
+
+					&__gradient-color {
+						transition: stop-color .35s ease-out;
+
+						&_1 {
+							stop-color: #6FFC3E;
+						}
+						&_2 {
+							stop-color: #1E6B07;
+						}
+					}
 				}
 			}
 
@@ -1012,13 +1037,17 @@
 			background: #6FFC3E;
 			background: linear-gradient(to bottom, #6FFC3E 0%, #1E6B07 100%);
 			color: #fff;
+			box-shadow: none;
+			transition: background 0.35s ease-out, box-shadow 0.35s ease-out;
 
 			&:hover {
 				box-shadow: inset 0 0 100px rgba(0, 0, 0, .16);
+				transition: none;
 			}
 
 			&:active {
 				background: #1E6B07;
+				transition: none;
 			}
 
 			&-disabled {
