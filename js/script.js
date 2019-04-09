@@ -951,11 +951,11 @@ function searchBook(bookTitle) {
                     }
                 }
 
-                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"></a>+</div>') {
+                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"></a><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.56 73.28" class="grid__item_link-to-book-adding__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.46" y1="0.86" x2="37.46" y2="74.14" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__icon__gradient-color grid__item_link-to-book-adding__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__icon__gradient-color grid__item_link-to-book-adding__icon__gradient-color_2"/></linearGradient></defs><title>plus-bigger</title><path class="a" d="M32.66,42H.18V33H32.66V.86h9.6V33H74.74v9H42.26V74.14h-9.6Z" transform="translate(-0.18 -0.86)"/></svg></div>') {
                     linkToBookAdding.style.display = 'none';
                 }
                 else {
-                    linkToBookAdding.style.display = 'block';
+                    linkToBookAdding.style.display = 'flex';
                 }
 
                 // Редактирование книги
