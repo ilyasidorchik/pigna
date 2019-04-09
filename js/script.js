@@ -180,7 +180,9 @@ function start() {
 
     // Поиск по началу печати
     if (searchInput != null) {
-        window.addEventListener('keydown', () => {
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.altKey || e.metaKey) return;
+
             searchInput.focus();
         });
 
