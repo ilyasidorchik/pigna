@@ -248,10 +248,10 @@
 						transition: none;
 
 						&_1 {
-							stop-color: #83d955;
+							stop-color: #85dc54;
 						}
 						&_2 {
-							stop-color: #305d1a;
+							stop-color: #305d1c;
 						}
 					}
 				}
@@ -265,7 +265,7 @@
 				}
 
 				&__icon {
-					width: 75px;
+					width: 100px;
 					margin: auto auto;
 
 					&__gradient-color {
@@ -376,8 +376,18 @@
 						padding: 11px 5px 0;
 					}
 
-					.form__element__label__fake-checkbox {
-						border: 1px solid #000;
+					.form__element__label {
+						&__fake-checkbox {
+							border: 1px solid #000;
+							transition: border .35s ease-out;
+						}
+
+						&:hover {
+							.form__element__label__fake-checkbox {
+								border: 1px solid #ec6040;
+								transition: none;
+							}
+						}
 					}
 				}
 
@@ -478,15 +488,11 @@
 	}
 
 	&.admin {
-		.grid__item:hover {
+		.grid__item_hover {
 			cursor: pointer;
 			color: #CD0404;
 			box-shadow: 0px 0px 0px 1px #ec6040 inset;
 			transition: none;
-		}
-
-		.grid__item:hover {
-			-webkit-text-fill-color: #cd0404;
 
 			.grid__item__admin_edit__icon {
 				fill: #cd0404;
@@ -996,7 +1002,6 @@
 			cursor: pointer;
 			position: relative;
 			color: #000 !important;
-			-webkit-text-fill-color: #000;
 
 			&__checkbox {
 				opacity: 0;

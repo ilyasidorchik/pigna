@@ -247,15 +247,24 @@ function start() {
     }
 
     // Редактирование книги
-    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-    for (let i = 0; i < onHandsCheckbox.length; i++) {
-        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
-    }
-
     let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-    for (let j = 0; j < gridItems.length; j++) {
-        gridItems[j].addEventListener('click', {handleEvent: openEditPage, number: j}, true);
+    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+    for (let i = 0; i < gridItems.length; i++) {
+        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+
+        gridItems[i].addEventListener('mouseover', (e)=> {
+            gridItems[i].classList.add('grid__item_hover');
+
+            if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
+                gridItems[i].classList.remove('grid__item_hover');
+            }
+        });
+        gridItems[i].addEventListener('mouseout', ()=> {
+            gridItems[i].classList.remove('grid__item_hover');
+        });
+
+        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
 
     // Форма добавления книги
@@ -961,15 +970,24 @@ function searchBook(bookTitle) {
                 }
 
                 // Редактирование книги
-                let onHandsCheckboxes = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-                for (let i = 0; i < onHandsCheckboxes.length; i++) {
-                    let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-                    onHandsCheckboxes[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
-                }
-
                 let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-                for (let j = 0; j < gridItems.length; j++) {
-                    gridItems[j].addEventListener('click', {handleEvent: openEditPage, number: j}, true);
+                let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+                for (let i = 0; i < gridItems.length; i++) {
+                    let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+                    gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+
+                    gridItems[i].addEventListener('mouseover', (e)=> {
+                        gridItems[i].classList.add('grid__item_hover');
+
+                        if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
+                            gridItems[i].classList.remove('grid__item_hover');
+                        }
+                    });
+                    gridItems[i].addEventListener('mouseout', ()=> {
+                        gridItems[i].classList.remove('grid__item_hover');
+                    });
+
+                    onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
                 }
 
                 let footer = document.querySelector('.footer');
