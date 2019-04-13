@@ -71,7 +71,7 @@ function start() {
         }
     }
 
-    var linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
     if (linkToBookAdding != null) {
         if (screen < 535) {
             books.insertBefore(linkToBookAdding, books.firstChild);
@@ -932,7 +932,7 @@ function searchBook(bookTitle) {
                 let gridItemCount = grid.querySelectorAll('.grid__item').length;
 
                 let books = grid;
-                var linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
                 if (linkToBookAdding != null) {
                     if (screen < 535) {
                         books.insertBefore(linkToBookAdding, books.firstChild);
@@ -1187,9 +1187,7 @@ function editBook(id) {
         }
     }
     else {
-        if (price == '') {
-            price = 0;
-        }
+        price = 0;
     }
 
     let params = 'id=' + id + '&title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
