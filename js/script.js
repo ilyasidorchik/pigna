@@ -32,7 +32,12 @@ function start() {
 
     if (searchInput != null) {
         if (document.documentElement.clientWidth < 711) {
-            searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+            if (document.documentElement.clientWidth < 535) {
+                searchInput.placeholder = 'Pigna';
+            }
+            else {
+                searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+            }
         }
         else {
             searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
@@ -40,10 +45,10 @@ function start() {
     }
 
     let screen = document.documentElement.clientWidth;
-    var bookEditing = document.querySelector('.book-editing');
-    var bookEditingForm = document.querySelector('.book-editing__form');
-    var bookEditingCover = document.querySelector('.book-editing__cover');
-    var bookEditingMonthBook = document.querySelector('.book-editing__month-book');
+    let bookEditing = document.querySelector('.book-editing');
+    let bookEditingForm = document.querySelector('.book-editing__form');
+    let bookEditingCover = document.querySelector('.book-editing__cover');
+    let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
     if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
         if (screen < 892) {
             bookEditing.insertBefore(bookEditingCover, bookEditingForm);
@@ -71,7 +76,7 @@ function start() {
         }
     }
 
-    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+    let linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
     if (linkToBookAdding != null) {
         if (screen < 535) {
             books.insertBefore(linkToBookAdding, books.firstChild);
@@ -103,10 +108,17 @@ function start() {
 
     window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
+        books = document.querySelectorAll('.grid')[0];
+        linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
 
         if (searchInput != null) {
-            if (screen  < 711) {
-                searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+            if (screen < 711) {
+                if (screen < 535) {
+                    searchInput.placeholder = 'Pigna';
+                }
+                else {
+                    searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+                }
             }
             else {
                 searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
@@ -114,6 +126,8 @@ function start() {
         }
 
         if (linkToBookAdding != null) {
+            books.removeChild(linkToBookAdding);
+
             if (screen < 535) {
                 books.insertBefore(linkToBookAdding, books.firstChild);
             }
@@ -931,30 +945,33 @@ function searchBook(bookTitle) {
                 grid.innerHTML = xhr.responseText;
                 let gridItemCount = grid.querySelectorAll('.grid__item').length;
 
+                let screen = document.documentElement.clientWidth;
                 let books = grid;
-                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+                let linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
                 if (linkToBookAdding != null) {
+                    books.removeChild(linkToBookAdding);
+
                     if (screen < 535) {
                         books.insertBefore(linkToBookAdding, books.firstChild);
                     }
                     else {
                         if (screen < 711) {
-                            books.insertBefore(linkToBookAdding, books.children[3]);
+                            books.insertBefore(linkToBookAdding, books.children[2]);
                         }
                         else {
                             if (screen < 892) {
-                                books.insertBefore(linkToBookAdding, books.children[4]);
+                                books.insertBefore(linkToBookAdding, books.children[3]);
                             }
                             else {
                                 if (screen < 1060) {
-                                    books.insertBefore(linkToBookAdding, books.children[5]);
+                                    books.insertBefore(linkToBookAdding, books.children[4]);
                                 }
                                 else {
                                     if (screen < 1230) {
-                                        books.insertBefore(linkToBookAdding, books.children[6]);
+                                        books.insertBefore(linkToBookAdding, books.children[5]);
                                     }
                                     else {
-                                        books.insertBefore(linkToBookAdding, books.children[7]);
+                                        books.insertBefore(linkToBookAdding, books.children[6]);
                                     }
                                 }
                             }
@@ -962,11 +979,12 @@ function searchBook(bookTitle) {
                     }
                 }
 
-                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"></a><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.56 73.28" class="grid__item_link-to-book-adding__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.46" y1="0.86" x2="37.46" y2="74.14" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__icon__gradient-color grid__item_link-to-book-adding__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__icon__gradient-color grid__item_link-to-book-adding__icon__gradient-color_2"/></linearGradient></defs><title>plus-bigger</title><path class="a" d="M32.66,42H.18V33H32.66V.86h9.6V33H74.74v9H42.26V74.14h-9.6Z" transform="translate(-0.18 -0.86)"/></svg></div>') {
-                    linkToBookAdding.style.display = 'none';
+                // Если ничего не нашлось — плюс по центру
+                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>plus</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a></div>') {
+                    linkToBookAdding.classList.add('grid__item_link-to-book-adding_center');
                 }
                 else {
-                    linkToBookAdding.style.display = 'flex';
+                    linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
                 }
 
                 // Редактирование книги
@@ -1198,7 +1216,7 @@ function editBook(id) {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                window.location.replace('http://accademiapigna.sidorchik.ru/');
+                window.location.replace('http://pigna.pro/');
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -1344,7 +1362,7 @@ function openEditPage(e) {
 
     }
     else {
-        window.location.replace('http://accademiapigna.sidorchik.ru/edit/?book=' + id);
+        window.location.replace('http://pigna.pro/edit/?book=' + id);
     }
 }
 

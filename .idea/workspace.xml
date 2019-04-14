@@ -4,8 +4,8 @@
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/search.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,37 +30,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="947" column="66" selection-start-line="947" selection-start-column="66" selection-end-line="947" selection-end-column="66" />
+              <folding>
+                <element signature="e#4#10#0" expanded="true" />
+                <element signature="e#4#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="1018" column="31" selection-start-line="1018" selection-start-column="31" selection-end-line="1018" selection-end-column="31" />
+            <state relative-caret-position="186">
+              <caret line="376" column="33" lean-forward="true" selection-start-line="376" selection-start-column="33" selection-end-line="376" selection-end-column="33" />
               <folding>
                 <element signature="e#50#88226#1" expanded="true" />
                 <element signature="e#88346#180686#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/script.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="1189" column="18" selection-start-line="1189" selection-start-column="18" selection-end-line="1189" selection-end-column="18" />
-              <folding>
-                <element signature="e#4#10#0" expanded="true" />
-                <element signature="e#4#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="49" column="699" selection-start-line="49" selection-start-column="699" selection-end-line="49" selection-end-column="699" />
             </state>
           </provider>
         </entry>
@@ -71,27 +62,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>removeBook</find>
-      <find>block</find>
-      <find>'block'</find>
-      <find>search</find>
-      <find>linkToBookAdding.style.display</find>
-      <find>searchBook</find>
-      <find>searchbook</find>
-      <find>edit</find>
-      <find>margin-top:</find>
-      <find>sticker-</find>
-      <find>book-adding</find>
-      <find>grid__item:ho</find>
-      <find>grid__item</find>
-      <find>openDi</find>
       <find>label</find>
       <find>&amp;__label</find>
       <find>admin</find>
@@ -106,8 +83,22 @@
       <find>stop-color</find>
       <find>stop</find>
       <find>stop-col</find>
-      <find>editBook</find>
       <find>fake-che</find>
+      <find>calc(</find>
+      <find>calc</find>
+      <find>editBook</find>
+      <find>icon</find>
+      <find>book-adding</find>
+      <find>xhr.respo</find>
+      <find>grid-col</find>
+      <find>_center</find>
+      <find>resiz</find>
+      <find>100px</find>
+      <find>searchBook</find>
+      <find>removeChild</find>
+      <find>bookEditingForm</find>
+      <find>screen</find>
+      <find>searchBOok</find>
     </findStrings>
     <replaceStrings>
       <replace>input_author</replace>
@@ -152,7 +143,6 @@
         <option value="$PROJECT_DIR$/less/style.less" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/php/db_connection.php" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/less/styles.less" />
         <option value="$PROJECT_DIR$/result.php" />
         <option value="$PROJECT_DIR$/admin/addBook.php" />
@@ -177,10 +167,11 @@
         <option value="$PROJECT_DIR$/php/editBook.php" />
         <option value="$PROJECT_DIR$/edit/index.php" />
         <option value="$PROJECT_DIR$/+/index.php" />
-        <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/css/style.less" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -209,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,6 +251,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,12 +362,14 @@
       <workItem from="1554846534641" duration="1425000" />
       <workItem from="1555010298024" duration="2768000" />
       <workItem from="1555096728213" duration="1240000" />
-      <workItem from="1555180992580" duration="1457000" />
+      <workItem from="1555180992580" duration="2567000" />
+      <workItem from="1555185068598" duration="599000" />
+      <workItem from="1555259879117" duration="3483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="442987000" />
+    <option name="totallyTimeSpent" value="448179000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -395,16 +388,16 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007153" side_tool="true" weight="0.31025642" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31025642" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20243205" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2081545" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -493,7 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css" />
     <entry file="file://$PROJECT_DIR$/css/style.css.map" />
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -617,13 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/editBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="184" selection-start-line="27" selection-start-column="184" selection-end-line="27" selection-end-column="184" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
@@ -645,38 +630,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css" />
+    <entry file="file://$PROJECT_DIR$/php/editBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="184" selection-start-line="27" selection-start-column="184" selection-end-line="27" selection-end-column="184" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="28" column="874" selection-start-line="28" selection-start-column="874" selection-end-line="28" selection-end-column="874" />
+        <state relative-caret-position="258">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="49" column="699" selection-start-line="49" selection-start-column="699" selection-end-line="49" selection-end-column="699" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="1189" column="18" selection-start-line="1189" selection-start-column="18" selection-end-line="1189" selection-end-column="18" />
-          <folding>
-            <element signature="e#4#10#0" expanded="true" />
-            <element signature="e#4#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="268">
+          <caret line="49" column="914" lean-forward="true" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="914" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="1018" column="31" selection-start-line="1018" selection-start-column="31" selection-end-line="1018" selection-end-column="31" />
+        <state relative-caret-position="186">
+          <caret line="376" column="33" lean-forward="true" selection-start-line="376" selection-start-column="33" selection-end-line="376" selection-end-column="33" />
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
             <element signature="e#88346#180686#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="947" column="66" selection-start-line="947" selection-start-column="66" selection-end-line="947" selection-end-column="66" />
+          <folding>
+            <element signature="e#4#10#0" expanded="true" />
+            <element signature="e#4#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
