@@ -327,14 +327,14 @@
 				}
 
 				&__title {
-					max-height: 309px;
+					max-height: 345px;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					font-family: 'IBM Plex Serif';
 					font-size: 2.1rem;
 
 					@media @col-3 {
-						max-height: 165px;
+						max-height: 183px;
 						font-size: 1.15rem;
 					}
 				}
@@ -425,8 +425,11 @@
 				}
 
 				&_on-hands {
-					height: 19%;
-					//background: rgba(255, 255, 255, .75);
+					height: 15.5%;
+
+					@media @col-3 {
+						height: 17%;
+					}
 				}
 
 				&_return {
@@ -754,10 +757,12 @@
 		}
 
 		&__cover {
+			display: none;
 			grid-column-start: 1;
 			grid-column-end: 15;
 
 			@media @col-3 {
+				display: block;
 				grid-column-start: 1;
 				grid-column-end: 7;
 				margin-bottom: 27px;
@@ -1057,7 +1062,7 @@
 			&__checkbox:checked + &__fake-checkbox::before {
 				display: block;
 				content: "✓";
-				font-family: 'Times New Roman' !important;
+				font-family: Georgia, 'Times New Roman' !important;
 				font-size: 2rem;
 				color: #000;
 				margin-top: -15px;

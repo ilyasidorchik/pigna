@@ -76,7 +76,7 @@ function start() {
         }
     }
 
-    let linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
+    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
     if (linkToBookAdding != null) {
         if (screen < 535) {
             books.insertBefore(linkToBookAdding, books.firstChild);
@@ -109,7 +109,7 @@ function start() {
     window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
         books = document.querySelectorAll('.grid')[0];
-        linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
+        linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
 
         if (searchInput != null) {
             if (screen < 711) {
@@ -947,7 +947,7 @@ function searchBook(bookTitle) {
 
                 let screen = document.documentElement.clientWidth;
                 let books = grid;
-                let linkToBookAdding = books.querySelector('.grid__item_link-to-book-adding');
+                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
                 if (linkToBookAdding != null) {
                     books.removeChild(linkToBookAdding);
 
@@ -1216,7 +1216,7 @@ function editBook(id) {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                window.location.replace('http://pigna.pro/');
+                window.location.replace('http://accademiapigna.sidorchik.ru/');
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -1362,7 +1362,7 @@ function openEditPage(e) {
 
     }
     else {
-        window.location.replace('http://pigna.pro/edit/?book=' + id);
+        window.location.replace('http://accademiapigna.sidorchik.ru/edit/?book=' + id);
     }
 }
 
