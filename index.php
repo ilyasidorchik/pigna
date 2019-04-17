@@ -74,12 +74,19 @@
 			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="170" frameborder="0" style="border:0" allowfullscreen></iframe>
 		        </div>
 		        <div class="grid__description">
-			        <div class="likely likely-big">
+			        <div class="likely likely_desktop likely-big">
 				        <div class="twitter">Twittare</div>
 				        <div class="facebook">Condividere</div>
 				        <div class="whatsapp"></div>
 				        <div class="telegram">Inviare</div>
 				        <div class="pinterest">Pinteressarsi</div>
+			        </div>
+			        <div class="likely likely_mobile likely-big">
+				        <div class="twitter"></div>
+				        <div class="facebook"></div>
+				        <div class="whatsapp"></div>
+				        <div class="telegram"></div>
+				        <div class="pinterest"></div>
 			        </div>
 			        <p>Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
 			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
