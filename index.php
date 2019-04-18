@@ -48,6 +48,7 @@
             <?php
                 if ($admin == 'admin')
                     echo '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>plus</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a></div>';
+
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
 
@@ -67,10 +68,25 @@
 	                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
             ?>
         </div>
-        <div class="footer footer_bottom-sticked-fixed">
+        <div class="footer footer_mobile footer_mobile_bordered">
+	        <div class="grid footer__main">
+		        <div class="grid__description">
+			        <div class="likely likely_mobile likely-big">
+				        <div class="twitter"></div>
+				        <div class="facebook"></div>
+				        <div class="whatsapp"></div>
+				        <div class="telegram"></div>
+				        <div class="pinterest"></div>
+			        </div>
+			        <p><a href="https://www.google.com/maps?ll=43.819368,7.774345&z=13&t=m&hl=en-US&gl=RU&mapclient=embed&q=Piazza+Capitolo,+1+18038+Sanremo+IM+Italy" class="link">Piazza del&nbsp;Capitolo,&nbsp;1</a>, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
+			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
+		        </div>
+	        </div>
+        </div>
+        <div class="footer footer_desktop footer_bottom-sticked-fixed">
 	        <div class="footer__hint">Visitare</div>
 	        <div class="grid footer__main">
-		        <div class="grid__map">
+		        <div class="grid__map grid__map_desktop">
 			        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10235.383716062684!2d7.769742885970775!3d43.81744871255861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdf55b2cddb363%3A0x258c2b5076a50cbd!2zUGlhenphIENhcGl0b2xvLCAxLCAxODAzOCBTYW5yZW1vIElNLCDQmNGC0LDQu9C40Y8!5e0!3m2!1sru!2sru!4v1551525505146" width="100%" height="170" frameborder="0" style="border:0" allowfullscreen></iframe>
 		        </div>
 		        <div class="grid__description">
@@ -81,15 +97,8 @@
 				        <div class="telegram">Inviare</div>
 				        <div class="pinterest">Pinteressarsi</div>
 			        </div>
-			        <div class="likely likely_mobile likely-big">
-				        <div class="twitter"></div>
-				        <div class="facebook"></div>
-				        <div class="whatsapp"></div>
-				        <div class="telegram"></div>
-				        <div class="pinterest"></div>
-			        </div>
-			        <p>Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
+			        <p class="grid__description__text">Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
+			        <p class="grid__description__text">Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
 
 			        <p>
 				        Autore dell’idea e progettista <nobr><a href="http://robertblinov.net/" class="link">Robert Blinov</a>,</nobr>

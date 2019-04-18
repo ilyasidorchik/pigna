@@ -1,6 +1,8 @@
 let searchForm = document.querySelector('.search__form form');
 let searchInput = document.getElementById('searchInput');
 
+let books = document.querySelectorAll('.grid')[0];
+
 // Форма добавления книги
 let formWrap = document.querySelector('.book-editing__form');
 let form = document.querySelector('.book-editing__form .form');
@@ -23,11 +25,28 @@ let bookCoverMonthBook = document.querySelectorAll('.month-book')[0];
 let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__description')[0];
 let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
 
+// Футер
+let footerMobile = document.querySelector('.footer_mobile');
+if (document.documentElement.clientWidth < 535) {
+    books.insertBefore(footerMobile, books.children[3]);
+}
+else {
+    books.removeChild(footerMobile);
+}
+window.addEventListener("resize", () => {
+    if (document.documentElement.clientWidth < 535) {
+        books.insertBefore(footerMobile, books.children[3]);
+    }
+    else {
+        if (document.querySelector('.footer_mobile') != null)
+            books.removeChild(footerMobile);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
 function start() {
     let bookTitle;
-    let books = document.querySelectorAll('.grid')[0];
     let footer = document.querySelector('.footer');
 
     if (searchInput != null) {
@@ -979,12 +998,32 @@ function searchBook(bookTitle) {
                     }
                 }
 
+                // Футер
+                if (document.documentElement.clientWidth < 535) {
+                    books.insertBefore(footerMobile, books.children[3]);
+                }
+                else {
+                    books.removeChild(footerMobile);
+                }
+                window.addEventListener("resize", () => {
+                    if (document.documentElement.clientWidth < 535) {
+                        books.insertBefore(footerMobile, books.children[3]);
+                    }
+                    else {
+                        if (document.querySelector('.footer_mobile') != null)
+                            books.removeChild(footerMobile);
+                    }
+                });
+
+
                 // Если ничего не нашлось — плюс по центру
                 if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>plus</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a></div>') {
                     linkToBookAdding.classList.add('grid__item_link-to-book-adding_center');
+                    footerMobile.classList.remove('footer_mobile_bordered');
                 }
                 else {
                     linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
+                    footerMobile.classList.add('footer_mobile_bordered');
                 }
 
                 // Редактирование книги

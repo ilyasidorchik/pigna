@@ -475,6 +475,14 @@
 		&__map {
 			margin-top: 22px;
 
+			&_desktop {
+				display: none;
+
+				@media @col-3 {
+					display: block;
+				}
+			}
+
 			@media @col-3 {
 				grid-column-start: 1;
 				grid-column-end: 12;
@@ -502,6 +510,14 @@
 				@media @col-3 {
 					font-size: 1rem;
 					line-height: 1.5rem;
+				}
+			}
+
+			&__text {
+				display: none;
+
+				@media @col-3 {
+					display: block;
 				}
 			}
 
@@ -548,6 +564,30 @@
 
 
 	.footer {
+		&_mobile {
+			display: block;
+			padding-top: 13px;
+			margin-bottom: -37px;
+
+			&_bordered {
+				border-top: 1px solid;
+				border-bottom: 1px solid;
+				margin-bottom: 0 !important;
+			}
+
+			@media @col-3 {
+				display: none;
+			}
+		}
+
+		&_desktop {
+			margin-top: 15px;
+
+			@media @col-5 {
+				margin-top: 0;
+			}
+		}
+
 		&_bottom-sticked {
 			@media @col-6 {
 				position: absolute;

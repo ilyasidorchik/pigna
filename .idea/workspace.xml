@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/img/tick.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/search.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +34,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="932" column="5" selection-start-line="932" selection-start-column="5" selection-end-line="932" selection-end-column="5" />
+            <state relative-caret-position="470">
+              <caret line="1025" column="46" selection-start-line="1025" selection-start-column="46" selection-end-line="1025" selection-end-column="46" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -47,8 +47,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="426" column="30" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
+            <state relative-caret-position="265">
+              <caret line="574" column="33" selection-start-line="574" selection-start-column="33" selection-end-line="574" selection-end-column="33" />
               <folding>
                 <element signature="e#50#88226#1" expanded="true" />
                 <element signature="e#88346#180686#1" expanded="true" />
@@ -61,8 +61,20 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
+            <state relative-caret-position="108">
+              <caret line="70" column="63" selection-start-line="70" selection-start-column="63" selection-end-line="70" selection-end-column="63" />
+              <folding>
+                <element signature="e#4937#4943#0#HTML" expanded="true" />
+                <element signature="e#4952#4958#0#HTML" expanded="true" />
+                <element signature="e#4972#4978#0#HTML" expanded="true" />
+                <element signature="e#5194#5200#0#HTML" expanded="true" />
+                <element signature="e#5212#5218#0#HTML" expanded="true" />
+                <element signature="e#5224#5230#0#HTML" expanded="true" />
+                <element signature="e#5235#5241#0#HTML" expanded="true" />
+                <element signature="e#2619#2625#0" expanded="true" />
+                <element signature="e#2634#2640#0" expanded="true" />
+                <element signature="e#2657#2663#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,12 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>calc(</find>
-      <find>calc</find>
-      <find>editBook</find>
-      <find>icon</find>
-      <find>book-adding</find>
-      <find>xhr.respo</find>
       <find>grid-col</find>
       <find>_center</find>
       <find>resiz</find>
@@ -110,6 +116,12 @@
       <find>let</find>
       <find>fake-check</find>
       <find>admin</find>
+      <find>descr</find>
+      <find>d</find>
+      <find>page</find>
+      <find>footer</find>
+      <find>footerMobi</find>
+      <find>search</find>
     </findStrings>
     <replaceStrings>
       <replace>_description</replace>
@@ -178,8 +190,8 @@
         <option value="$PROJECT_DIR$/edit/index.php" />
         <option value="$PROJECT_DIR$/+/index.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/tick.php" />
+        <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/js/script.js" />
@@ -383,12 +395,14 @@
       <workItem from="1555447762696" duration="26000" />
       <workItem from="1555448078619" duration="20000" />
       <workItem from="1555449708607" duration="2000" />
-      <workItem from="1555496707171" duration="4908000" />
+      <workItem from="1555496707171" duration="5042000" />
+      <workItem from="1555532182640" duration="8000" />
+      <workItem from="1555612877007" duration="4110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="459373000" />
+    <option name="totallyTimeSpent" value="463625000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,16 +421,16 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007153" side_tool="true" weight="0.31025642" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31025642" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22818312" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23390558" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -637,13 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tick.php" />
     <entry file="file://$PROJECT_DIR$/php/typograf.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -652,24 +659,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="735" selection-start-line="15" selection-start-column="735" selection-end-line="15" selection-end-column="735" />
+        <state relative-caret-position="643">
+          <caret line="117" column="5" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+          <folding>
+            <element signature="e#76#84#0" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="87" column="52" lean-forward="true" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
+        <state relative-caret-position="108">
+          <caret line="70" column="63" selection-start-line="70" selection-start-column="63" selection-end-line="70" selection-end-column="63" />
+          <folding>
+            <element signature="e#4937#4943#0#HTML" expanded="true" />
+            <element signature="e#4952#4958#0#HTML" expanded="true" />
+            <element signature="e#4972#4978#0#HTML" expanded="true" />
+            <element signature="e#5194#5200#0#HTML" expanded="true" />
+            <element signature="e#5212#5218#0#HTML" expanded="true" />
+            <element signature="e#5224#5230#0#HTML" expanded="true" />
+            <element signature="e#5235#5241#0#HTML" expanded="true" />
+            <element signature="e#2619#2625#0" expanded="true" />
+            <element signature="e#2634#2640#0" expanded="true" />
+            <element signature="e#2657#2663#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="932" column="5" selection-start-line="932" selection-start-column="5" selection-end-line="932" selection-end-column="5" />
+        <state relative-caret-position="470">
+          <caret line="1025" column="46" selection-start-line="1025" selection-start-column="46" selection-end-line="1025" selection-end-column="46" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
@@ -679,8 +709,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="426" column="30" selection-start-line="426" selection-start-column="30" selection-end-line="426" selection-end-column="30" />
+        <state relative-caret-position="265">
+          <caret line="574" column="33" selection-start-line="574" selection-start-column="33" selection-end-line="574" selection-end-column="33" />
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
             <element signature="e#88346#180686#1" expanded="true" />
