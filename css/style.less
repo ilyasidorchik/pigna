@@ -285,6 +285,35 @@
 						margin: 0;
 					}
 
+					&_mobile {
+						display: block;
+						box-sizing: border-box;
+						width: 290px;
+						padding: 15px 22px 17px;
+						border: 1px solid #6FFC3E;
+						border-radius: 14px;
+						color: #1E6B07;
+						text-decoration: none;
+						font-family: 'IBM Plex Sans';
+						font-size: 1.3rem;
+
+						@media @col-3 {
+							display: none;
+						}
+
+						&:hover {
+							border-color: #1E6B07;
+						}
+					}
+
+					&_desktop {
+						display: none;
+
+						@media @col-3 {
+							display: block;
+						}
+					}
+
 					&__icon {
 						display: block;
 

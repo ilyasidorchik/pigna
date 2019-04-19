@@ -31,7 +31,9 @@ if (document.documentElement.clientWidth < 535) {
     books.insertBefore(footerMobile, books.children[3]);
 }
 else {
-    books.removeChild(footerMobile);
+    if (document.querySelector('.footer_mobile') != null) {
+        document.body.removeChild(footerMobile);
+    }
 }
 window.addEventListener("resize", () => {
     if (document.documentElement.clientWidth < 535) {
