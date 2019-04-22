@@ -24,7 +24,7 @@
 	    <link rel="shortcut icon" href="img/favicon.ico">
 	    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
         <link rel="stylesheet/less" type="text/css" href="css/style.less">
-	    <link rel="stylesheet" href="css/likely.css">
+	    <link rel="stylesheet" href="/css/likely.css">
     </head>
     <body class="page <?php echo $admin; ?>">
         <div class="search">
