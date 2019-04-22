@@ -296,13 +296,31 @@
 						text-decoration: none;
 						font-family: 'IBM Plex Sans';
 						font-size: 1.3rem;
+						position: relative;
+						border: 1px solid transparent;
+						background: #fff;
+						background-clip: padding-box;
+
+						&::after {
+							position: absolute;
+							content: '';
+							z-index: -1;
+							top: -1px;
+							right: -1px;
+							bottom: -1px;
+							left: -1px;
+							background: linear-gradient(#6FFC3E, #1E6B07); // #85dc54, #305d1c
+							border-radius: 14px;
+						}
 
 						@media @col-3 {
 							display: none;
 						}
 
 						&:hover {
-							border-color: #1E6B07;
+							&::after {
+								background: linear-gradient(#85dc54, #305d1c);
+							}
 						}
 					}
 

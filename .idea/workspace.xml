@@ -40,8 +40,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="1227" column="25" selection-start-line="1227" selection-start-column="25" selection-end-line="1227" selection-end-column="25" />
+            <state relative-caret-position="242">
+              <caret line="301" column="24" selection-start-line="301" selection-start-column="24" selection-end-line="301" selection-end-column="39" />
               <folding>
                 <element signature="e#50#88226#1" expanded="true" />
                 <element signature="e#88346#180686#1" expanded="true" />
@@ -82,7 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resiz</find>
       <find>100px</find>
       <find>searchBook</find>
       <find>removeChild</find>
@@ -110,6 +109,7 @@
       <find>footer</find>
       <find>footerMobi</find>
       <find>search</find>
+      <find>likely</find>
       <find>adding</find>
       <find>adding</find>
     </findStrings>
@@ -390,12 +390,12 @@
       <workItem from="1555612877007" duration="4296000" />
       <workItem from="1555625893366" duration="24000" />
       <workItem from="1555700777668" duration="1595000" />
-      <workItem from="1555958253910" duration="536000" />
+      <workItem from="1555958253910" duration="1339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="465966000" />
+    <option name="totallyTimeSpent" value="466769000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -682,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="1227" column="25" selection-start-line="1227" selection-start-column="25" selection-end-line="1227" selection-end-column="25" />
+        <state relative-caret-position="242">
+          <caret line="301" column="24" selection-start-line="301" selection-start-column="24" selection-end-line="301" selection-end-column="39" />
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
             <element signature="e#88346#180686#1" expanded="true" />
