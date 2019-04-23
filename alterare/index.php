@@ -156,10 +156,10 @@
                                 </div>
                                 <div class="book-editing__month-book month-book" style="display: $monthBookStatus;">
                                     <div class="book-editing__month-book__wrap month-book__wrap">
-                                        <div class="month-book__wrap__label">
+                                        <div class="book-editing__month-book__wrap__label month-book__wrap__label">
                                             <span class="month-book__wrap__label__text">★ Libro del mese</span>
                                         </div>
-                                        <p class="month-book__wrap__description">$row[description]</p>
+                                        <p class="book-editing__month-book__wrap__description month-book__wrap__description">$row[description]</p>
                                     </div>
                                 </div>
                             </div>

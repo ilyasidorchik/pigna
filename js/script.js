@@ -56,28 +56,31 @@ if (bookCoverOnMobile != null) {
     if (myMobile.any() ) {
         // Это мобильный телефон
         bookCoverOnMobile.style.display = 'none';
+        document.querySelector('.page .book-editing__month-book__wrap').style.display = 'none';
     }
 }
 
 // Футер
 let footerMobile = document.querySelector('.footer_mobile');
-if (document.documentElement.clientWidth < 535) {
-    books.insertBefore(footerMobile, books.children[3]);
-}
-else {
-    if (document.querySelector('.footer_mobile') != null) {
-        document.body.removeChild(footerMobile);
-    }
-}
-window.addEventListener("resize", () => {
+if (footerMobile != null) {
     if (document.documentElement.clientWidth < 535) {
         books.insertBefore(footerMobile, books.children[3]);
     }
     else {
-        if (document.querySelector('.footer_mobile') != null)
-            books.removeChild(footerMobile);
+        if (document.querySelector('.footer_mobile') != null) {
+            document.body.removeChild(footerMobile);
+        }
     }
-});
+    window.addEventListener("resize", () => {
+        if (document.documentElement.clientWidth < 535) {
+            books.insertBefore(footerMobile, books.children[3]);
+        }
+        else {
+            if (document.querySelector('.footer_mobile') != null)
+                books.removeChild(footerMobile);
+        }
+    });
+}
 
 document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
 
