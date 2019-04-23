@@ -2,98 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/modificare/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsans.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsans.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsans.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbolditalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbolditalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansbolditalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralightitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralightitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansextralightitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslightitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslightitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanslightitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmedium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmedium.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmedium.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmediumitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmediumitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansmediumitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibolditalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibolditalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsanssemibolditalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthin.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthin.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthinitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthinitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/Ibmplexsansthinitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexsans/ibmplexsans.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserif.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserif.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserif.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifbolditalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifbolditalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifbolditalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralightitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralightitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifextralightitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflight.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflight.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflight.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflightitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflightitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexseriflightitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmedium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmedium.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmedium.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmediumitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmediumitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifmediumitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibold.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibolditalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibolditalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifsemibolditalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthin.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthin.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthinitalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthinitalic.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/Ibmplexserifthinitalic.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/ibmplexserif/ibmplexserif.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/editAuthor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/editMonthBook.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/editPrice.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/editPublishing.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/editTitle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/result.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -118,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="500" column="44" lean-forward="true" selection-start-line="500" selection-start-column="44" selection-end-line="500" selection-end-column="44" />
+            <state relative-caret-position="450">
+              <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -145,7 +54,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modificare/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -167,10 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bookEditingForm</find>
-      <find>screen</find>
-      <find>searchBOok</find>
-      <find>pigna.pro</find>
       <find>books.quer</find>
       <find>month</find>
       <find>19</find>
@@ -197,10 +102,12 @@
       <find>console.log</find>
       <find>console.log(</find>
       <find>Футер</find>
+      <find>modificar</find>
+      <find>?book=</find>
+      <find>book</find>
+      <find>$_GET[book]</find>
     </findStrings>
     <replaceStrings>
-      <replace>_description</replace>
-      <replace>$ini[admin][password]</replace>
       <replace>this.number</replace>
       <replace>modal</replace>
       <replace>$bookTitleWords[0]</replace>
@@ -229,6 +136,8 @@
       <replace>accademiapigna.sidorchik.ru</replace>
       <replace>va</replace>
       <replace>var</replace>
+      <replace>?libro=</replace>
+      <replace>$_GET[libro]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -270,8 +179,8 @@
         <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/modificare/index.php" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -478,12 +387,12 @@
       <workItem from="1555700777668" duration="1595000" />
       <workItem from="1555958253910" duration="1588000" />
       <workItem from="1555960849088" duration="799000" />
-      <workItem from="1556045001121" duration="469000" />
+      <workItem from="1556045001121" duration="1231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="468340000" />
+    <option name="totallyTimeSpent" value="469048000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,7 +405,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007153" side_tool="true" weight="0.31025642" />
@@ -751,6 +659,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/editBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="184" selection-start-line="27" selection-start-column="184" selection-end-line="27" selection-end-column="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modificare/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="91" lean-forward="true" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -763,28 +685,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/editBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="184" selection-start-line="27" selection-start-column="184" selection-end-line="27" selection-end-column="184" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="500" column="44" lean-forward="true" selection-start-line="500" selection-start-column="44" selection-end-line="500" selection-end-column="44" />
+        <state relative-caret-position="450">
+          <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modificare/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="91" lean-forward="true" selection-start-line="12" selection-start-column="91" selection-end-line="12" selection-end-column="91" />
         </state>
       </provider>
     </entry>

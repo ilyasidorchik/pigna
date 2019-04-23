@@ -22,7 +22,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Modificare libro</title>
+        <title>Alterare libro</title>
         <link rel="shortcut icon" href="/img/favicon.ico">
         <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
         <link rel="stylesheet/less" type="text/css" href="../css/style.less">
@@ -77,7 +77,7 @@
 
             echo <<<HERE
                             <div class="book-editing">
-                                <h2 class="h2">Modificare libro</h2>
+                                <h2 class="h2">Alterare libro</h2>
                                 <div class="book-editing__form">
                                     <form>
                                         <div class="form">

@@ -25,6 +25,36 @@ let bookCoverMonthBook = document.querySelectorAll('.month-book')[0];
 let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__description')[0];
 let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
 
+let myMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (myMobile.Android() ||
+            myMobile.BlackBerry() ||
+            myMobile.iOS() ||
+            myMobile.Opera() ||
+            myMobile.Windows());
+    }
+};
+
+if (myMobile.any() ) {
+    // Это мобильный телефон
+    alert('Это мобила');
+}
+
 // Футер
 let footerMobile = document.querySelector('.footer_mobile');
 if (document.documentElement.clientWidth < 535) {
@@ -496,7 +526,7 @@ function start() {
     }
 
     // Редактирование книги
-    if (document.location.pathname == '/modificare/') {
+    if (document.location.pathname == '/alterare/') {
         let url = document.location.search;
         let id = url.replace('?libro=', '');
 
@@ -1405,7 +1435,7 @@ function openEditPage(e) {
 
     }
     else {
-        window.location.replace('http://accademiapigna.sidorchik.ru/modificare/?libro=' + id);
+        window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
     }
 }
 
