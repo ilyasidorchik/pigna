@@ -10,7 +10,7 @@
         $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
         mysqli_set_charset($link, 'utf8');
 
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE id = '$_GET[book]'");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE id = '$_GET[libro]'");
         $row = mysqli_fetch_assoc($result);
 
         if ($row[id] == NULL)
@@ -34,7 +34,7 @@
             $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
             mysqli_set_charset($link, 'utf8');
 
-            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE id = '$_GET[book]'");
+            $result = mysqli_query($link, "SELECT * FROM catalogue WHERE id = '$_GET[libro]'");
             $row = mysqli_fetch_assoc($result);
 
             $authorStatus = 'none';

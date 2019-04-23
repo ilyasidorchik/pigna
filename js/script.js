@@ -496,9 +496,9 @@ function start() {
     }
 
     // Редактирование книги
-    if (document.location.pathname == '/edit/') {
+    if (document.location.pathname == '/modificare/') {
         let url = document.location.search;
-        let id = url.replace('?book=', '');
+        let id = url.replace('?libro=', '');
 
         authorInput = document.querySelector('.form__element__input_author');
         titleInput = document.querySelector('.form__element__input_title');
@@ -1405,7 +1405,7 @@ function openEditPage(e) {
 
     }
     else {
-        window.location.replace('http://accademiapigna.sidorchik.ru/edit/?book=' + id);
+        window.location.replace('http://accademiapigna.sidorchik.ru/modificare/?libro=' + id);
     }
 }
 
