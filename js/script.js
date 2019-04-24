@@ -1039,7 +1039,8 @@ function searchBook(bookTitle) {
 
                 // Футер
                 if (document.documentElement.clientWidth < 535) {
-                    books.insertBefore(footerMobile, books.children[3]);
+                    books.appendChild(footerMobile);
+                    footerMobile.classList.remove('footer_mobile_bordered');
                 }
                 else {
                     if (document.querySelector('.footer_mobile') != null) {
@@ -1064,7 +1065,6 @@ function searchBook(bookTitle) {
                 }
                 else {
                     linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
-                    footerMobile.classList.add('footer_mobile_bordered');
                 }
 
                 // Редактирование книги
