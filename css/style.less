@@ -44,10 +44,6 @@
 	border-radius: @radius;
 }
 
-.html {
-	font-size: 16px;
-}
-
 .page {
 	overflow-y: scroll;
 	margin: 15px auto 47px;
@@ -79,7 +75,7 @@
 
 	.input-h1 {
 		font-family: 'IBM Plex Sans Medium';
-		font-size: 1.75rem;
+		font-size: 29px;
 	}
 
 	.h2 {
@@ -131,7 +127,7 @@
 
 			.input {
 				width: 100%;
-				padding: 0.4rem 0 0.4rem;
+				padding: 4px 0 5px;
 				border: 0;
 				outline: none;
 
@@ -177,15 +173,15 @@
 			justify-content: space-between;
 			box-sizing: border-box;
 			max-width: 290px;
-			height: 465px;
-			padding: .5rem;
+			height: 468px;
+			padding: 8px;
 			background: #fff2d5;
 			transition: box-shadow .35s ease-out, color .35s ease-out;
 
 			@media @col-3 {
 				max-width: 159px;
 				max-height: 255px;
-				padding: .3rem;
+				padding: 4.8px;
 			}
 
 			&_month-book-color {
@@ -364,11 +360,11 @@
 				&__author {
 					font-family: 'IBM Plex Serif Italic';
 					font-style: italic;
-					font-size: 1.4rem;
-					margin-bottom: .45rem;
+					font-size: 22px;
+					margin-bottom: 7px;
 
 					@media @col-3 {
-						font-size: .75rem;
+						font-size: 12px;
 					}
 				}
 
@@ -377,11 +373,11 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					font-family: 'IBM Plex Serif';
-					font-size: 2.1rem;
+					font-size: 33px;
 
 					@media @col-3 {
 						max-height: 183px;
-						font-size: 1.15rem;
+						font-size: 18px;
 					}
 				}
 			}
@@ -391,7 +387,7 @@
 				font-size: 1.4rem;
 
 				@media @col-3 {
-					font-size: .75rem;
+					font-size: 12px;
 				}
 			}
 
@@ -400,10 +396,10 @@
 				position: absolute;
 				text-align: center;
 				color: #fff;
-				font-size: 2rem;
+				font-size: 28px;
 
 				@media @col-3 {
-					font-size: 1rem;
+					font-size: 16px;
 				}
 
 				&_new {
@@ -425,9 +421,9 @@
 					-webkit-text-fill-color: #fff;
 					background: linear-gradient(#777 0%, #000 100%);
 					border-radius: 50%;
-					width: 100px;
-					height: 72px;
-					padding-top: 28px;
+					width: 95px;
+					height: 68px;
+					padding-top: 26px;
 
 					@media @col-3 {
 						width: 50px;
@@ -444,35 +440,45 @@
 
 				&_panel {
 					font-family: 'IBM Plex Sans';
-					font-size: 1.4rem;
-					bottom: 0;
+					font-size: 29px;
+					bottom: 5px;
 					left: 0;
 					right: 0;
 					padding: 11px 8px 0;
 
 					@media @col-3 {
-						font-size: 1rem;
+						bottom: 0;
+						font-size: 16px;
 						padding: 11px 5px 0;
 					}
 
 					.form__element__label {
 						&__fake-checkbox {
 							background: #fff;
-							border: 1px solid #000;
+							border: 2px solid #000;
 							transition: border .35s ease-out;
+
+							@media @col-3 {
+								border-width: 1px
+							}
 						}
 
 						&:hover {
 							.form__element__label__fake-checkbox {
-								border: 1px solid #ec6040;
+								border-color: #ec6040;
 								transition: none;
 							}
 						}
 					}
 
 					.form__element__label__checkbox:checked + .form__element__label__fake-checkbox::before {
-						top: -5px;
-						left: 2.5px;
+						top: -10px;
+						left: 5px;
+
+						@media @col-3 {
+							top: -5px;
+							left: 2.5px;
+						}
 					}
 				}
 
@@ -494,14 +500,16 @@
 
 				&_edit {
 					cursor: pointer;
-					top: 0;
-					right: 0;
-					width: 40px;
+					top: 7px;
+					right: 6px;
+					width: 43px;
 					height: 40px;
 					box-sizing: border-box;
 					padding: 8px;
 
 					@media @col-3 {
+						top: 0;
+						right: 0;
 						width: 32px;
 						height: 32px;
 						padding: 9px;
@@ -555,8 +563,8 @@
 				line-height: 2rem;
 
 				@media @col-3 {
-					font-size: 1rem;
-					line-height: 1.5rem;
+					font-size: 16px;
+					line-height: 24px;
 				}
 			}
 
@@ -764,7 +772,7 @@
 					font-size: 1.4rem;
 
 					@media @col-3 {
-						font-size: .75rem;
+						font-size: 12px;
 					}
 				}
 			}
@@ -775,8 +783,8 @@
 				line-height: 2.25rem;
 
 				@media @col-3 {
-					font-size: 1.2rem;
-					line-height: 1.5rem;
+					font-size: 19px;
+					line-height: 24px;
 				}
 			}
 		}
@@ -1144,14 +1152,22 @@
 			&__fake-checkbox {
 				display: inline-block;
 				box-sizing: border-box;
-				width: 20px;
-				height: 20px;
+				width: 36px;
+				height: 36px;
 				background: @input-background-color;
-				.border-radius(@input-border-radius);
+				.border-radius(8px);
 				vertical-align: middle;
-				margin-top: -2px;
-				margin-right: 3px;
+				margin-top: -4px;
+				margin-right: 6px;
 				position: relative;
+
+				@media @col-3 {
+					.border-radius(@input-border-radius);
+					width: 20px;
+					height: 20px;
+					margin-top: -2px;
+					margin-right: 3px;
+				}
 			}
 
 			&__checkbox:checked + &__fake-checkbox::before {
@@ -1159,10 +1175,15 @@
 				position: absolute;
 				top: -4px;
 				left: 4px;
-				width: 20px;
-				height: 21px;
+				width: 36px;
+				height: 37px;
 				content: '';
 				background: url('../img/tick.svg');
+
+				@media @col-3 {
+					width: 20px;
+					height: 21px;
+				}
 			}
 		}
 
