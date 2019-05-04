@@ -25,4 +25,4 @@
         mysqli_query($link, "UPDATE catalogue SET monthBook = 0 WHERE monthBook = 1");
 
     // Добавление новой книги в базу данных
-    mysqli_query($link, "UPDATE catalogue SET title = '$title', author = '$author', publishing = '$publishing', price = '$price', monthBook = '$monthBook', description = '$description' WHERE id = $id");
+    mysqli_query($link, "UPDATE catalogue SET title = '$titleTypografed', author = '$author', publishing = '$publishing', price = '$price', monthBook = '$monthBook', description = '$description' WHERE id = $id");
