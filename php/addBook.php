@@ -9,6 +9,9 @@
     $titleTypografed = typograf($title);
 
     $author = str_replace("'", "\'", $_POST['author']);
+    if ($author != '')
+        $authorTypografed = typograf($author);
+
     $publishing = $_POST['publishing'];
     $price = $_POST['price'];
     $monthBook = $_POST['monthBook'];
@@ -27,4 +30,4 @@
         mysqli_query($link, "UPDATE catalogue SET monthBook = 0 WHERE monthBook = 1");
 
     // Добавление новой книги в базу данных
-    mysqli_query($link, "INSERT INTO catalogue (id, title, author, publishing, price, monthBook, description) VALUES ('$id', '$titleTypografed', '$author', '$publishing', '$price', '$monthBook', '$description')");
+    mysqli_query($link, "INSERT INTO catalogue (id, title, author, publishing, price, monthBook, description) VALUES ('$id', '$titleTypografed', '$authorTypografed', '$publishing', '$price', '$monthBook', '$description')");

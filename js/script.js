@@ -361,10 +361,8 @@ function start() {
             }
 
             let title = titleInput.value;
-
             let xhr = new XMLHttpRequest();
             let params = 'str=' + title;
-
             xhr.open('POST', '../php/typograf.php');
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
@@ -382,7 +380,22 @@ function start() {
         authorInput.addEventListener('keyup',()=>{
             if (authorInput.value != '') {
                 bookCoverAuthor.style.display = 'block';
-                bookCoverAuthor.innerHTML = authorInput.value;
+
+                let author = authorInput.value;
+                let xhr = new XMLHttpRequest();
+                let params = 'str=' + author;
+                xhr.open('POST', '../php/typograf.php');
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            bookCoverAuthor.innerHTML = xhr.responseText;
+                        }
+                        else
+                            console.log('Ошибка: ' + xhr.status);
+                    }
+                };
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(params);
             }
             else {
                 bookCoverAuthor.style.display = 'none';
@@ -597,6 +610,22 @@ function start() {
             if (authorInput.value != '') {
                 bookCoverAuthor.style.display = 'block';
                 bookCoverAuthor.innerHTML = authorInput.value;
+
+                let author = authorInput.value;
+                let xhrTypograf = new XMLHttpRequest();
+                let params = 'str=' + author;
+                xhrTypograf.open('POST', '../php/typograf.php');
+                xhrTypograf.onreadystatechange = () => {
+                    if (xhrTypograf.readyState === 4) {
+                        if (xhrTypograf.status === 200) {
+                            bookCoverAuthor.innerHTML = xhrTypograf.responseText;
+                        }
+                        else
+                            console.log('Ошибка: ' + xhrTypograf.status);
+                    }
+                };
+                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhrTypograf.send(params);
             }
             else {
                 bookCoverAuthor.style.display = 'none';
@@ -758,7 +787,22 @@ function start() {
         authorInput.addEventListener('keyup',()=>{
             if (authorInput.value != '') {
                 bookCoverAuthor.style.display = 'block';
-                bookCoverAuthor.innerHTML = authorInput.value;
+
+                let author = authorInput.value;
+                let xhrTypograf = new XMLHttpRequest();
+                let params = 'str=' + author;
+                xhrTypograf.open('POST', '../php/typograf.php');
+                xhrTypograf.onreadystatechange = () => {
+                    if (xhrTypograf.readyState === 4) {
+                        if (xhrTypograf.status === 200) {
+                            bookCoverAuthor.innerHTML = xhrTypograf.responseText;
+                        }
+                        else
+                            console.log('Ошибка: ' + xhrTypograf.status);
+                    }
+                };
+                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhrTypograf.send(params);
             }
             else {
                 bookCoverAuthor.style.display = 'none';

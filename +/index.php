@@ -42,7 +42,7 @@
 							        </div>
 			
 							        <div class="form__label">
-								        <label for="publishing-city">Città editore</label>
+								        <label for="publishing-city">Città editrice</label>
 							        </div>
 							        <div class="form__element">
 								        <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city">
