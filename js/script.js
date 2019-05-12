@@ -82,7 +82,7 @@ if (footerMobile != null) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', start); // когда HTML будет подготовлен и загружен, вызвать функцию start
+document.addEventListener('DOMContentLoaded', start);
 
 function start() {
     let bookTitle;
@@ -1103,7 +1103,7 @@ function searchBook(bookTitle) {
 
 
                 // Если ничего не нашлось — плюс по центру
-                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>') {
+                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>') {
                     linkToBookAdding.classList.add('grid__item_link-to-book-adding_center');
                     footerMobile.classList.remove('footer_mobile_bordered');
                 }
@@ -1140,6 +1140,40 @@ function searchBook(bookTitle) {
                     if (footer.classList.contains('footer_bottom-sticked')) {
                         footer.classList.remove('footer_bottom-sticked');
                     }
+                }
+
+                // Подставление текста из поиска при добавлении книги
+                let titles = document.querySelectorAll('.grid__item__authortitle__title');
+                let authors = document.querySelectorAll('.grid__item__authortitle__author');
+
+                let titlesCoins = 0;
+                let authorsCoins = 0;
+
+                for (let i = 0; i <= titles.length; i++) {
+                    if (titles[0].innerHTML.indexOf(bookTitle) != -1) {
+                        titlesCoins++;
+                    }
+                }
+
+                for (let i = 0; i <= authors.length; i++) {
+                    if (authors[0].innerHTML.indexOf(bookTitle) != -1) {
+                        authorsCoins++;
+                    }
+                }
+
+                let type = '';
+                if (titlesCoins >= authorsCoins) {
+                    type = 'title';
+                }
+                else {
+                    type = 'author';
+                }
+
+                let getParams = '?type=' + type + '&text=' + bookTitle;
+
+                let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
+                for (let i = 0; i <= addingLink.length; i++) {
+                    addingLink[i].setAttribute('href', '+/' + getParams);
                 }
             }
             else
