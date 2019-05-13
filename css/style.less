@@ -359,6 +359,13 @@
 			}
 
 			&__authortitle {
+				overflow-y: hidden;
+				max-height: 366px;
+
+				@media @col-3 {
+					max-height: 204px;
+				}
+
 				&__author {
 					font-family: 'IBM Plex Serif Italic';
 					font-style: italic;
@@ -371,7 +378,6 @@
 				}
 
 				&__title {
-					max-height: 345px;
 					font-family: 'IBM Plex Serif';
 					font-size: 33px;
 					-webkit-hyphens: auto;
@@ -379,7 +385,6 @@
 					hyphens: auto;
 
 					@media @col-3 {
-						max-height: 183px;
 						font-size: 18px;
 					}
 				}
@@ -521,6 +526,14 @@
 						transition: fill .35s ease-out;
 					}
 				}
+			}
+
+			&__link {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
 			}
 		}
 

@@ -242,6 +242,15 @@ function start() {
         }
     });
 
+    // Фикс обрезания название, если автор занимает больше одной строки
+    /*let booksForFix = document.querySelectorAll('.grid__item');
+    for (let i = 0; i < booksForFix.length; i++) {
+        let authorForFix = booksForFix[i].querySelector('.grid__item__authortitle__author');
+
+        console.log(authorForFix.innerHTML.length);
+    }*/
+
+
     if (searchForm != null) {
         searchForm.addEventListener('keydown', () => {
             if (event.keyCode == 13) {

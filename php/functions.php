@@ -54,7 +54,7 @@
             $price = '';
 
         if ($monthBook == 1) {
-            $monthBookClass = 'grid__item_month-book-color';
+            $monthBookClass = ' grid__item_month-book-color';
             $monthBookBlock = <<<HERE
                         <div class="month-book">
                             <div class="month-book__wrap">
@@ -99,14 +99,14 @@ HERE;
         }
         else {
             if ($onHands == 1) {
-                $onHandsClass = 'grid__item_on-hands';
+                $onHandsClass = ' grid__item_on-hands';
                 $onHandsText = '<div class="grid__item_on-hands__text">In prestito</div>';
             }
         }
 
 
         echo <<<HERE
-                    <div class="grid__item $monthBookClass $onHandsClass" $id>
+                    <div class="grid__item$monthBookClass$onHandsClass" $id>
                         <div class="grid__item__authortitle">
                             $adminEdit
                             $author

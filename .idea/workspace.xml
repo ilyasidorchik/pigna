@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/img/icon-edit.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/icon-edit.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/functions.php" afterDir="false" />
     </list>
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="1191" column="17" selection-start-line="1191" selection-start-column="17" selection-end-line="1191" selection-end-column="17" />
+            <state relative-caret-position="195">
+              <caret line="249" column="8" lean-forward="true" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -44,15 +44,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="509" column="41" lean-forward="true" selection-start-line="509" selection-start-column="41" selection-end-line="509" selection-end-column="41" />
+            <state relative-caret-position="141">
+              <caret line="362" column="31" selection-start-line="362" selection-start-column="31" selection-end-line="362" selection-end-column="31" />
               <folding>
                 <element signature="e#50#88226#1" expanded="true" />
                 <element signature="e#88346#180686#1" expanded="true" />
                 <element signature="e#180798#272582#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+              <folding>
+                <element signature="e#76#84#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,17 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fake-checkbox</find>
-      <find>sticker</find>
-      <find>fake-ch</find>
-      <find>fake-</find>
-      <find>5px</find>
-      <find>s.l.</find>
-      <find>La mia</find>
-      <find>Napi</find>
-      <find>Un am</find>
-      <find>,</find>
-      <find>Echi</find>
       <find>savig</find>
       <find>un</find>
       <find>link-to-book</find>
@@ -92,15 +93,26 @@
       <find>button</find>
       <find>plus</find>
       <find>Aggiungere nuovo libro</find>
-      <find>search</find>
       <find>searchBo</find>
       <find>false</find>
-      <find>authortitle</find>
       <find>searchBook</find>
       <find>admin</find>
       <find>edit</find>
       <find>title</find>
       <find>_edit</find>
+      <find>$monthBookClass</find>
+      <find>$onHandsClass</find>
+      <find>grid</find>
+      <find>grid {</find>
+      <find>openEdit</find>
+      <find>search</find>
+      <find>toggleBookOnHands</find>
+      <find>openEditPage</find>
+      <find>alterare/?libro=</find>
+      <find>alterare/?libro</find>
+      <find>alterare</find>
+      <find>authortitle</find>
+      <find>gridItems</find>
     </findStrings>
     <replaceStrings>
       <replace>$bookTitleWords[0]</replace>
@@ -177,8 +189,8 @@
         <option value="$PROJECT_DIR$/php/editDates.php" />
         <option value="$PROJECT_DIR$/+/index.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/css/style.less" />
+        <option value="$PROJECT_DIR$/js/script.js" />
       </list>
     </option>
   </component>
@@ -399,12 +411,12 @@
       <workItem from="1557252403641" duration="1908000" />
       <workItem from="1557416679070" duration="1885000" />
       <workItem from="1557679232312" duration="1542000" />
-      <workItem from="1557740906771" duration="3817000" />
+      <workItem from="1557740906771" duration="7228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="507504000" />
+    <option name="totallyTimeSpent" value="510915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -633,34 +645,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/php/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="81" column="39" lean-forward="true" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
+        <state relative-caret-position="508">
+          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
           <folding>
             <element signature="e#76#84#0" expanded="true" />
-            <element signature="n#style#0;n#svg#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="1191" column="17" selection-start-line="1191" selection-start-column="17" selection-end-line="1191" selection-end-column="17" />
-          <folding>
-            <element signature="e#4#10#0" expanded="true" />
-            <element signature="e#4#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="509" column="41" lean-forward="true" selection-start-line="509" selection-start-column="41" selection-end-line="509" selection-end-column="41" />
+        <state relative-caret-position="141">
+          <caret line="362" column="31" selection-start-line="362" selection-start-column="31" selection-end-line="362" selection-end-column="31" />
           <folding>
             <element signature="e#50#88226#1" expanded="true" />
             <element signature="e#88346#180686#1" expanded="true" />
             <element signature="e#180798#272582#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="249" column="8" lean-forward="true" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
+          <folding>
+            <element signature="e#4#10#0" expanded="true" />
+            <element signature="e#4#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
