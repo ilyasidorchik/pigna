@@ -1143,37 +1143,45 @@ function searchBook(bookTitle) {
                 }
 
                 // Подставление текста из поиска при добавлении книги
-                let titles = document.querySelectorAll('.grid__item__authortitle__title');
-                let authors = document.querySelectorAll('.grid__item__authortitle__author');
+                if (bookTitle != '') {
+                    let titles = document.querySelectorAll('.grid__item__authortitle__title');
+                    let authors = document.querySelectorAll('.grid__item__authortitle__author');
 
-                let titlesCoins = 0;
-                let authorsCoins = 0;
+                    let titlesCoins = 0;
+                    let authorsCoins = 0;
 
-                for (let i = 0; i <= titles.length; i++) {
-                    if (titles[0].innerHTML.indexOf(bookTitle) != -1) {
-                        titlesCoins++;
+                    for (let i = 0; i <= titles.length; i++) {
+                        if (titles[0].innerHTML.indexOf(bookTitle) != -1) {
+                            titlesCoins++;
+                        }
                     }
-                }
 
-                for (let i = 0; i <= authors.length; i++) {
-                    if (authors[0].innerHTML.indexOf(bookTitle) != -1) {
-                        authorsCoins++;
+                    for (let i = 0; i <= authors.length; i++) {
+                        if (authors[0].innerHTML.indexOf(bookTitle) != -1) {
+                            authorsCoins++;
+                        }
                     }
-                }
 
-                let type = '';
-                if (titlesCoins >= authorsCoins) {
-                    type = 'title';
+                    let type = '';
+                    if (titlesCoins >= authorsCoins) {
+                        type = 'title';
+                    }
+                    else {
+                        type = 'author';
+                    }
+
+                    let getParams = '?type=' + type + '&text=' + bookTitle;
+
+                    let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
+                    for (let i = 0; i <= addingLink.length; i++) {
+                        addingLink[i].setAttribute('href', '+/' + getParams);
+                    }
                 }
                 else {
-                    type = 'author';
-                }
-
-                let getParams = '?type=' + type + '&text=' + bookTitle;
-
-                let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
-                for (let i = 0; i <= addingLink.length; i++) {
-                    addingLink[i].setAttribute('href', '+/' + getParams);
+                    let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
+                    for (let i = 0; i <= addingLink.length; i++) {
+                        addingLink[i].setAttribute('href', '+/');
+                    }
                 }
             }
             else

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/+/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/+/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,7 +40,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/style.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="380" column="34" lean-forward="true" selection-start-line="380" selection-start-column="34" selection-end-line="380" selection-end-column="34" />
+              <folding>
+                <element signature="e#50#88226#1" expanded="true" />
+                <element signature="e#88346#180686#1" expanded="true" />
+                <element signature="e#180798#272582#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/+/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="83">
@@ -63,7 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>input</find>
       <find>465</find>
       <find>8px</find>
       <find>fake-checkbox</find>
@@ -93,6 +105,7 @@
       <find>search</find>
       <find>searchBo</find>
       <find>false</find>
+      <find>authortitle</find>
     </findStrings>
     <replaceStrings>
       <replace>$bookTitleWords[0]</replace>
@@ -165,12 +178,12 @@
         <option value="$PROJECT_DIR$/php/editBook.php" />
         <option value="$PROJECT_DIR$/php/addBook.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/php/fillCatalogue.php" />
         <option value="$PROJECT_DIR$/php/editDates.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/+/index.php" />
+        <option value="$PROJECT_DIR$/css/style.less" />
       </list>
     </option>
   </component>
@@ -391,12 +404,12 @@
       <workItem from="1557252403641" duration="1908000" />
       <workItem from="1557416679070" duration="1885000" />
       <workItem from="1557679232312" duration="1542000" />
-      <workItem from="1557740906771" duration="384000" />
+      <workItem from="1557740906771" duration="965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="504071000" />
+    <option name="totallyTimeSpent" value="504652000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -414,6 +427,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007153" side_tool="true" weight="0.31025642" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31025642" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
@@ -430,7 +444,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31025642" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
     </layout>
   </component>
@@ -609,18 +622,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/editDates.php" />
-    <entry file="file://$PROJECT_DIR$/css/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="1197" column="28" selection-start-line="1197" selection-start-column="28" selection-end-line="1197" selection-end-column="28" />
-          <folding>
-            <element signature="e#50#88226#1" expanded="true" />
-            <element signature="e#88346#180686#1" expanded="true" />
-            <element signature="e#180798#272582#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
@@ -650,6 +651,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
           <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="380" column="34" lean-forward="true" selection-start-line="380" selection-start-column="34" selection-end-line="380" selection-end-column="34" />
+          <folding>
+            <element signature="e#50#88226#1" expanded="true" />
+            <element signature="e#88346#180686#1" expanded="true" />
+            <element signature="e#180798#272582#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
