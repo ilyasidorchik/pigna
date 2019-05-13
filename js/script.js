@@ -1108,28 +1108,33 @@ function searchBook(bookTitle) {
                     footerMobile.classList.remove('footer_mobile_bordered');
                 }
                 else {
-                    linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
+                    if (linkToBookAdding != null) {
+                        linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
+                    }
                 }
 
+
                 // Редактирование книги
-                let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-                let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-                for (let i = 0; i < gridItems.length; i++) {
-                    let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-                    gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+                if (document.querySelector('.admin') != null) {
+                    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
+                    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+                    for (let i = 0; i < gridItems.length; i++) {
+                        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+                        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
 
-                    gridItems[i].addEventListener('mouseover', (e)=> {
-                        gridItems[i].classList.add('grid__item_hover');
+                        gridItems[i].addEventListener('mouseover', (e)=> {
+                            gridItems[i].classList.add('grid__item_hover');
 
-                        if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
+                            if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
+                                gridItems[i].classList.remove('grid__item_hover');
+                            }
+                        });
+                        gridItems[i].addEventListener('mouseout', ()=> {
                             gridItems[i].classList.remove('grid__item_hover');
-                        }
-                    });
-                    gridItems[i].addEventListener('mouseout', ()=> {
-                        gridItems[i].classList.remove('grid__item_hover');
-                    });
+                        });
 
-                    onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
+                        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
+                    }
                 }
 
                 let footer = document.querySelector('.footer');
@@ -1143,7 +1148,7 @@ function searchBook(bookTitle) {
                 }
 
                 // Подставление текста из поиска при добавлении книги
-                if (bookTitle != '') {
+                if (bookTitle != '' && document.querySelector('.admin') != null) {
                     let titles = document.querySelectorAll('.grid__item__authortitle__title');
                     let authors = document.querySelectorAll('.grid__item__authortitle__author');
 
@@ -1173,14 +1178,16 @@ function searchBook(bookTitle) {
                     let getParams = '?type=' + type + '&text=' + bookTitle;
 
                     let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
-                    for (let i = 0; i <= addingLink.length; i++) {
+                    for (let i = 0; i < addingLink.length; i++) {
                         addingLink[i].setAttribute('href', '+/' + getParams);
                     }
                 }
                 else {
-                    let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
-                    for (let i = 0; i <= addingLink.length; i++) {
-                        addingLink[i].setAttribute('href', '+/');
+                    if (document.querySelector('.admin') != null) {
+                        let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
+                        for (let i = 0; i < addingLink.length; i++) {
+                            addingLink[i].setAttribute('href', '+/');
+                        }
                     }
                 }
             }

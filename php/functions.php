@@ -74,7 +74,7 @@ HERE;
             if ($onHands == 1)
                 $bookOnHandsTick = 'checked';
 
-            $adminBlock = <<<HERE
+            $adminOnHands = <<<HERE
                 <div class="grid__item__admin grid__item__admin_panel grid__item__admin_on-hands">
 		            <div class="form__element">
 					    <label class="form__element__label">
@@ -83,6 +83,9 @@ HERE;
 						</label>
 					</div>
 			    </div>
+HERE;
+
+            $adminEdit = <<<HERE
                 <div class="grid__item__admin grid__item__admin_edit">
                     <?xml version="1.0" encoding="utf-8"?>
                     <!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -105,12 +108,13 @@ HERE;
         echo <<<HERE
                     <div class="grid__item $monthBookClass $onHandsClass" $id>
                         <div class="grid__item__authortitle">
+                            $adminEdit
                             $author
                             <div class="grid__item__authortitle__title" title="$title">$title</div>
                         </div>
                         <div class="grid__item__publishing">$publishing</div>
                         $price
-                        $adminBlock
+                        $adminOnHands
                         $onHandsText
                     </div>
                     $monthBookBlock

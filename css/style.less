@@ -372,10 +372,11 @@
 
 				&__title {
 					max-height: 345px;
-					overflow: hidden;
-					text-overflow: ellipsis;
 					font-family: 'IBM Plex Serif';
 					font-size: 33px;
+					-webkit-hyphens: auto;
+					-ms-hyphens: auto;
+					hyphens: auto;
 
 					@media @col-3 {
 						max-height: 183px;
@@ -438,9 +439,8 @@
 			}
 
 			&__admin {
-				position: absolute;
-
 				&_panel {
+					position: absolute;
 					font-family: 'IBM Plex Sans';
 					font-size: 29px;
 					bottom: 5px;
@@ -501,20 +501,19 @@
 				}
 
 				&_edit {
+					float: right;
 					cursor: pointer;
-					top: 7px;
-					right: 6px;
-					width: 43px;
+					width: 35px;
 					height: 40px;
 					box-sizing: border-box;
-					padding: 8px;
+					margin: -1.5px -2px 0 0;
+					padding: 8px 8px 0 0;
 
 					@media @col-3 {
-						top: 0;
-						right: 0;
-						width: 32px;
-						height: 32px;
-						padding: 9px;
+						width: 23px;
+						height: 27px;
+						margin: -4.8px -4.8px 0 0;
+						padding: 9px 9px 0 0;
 					}
 
 					&__icon {
