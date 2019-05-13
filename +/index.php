@@ -23,10 +23,12 @@
             if (password_verify($ini[admin][password], $_COOKIE['admin_rights']) || $password == $ini[admin][password]) {
             	// Если на страницу добавления перешли с поиска — добавляем введённые данные в форму
                 $authorFromURLStatus = 'none';
+                $titleFromURLButtonStatus = ' form__element__button-disabled';
 	            if (isset($_GET['type'])) {
 		            switch ($_GET['type']) {
 			            case 'title':
 			            	$titleFromURL = $_GET['text'];
+                            $titleFromURLButtonStatus = '';
 							break;
                         case 'author':
                             $authorFromURL = $_GET['text'];
@@ -99,7 +101,7 @@
 							        </div>
 			
 							        <div class="form__element">
-								        <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button>
+								        <button class="form__element__button form__element__button_book-adding$titleFromURLButtonStatus">Aggiungere</button>
 							        </div>
 						        </div>
 					        </form>
