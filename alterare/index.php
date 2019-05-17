@@ -85,33 +85,33 @@
                                                 <label for="title">Titolo</label>
                                             </div>
                                             <div class="form__element">
-                                                <input type="text" name="title" id="title" autocomplete="off" class="form__element__input form__element__input_title" value="$row[title]">
+                                                <input type="text" name="title" id="title" autocomplete="off" class="form__element__input form__element__input_title" value="$row[title]" data-title="$row[title]">
                                             </div>
                     
                                             <div class="form__label">
                                                 <label for="author">Autore</label>
                                             </div>
                                             <div class="form__element">
-                                                <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="$row[author]">
+                                                <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="$row[author]" data-author="$row[author]">
                                             </div>
                     
                                             <div class="form__label">
                                                 <label for="publishing-city">Città editrice</label>
                                             </div>
                                             <div class="form__element">
-                                                <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city" value="$publishingCity">
+                                                <input type="text" name="publishing_city" id="publishing-city" autocomplete="off" class="form__element__input form__element__input_publishing-city" value="$publishingCity" data-publishingCity="$publishingCity">
                                             </div>
                     
                                             <div class="form__label form__labelelement_publishing-year-margin-fix">
                                                 <label for="publishing-year" class="form__label__label_publishing-year">Anno&nbsp;pub-<br>blicazione</label>
                                             </div>
                                             <div class="form__element form__element_short form__labelelement_publishing-year-margin-fix">
-                                                <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" maxlength="4" class="form__element__input form__element__input_publishing-year" value="$publishingYear">
+                                                <input type="text" name="publishing_year" id="publishing-year" autocomplete="off" maxlength="4" class="form__element__input form__element__input_publishing-year" value="$publishingYear" data-publishingYear="$publishingYear">
                                             </div>
                     
                                             <div class="form__element form__element_checkbox form__element_checkbox-month-book">
                                                 <label class="form__element__label">
-                                                    <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description" $monthBookCheckbox>
+                                                    <input type="checkbox" name="month_book" value="month_book" autocomplete="off" class="form__element__label__checkbox form__element__label__checkbox_description" $monthBookCheckbox data-monthBook="$monthBookCheckbox">
                                                     <span class="form__element__label__fake-checkbox"></span> Libro del mese
                                                 </label>
                                             </div>
@@ -119,7 +119,7 @@
                                                 <label for="book_description" class="form__label__label_description">Descri-<br>zione</label>
                                             </div>
                                             <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: $monthBookStatus; margin-bottom: -.3rem;">
-                                                <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description">$row[description]</textarea>
+                                                <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description" data-monthBookDesc="$row[description]">$row[description]</textarea>
                                             </div>
                     
                                             <div class="form__element form__element_checkbox form__element_checkbox-price">
@@ -133,7 +133,7 @@
                                             </div>
                                             <div class="form__element form__close-to-checkbox form__element_price form__element_by-checkbox" style="display: $priceStatus;">
                                                 <div class="form__element__wrap-for-price">
-                                                    <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price" value="$price">
+                                                    <input type="text" name="price" id="price" autocomplete="off" class="form__element__input form__element__wrap-for-price__number form__element__input_price" value="$price" data-price="$price">
                                                     <div class="form__element__wrap-for-price__currency-sign">€</div>
                                                 </div>
                                             </div>

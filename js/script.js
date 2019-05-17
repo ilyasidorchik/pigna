@@ -348,6 +348,7 @@ function start() {
         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
 
+
     // Форма добавления книги
     if (document.location.pathname == '/+/') {
         titleInput.focus();
@@ -1398,7 +1399,14 @@ function editBook(id) {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                window.location.replace('http://accademiapigna.sidorchik.ru/');
+                form.style.display = 'none';
+
+                let alertSuccess = document.createElement('div');
+                alertSuccess.className = "book-editing__form__success";
+                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro aggiunto al catalogo. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div>';
+                formWrap.appendChild(alertSuccess);
+
+                document.querySelector('.book-editing__form__success__alert__returning').addEventListener("click", {handleEvent: returnBookEditingForm, id: id});
             }
             else {
                 console.log('Ошибка: ' + xhr.status);
@@ -1509,6 +1517,123 @@ function clearBookAddingForm() {
     form.style.display = 'grid';
 
     titleInput.focus();
+}
+
+function returnBookEditingForm(id) {
+    // Получаем старые значения
+    let title = titleInput.getAttribute('data-title');
+
+    let author = authorInput.getAttribute('data-author');
+    let publishingCity = publishingCityInput.getAttribute('data-publishingCity');
+    let publishingYear = publishingYearInput.getAttribute('data-publishingYear');
+
+    let publishing = publishingCity;
+    if (publishingYear != '') {
+        publishing += ', ' + publishingYear;
+    }
+
+    let monthBook = monthBookCheckbox.getAttribute('data-monthBook');
+    let description = monthBookDescInput.getAttribute('data-monthBookDesc');
+    console.log(monthBook);
+    if (monthBook === 'checked') {
+        monthBook = 1;
+    }
+    else {
+        monthBook = 0;
+        description = '';
+    }
+    console.log(monthBook);
+
+    let price = priceInput.getAttribute('data-price');
+    if (price === '') {
+        price = 0;
+    }
+
+    let xhr = new XMLHttpRequest();
+
+    let params = 'id=' + this.id + '&title=' + title + '&author=' + author + '&publishing=' + publishing + '&price=' + price + '&monthBook=' + monthBook + '&description=' + description;
+
+    xhr.open('POST', '../php/editBook.php');
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let alertSuccess = document.querySelector('.book-editing__form__success');
+                formWrap.removeChild(alertSuccess);
+
+                // Подставление старых значений в форму
+                authorInput.value = author;
+                titleInput.value = title;
+                publishingCityInput.value = publishingCity;
+                publishingYearInput.value = publishingYear;
+
+                if (monthBook === 1) {
+                    monthBookCheckbox.checked = true;
+                }
+                else {
+                    monthBookCheckbox.checked = false;
+                }
+
+                monthBookDescInput.value = description;
+                let monthBookDescLabel = document.querySelector('.form__label_description');
+                let monthBookDescInputBlock = document.querySelector('.form__element_description');
+                let monthBookDisplay = '';
+                if (monthBookCheckbox.checked === true) {
+                    monthBookDisplay = 'block';
+                }
+                else {
+                    monthBookDisplay = 'none';
+                }
+                monthBookDescLabel.style.display = monthBookDisplay;
+                monthBookDescInputBlock.style.display = monthBookDisplay;
+
+                let priceLabel = document.querySelector('.form__label_price');
+                let priceInputBlock = document.querySelector('.form__element_price');
+                let priceDisplay = '';
+                if (price !== 0) {
+                    priceCheckbox.checked = true;
+                    priceDisplay = 'block';
+                    priceInput.value = price;
+                }
+                else {
+                    priceCheckbox.checked = false;
+                    priceDisplay = 'none';
+                    priceInput.value = '';
+                }
+                priceLabel.style.display = priceDisplay;
+                priceInputBlock.style.display = priceDisplay;
+
+                // Подставление старых значений в обложку
+                bookCoverAuthor.innerHTML = author;
+                bookCoverTitle.innerHTML = title;
+                bookCoverPublishing.innerHTML = publishing;
+                bookCoverMonthBookDesc.innerHTML = description;
+                bookCoverMonthBook.style.display = monthBookDisplay;
+
+                if (monthBookCheckbox.checked === true) {
+                    bookCover.classList.add('grid__item_month-book-color');
+                }
+                else {
+                    bookCover.classList.remove('grid__item_month-book-color');
+                }
+
+                if (price !== 0) {
+                    stickerForPrice.innerHTML = price;
+                }
+                else {
+                    stickerForPrice.innerHTML = '';
+                }
+
+                stickerForPrice.style.display = priceDisplay;
+
+                form.style.display = 'grid';
+            }
+            else {
+                console.log('Ошибка: ' + xhr.status);
+            }
+        }
+    };
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
 }
 
 function toggleBookOnHands(e) {
