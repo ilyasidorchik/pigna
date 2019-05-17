@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alterare/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/alterare/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="1553" column="32" lean-forward="true" selection-start-line="1553" selection-start-column="32" selection-end-line="1553" selection-end-column="32" />
+            <state relative-caret-position="-453">
+              <caret line="934" column="13" selection-start-line="934" selection-start-column="13" selection-end-line="934" selection-end-column="13" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -55,8 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>false</find>
-      <find>searchBook</find>
       <find>admin</find>
       <find>edit</find>
       <find>title</find>
@@ -78,13 +75,15 @@
       <find>alterare</find>
       <find>Анду</find>
       <find>returnBook</find>
-      <find>editBook</find>
       <find>returnBookEditin</find>
       <find>monthBookCheckbox</find>
       <find>monthBook</find>
       <find>returnBookEditingForm</find>
       <find>handleEvent</find>
       <find>openEditPage</find>
+      <find>editBook</find>
+      <find>local</find>
+      <find>form</find>
     </findStrings>
     <replaceStrings>
       <replace>$bookTitleWords[0]</replace>
@@ -385,12 +384,12 @@
       <workItem from="1557679232312" duration="1542000" />
       <workItem from="1557740906771" duration="7298000" />
       <workItem from="1557945802622" duration="1668000" />
-      <workItem from="1558086463377" duration="5156000" />
+      <workItem from="1558086463377" duration="6165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="517809000" />
+    <option name="totallyTimeSpent" value="518818000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -618,16 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/alterare/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="121" column="219" selection-start-line="121" selection-start-column="219" selection-end-line="121" selection-end-column="219" />
-          <folding>
-            <element signature="n#style#0;n#div#9;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fuori/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -642,10 +631,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/alterare/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="81" column="41" selection-start-line="81" selection-start-column="41" selection-end-line="81" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="1553" column="32" lean-forward="true" selection-start-line="1553" selection-start-column="32" selection-end-line="1553" selection-end-column="32" />
+        <state relative-caret-position="-453">
+          <caret line="934" column="13" selection-start-line="934" selection-start-column="13" selection-end-line="934" selection-end-column="13" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
