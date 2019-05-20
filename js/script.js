@@ -1483,7 +1483,7 @@ function editBook(id) {
 
                 let alertSuccess = document.createElement('div');
                 alertSuccess.className = "book-editing__form__success";
-                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro aggiunto al catalogo. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div>';
+                alertSuccess.innerHTML = '<div class="book-editing__form__success__alert">Libro alterato. <a class="book-editing__form__success__alert__returning pseudolink">Annulla</a></div>';
                 formWrap.appendChild(alertSuccess);
 
                 document.querySelector('.book-editing__form__success__alert__returning').addEventListener("click", {handleEvent: returnBookEditingForm, id: id});
