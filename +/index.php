@@ -21,22 +21,6 @@
         <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
         <?php
             if (password_verify($ini[admin][password], $_COOKIE['admin_rights']) || $password == $ini[admin][password]) {
-            	// Если на страницу добавления перешли с поиска — добавляем введённые данные в форму
-                $authorFromURLStatus = 'none';
-                $titleFromURLButtonStatus = ' form__element__button-disabled';
-	            if (isset($_GET['type'])) {
-		            switch ($_GET['type']) {
-			            case 'title':
-			            	$titleFromURL = $_GET['text'];
-                            $titleFromURLButtonStatus = '';
-							break;
-                        case 'author':
-                            $authorFromURL = $_GET['text'];
-                            $authorFromURLStatus = 'block';
-                            break;
-		            }
-	            }
-
             	echo <<<HERE
 					<div class="book-editing">
 				        <h2 class="h2">Nuovo libro</h2>
@@ -47,14 +31,14 @@
 								        <label for="title">Titolo</label>
 							        </div>
 							        <div class="form__element">
-								        <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title" value="$titleFromURL">
+								        <input type="text" name="title" id="title" autofocus autocomplete="off" class="form__element__input form__element__input_title">
 							        </div>
 			
 							        <div class="form__label">
 								        <label for="author">Autore</label>
 							        </div>
 							        <div class="form__element">
-								        <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author" value="$authorFromURL">
+								        <input type="text" name="author" id="author" autocomplete="off" class="form__element__input form__element__input_author">
 							        </div>
 			
 							        <div class="form__label">
@@ -101,7 +85,7 @@
 							        </div>
 			
 							        <div class="form__element">
-								        <button class="form__element__button form__element__button_book-adding$titleFromURLButtonStatus">Aggiungere</button>
+								        <button class="form__element__button form__element__button_book-adding form__element__button-disabled">Aggiungere</button>
 							        </div>
 						        </div>
 					        </form>
@@ -109,8 +93,8 @@
 				        <div class="book-editing__cover">
 					        <div class="grid__item">
 						        <div class="grid__item__authortitle">
-							        <div class="grid__item__authortitle__author" style="display: $authorFromURLStatus;">$authorFromURL</div>
-							        <div class="grid__item__authortitle__title">$titleFromURL</div>
+							        <div class="grid__item__authortitle__author" style="display: none;"></div>
+							        <div class="grid__item__authortitle__title"></div>
 						        </div>
 						        <div class="grid__item__publishing"></div>
 						        <div class="grid__item__sticker grid__item__sticker_price" style="display: none;"></div>
