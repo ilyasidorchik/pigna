@@ -242,15 +242,6 @@ function start() {
         }
     });
 
-    // Фикс обрезания название, если автор занимает больше одной строки
-    /*let booksForFix = document.querySelectorAll('.grid__item');
-    for (let i = 0; i < booksForFix.length; i++) {
-        let authorForFix = booksForFix[i].querySelector('.grid__item__authortitle__author');
-
-        console.log(authorForFix.innerHTML.length);
-    }*/
-
-
     if (searchForm != null) {
         searchForm.addEventListener('keydown', () => {
             if (event.keyCode == 13) {
@@ -624,6 +615,8 @@ function start() {
             else {
                 bookCoverAuthor.style.display = 'none';
             }
+
+            fixTitleHeightWhenLongAuthor();
 
             localStorage.setItem('newBookAuthor', authorInput.value);
 
@@ -1150,6 +1143,8 @@ function start() {
                 bookCoverAuthor.style.display = 'none';
             }
 
+            fixTitleHeightWhenLongAuthor();
+
             // Добавление в локальное хранилище
             localStorage.setItem('author' + id, authorInput.value);
             localStorage.setItem('savingAuthorInfo' + id, date);
@@ -1424,6 +1419,8 @@ function start() {
         let deleteLink = document.querySelector('.form__element__remove-link');
         deleteLink.addEventListener('click', {handleEvent: removeBook, id: id});
     }
+
+    fixTitleHeightWhenLongAuthor();
 }
 
 function searchBook(bookTitle) {
@@ -1581,6 +1578,8 @@ function searchBook(bookTitle) {
                         }
                     }
                 }
+
+                fixTitleHeightWhenLongAuthor();
             }
             else
                 console.log('Ошибка: ' + xhr.status);
@@ -2143,6 +2142,28 @@ function returnBook() {
     };
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(params);
+}
+
+function fixTitleHeightWhenLongAuthor() {
+    let booksAuthorTitle = document.querySelectorAll('.grid__item__authortitle');
+    let booksAuthor = document.querySelectorAll('.grid__item__authortitle__author');
+    let bookCoverAuthorHeight;
+
+    for (let i = 0; i < booksAuthor.length; i++) {
+        bookCoverAuthorHeight = window.getComputedStyle(booksAuthor[i]).height;
+
+        switch (bookCoverAuthorHeight) {
+            case '30px':
+                booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_three');
+                booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_two');
+                break;
+
+            case '45px':
+                booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_two');
+                booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_three');
+                break;
+        }
+    }
 }
 
 function preventDefault() {
