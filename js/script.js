@@ -618,6 +618,14 @@ function start() {
 
             fixTitleHeightWhenLongAuthor();
 
+            let bookCoverAuthorHeight = window.getComputedStyle(bookCoverAuthor).height;
+            if (parseInt(bookCoverAuthorHeight) >= 30) {
+                bookAddingButton.setAttribute('data-sendToEditor', 'true');
+            }
+            else {
+                bookAddingButton.removeAttribute('data-sendToEditor');
+            }
+
             localStorage.setItem('newBookAuthor', authorInput.value);
 
             if (e.keyCode === 13) {
@@ -823,7 +831,14 @@ function start() {
 
         bookAddingButton.addEventListener("click", ()=>{
             event.preventDefault();
-            addBook();
+
+            let sendToEditor = false;
+
+            if (bookAddingButton.hasAttribute('data-sendToEditor')) {
+                sendToEditor = true;
+            }
+
+            addBook(sendToEditor);
 
             localStorage.removeItem('newBookTitle');
             localStorage.removeItem('newBookAuthor');
@@ -1040,6 +1055,7 @@ function start() {
 
                     let savingInfo = document.createElement('div');
                     savingInfo.className = "form__element__warning-small form__element__warning-small-checkbox";
+                    savingInfo.style.left = "121px";
                     savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
                     priceCheckbox.parentNode.appendChild(savingInfo);
                 }
@@ -1617,7 +1633,7 @@ function toggleAppearingBlock(e) {
     }
 }
 
-function addBook() {
+function addBook(sendToEditor) {
     // Обязательное поле
     let title = titleInput.value;
 
@@ -1698,6 +1714,27 @@ function addBook() {
 
                 document.querySelector('.book-editing__form__success__alert__returning').addEventListener("click", returnBookAddingForm);
                 document.querySelector('.book-editing__form__success__clearingWrap__link').addEventListener("click", clearBookAddingForm);
+
+                if (sendToEditor) {
+                    let bookID = xhr.responseText;
+
+                    let xhrSendToEditor = new XMLHttpRequest();
+                    let paramsSendToEditor = 'id=' + bookID;
+
+                    xhrSendToEditor.open('POST', '../php/sendToEditor.php');
+                    xhrSendToEditor.onreadystatechange=()=>{
+                        if (xhrSendToEditor.readyState === 4) {
+                            if (xhrSendToEditor.status === 200) {
+
+                            }
+                            else {
+                                console.log('Ошибка: ' + xhrSendToEditor.status);
+                            }
+                        }
+                    };
+                    xhrSendToEditor.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhrSendToEditor.send(paramsSendToEditor);
+                }
             }
             else {
                 console.log('Ошибка: ' + xhr.status);

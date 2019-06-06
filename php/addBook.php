@@ -31,3 +31,7 @@
 
     // Добавление новой книги в базу данных
     mysqli_query($link, "INSERT INTO catalogue (id, title, author, publishing, price, monthBook, description) VALUES ('$id', '$titleTypografed', '$authorTypografed', '$publishing', '$price', '$monthBook', '$description')");
+
+    $result = mysqli_query($link, "SELECT id FROM catalogue WHERE title = '$titleTypografed' AND author = '$authorTypografed' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$description'");
+    $row = mysqli_fetch_assoc($result);
+    echo $row['id'];

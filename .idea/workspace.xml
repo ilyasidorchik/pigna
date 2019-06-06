@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/php/sendToEditor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/addBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/addBook.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +34,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="384" column="35" lean-forward="true" selection-end-line="1338" selection-end-column="1" />
+            <state relative-caret-position="306">
+              <caret line="1154" column="19" selection-start-line="1154" selection-start-column="19" selection-end-line="1154" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -41,8 +43,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="1593" column="31" lean-forward="true" selection-start-line="1593" selection-start-column="31" selection-end-line="1593" selection-end-column="31" />
+            <state relative-caret-position="214">
+              <caret line="1715" selection-start-line="1715" selection-end-line="1715" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
                 <element signature="e#4#10#0" expanded="true" />
@@ -64,10 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>returnBookAddingForm</find>
-      <find>monthBookStatusSaved</find>
-      <find>'+/'</find>
-      <find>publishingCitySaved</find>
       <find>publishingYearSaved</find>
       <find>priceSaved</find>
       <find>grid__item__authortitle__author</find>
@@ -92,8 +90,12 @@
       <find>bookCoverAuthorTitle</find>
       <find>authortitle</find>
       <find>append</find>
-      <find>fixTitleHeightWhenLongAuthor</find>
       <find>searchBook</find>
+      <find>добавления</find>
+      <find>fixTitleHeightWhenLongAuthor</find>
+      <find>bookCoverAuthorHeight = window.getComputedStyle(</find>
+      <find>addBook</find>
+      <find>small {</find>
     </findStrings>
     <replaceStrings>
       <replace>@col-5</replace>
@@ -154,15 +156,12 @@
         <option value="$PROJECT_DIR$/css/likely.css" />
         <option value="$PROJECT_DIR$/php/editMonthBook.php" />
         <option value="$PROJECT_DIR$/php/editTitle.php" />
-        <option value="$PROJECT_DIR$/php/removeBook.php" />
         <option value="$PROJECT_DIR$/php/typograf.php" />
         <option value="$PROJECT_DIR$/edit/index.php" />
         <option value="$PROJECT_DIR$/tick.php" />
         <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/modificare/index.php" />
-        <option value="$PROJECT_DIR$/app.ini" />
         <option value="$PROJECT_DIR$/php/editBook.php" />
-        <option value="$PROJECT_DIR$/php/addBook.php" />
         <option value="$PROJECT_DIR$/php/fillCatalogue.php" />
         <option value="$PROJECT_DIR$/php/editDates.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
@@ -170,10 +169,14 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/+/index.php" />
-        <option value="$PROJECT_DIR$/css/style.less" />
-        <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/alterare/index.php" />
+        <option value="$PROJECT_DIR$/php/removeBook.php" />
+        <option value="$PROJECT_DIR$/php/addBook.php" />
+        <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/app.ini" />
+        <option value="$PROJECT_DIR$/php/sendToEditor.php" />
+        <option value="$PROJECT_DIR$/css/style.less" />
       </list>
     </option>
   </component>
@@ -404,11 +407,13 @@
       <workItem from="1558465047559" duration="3448000" />
       <workItem from="1558550981533" duration="3826000" />
       <workItem from="1558598662661" duration="3839000" />
+      <workItem from="1558637709103" duration="94000" />
+      <workItem from="1559852915677" duration="4730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="545976000" />
+    <option name="totallyTimeSpent" value="550800000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -427,16 +432,16 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5007153" side_tool="true" weight="0.31025642" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31153846" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3025641" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34334764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35336193" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -458,13 +463,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="62" lean-forward="true" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.less" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -525,13 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/removeBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -563,28 +554,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/addBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="12" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/fillCatalogue.php" />
-    <entry file="file://$PROJECT_DIR$/php/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="32" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/editDates.php" />
     <entry file="file://$PROJECT_DIR$/php/functions.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -600,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/editBook.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/test.js" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -616,30 +579,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.html" />
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="396746" selection-start-column="396746" selection-end-column="396746" />
-          <folding>
-            <element signature="e#46#88222#1" expanded="true" />
-            <element signature="e#88331#180671#1" expanded="true" />
-            <element signature="e#180772#272556#1" expanded="true" />
-            <element signature="e#272666#374162#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css" />
     <entry file="file://$PROJECT_DIR$/alterare/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="27" column="77" lean-forward="true" selection-start-line="27" selection-start-column="77" selection-end-line="27" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="384" column="35" lean-forward="true" selection-end-line="1338" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -650,10 +594,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/php/removeBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/addBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/editBook.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/sendToEditor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="1154" column="19" selection-start-line="1154" selection-start-column="19" selection-end-line="1154" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="1593" column="31" lean-forward="true" selection-start-line="1593" selection-start-column="31" selection-end-line="1593" selection-end-column="31" />
+        <state relative-caret-position="214">
+          <caret line="1715" selection-start-line="1715" selection-end-line="1715" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
             <element signature="e#4#10#0" expanded="true" />
