@@ -18,7 +18,7 @@
         <link rel="stylesheet/less" type="text/css" href="../css/style.less">
     </head>
     <body class="page">
-        <h1 class="h1 input-h1"><a href="/" class="link">Piccola biblioteca della Pigna</a></h1>
+        <h1 class="h1 input-h1"><a href="/" class="link h1__link">Piccola biblioteca della Pigna</a></h1>
         <?php
             if (password_verify($ini[admin][password], $_COOKIE['admin_rights']) || $password == $ini[admin][password]) {
             	echo <<<HERE

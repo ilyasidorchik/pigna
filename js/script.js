@@ -25,41 +25,6 @@ let bookCoverMonthBook = document.querySelectorAll('.month-book')[0];
 let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__description')[0];
 let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
 
-// Обложка не показывается на мобильном телефоне
-let bookCoverOnMobile = document.querySelector('.page .book-editing__cover');
-if (bookCoverOnMobile != null) {
-    let myMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (myMobile.Android() ||
-                myMobile.BlackBerry() ||
-                myMobile.iOS() ||
-                myMobile.Opera() ||
-                myMobile.Windows());
-        }
-    };
-
-    if (myMobile.any() ) {
-        // Это мобильный телефон
-        bookCoverOnMobile.style.display = 'none';
-        document.querySelector('.page .book-editing__month-book__wrap').style.display = 'none';
-    }
-}
-
 // Футер
 let footerMobile = document.querySelector('.footer_mobile');
 if (footerMobile != null) {
@@ -86,160 +51,30 @@ document.addEventListener('DOMContentLoaded', start);
 
 function start() {
     let bookTitle;
+    let screen = document.documentElement.clientWidth;
+    let h1 = document.querySelector('.h1__link');
     let footer = document.querySelector('.footer');
 
-    if (searchInput != null) {
-        if (document.documentElement.clientWidth < 711) {
-            if (document.documentElement.clientWidth < 535) {
-                searchInput.placeholder = 'Pigna';
-            }
-            else {
-                searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
-            }
-        }
-        else {
-            searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
-        }
-    }
+    editTitle(screen, searchInput, h1);
 
-    let screen = document.documentElement.clientWidth;
     let bookEditing = document.querySelector('.book-editing');
     let bookEditingForm = document.querySelector('.book-editing__form');
     let bookEditingCover = document.querySelector('.book-editing__cover');
     let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
-    if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
-        if (screen < 892) {
-            bookEditing.insertBefore(bookEditingCover, bookEditingForm);
-            bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
-        }
-        else {
-            bookEditing.appendChild(bookEditingCover);
-            bookEditing.appendChild(bookEditingMonthBook);
-        }
 
-        let publishingYearLabel = document.querySelector('.form__label__label_publishing-year');
-        if (screen < 535) {
-            publishingYearLabel.innerHTML = 'Anno pubblicazione';
-        }
-        else {
-            publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
-        }
+    putInPlacelinkToBookAdding(screen, books);
 
-        let descriptionLabel = document.querySelector('.form__label__label_description');
-        if (screen < 535) {
-            descriptionLabel.innerHTML = 'Descrizione';
-        }
-        else {
-            descriptionLabel.innerHTML = 'Descri-<br>zione';
-        }
-    }
-
-    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
-    if (linkToBookAdding != null) {
-        if (screen < 535) {
-            books.insertBefore(linkToBookAdding, books.firstChild);
-        }
-        else {
-            if (screen < 711) {
-                books.insertBefore(linkToBookAdding, books.children[3]);
-            }
-            else {
-                if (screen < 892) {
-                    books.insertBefore(linkToBookAdding, books.children[4]);
-                }
-                else {
-                    if (screen < 1060) {
-                        books.insertBefore(linkToBookAdding, books.children[5]);
-                    }
-                    else {
-                        if (screen < 1230) {
-                            books.insertBefore(linkToBookAdding, books.children[6]);
-                        }
-                        else {
-                            books.insertBefore(linkToBookAdding, books.children[7]);
-                        }
-                    }
-                }
-            }
-        }
-    }
+    adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
     window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
         books = document.querySelectorAll('.grid')[0];
-        linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
 
-        if (searchInput != null) {
-            if (screen < 711) {
-                if (screen < 535) {
-                    searchInput.placeholder = 'Pigna';
-                }
-                else {
-                    searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
-                }
-            }
-            else {
-                searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
-            }
-        }
+        editTitle(screen, searchInput, h1);
 
-        if (linkToBookAdding != null) {
-            books.removeChild(linkToBookAdding);
+        putInPlacelinkToBookAdding(screen, books);
 
-            if (screen < 535) {
-                books.insertBefore(linkToBookAdding, books.firstChild);
-            }
-            else {
-                if (screen < 711) {
-                    books.insertBefore(linkToBookAdding, books.children[2]);
-                }
-                else {
-                    if (screen < 892) {
-                        books.insertBefore(linkToBookAdding, books.children[3]);
-                    }
-                    else {
-                        if (screen < 1060) {
-                            books.insertBefore(linkToBookAdding, books.children[4]);
-                        }
-                        else {
-                            if (screen < 1230) {
-                                books.insertBefore(linkToBookAdding, books.children[5]);
-                            }
-                            else {
-                                books.insertBefore(linkToBookAdding, books.children[6]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
-            if (screen < 892) {
-                bookEditing.insertBefore(bookEditingCover, bookEditingForm);
-                bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
-            }
-            else {
-                bookEditing.appendChild(bookEditingCover);
-                bookEditing.appendChild(bookEditingMonthBook);
-            }
-
-            let publishingYearLabel = document.querySelector('.form__label__label_publishing-year');
-            if (screen < 535) {
-                publishingYearLabel.innerHTML = 'Anno pubblicazione';
-            }
-            else {
-                publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
-            }
-
-            let descriptionLabel = document.querySelector('.form__label__label_description');
-            if (screen < 535) {
-                descriptionLabel.innerHTML = 'Descrizione';
-            }
-            else {
-                descriptionLabel.innerHTML = 'Descri-<br>zione';
-            }
-        }
+        adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
     });
 
     if (searchForm != null) {
@@ -339,6 +174,42 @@ function start() {
         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
 
+
+    // На мобильном телефоне в портретном режиме не показывается обложка в форме
+    if (document.location.pathname === '/+/' || document.location.pathname === '/alterare/') {
+        let bookCoverOnMobile = document.querySelector('.page .book-editing__cover');
+
+        let myMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return (myMobile.Android() ||
+                    myMobile.BlackBerry() ||
+                    myMobile.iOS() ||
+                    myMobile.Opera() ||
+                    myMobile.Windows());
+            }
+        };
+
+        if (myMobile.any() ) {
+            // Это мобильный телефон
+            bookCoverOnMobile.style.display = 'none';
+            document.querySelector('.page .book-editing__month-book__wrap').style.display = 'none';
+        }
+    }
 
     // Форма добавления книги
     if (document.location.pathname === '/+/') {
@@ -1452,38 +1323,8 @@ function searchBook(bookTitle) {
                 let gridItemCount = grid.querySelectorAll('.grid__item').length;
 
                 let screen = document.documentElement.clientWidth;
-                let books = grid;
-                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
-                if (linkToBookAdding != null) {
-                    books.removeChild(linkToBookAdding);
 
-                    if (screen < 535) {
-                        books.insertBefore(linkToBookAdding, books.firstChild);
-                    }
-                    else {
-                        if (screen < 711) {
-                            books.insertBefore(linkToBookAdding, books.children[2]);
-                        }
-                        else {
-                            if (screen < 892) {
-                                books.insertBefore(linkToBookAdding, books.children[3]);
-                            }
-                            else {
-                                if (screen < 1060) {
-                                    books.insertBefore(linkToBookAdding, books.children[4]);
-                                }
-                                else {
-                                    if (screen < 1230) {
-                                        books.insertBefore(linkToBookAdding, books.children[5]);
-                                    }
-                                    else {
-                                        books.insertBefore(linkToBookAdding, books.children[6]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                putInPlacelinkToBookAdding(screen, grid);
 
                 // Футер
                 if (document.documentElement.clientWidth < 535) {
@@ -1493,12 +1334,14 @@ function searchBook(bookTitle) {
                 else {
                     if (document.querySelector('.footer_mobile') != null) {
                         document.body.removeChild(footerMobile);
+
                     }
                 }
                 window.addEventListener("resize", () => {
                     if (document.documentElement.clientWidth < 535) {
                         books.insertBefore(footerMobile, books.children[3]);
                     }
+
                     else {
                         if (document.querySelector('.footer_mobile') != null)
                             books.removeChild(footerMobile);
@@ -1507,7 +1350,9 @@ function searchBook(bookTitle) {
 
 
                 // Если ничего не нашлось — плюс по центру
-                if (xhr.responseText == '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>') {
+                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+
+                if (xhr.responseText === '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>') {
                     linkToBookAdding.classList.add('grid__item_link-to-book-adding_center');
                     footerMobile.classList.remove('footer_mobile_bordered');
                 }
@@ -1542,7 +1387,7 @@ function searchBook(bookTitle) {
                 }
 
                 let footer = document.querySelector('.footer');
-                if (xhr.responseText == '' || gridItemCount <= 7) {
+                if (xhr.responseText === '' || gridItemCount <= 7) {
                     footer.classList.add('footer_bottom-sticked');
                 }
                 else {
@@ -1552,21 +1397,21 @@ function searchBook(bookTitle) {
                 }
 
                 // Подставление текста из поиска при добавлении книги
-                if (bookTitle != '' && document.querySelector('.admin') != null) {
+                if (bookTitle !== '' && document.querySelector('.admin') != null) {
                     let titles = document.querySelectorAll('.grid__item__authortitle__title');
                     let authors = document.querySelectorAll('.grid__item__authortitle__author');
 
                     let titlesCoins = 0;
                     let authorsCoins = 0;
 
-                    for (let i = 0; i <= titles.length; i++) {
-                        if (titles[0].innerHTML.indexOf(bookTitle) != -1) {
+                    for (let i = 0; i < titles.length; i++) {
+                        if (titles[i].innerHTML.indexOf(bookTitle) !== -1) {
                             titlesCoins++;
                         }
                     }
 
-                    for (let i = 0; i <= authors.length; i++) {
-                        if (authors[0].innerHTML.indexOf(bookTitle) != -1) {
+                    for (let i = 0; i < authors.length; i++) {
+                        if (authors[i].innerHTML.indexOf(bookTitle) !== -1) {
                             authorsCoins++;
                         }
                     }
@@ -1607,7 +1452,7 @@ function searchBook(bookTitle) {
 
 function toggleAppearingBlock(e) {
     let elementIdentifier;
-    if (e.type != 'checkbox') {
+    if (e.type !== 'checkbox') {
         elementIdentifier = this.classList.value.split("checkbox_")[1]; // e.g. description
     }
     else {
@@ -1622,7 +1467,7 @@ function toggleAppearingBlock(e) {
 
     let input = '.form__element_' + elementIdentifier + ' .form__element__input';
 
-    if (appearingInputBlock.style.display == 'none') {
+    if (appearingInputBlock.style.display === 'none') {
         appearingLabel.style.display = 'block';
         appearingInputBlock.style.display = 'block';
         document.querySelector(input).focus();
@@ -1638,7 +1483,7 @@ function addBook(sendToEditor) {
     let title = titleInput.value;
 
     // Если не заполнено поле — у него появляется фокус и обводка
-    if (title == '') {
+    if (title === '') {
         titleInput.focus();
         titleInput.classList.add('form__element__input_invalid');
         return;
@@ -2181,6 +2026,102 @@ function returnBook() {
     xhr.send(params);
 }
 
+function editTitle(screen, searchInput, h1) {
+    // Для главной страницы, когда плейсхолдер поискового поля имитирует h1
+    if (searchInput != null) {
+        if (screen < 711) {
+            if (screen < 535) {
+                searchInput.placeholder = 'Pigna';
+            }
+            else {
+                searchInput.placeholder = 'Cercare nella biblioteca della Pigna';
+            }
+        }
+        else {
+            searchInput.placeholder = 'Cercare libri nella piccola biblioteca della Pigna';
+        }
+    }
+
+    // Для страниц добавления и редактирования книги
+    if (h1 != null) {
+        if (screen < 711) {
+            if (screen < 535) {
+                h1.innerHTML = 'Pigna';
+            }
+            else {
+                h1.innerHTML = 'Cercare nella biblioteca della Pigna';
+            }
+        }
+        else {
+            h1.innerHTML = 'Cercare libri nella piccola biblioteca della Pigna';
+        }
+    }
+}
+
+function putInPlacelinkToBookAdding(screen, books) {
+    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+
+    if (linkToBookAdding != null) {
+        books.removeChild(linkToBookAdding);
+
+        if (screen < 535) {
+            books.insertBefore(linkToBookAdding, books.firstChild);
+        }
+        else {
+            if (screen < 711) {
+                books.insertBefore(linkToBookAdding, books.children[2]);
+            }
+            else {
+                if (screen < 892) {
+                    books.insertBefore(linkToBookAdding, books.children[3]);
+                }
+                else {
+                    if (screen < 1060) {
+                        books.insertBefore(linkToBookAdding, books.children[4]);
+                    }
+                    else {
+                        if (screen < 1230) {
+                            books.insertBefore(linkToBookAdding, books.children[5]);
+                        }
+                        else {
+                            books.insertBefore(linkToBookAdding, books.children[6]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook) {
+    if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
+        if (screen < 892) {
+            bookEditing.insertBefore(bookEditingCover, bookEditingForm);
+            bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
+        }
+        else {
+            bookEditing.appendChild(bookEditingCover);
+            bookEditing.appendChild(bookEditingMonthBook);
+        }
+
+        let publishingYearLabel = document.querySelector('.form__label__label_publishing-year');
+        if (screen < 535) {
+            publishingYearLabel.innerHTML = 'Anno pubblicazione';
+        }
+        else {
+            publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
+        }
+
+        let descriptionLabel = document.querySelector('.form__label__label_description');
+        if (screen < 535) {
+            descriptionLabel.innerHTML = 'Descrizione';
+        }
+        else {
+            descriptionLabel.innerHTML = 'Descri-<br>zione';
+        }
+    }
+}
+
 function fixTitleHeightWhenLongAuthor() {
     let booksAuthorTitle = document.querySelectorAll('.grid__item__authortitle');
     let booksAuthor = document.querySelectorAll('.grid__item__authortitle__author');
@@ -2194,8 +2135,16 @@ function fixTitleHeightWhenLongAuthor() {
                 booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_three');
                 booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_two');
                 break;
+            case '58px':
+                booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_three');
+                booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_two');
+                break;
 
             case '45px':
+                booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_two');
+                booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_three');
+                break;
+            case '87px':
                 booksAuthorTitle[i].classList.remove('grid__item__authortitle_author-lines_two');
                 booksAuthorTitle[i].classList.add('grid__item__authortitle_author-lines_three');
                 break;

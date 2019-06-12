@@ -359,7 +359,7 @@
 			}
 
 			&__authortitle {
-				overflow-y: hidden;
+				overflow: hidden;
 				max-height: 366px;
 
 				@media @col-3 {
@@ -368,11 +368,19 @@
 
 				&_author-lines {
 					&_two {
-						max-height: 202px;
+						max-height: 373px;
+
+						@media @col-3 {
+							max-height: 202px;
+						}
 					}
 
 					&_three {
-						max-height: 192px;
+						max-height: 353px;
+
+						@media @col-3 {
+							max-height: 192px;
+						}
 					}
 				}
 
@@ -1250,10 +1258,16 @@
 		}
 
 		&__remove-link {
+			display: block;
 			cursor: pointer;
 			color: #cd0404;
 			transition: color 0.35s ease-out;
-			margin-left: 15px;
+			margin-top: 10px;
+
+			@media @col-3 {
+				display: inline-block;
+				margin: 0 0 0 15px;
+			}
 
 			&__underline {
 				color: #cd0404 !important;
