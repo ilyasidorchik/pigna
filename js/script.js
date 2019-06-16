@@ -27,25 +27,7 @@ let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0]
 
 // Футер
 let footerMobile = document.querySelector('.footer_mobile');
-if (footerMobile != null) {
-    if (document.documentElement.clientWidth < 535) {
-        books.insertBefore(footerMobile, books.children[3]);
-    }
-    else {
-        if (document.querySelector('.footer_mobile') != null) {
-            document.body.removeChild(footerMobile);
-        }
-    }
-    window.addEventListener("resize", () => {
-        if (document.documentElement.clientWidth < 535) {
-            books.insertBefore(footerMobile, books.children[3]);
-        }
-        else {
-            if (document.querySelector('.footer_mobile') != null)
-                books.removeChild(footerMobile);
-        }
-    });
-}
+if (footerMobile != null) { showMobileFooter(); };
 
 document.addEventListener('DOMContentLoaded', start);
 
@@ -1313,55 +1295,45 @@ function start() {
 function searchBook(bookTitle) {
     let xhr = new XMLHttpRequest();
     let params = 'bookTitle=' + bookTitle;
-    let grid = document.querySelectorAll('.grid')[0];
 
     xhr.open('POST', '../php/search.php');
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                grid.innerHTML = xhr.responseText;
-                let gridItemCount = grid.querySelectorAll('.grid__item').length;
-
+                books.innerHTML = xhr.responseText;
+                let gridItemCount = books.querySelectorAll('.grid__item').length;
                 let screen = document.documentElement.clientWidth;
 
-                putInPlacelinkToBookAdding(screen, grid);
+                putInPlacelinkToBookAdding(screen, books);
 
-                // Футер
-                if (document.documentElement.clientWidth < 535) {
-                    books.appendChild(footerMobile);
-                    footerMobile.classList.remove('footer_mobile_bordered');
-                }
-                else {
-                    if (document.querySelector('.footer_mobile') != null) {
-                        document.body.removeChild(footerMobile);
-
-                    }
-                }
-                window.addEventListener("resize", () => {
-                    if (document.documentElement.clientWidth < 535) {
-                        books.insertBefore(footerMobile, books.children[3]);
-                    }
-
-                    else {
-                        if (document.querySelector('.footer_mobile') != null)
-                            books.removeChild(footerMobile);
-                    }
-                });
-
-
-                // Если ничего не нашлось — плюс по центру
+                // Если ничего не нашлось, у пользователя — шишка по центру, у админа — плюс по центру
                 let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+                switch (xhr.responseText) {
+                    case '':
+                        books.innerHTML = '<div class="grid__item grid__item_place grid__item_center"><img src="/img/cone_small-size.jpg" class="grid__item_place__cone"></div>';
 
-                if (xhr.responseText === '<div class="grid__item grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>') {
-                    linkToBookAdding.classList.add('grid__item_link-to-book-adding_center');
-                    footerMobile.classList.remove('footer_mobile_bordered');
-                }
-                else {
-                    if (linkToBookAdding != null) {
-                        linkToBookAdding.classList.remove('grid__item_link-to-book-adding_center');
-                    }
-                }
+                        footerMobile.classList.remove('footer_mobile_bordered');
+                        break;
 
+                    case '<div class="grid__item grid__item_place grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>':
+                        if (linkToBookAdding != null && !linkToBookAdding.classList.contains('grid__item_center')) {
+                            linkToBookAdding.classList.add('grid__item_center');
+                        }
+
+                        footerMobile.classList.remove('footer_mobile_bordered');
+                        break;
+
+                    default:
+                        if (linkToBookAdding != null && linkToBookAdding.classList.contains('grid__item_center')) {
+                            linkToBookAdding.classList.remove('grid__item_center');
+                        }
+
+                        if (!footerMobile.classList.contains('footer_mobile_bordered')) {
+                            footerMobile.classList.add('footer_mobile_bordered');
+                        }
+                        break;
+
+                }
 
                 // Редактирование книги
                 if (document.querySelector('.admin') != null) {
@@ -1383,16 +1355,6 @@ function searchBook(bookTitle) {
                         });
 
                         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
-                    }
-                }
-
-                let footer = document.querySelector('.footer');
-                if (xhr.responseText === '' || gridItemCount <= 7) {
-                    footer.classList.add('footer_bottom-sticked');
-                }
-                else {
-                    if (footer.classList.contains('footer_bottom-sticked')) {
-                        footer.classList.remove('footer_bottom-sticked');
                     }
                 }
 
@@ -1441,6 +1403,19 @@ function searchBook(bookTitle) {
                 }
 
                 fixTitleHeightWhenLongAuthor();
+
+                // Футер
+                showMobileFooter();
+
+                let footer = document.querySelectorAll('.footer')[1];
+                if (xhr.responseText === '' || gridItemCount <= 7) {
+                    footer.classList.add('footer_bottom-sticked');
+                }
+                else {
+                    if (footer.classList.contains('footer_bottom-sticked')) {
+                        footer.classList.remove('footer_bottom-sticked');
+                    }
+                }
             }
             else
                 console.log('Ошибка: ' + xhr.status);
@@ -2150,6 +2125,30 @@ function fixTitleHeightWhenLongAuthor() {
                 break;
         }
     }
+}
+
+function showMobileFooter() {
+    let screen = document.documentElement.clientWidth;
+
+    if (screen < 535) {
+        books.insertBefore(footerMobile, books.children[3]);
+    }
+    else {
+        if (books.querySelector('.footer_mobile')) {
+            books.removeChild(footerMobile);
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        if (document.documentElement.clientWidth < 535) {
+            books.insertBefore(footerMobile, books.children[3]);
+        }
+        else {
+            if (books.querySelector('.footer_mobile') ) {
+                books.removeChild(footerMobile);
+            }
+        }
+    });
 }
 
 function preventDefault() {
