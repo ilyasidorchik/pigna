@@ -1487,7 +1487,7 @@ function addBook(sendToEditor) {
     if (monthBook == true) {
         monthBook = 1;
 
-        if (description == '') {
+        if (description === '') {
             monthBookDescInput.focus();
             monthBookDescInput.classList.add('form__element__input_invalid');
             return;
@@ -1498,7 +1498,6 @@ function addBook(sendToEditor) {
     }
     else {
         monthBook = 0;
-        description = '';
     }
 
     let price = priceInput.value;
@@ -1596,10 +1595,10 @@ function editBook(id) {
 
     let monthBook = monthBookCheckbox.checked;
     let description = monthBookDescInput.value;
-    if (monthBook == true) {
+    if (monthBook === true) {
         monthBook = 1;
 
-        if (description == '') {
+        if (description === '') {
             monthBookDescInput.focus();
             monthBookDescInput.classList.add('form__element__input_invalid');
             return;
@@ -1610,7 +1609,6 @@ function editBook(id) {
     }
     else {
         monthBook = 0;
-        description = '';
     }
 
     let price = priceInput.value;
@@ -1793,7 +1791,6 @@ function returnBookEditingForm(id) {
     }
     else {
         monthBook = 0;
-        description = '';
     }
 
     let price = priceInput.getAttribute('data-price');

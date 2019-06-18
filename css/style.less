@@ -691,9 +691,16 @@
 		}
 
 		&_bottom-sticked {
-			@media @col-6 {
-				position: absolute;
-				bottom: 0;
+			@media @col-4 {
+				bottom: 0 !important;
+
+				.footer__hint {
+					display: none;
+				}
+
+				.footer__main {
+					border-top: none;
+				}
 			}
 		}
 
@@ -761,7 +768,7 @@
 		}
 	}
 
-	.footer_bottom-sticked, .footer_bottom-sticked-fixed {
+	.footer_bottom-sticked-fixed {
 		@media @col-3 {
 			width: 505px;
 		}
