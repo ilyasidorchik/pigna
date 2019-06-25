@@ -64,7 +64,7 @@
 							        <div class="form__label form__close-to-checkbox form__label_description" style="display: none;">
 								        <label for="book_description" class="form__label__label_description">Descri-<br>zione</label>
 							        </div>
-							        <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: none; margin-bottom: -.3rem;">
+							        <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: none;">
 								        <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description"></textarea>
 							        </div>
 			

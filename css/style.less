@@ -603,7 +603,7 @@
 
 		&__description {
 			font-family: 'IBM Plex Sans';
-			margin-top: 0px;
+			margin-top: 0;
 
 			p {
 				font-size: 1.3rem;
@@ -650,7 +650,7 @@
 		.grid__item_hover {
 			cursor: pointer;
 			color: #CD0404;
-			box-shadow: 0px 0px 0px 1px #ec6040 inset;
+			box-shadow: 0 0 0 1px #ec6040 inset;
 			transition: none;
 
 			.grid__item__admin_edit__icon {
@@ -807,7 +807,7 @@
 
 
 	.month-book {
-		font-family: 'IBM Plex Sans';
+		font-family: 'IBM Plex Sans', sans-serif;
 
 		&__wrap {
 			margin: -15px 0;
@@ -822,7 +822,7 @@
 				&__text {
 					border: 1px solid #000;
 					border-radius: 4px;
-					padding: 0px 3px;
+					padding: 0 3px;
 					font-size: 1.4rem;
 
 					@media @col-3 {
@@ -845,7 +845,7 @@
 	}
 
 	.book-editing {
-		font-family: 'IBM Plex Sans';
+		font-family: 'IBM Plex Sans', sans-serif;
 		margin-bottom: 75px;
 		display: grid;
 		grid-template-columns: repeat(14, 1fr);
@@ -931,7 +931,7 @@
 				grid-column-start: 10;
 				grid-column-end: 13;
 				margin-left: -39px;
-				margin-bottom: 0px;
+				margin-bottom: 0;
 			}
 
 			@media @col-6 {
@@ -1019,7 +1019,7 @@
 
 
 .form {
-	@form-font-size: 1.2rem;
+	@form-font-size: 19px;
 	@input-background-color: #f2f1f1;
 	@input-border-radius: 4px;
 
@@ -1031,11 +1031,11 @@
 	grid-row-gap: 10px;
 
 	@media @col-3 {
-		grid-row-gap: 25px;
+		grid-row-gap: 26.25px;
 	}
 
 	&__label {
-		padding-top: .65rem;
+		padding-top: 10px;
 		grid-column-start: 1;
 		grid-column-end: 12;
 
@@ -1045,7 +1045,7 @@
 
 		&_publishing-year-margin-fix {
 			@media @col-3 {
-				margin-top: -.95rem;
+				margin-top: -14px;
 			}
 		}
 	}
@@ -1085,7 +1085,7 @@
 		}
 
 		&_checkbox {
-			padding-top: 0.65rem;
+			padding-top: 10px;
 
 			@media @col-3 {
 				padding-top: 0;
@@ -1093,22 +1093,23 @@
 
 			&-month-book {
 				@media @col-3 {
-					margin-top: -1.2rem;
+					margin-top: -16.5px;
 				}
 			}
 
 			&-price {
 				@media @col-3 {
-					margin-top: -.3rem;
+					margin-top: -4px;
 				}
 			}
 		}
 
 		&_by-checkbox {
-			margin-top: 0 !important;
+			//margin-top: 0 !important;
 
 			@media @col-3 {
-				margin-top: -0.75rem !important;
+				//margin-top: -0.75rem !important;
+				margin-bottom: -3.5px;
 			}
 		}
 
@@ -1123,18 +1124,19 @@
 		}
 
 		&__input {
-			font-family: 'IBM Plex Sans';
+			font-family: 'IBM Plex Sans', sans-serif;
 			outline: none;
 			box-sizing: border-box;
 			width: 100%;
 			background: @input-background-color;
 			border: none;
 			.border-radius(@input-border-radius);
+			margin: 0;
 			padding: 10px 0 10px 10px;
 			font-size: @form-font-size;
 
 			&_invalid {
-				box-shadow: 0px 0px 0px 1px #ec6040 inset;
+				box-shadow: 0 0 0 1px #ec6040 inset;
 			}
 		}
 
@@ -1182,7 +1184,7 @@
 		&__warning-small {
 			position: absolute;
 			top: 48px;
-			left: 0px;
+			left: 0;
 			font-size: .75rem;
 			color: #ec6040;
 			white-space: nowrap;
@@ -1247,13 +1249,13 @@
 		}
 
 		&__button {
-			font-family: 'IBM Plex Sans';
+			font-family: 'IBM Plex Sans', sans-serif;
 			outline: none;
 			cursor: pointer;
 			border: none;
 			.border-radius(@input-border-radius);
 			font-size: 22px;
-			margin-top: 13px;
+			margin-top: 17.5px;
 			padding: 10px 45px 15px;
 			background: #6FFC3E;
 			background: linear-gradient(to bottom, #6FFC3E 0%, #1E6B07 100%);
@@ -1312,12 +1314,12 @@
 
 	&__labelelement_publishing-year-margin-fix {
 		@media @col-3 {
-			margin-top: -.95rem;
+			margin-top: -14px;
 		}
 	}
 
 	&__close-to-checkbox {
-		margin-top: -.75rem;
+		margin-top: -14px;
 	}
 }
 

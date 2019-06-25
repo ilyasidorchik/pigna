@@ -118,7 +118,7 @@
                                             <div class="form__label form__close-to-checkbox form__label_description" style="display: $monthBookStatus;">
                                                 <label for="book_description" class="form__label__label_description">Descri-<br>zione</label>
                                             </div>
-                                            <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: $monthBookStatus; margin-bottom: -.3rem;">
+                                            <div class="form__element form__close-to-checkbox form__element_description form__element_by-checkbox" style="display: $monthBookStatus;">
                                                 <textarea name="book_description" id="book_description" class="form__element__input form__element__textarea form__element__input_month-book-description" data-monthBookDesc="$row[description]">$row[description]</textarea>
                                             </div>
                     

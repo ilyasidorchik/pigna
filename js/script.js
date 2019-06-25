@@ -27,7 +27,7 @@ let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0]
 
 // Футер
 let footerMobile = document.querySelector('.footer_mobile');
-if (footerMobile != null) { showMobileFooter(); };
+if (footerMobile != null) { showMobileFooter(); }
 
 document.addEventListener('DOMContentLoaded', start);
 
