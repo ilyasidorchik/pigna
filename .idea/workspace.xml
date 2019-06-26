@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="1265" column="28" selection-start-line="1265" selection-start-column="28" selection-end-line="1265" selection-end-column="28" />
+            <state relative-caret-position="285">
+              <caret line="916" column="35" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -92,14 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bo</find>
-      <find>books</find>
-      <find>let books =</find>
-      <find>grid.</find>
-      <find>footer_mobile_bordered</find>
-      <find>screen</find>
-      <find>showMobileFooter();</find>
-      <find>showMobileFooter</find>
       <find>showM</find>
       <find>searchBook</find>
       <find>showMobileFoo</find>
@@ -122,6 +115,14 @@
       <find>padding-top: 10px;</find>
       <find>fake-</find>
       <find>checkbox {</find>
+      <find>button</find>
+      <find>em</find>
+      <find>book-addin</find>
+      <find>&amp;__fake-checkbox</find>
+      <find>monthbo</find>
+      <find>desc</find>
+      <find>border-radius</find>
+      <find>rem</find>
     </findStrings>
     <replaceStrings>
       <replace>$admin, '');</replace>
@@ -441,12 +442,12 @@
       <workItem from="1560689423292" duration="10332000" />
       <workItem from="1560866440018" duration="2062000" />
       <workItem from="1560870087044" duration="342000" />
-      <workItem from="1561448792693" duration="6303000" />
+      <workItem from="1561448792693" duration="10183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="575995000" />
+    <option name="totallyTimeSpent" value="579875000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -467,7 +468,7 @@
       <window_info anchor="bottom" id="File Transfer" order="9" sideWeight="0.49928468" weight="0.31145832" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30128205" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30104166" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24749643" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15814696" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -692,8 +693,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="1265" column="28" selection-start-line="1265" selection-start-column="28" selection-end-line="1265" selection-end-column="28" />
+        <state relative-caret-position="285">
+          <caret line="916" column="35" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="35" />
         </state>
       </provider>
     </entry>

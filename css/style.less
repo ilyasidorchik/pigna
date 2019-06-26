@@ -39,6 +39,8 @@
 @large: ~"(min-width: 992px)";
 @extraLarge: ~"(min-width: 1200px)";
 
+@input-border-radius: 4px;
+
 .border-radius(@radius) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
@@ -75,12 +77,12 @@
 	}
 
 	.input-h1 {
-		font-family: 'IBM Plex Sans Medium';
+		font-family: 'IBM Plex Sans Medium', sans-serif;
 		font-size: 29px;
 	}
 
 	.h2 {
-		font-family: 'IBM Plex Sans';
+		font-family: 'IBM Plex Sans', sans-serif;
 		font-weight: normal;
 	}
 
@@ -115,21 +117,22 @@
 	.search {
 		display: flex;
 		justify-content: space-between;
-		height: 3.15rem;
+		height: 50px;
 		margin-bottom: 15px;
 
 		&__icon {
 			width: 30px;
-			height: 30px;
+			height: 50px;
 			margin-top: -3px;
 		}
 
 		&__form {
-			width: calc(100% - 2.5rem);
+			width: calc(100% - 40px);
 
 			.input {
 				width: 100%;
-				padding: 4px 0 5px;
+				margin: 0;
+				padding: 6px 0 7px;
 				border: 0;
 				outline: none;
 
@@ -206,8 +209,8 @@
 				}
 
 				&__text {
-					font-family: 'IBM Plex Sans';
-					font-size: 2.1rem;
+					font-family: 'IBM Plex Sans', sans-serif;
+					font-size: 34px;
 					position: absolute;
 					bottom: 52px;
 					left: 0;
@@ -215,7 +218,7 @@
 					padding-left: 6px;
 
 					@media @col-3 {
-						font-size: 1.2rem;
+						font-size: 19px;
 						bottom: 30px;
 					}
 				}
@@ -273,15 +276,12 @@
 			}
 
 			&_link-to-book-adding {
-				font-family: 'IBM Plex Serif', sans-serif;
 				text-align: center;
-				font-size: 3.6rem;
 				height: 53px;
 				margin: auto;
 
 				@media @col-3 {
-					font-size: 10rem;
-					padding: 0.5rem;
+					padding: 8px;
 					height: 465px;
 				}
 
@@ -303,12 +303,11 @@
 						box-sizing: border-box;
 						width: 290px;
 						padding: 15px 22px 17px;
-						border: 1px solid #6FFC3E;
 						border-radius: 14px;
 						color: #1E6B07;
 						text-decoration: none;
-						font-family: 'IBM Plex Sans';
-						font-size: 1.3rem;
+						font-family: 'IBM Plex Sans', sans-serif;
+						font-size: 21px;
 						position: relative;
 						border: 1px solid transparent;
 						background: #fff;
@@ -427,7 +426,7 @@
 
 			&__publishing {
 				font-family: 'IBM Plex Serif', sans-serif;
-				font-size: 1.4rem;
+				font-size: 22px;
 
 				@media @col-3 {
 					font-size: 12px;
@@ -435,7 +434,7 @@
 			}
 
 			&__sticker {
-				font-family: 'IBM Plex Sans';
+				font-family: 'IBM Plex Sans', sans-serif;
 				position: absolute;
 				text-align: center;
 				color: #fff;
@@ -496,11 +495,15 @@
 
 					.form__element__label {
 						&__fake-checkbox {
+							width: 36px;
+							height: 36px;
 							background: #fff;
 							border: 2px solid #000;
 							transition: border .35s ease-out;
 
 							@media @col-3 {
+								width: 20px;
+								height: 20px;
 								border-width: 1px
 							}
 						}
@@ -516,10 +519,14 @@
 					.form__element__label__checkbox:checked + .form__element__label__fake-checkbox::before {
 						top: -10px;
 						left: 5px;
+						width: 36px;
+						height: 37px;
 
 						@media @col-3 {
 							top: -5px;
 							left: 2.5px;
+							width: 20px;
+							height: 21px;
 						}
 					}
 				}
@@ -604,12 +611,12 @@
 		}
 
 		&__description {
-			font-family: 'IBM Plex Sans';
+			font-family: 'IBM Plex Sans', sans-serif;
 			margin-top: 0;
 
 			p {
-				font-size: 1.3rem;
-				line-height: 2rem;
+				font-size: 21px;
+				line-height: 32px;
 
 				@media @col-3 {
 					font-size: 16px;
@@ -628,7 +635,7 @@
 			@media @col-3 {
 				grid-column-start: 1;
 				grid-column-end: 12;
-				font-size: 1rem;
+				font-size: 16px;
 			}
 
 			@media @col-4 {
@@ -732,7 +739,7 @@
 			width: 173px;
 			margin: 0 auto;
 			padding: 5px 0 6px;
-			font-family: 'IBM Plex Sans';
+			font-family: 'IBM Plex Sans', sans-serif;
 			text-align: center;
 			border-radius: 30px 30px 0 0;
 			background: #000;
@@ -825,7 +832,7 @@
 					border: 1px solid #000;
 					border-radius: 4px;
 					padding: 0 3px;
-					font-size: 1.4rem;
+					font-size: 22px;
 
 					@media @col-3 {
 						font-size: 12px;
@@ -835,8 +842,8 @@
 
 			&__description {
 				margin-top: 10px;
-				font-size: 1.75rem;
-				line-height: 2.25rem;
+				font-size: 28px;
+				line-height: 36px;
 
 				@media @col-3 {
 					font-size: 19px;
@@ -876,11 +883,11 @@
 				position: absolute;
 				top: 0;
 				z-index: 1;
-				font-size: 1.2rem;
-				margin-bottom: 3rem;
+				font-size: 19px;
+				margin-bottom: 48px;
 
 				@media @col-4 {
-					margin-left: -1rem;
+					margin-left: -16px;
 				}
 
 				&-remove {
@@ -896,8 +903,8 @@
 
 				&__alert {
 					box-sizing: border-box;
-					padding: .75rem 1rem;
-					border-radius: .25rem;
+					padding: 12px 16px;
+					.border-radius(@input-border-radius);
 					color: #155724;
 					background: #d4edda;
 
@@ -907,7 +914,7 @@
 				}
 
 				&__clearingWrap {
-					padding: .75rem 1rem;
+					padding: 12px 16px;
 				}
 			}
 		}
@@ -1028,7 +1035,6 @@
 .form {
 	@form-font-size: 19px;
 	@input-background-color: #f2f1f1;
-	@input-border-radius: 4px;
 
 	font-size: @form-font-size;
 
@@ -1112,10 +1118,7 @@
 		}
 
 		&_by-checkbox {
-			//margin-top: 0 !important;
-
 			@media @col-3 {
-				//margin-top: -0.75rem !important;
 				margin-bottom: -3.5px;
 			}
 		}
@@ -1148,7 +1151,7 @@
 		}
 
 		&__textarea {
-			height: 6.2rem;
+			height: 88px;
 			resize: none;
 		}
 
@@ -1178,7 +1181,7 @@
 			}
 
 			&__currency-sign {
-				padding-top: .6rem;
+				padding-top: 9.5px;
 			}
 		}
 
@@ -1192,12 +1195,12 @@
 			position: absolute;
 			top: 48px;
 			left: 0;
-			font-size: .75rem;
+			font-size: 12px;
 			color: #ec6040;
 			white-space: nowrap;
 
 			&-lower {
-				top: 101px;
+				top: 90px;
 			}
 
 			&-checkbox {
@@ -1349,16 +1352,16 @@
 		display: inline-block !important;
 
 		.likely__widget {
-			height: 3rem !important;
+			height: 48px !important;
 		}
 
 		.likely__icon {
-			width: 3.025rem !important;
-			height: 3rem !important;
+			width: 48px !important;
+			height: 48px !important;
 
 			svg {
-				width: 2.6rem !important;
-				height: 2.5rem !important;
+				width: 42px !important;
+				height: 40px !important;
 			}
 		}
 
