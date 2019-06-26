@@ -27,6 +27,7 @@
 }
 
 // Общее
+@before-col-3: ~"(max-width: 534px)";
 @col-3: ~"(min-width: 535px)";
 @col-4: ~"(min-width: 711px)";
 @col-5: ~"(min-width: 892px)";
@@ -480,7 +481,7 @@
 			&__admin {
 				&_panel {
 					position: absolute;
-					font-family: 'IBM Plex Sans';
+					font-family: 'IBM Plex Sans', sans-serif;
 					font-size: 29px;
 					bottom: 5px;
 					left: 0;
@@ -968,9 +969,14 @@
 			grid-column-start: 1;
 			grid-column-end: 15;
 
+			@media @before-col-3 {
+				display: none !important;
+			}
+
 			@media @col-3 {
 				grid-column-start: 7;
 				grid-column-end: 11;
+				display: block;
 			}
 
 			@media @col-4 {
@@ -1030,17 +1036,21 @@
 	grid-template-columns: repeat(11, 1fr);
 	grid-column-gap: 15px;
 	grid-row-gap: 10px;
+	margin-top: -15px;
 
 	@media @col-3 {
 		grid-row-gap: 26.25px;
+		margin-top: 0;
 	}
 
 	&__label {
+		margin-bottom: -2px;
 		padding-top: 10px;
 		grid-column-start: 1;
 		grid-column-end: 12;
 
 		@media @col-3 {
+			margin-bottom: 0;
 			grid-column-end: 2;
 		}
 
@@ -1086,11 +1096,7 @@
 		}
 
 		&_checkbox {
-			padding-top: 10px;
-
-			@media @col-3 {
-				padding-top: 0;
-			}
+			margin-top: 14.5px;
 
 			&-month-book {
 				@media @col-3 {
@@ -1214,8 +1220,8 @@
 			&__fake-checkbox {
 				display: inline-block;
 				box-sizing: border-box;
-				width: 36px;
-				height: 36px;
+				width: 23px;
+				height: 23px;
 				background: @input-background-color;
 				.border-radius(8px);
 				vertical-align: middle;
@@ -1237,10 +1243,10 @@
 				position: absolute;
 				top: -4px;
 				left: 4px;
-				width: 36px;
-				height: 37px;
+				width: 23px;
+				height: 24px;
 				content: '';
-				background: url('../img/tick.svg');
+				background: url('../img/tick.svg') no-repeat;
 
 				@media @col-3 {
 					width: 20px;
@@ -1256,13 +1262,19 @@
 			border: none;
 			.border-radius(@input-border-radius);
 			font-size: 22px;
-			margin-top: 17.5px;
+			width: 100%;
+			margin-top: 28.5px;
 			padding: 10px 45px 15px;
 			background: #6FFC3E;
 			background: linear-gradient(to bottom, #6FFC3E 0%, #1E6B07 100%);
 			color: #fff;
 			box-shadow: none;
 			transition: background 0.35s ease-out, box-shadow 0.35s ease-out;
+
+			@media @col-3 {
+				width: auto;
+				margin-top: 17.5px;
+			}
 
 			&:hover {
 				box-shadow: inset 0 0 100px rgba(0, 0, 0, .16);
@@ -1320,7 +1332,15 @@
 	}
 
 	&__close-to-checkbox {
-		margin-top: -14px;
+		@media @col-3 {
+			margin-top: -14px;
+		}
+	}
+
+	.form__label.form__close-to-checkbox {
+		@media @before-col-3 {
+			margin-top: -12.5px;
+		}
 	}
 }
 
