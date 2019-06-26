@@ -21,12 +21,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Piccola biblioteca della Pigna</title>
 	    <meta name="description" content="Storia locale, scienze, letteratura e arte">
-	    <link rel="shortcut icon" href="img/favicon.ico">
-	    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon-180x180.png">
-        <link rel="stylesheet/less" type="text/css" href="css/style.less">
+	    <link rel="shortcut icon" href="/img/favicon.ico">
+	    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+        <link rel="stylesheet/less" type="text/css" href="/css/style.less">
 	    <link rel="stylesheet" href="/css/likely.css">
     </head>
-    <body class="page <?php echo $admin; ?>">
+    <body class="page<?php echo ' '.$admin; ?>">
         <div class="search">
             <div class="search__icon">
 	            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -98,7 +98,6 @@
 			        </div>
 			        <p class="grid__description__text">Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
 			        <p class="grid__description__text">Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
-
 			        <p>
 				        Autore dell’idea e progettista <nobr><a href="http://robertblinov.net/" class="link">Robert Blinov</a>,</nobr>
 				        <br>direttore d’arte e tecnologo <nobr><a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a></nobr>
@@ -106,8 +105,8 @@
 		        </div>
 	        </div>
         </div>
-        <script src="js/likely.js"></script>
+        <script src="/js/likely.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
-        <script src="js/script.js"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>
