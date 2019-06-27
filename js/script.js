@@ -142,16 +142,7 @@ function start() {
         let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
         gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
 
-        gridItems[i].addEventListener('mouseover', (e)=> {
-            gridItems[i].classList.add('grid__item_hover');
-
-            if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
-                gridItems[i].classList.remove('grid__item_hover');
-            }
-        });
-        gridItems[i].addEventListener('mouseout', ()=> {
-            gridItems[i].classList.remove('grid__item_hover');
-        });
+        addBookHover(gridItems[i]);
 
         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
@@ -1343,16 +1334,7 @@ function searchBook(bookTitle) {
                         let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
                         gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
 
-                        gridItems[i].addEventListener('mouseover', (e)=> {
-                            gridItems[i].classList.add('grid__item_hover');
-
-                            if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
-                                gridItems[i].classList.remove('grid__item_hover');
-                            }
-                        });
-                        gridItems[i].addEventListener('mouseout', ()=> {
-                            gridItems[i].classList.remove('grid__item_hover');
-                        });
+                        addBookHover(gridItems[i]);
 
                         onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
                     }
@@ -1889,7 +1871,7 @@ function toggleBookOnHands(e) {
     let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands')[this.number];
 
     let onHandsStatus = 1;
-    if (onHandsCheckbox.checked == false) {
+    if (onHandsCheckbox.checked === false) {
         onHandsStatus = 0;
     }
 
@@ -1914,7 +1896,7 @@ function toggleBookOnHands(e) {
 function openEditPage(e) {
     let book = document.querySelectorAll('.grid__item[data-id]')[this.number];
     let id = book.getAttribute('data-id');
-    if (e.target.tagName == 'LABEL' || e.target.tagName == 'SPAN' || e.target.tagName == 'INPUT') {
+    if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
 
     }
     else {
@@ -2023,6 +2005,25 @@ function editTitle(screen, searchInput, h1) {
             h1.innerHTML = 'Piccola biblioteca della&nbsp;Pigna';
         }
     }
+}
+
+function addBookHover(gridItem) {
+    gridItem.addEventListener('mouseover', (e) => {
+        gridItem.classList.add('grid__item_hover');
+
+        if (gridItem.classList.contains('grid__item_transition') === false) {
+            gridItem.classList.add('grid__item_transition');
+        }
+
+        if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
+            gridItem.classList.remove('grid__item_transition');
+            gridItem.classList.remove('grid__item_hover');
+        }
+    });
+
+    gridItem.addEventListener('mouseout', ()=> {
+        gridItem.classList.remove('grid__item_hover');
+    });
 }
 
 function putInPlacelinkToBookAdding(screen, books) {

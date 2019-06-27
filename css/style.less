@@ -181,12 +181,15 @@
 			height: 468px;
 			padding: 8px;
 			background: #fff2d5;
-			transition: box-shadow .35s ease-out, color .35s ease-out;
 
 			@media @col-3 {
 				max-width: 159px;
 				max-height: 255px;
 				padding: 4.8px;
+			}
+
+			&_transition {
+				transition: box-shadow .35s ease-out, color .35s ease-out;
 			}
 
 			&_month-book-color {
@@ -499,7 +502,6 @@
 							height: 36px;
 							background: #fff;
 							border: 2px solid #000;
-							transition: border .35s ease-out;
 
 							@media @col-3 {
 								width: 20px;
@@ -511,7 +513,6 @@
 						&:hover {
 							.form__element__label__fake-checkbox {
 								border-color: #ec6040;
-								transition: none;
 							}
 						}
 					}
