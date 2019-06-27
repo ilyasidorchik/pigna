@@ -2016,16 +2016,11 @@ function editTitle(screen, searchInput, h1) {
 
     // Для страниц добавления и редактирования книги
     if (h1 != null) {
-        if (screen < 711) {
-            if (screen < 535) {
-                h1.innerHTML = 'Pigna';
-            }
-            else {
-                h1.innerHTML = 'Cercare nella biblioteca della Pigna';
-            }
+        if (screen < 535) {
+            h1.innerHTML = 'Pigna';
         }
         else {
-            h1.innerHTML = 'Cercare libri nella piccola biblioteca della Pigna';
+            h1.innerHTML = 'Piccola biblioteca della&nbsp;Pigna';
         }
     }
 }
