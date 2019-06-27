@@ -608,6 +608,7 @@ function start() {
             localStorage.setItem('newBookMonthBookStatus', monthBookStatus);
             localStorage.setItem('newBookMonthBookDesc', description);
         });
+        monthBookDescInput.addEventListener('mouseup', copyFix());
 
 
         priceCheckbox.addEventListener("click", toggleAppearingBlock);
@@ -2077,6 +2078,7 @@ function adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, b
             publishingYearLabel.innerHTML = 'Anno pubblicazione';
         }
         else {
+            publishingYearLabel.addEventListener('mouseup', copyFix);
             publishingYearLabel.innerHTML = 'Anno&nbsp;pub-<br>blicazione';
         }
 
@@ -2085,6 +2087,7 @@ function adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, b
             descriptionLabel.innerHTML = 'Descrizione';
         }
         else {
+            descriptionLabel.addEventListener('mouseup', copyFix);
             descriptionLabel.innerHTML = 'Descri-<br>zione';
         }
     }
@@ -2222,4 +2225,73 @@ function convertMonth(month) {
             return 'dic';
             break;
     }
+}
+
+function copyFix() {
+    runOnKeys(
+        function() {
+            let selection = getSelectionText();
+
+            if (selection.indexOf('-\n') !== -1) {
+                selection = selection.split('-\n').join('');
+                selection = selection.split('\n').join(' ');
+
+                let copyFixOld = document.querySelector('copy-fix');
+                if (copyFixOld != null) {
+                    copyFixOld.parentNode.removeChild(copyFixOld);
+                }
+
+                let copyFix = document.createElement('input');
+                copyFix.type = 'text';
+                copyFix.className = 'copy-fix';
+                copyFix.value = selection;
+
+                document.body.appendChild(copyFix);
+
+                copyFix.select();
+                document.execCommand("copy");
+            }
+        },
+        91,
+        67
+    );
+}
+
+function getSelectionText() {
+    let txt = '';
+    if (txt = window.getSelection) { // Не IE, используем метод getSelection
+        txt = window.getSelection().toString();
+    }
+    else { // IE, используем объект selection
+        txt = document.selection.createRange().text;
+    }
+    return txt;
+}
+
+function runOnKeys(func) {
+    let codes = [].slice.call(arguments, 1);
+
+    let pressed = {};
+
+    document.onkeydown = function(e) {
+        e = e || window.event;
+
+        pressed[e.keyCode] = true;
+
+        for (var i = 0; i < codes.length; i++) { // проверить, все ли клавиши нажаты
+            if (!pressed[codes[i]]) {
+                return;
+            }
+        }
+        // чтобы избежать "залипания" клавиши -- обнуляем статус всех клавиш, пусть нажимает всё заново
+        pressed = {};
+        func();
+    };
+
+    document.onkeyup = function(e) {
+        e = e || window.event;
+
+        delete pressed[e.keyCode];
+    };
+
 }
