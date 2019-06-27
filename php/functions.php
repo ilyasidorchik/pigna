@@ -19,29 +19,21 @@
         return $strTypografed;
     }
 
-    function addAccent($word) {
-        if (strlen($word) > 1) {
-            switch(substr($word[strlen($word)-1], -1)) {
-                case 'a':
-                    $word[strlen($word)-1] = str_replace('a', '&agrave;', $word[strlen($word)-1]);
-                    break;
-                case 'o':
-                    $word[strlen($word)-1] = str_replace('o', '&ograve;', $word[strlen($word)-1]);
-                    break;
-            }
-        }
-        else {
-            switch($word) {
-                case 'a':
-                    $word = '&agrave;';
-                    break;
-                case 'o':
-                    $word = '&ograve;';
-                    break;
-            }
-        }
+    function printAllBooks($link, $onHandsStart, $onHandsEnd, $admin) {
+        // Книга месяца
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
+        while ($row = mysqli_fetch_assoc($result))
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
 
-        return $word;
+        // Все остальные книги, которые не на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart' ORDER BY id DESC");
+        while ($row = mysqli_fetch_assoc($result))
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+
+        // Книги, которые на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd' ORDER BY id DESC");
+        while ($row = mysqli_fetch_assoc($result))
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
     }
 
     function printBookTemplate($id, $author, $title, $publishing, $price, $monthBook, $description, $onHands, $admin) {
@@ -124,4 +116,29 @@ HERE;
     function printBookAddingLink($admin) {
         if ($admin == 'admin')
             echo '<div class="grid__item grid__item_place grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>';
+    }
+
+    function addAccent($word) {
+        if (strlen($word) > 1) {
+            switch(substr($word[strlen($word)-1], -1)) {
+                case 'a':
+                    $word[strlen($word)-1] = str_replace('a', '&agrave;', $word[strlen($word)-1]);
+                    break;
+                case 'o':
+                    $word[strlen($word)-1] = str_replace('o', '&ograve;', $word[strlen($word)-1]);
+                    break;
+            }
+        }
+        else {
+            switch($word) {
+                case 'a':
+                    $word = '&agrave;';
+                    break;
+                case 'o':
+                    $word = '&ograve;';
+                    break;
+            }
+        }
+
+        return $word;
     }

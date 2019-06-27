@@ -51,20 +51,7 @@
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
 
-                // Книга месяца
-                $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
-                while ($row = mysqli_fetch_assoc($result))
-	                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
-
-                // Все остальные книги, которые не на руках
-                $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart'");
-                while ($row = mysqli_fetch_assoc($result))
-	                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
-
-                // Книги, которые на руках
-                $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd'");
-                while ($row = mysqli_fetch_assoc($result))
-	                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+                printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
             ?>
         </div>
         <div class="footer footer_mobile footer_mobile_bordered">

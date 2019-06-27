@@ -41,7 +41,7 @@
         $arrayID = array();
 
         // Все остальные книги в наличии. Поиск по автору в приоритете
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsStart");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsStart ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row[id], $arrayID)) {
                 if ($partsCount > 1 && $bookTitleWords[1] != '') {
@@ -112,7 +112,7 @@
             }
         }
 
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsStart");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsStart ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row[id], $arrayID)) {
                 if ($partsCount > 1 && $bookTitleWords[1] != '') {
@@ -201,7 +201,7 @@
 
 
         // Книги на руках. Поиск по автору в приоритете
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row[id], $arrayID)) {
                 if ($partsCount > 1 && $bookTitleWords[1] != '') {
@@ -272,7 +272,7 @@
             }
         }
 
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row[id], $arrayID)) {
                 if ($partsCount > 1 && $bookTitleWords[1] != '') {
@@ -358,21 +358,5 @@
         }
     }
     else {
-        // Книга месяца
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
-        while ($row = mysqli_fetch_assoc($result)) {
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
-        }
-
-        // Все остальные книги, которые не на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsStart");
-        while ($row = mysqli_fetch_assoc($result)) {
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
-        }
-
-        // Книги, которые на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd");
-        while ($row = mysqli_fetch_assoc($result)) {
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
-        }
+        printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
     }
