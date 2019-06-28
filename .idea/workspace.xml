@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/sticker-for-new.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/sticker-for-new.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/search.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="26" column="69" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+            <state relative-caret-position="367">
+              <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
               <folding>
                 <element signature="e#76#84#0" expanded="true" />
               </folding>
@@ -62,9 +61,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sticker-for-new.svg" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
-          <provider selected="true" editor-type-id="images" />
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/search.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="763">
+              <caret line="53" column="78" lean-forward="true" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -80,8 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkbox {</find>
-      <find>button</find>
       <find>em</find>
       <find>book-addin</find>
       <find>&amp;__fake-checkbox</find>
@@ -110,9 +111,10 @@
       <find>sticker</find>
       <find>month-book</find>
       <find>month-book-color</find>
+      <find>row[onHands], $admin);</find>
+      <find>SELECT * FROM</find>
     </findStrings>
     <replaceStrings>
-      <replace>$row[onHands], $admin);</replace>
       <replace>&amp;nbsp;&quot;,</replace>
       <replace>, &quot;</replace>
       <replace>return</replace>
@@ -142,6 +144,7 @@
       <replace>'IBM Plex Serif Italic', sans-serif;</replace>
       <replace>0</replace>
       <replace>gridItem</replace>
+      <replace>row[onHands], $row['new'], $admin);</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -185,13 +188,13 @@
         <option value="$PROJECT_DIR$/+/index.php" />
         <option value="$PROJECT_DIR$/alterare/index.php" />
         <option value="$PROJECT_DIR$/js/script.js" />
-        <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/php/removeBook.php" />
         <option value="$PROJECT_DIR$/php/addBook.php" />
-        <option value="$PROJECT_DIR$/php/functions.php" />
         <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/img/sticker-for-new.svg" />
+        <option value="$PROJECT_DIR$/php/functions.php" />
+        <option value="$PROJECT_DIR$/php/search.php" />
       </list>
     </option>
   </component>
@@ -431,12 +434,12 @@
       <workItem from="1560866440018" duration="2062000" />
       <workItem from="1560870087044" duration="342000" />
       <workItem from="1561448792693" duration="12276000" />
-      <workItem from="1561625655419" duration="22868000" />
+      <workItem from="1561625655419" duration="27265000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="604836000" />
+    <option name="totallyTimeSpent" value="609233000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -615,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="85" lean-forward="true" selection-start-line="31" selection-start-column="85" selection-end-line="31" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -660,16 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="69" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
-          <folding>
-            <element signature="e#76#84#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -679,6 +665,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding>
+            <element signature="e#76#84#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="763">
+          <caret line="53" column="78" lean-forward="true" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

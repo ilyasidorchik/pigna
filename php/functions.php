@@ -28,7 +28,7 @@
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
-        // Новинки не на руках
+        // Новинки в наличии
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND new = 1 AND onHands = '$onHandsStart' ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
@@ -38,7 +38,7 @@
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
-        // Все остальные книги не на руках
+        // Все остальные книги в наличии
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart' AND new = 0 ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
@@ -47,6 +47,175 @@
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd' AND new = 0 ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+    }
+
+    function printFoundBooksWithAuthorPriority($link, $query, $partsCount, $bookTitleWords, $arrayID, $admin) {
+        // Массив айдишников книг, чтобы не выводить книгу по два раза, если поисковое выражение есть и в авторе, и названии книги
+        if ($arrayID == NULL) {
+            $arrayID = array();
+        }
+
+        $result = mysqli_query($link, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row[id], $arrayID)) {
+                if ($partsCount > 1 && $bookTitleWords[1] != '') {
+                    if ($partsCount > 2 && $bookTitleWords[2] != '') {
+                        if ($partsCount > 3 && $bookTitleWords[3] != '') {
+                            if ($partsCount > 4 && $bookTitleWords[4] != '') {
+                                if ($partsCount > 5 && $bookTitleWords[5] != '') {
+                                    if (stripos($row[author], $bookTitleWords[0]) !== false
+                                        && stripos($row[author], $bookTitleWords[1]) !== false
+                                        && stripos($row[author], $bookTitleWords[2]) !== false
+                                        && stripos($row[author], $bookTitleWords[3]) !== false
+                                        && stripos($row[author], $bookTitleWords[4]) !== false
+                                        && stripos($row[author], $bookTitleWords[5]) !== false) {
+                                        printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                                        array_push($arrayID, $row[id]);
+                                    }
+                                }
+                                else {
+                                    if (stripos($row[author], $bookTitleWords[0]) !== false
+                                        && stripos($row[author], $bookTitleWords[1]) !== false
+                                        && stripos($row[author], $bookTitleWords[2]) !== false
+                                        && stripos($row[author], $bookTitleWords[3]) !== false
+                                        && stripos($row[author], $bookTitleWords[4]) !== false) {
+                                        printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                                        array_push($arrayID, $row[id]);
+                                    }
+                                }
+                            }
+                            else {
+                                if (stripos($row[author], $bookTitleWords[0]) !== false
+                                    && stripos($row[author], $bookTitleWords[1]) !== false
+                                    && stripos($row[author], $bookTitleWords[2]) !== false
+                                    && stripos($row[author], $bookTitleWords[3]) !== false) {
+                                    printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                                    array_push($arrayID, $row[id]);
+                                }
+                            }
+                        }
+                        else {
+                            if (stripos($row[author], $bookTitleWords[0]) !== false
+                                && stripos($row[author], $bookTitleWords[1]) !== false
+                                && stripos($row[author], $bookTitleWords[2]) !== false) {
+                                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                                array_push($arrayID, $row[id]);
+                            }
+                        }
+                    }
+                    else {
+                        if (stripos($row[author], $bookTitleWords[0]) !== false
+                            && stripos($row[author], $bookTitleWords[1]) !== false) {
+                            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                            array_push($arrayID, $row[id]);
+                        }
+                    }
+                }
+                else {
+                    if (stripos($row[author], $bookTitleWords[0]) !== false) {
+                        printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+
+                        array_push($arrayID, $row[id]);
+                    }
+                }
+            }
+        }
+
+        return $arrayID;
+    }
+
+    function printFoundBooks($link, $query, $partsCount, $bookTitleWords, $arrayID, $admin) {
+        $result = mysqli_query($link, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row[id], $arrayID)) {
+                if ($partsCount > 1 && $bookTitleWords[1] != '') {
+                    if ($partsCount > 2 && $bookTitleWords[2] != '') {
+                        if ($partsCount > 3 && $bookTitleWords[3] != '') {
+                            if ($partsCount > 4 && $bookTitleWords[4] != '') {
+                                if ($partsCount > 5 && $bookTitleWords[5] != '') {
+                                    $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+                                    $bookTitleWord1WithAccent = addAccent($bookTitleWords[1]);
+                                    $bookTitleWord2WithAccent = addAccent($bookTitleWords[2]);
+                                    $bookTitleWord3WithAccent = addAccent($bookTitleWords[3]);
+                                    $bookTitleWord4WithAccent = addAccent($bookTitleWords[4]);
+                                    $bookTitleWord5WithAccent = addAccent($bookTitleWords[5]);
+
+                                    if ((stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWord1WithAccent) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWord2WithAccent) !== false || stripos($row[publishing], $bookTitleWords[2]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWord3WithAccent) !== false || stripos($row[publishing], $bookTitleWords[3]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[4]) !== false || stripos($row[title], $bookTitleWords[4]) !== false || stripos($row[title], $bookTitleWord4WithAccent) !== false || stripos($row[publishing], $bookTitleWords[4]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[5]) !== false || stripos($row[title], $bookTitleWords[5]) !== false || stripos($row[title], $bookTitleWord5WithAccent) !== false || stripos($row[publishing], $bookTitleWords[5]) !== false)) {
+                                        printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                                    }
+                                }
+                                else {
+                                    $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+                                    $bookTitleWord1WithAccent = addAccent($bookTitleWords[1]);
+                                    $bookTitleWord2WithAccent = addAccent($bookTitleWords[2]);
+                                    $bookTitleWord3WithAccent = addAccent($bookTitleWords[3]);
+                                    $bookTitleWord4WithAccent = addAccent($bookTitleWords[4]);
+
+                                    if ((stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWord1WithAccent) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWord2WithAccent) !== false || stripos($row[publishing], $bookTitleWords[2]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWord3WithAccent) !== false || stripos($row[publishing], $bookTitleWords[3]) !== false)
+                                        && (stripos($row[author], $bookTitleWords[4]) !== false || stripos($row[title], $bookTitleWords[4]) !== false || stripos($row[title], $bookTitleWord4WithAccent) !== false || stripos($row[publishing], $bookTitleWords[4]) !== false)) {
+                                        printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                                    }
+                                }
+                            }
+                            else {
+                                $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+                                $bookTitleWord1WithAccent = addAccent($bookTitleWords[1]);
+                                $bookTitleWord2WithAccent = addAccent($bookTitleWords[2]);
+                                $bookTitleWord3WithAccent = addAccent($bookTitleWords[3]);
+
+                                if ((stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false)
+                                    && (stripos($row[author], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWord1WithAccent) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)
+                                    && (stripos($row[author], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWord2WithAccent) !== false || stripos($row[publishing], $bookTitleWords[2]) !== false)
+                                    && (stripos($row[author], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWords[3]) !== false || stripos($row[title], $bookTitleWord3WithAccent) !== false || stripos($row[publishing], $bookTitleWords[3]) !== false)) {printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                                }
+                            }
+                        }
+                        else {
+                            $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+                            $bookTitleWord1WithAccent = addAccent($bookTitleWords[1]);
+                            $bookTitleWord2WithAccent = addAccent($bookTitleWords[2]);
+
+                            if ((stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false)
+                                && (stripos($row[author], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWord1WithAccent) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)
+                                && (stripos($row[author], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWords[2]) !== false || stripos($row[title], $bookTitleWord2WithAccent) !== false || stripos($row[publishing], $bookTitleWords[2]) !== false)) {
+                                printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                            }
+                        }
+                    }
+                    else {
+                        $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+                        $bookTitleWord1WithAccent = addAccent($bookTitleWords[1]);
+
+                        if ((stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false)
+                            && (stripos($row[author], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWords[1]) !== false || stripos($row[title], $bookTitleWord1WithAccent) !== false || stripos($row[publishing], $bookTitleWords[1]) !== false)) {
+                            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                        }
+                    }
+                }
+                else {
+                    $bookTitleWord0WithAccent = addAccent($bookTitleWords[0]);
+
+                    if (stripos($row[author], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWords[0]) !== false || stripos($row[title], $bookTitleWord0WithAccent) !== false || stripos($row[publishing], $bookTitleWords[0]) !== false) {
+                        if ($bookTitleWord0WithAccent != 'a&') {
+                            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     function supportNewBooksByCountAndDate($link, $addingDatetime, $addedBookID) {
