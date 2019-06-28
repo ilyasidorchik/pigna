@@ -26,7 +26,7 @@
         <link rel="stylesheet/less" type="text/css" href="/css/style.less">
 	    <link rel="stylesheet" href="/css/likely.css">
     </head>
-    <body class="page<?php echo ' '.$admin; ?>">
+    <body class="page<?php echo $admin ? ' '.$admin : $admin; ?>">
         <div class="search">
             <div class="search__icon">
 	            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

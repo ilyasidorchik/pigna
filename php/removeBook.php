@@ -27,3 +27,5 @@
         mysqli_query($link, "DELETE FROM catalogue WHERE title = '$titleTypografed' AND author = '$author' AND publishing = '$publishing' AND price = '$price' AND monthBook = '$monthBook' AND description = '$description'");
     else
         mysqli_query($link, "DELETE FROM catalogue WHERE id = '$id'");
+
+    supportNewBooksAtRemoval($link);

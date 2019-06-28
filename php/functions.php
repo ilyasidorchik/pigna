@@ -20,20 +20,78 @@
     }
 
     function printAllBooks($link, $onHandsStart, $onHandsEnd, $admin) {
+        // Поддержка новинок (нужна в том случае, когда не добавляются новые книги, а новинки в каталоге устаревают)
+        supportNewBooksByDate($link);
+
         // Книга месяца
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
 
-        // Все остальные книги, которые не на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart' ORDER BY id DESC");
+        // Новинки не на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE new = 1 AND onHands = '$onHandsStart' ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
 
-        // Книги, которые на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd' ORDER BY id DESC");
+        // Новинки на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE new = 1 AND onHands = '$onHandsEnd' ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
             printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+
+        // Все остальные книги не на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart' AND new = 0 ORDER BY id DESC");
+        while ($row = mysqli_fetch_assoc($result))
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+
+        // Книги (не новинки) на руках
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd' AND new = 0 ORDER BY id DESC");
+        while ($row = mysqli_fetch_assoc($result))
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+    }
+
+    function supportNewBooksByCountAndDate($link, $addingDatetime, $addedBookID) {
+        $datetime1 = date_create($addingDatetime);
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE id != '$addedBookID' AND new = 1 ORDER BY id DESC");
+        $newBookCount = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $newBookID = $row[id];
+            $newBookCount++;
+            $datetime2 = date_create($row[addingDatetime]);
+            $interval = date_diff($datetime1, $datetime2)->format('%a');
+
+            if ($newBookCount > 3 || $interval > 45) {
+                mysqli_query($link, "UPDATE catalogue SET new = 0 WHERE id = '$newBookID'");
+            }
+        }
+    }
+
+    function supportNewBooksByDate($link) {
+        $datetime1 = date_create(date('Y-m-d H:i:s'));
+        $result = mysqli_query($link, "SELECT * FROM catalogue ORDER BY id DESC");
+        $bookCount = 0;
+        while (($row = mysqli_fetch_assoc($result)) && ($bookCount < 4)) {
+            $newBookID = $row[id];
+            $datetime2 = date_create($row[addingDatetime]);
+            $interval = date_diff($datetime1, $datetime2)->format('%a');
+
+            if ($interval > 45 || $bookCount == 3) {
+                mysqli_query($link, "UPDATE catalogue SET new = 0 WHERE id = '$newBookID'");
+            }
+            else {
+                mysqli_query($link, "UPDATE catalogue SET new = 1 WHERE id = '$newBookID'"); // нужно, когда вернули удалённую новинку
+            }
+
+            $bookCount++;
+        }
+    }
+
+    function supportNewBooksAtRemoval($link) {
+        $result = mysqli_query($link, "SELECT COUNT(*) FROM catalogue WHERE new = 1 ORDER BY id DESC");
+        $row = mysqli_fetch_assoc($result);
+        if ($row["COUNT(*)"] < 3) {
+            // Возможно, удалили новинку
+            supportNewBooksByDate($link);
+        }
     }
 
     function printBookTemplate($id, $author, $title, $publishing, $price, $monthBook, $description, $onHands, $admin) {
