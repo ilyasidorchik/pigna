@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/addBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/addBook.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/sticker-for-new.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/sticker-for-new.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/removeBook.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/removeBook.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="1381" column="23" lean-forward="true" selection-start-line="1381" selection-start-column="23" selection-end-line="1381" selection-end-column="23" />
+            <state relative-caret-position="370">
+              <caret line="199" column="37" selection-start-line="199" selection-start-column="37" selection-end-line="199" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -43,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="321">
-              <caret line="1505" column="40" selection-start-line="1505" selection-start-column="29" selection-end-line="1505" selection-end-column="40" />
+              <caret line="1505" column="43" lean-forward="true" selection-start-line="1505" selection-start-column="43" selection-end-line="1505" selection-end-column="43" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
               </folding>
@@ -51,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+            <state relative-caret-position="340">
+              <caret line="26" column="69" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
               <folding>
                 <element signature="e#76#84#0" expanded="true" />
               </folding>
@@ -63,13 +62,9 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addBook.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/addBook.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-            </state>
-          </provider>
+      <file leaf-file-name="sticker-for-new.svg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -85,9 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>close</find>
-      <find>padding-top: 10px;</find>
-      <find>fake-</find>
       <find>checkbox {</find>
       <find>button</find>
       <find>em</find>
@@ -115,6 +107,9 @@
       <find>monthBookDescInput</find>
       <find>copyFix</find>
       <find>addBook.php</find>
+      <find>sticker</find>
+      <find>month-book</find>
+      <find>month-book-color</find>
     </findStrings>
     <replaceStrings>
       <replace>$row[onHands], $admin);</replace>
@@ -189,13 +184,14 @@
         <option value="$PROJECT_DIR$/php/sendToEditor.php" />
         <option value="$PROJECT_DIR$/+/index.php" />
         <option value="$PROJECT_DIR$/alterare/index.php" />
-        <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/js/script.js" />
         <option value="$PROJECT_DIR$/php/search.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/php/removeBook.php" />
         <option value="$PROJECT_DIR$/php/addBook.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
+        <option value="$PROJECT_DIR$/css/style.less" />
+        <option value="$PROJECT_DIR$/img/sticker-for-new.svg" />
       </list>
     </option>
   </component>
@@ -295,19 +291,19 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/img" />
-      <recent name="$PROJECT_DIR$/+" />
-      <recent name="$PROJECT_DIR$/php" />
-      <recent name="$PROJECT_DIR$/js" />
-      <recent name="$PROJECT_DIR$/css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/php" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$/less" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/+" />
+      <recent name="$PROJECT_DIR$/php" />
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -435,12 +431,12 @@
       <workItem from="1560866440018" duration="2062000" />
       <workItem from="1560870087044" duration="342000" />
       <workItem from="1561448792693" duration="12276000" />
-      <workItem from="1561625655419" duration="16284000" />
+      <workItem from="1561625655419" duration="22868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="598252000" />
+    <option name="totallyTimeSpent" value="604836000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -515,9 +511,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css.map" />
     <entry file="file://$PROJECT_DIR$/result.php" />
-    <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/remotetypograf1.php" />
     <entry file="file://$PROJECT_DIR$/example-utf.php" />
     <entry file="file://$PROJECT_DIR$/js/likely.js">
@@ -608,13 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="1381" column="23" lean-forward="true" selection-start-line="1381" selection-start-column="23" selection-end-line="1381" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/toggleBookOnHands.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -650,16 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="1505" column="40" selection-start-line="1505" selection-start-column="29" selection-end-line="1505" selection-end-column="40" />
-          <folding>
-            <element signature="e#4#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/removeBook.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -674,15 +650,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="1505" column="43" lean-forward="true" selection-start-line="1505" selection-start-column="43" selection-end-line="1505" selection-end-column="43" />
+          <folding>
+            <element signature="e#4#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/php/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+        <state relative-caret-position="340">
+          <caret line="26" column="69" lean-forward="true" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
           <folding>
             <element signature="e#76#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="199" column="37" selection-start-line="199" selection-start-column="37" selection-end-line="199" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/sticker-for-new.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>

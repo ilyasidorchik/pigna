@@ -26,27 +26,27 @@
         // Книга месяца
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
         while ($row = mysqli_fetch_assoc($result))
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
         // Новинки не на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE new = 1 AND onHands = '$onHandsStart' ORDER BY id DESC");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND new = 1 AND onHands = '$onHandsStart' ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
         // Новинки на руках
-        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE new = 1 AND onHands = '$onHandsEnd' ORDER BY id DESC");
+        $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND new = 1 AND onHands = '$onHandsEnd' ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
         // Все остальные книги не на руках
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsStart' AND new = 0 ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
 
         // Книги (не новинки) на руках
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = '$onHandsEnd' AND new = 0 ORDER BY id DESC");
         while ($row = mysqli_fetch_assoc($result))
-            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $admin);
+            printBookTemplate($row[id], $row[author], $row[title], $row[publishing], $row[price], $row[monthBook], $row[description], $row[onHands], $row['new'], $admin);
     }
 
     function supportNewBooksByCountAndDate($link, $addingDatetime, $addedBookID) {
@@ -94,7 +94,7 @@
         }
     }
 
-    function printBookTemplate($id, $author, $title, $publishing, $price, $monthBook, $description, $onHands, $admin) {
+    function printBookTemplate($id, $author, $title, $publishing, $price, $monthBook, $description, $onHands, $new, $admin) {
         if ($author != '')
             $author = '<div class="grid__item__authortitle__author">' . $author . '</div>';
 
@@ -102,6 +102,16 @@
             $price = '<div class="grid__item__sticker grid__item__sticker_price">' . $price . '&thinsp;€</div>';
         else
             $price = '';
+
+        if ($new != 0) {
+            $new = '<div class="grid__item__sticker grid__item__sticker_new">Novità</div>';
+            $newClassForEdit = ' margin-for-sticker_new';
+            $adminEdit = <<<HERE
+                <div class="grid__item__admin grid__item__admin_edit$newClassForEdit"></div>
+HERE;
+        }
+        else
+            $new = '';
 
         if ($monthBook == 1) {
             $monthBookClass = ' grid__item_month-book-color';
@@ -135,8 +145,12 @@ HERE;
 			    </div>
 HERE;
 
+            if ($new) {
+                $newClassForEdit .= ' margin-for-edit';
+            }
+
             $adminEdit = <<<HERE
-                <div class="grid__item__admin grid__item__admin_edit">
+                <div class="grid__item__admin grid__item__admin_edit$newClassForEdit">
                     <?xml version="1.0" encoding="utf-8"?>
                     <!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -148,6 +162,8 @@ HERE;
 HERE;
         }
         else {
+            $id = '';
+
             if ($onHands == 1) {
                 $onHandsClass = ' grid__item_on-hands';
                 $onHandsText = '<div class="grid__item_on-hands__text">In prestito</div>';
@@ -156,7 +172,7 @@ HERE;
 
 
         echo <<<HERE
-                    <div class="grid__item$monthBookClass$onHandsClass" $id>
+                    <div class="grid__item$monthBookClass$onHandsClass"$id>
                         <div class="grid__item__authortitle">
                             $adminEdit
                             $author
@@ -166,6 +182,7 @@ HERE;
                         $price
                         $adminOnHands
                         $onHandsText
+                        $new
                     </div>
                     $monthBookBlock
 HERE;

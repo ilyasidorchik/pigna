@@ -195,8 +195,10 @@
 			&_month-book-color {
 				background: #fcc;
 
-				.grid__item__admin_on-hands {
-					// background: rgba(255, 255, 255, .5);
+				.grid__item__sticker_new {
+					@media @col-3 {
+						right: -17px;
+					}
 				}
 			}
 
@@ -441,41 +443,47 @@
 				position: absolute;
 				text-align: center;
 				color: #fff;
-				font-size: 28px;
+				width: 95px;
 
 				@media @col-3 {
-					font-size: 16px;
+					width: 50px;
 				}
 
 				&_new {
-					z-index: 1;
-					top: -25px;
-					right: -20px;
-					background: url('../img/sticker-for-new.svg');
-					width: 75px;
-					height: 50px;
-					padding-top: 25px;
-					transform: rotate(25deg);
+					z-index: 3;
+					background: url('../img/sticker-for-new.svg') no-repeat;
+					background-size: cover;
+					height: 59px;
+					padding-top: 36px;
+					top: -28px;
+					right: -15px;
+					font-size: 18px;
+
+					@media @col-3 {
+						height: 32px;
+						padding-top: 18px;
+						top: -13px;
+						right: -10px;
+						font-size: 10px;
+					}
 				}
 
 				&_price {
 					z-index: 2;
-					bottom: -18px;
-					right: -12px;
-					color: #fff;
-					-webkit-text-fill-color: #fff;
-					background: linear-gradient(#777 0%, #000 100%);
-					border-radius: 50%;
-					width: 95px;
 					height: 68px;
 					padding-top: 26px;
+					bottom: -18px;
+					right: -12px;
+					font-size: 28px;
+					background: linear-gradient(#777 0%, #000 100%);
+					.border-radius(50%);
 
 					@media @col-3 {
-						width: 50px;
 						height: 36px;
 						padding-top: 14px;
 						bottom: -5px;
 						right: -10px;
+						font-size: 16px;
 					}
 				}
 			}
@@ -570,6 +578,24 @@
 					}
 				}
 			}
+
+			.grid__item__admin_edit.margin-for-sticker_new {
+				margin: -1.5px -2px 5px 30px;
+
+				@media @col-3 {
+					margin-bottom: 0px;
+					margin-left: 7px;
+				}
+			}
+
+			.grid__item__admin_edit.margin-for-edit {
+				margin-top: 60px;
+
+				@media @col-3 {
+					margin-top: 27px;
+				}
+			}
+
 
 			&__link {
 				position: absolute;
