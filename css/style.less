@@ -47,6 +47,14 @@
 	border-radius: @radius;
 }
 
+.rotate(@degree) {
+	-moz-transform: rotate(@degree);
+	-ms-transform: rotate(@degree);
+	-webkit-transform: rotate(@degree);
+	-o-transform: rotate(@degree);
+	transform: rotate(@degree);
+}
+
 .page {
 	overflow-y: scroll;
 	margin: 15px auto 47px;
@@ -458,6 +466,7 @@
 					top: -28px;
 					right: -15px;
 					font-size: 18px;
+					.rotate(15deg);
 
 					@media @col-3 {
 						height: 32px;
