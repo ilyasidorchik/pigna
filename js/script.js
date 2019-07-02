@@ -44,7 +44,7 @@ function start() {
     let bookEditingCover = document.querySelector('.book-editing__cover');
     let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
 
-    putInPlacelinkToBookAdding(screen, books);
+    putInPlaceLinkToBookAdding(screen, books);
 
     adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
@@ -54,7 +54,7 @@ function start() {
 
         editTitle(screen, searchInput, h1);
 
-        putInPlacelinkToBookAdding(screen, books);
+        putInPlaceLinkToBookAdding(screen, books);
 
         adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
     });
@@ -1296,7 +1296,7 @@ function searchBook(bookTitle) {
                 let gridItemCount = books.querySelectorAll('.grid__item').length;
                 let screen = document.documentElement.clientWidth;
 
-                putInPlacelinkToBookAdding(screen, books);
+                putInPlaceLinkToBookAdding(screen, books);
 
                 // Если ничего не нашлось, у пользователя — шишка по центру, у админа — плюс по центру
                 let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
@@ -2027,7 +2027,7 @@ function addBookHover(gridItem) {
     });
 }
 
-function putInPlacelinkToBookAdding(screen, books) {
+function putInPlaceLinkToBookAdding(screen, books) {
     let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
 
     if (linkToBookAdding != null) {
@@ -2042,18 +2042,53 @@ function putInPlacelinkToBookAdding(screen, books) {
             }
             else {
                 if (screen < 892) {
-                    books.insertBefore(linkToBookAdding, books.children[3]);
+                    books.insertBefore(linkToBookAdding, books.children[11]);
                 }
                 else {
                     if (screen < 1060) {
-                        books.insertBefore(linkToBookAdding, books.children[4]);
+                        books.insertBefore(linkToBookAdding, books.children[2]);
                     }
                     else {
                         if (screen < 1230) {
-                            books.insertBefore(linkToBookAdding, books.children[5]);
+                            books.insertBefore(linkToBookAdding, books.children[3]);
                         }
                         else {
-                            books.insertBefore(linkToBookAdding, books.children[6]);
+                            books.insertBefore(linkToBookAdding, books.children[4]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function putInPlaceEvents(screen, books) {
+    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
+
+    if (linkToBookAdding != null) {
+        books.removeChild(linkToBookAdding);
+
+        if (screen < 535) {
+            books.insertBefore(linkToBookAdding, books.firstChild);
+        }
+        else {
+            if (screen < 711) {
+                books.insertBefore(linkToBookAdding, books.children[2]);
+            }
+            else {
+                if (screen < 892) {
+                    books.insertBefore(linkToBookAdding, books.children[11]);
+                }
+                else {
+                    if (screen < 1060) {
+                        books.insertBefore(linkToBookAdding, books.children[2]);
+                    }
+                    else {
+                        if (screen < 1230) {
+                            books.insertBefore(linkToBookAdding, books.children[3]);
+                        }
+                        else {
+                            books.insertBefore(linkToBookAdding, books.children[4]);
                         }
                     }
                 }
@@ -2127,7 +2162,7 @@ function showMobileFooter() {
     let screen = document.documentElement.clientWidth;
 
     if (screen < 535) {
-        books.insertBefore(footerMobile, books.children[3]);
+        books.insertBefore(footerMobile, books.children[4]);
     }
     else {
         if (books.querySelector('.footer_mobile')) {
@@ -2137,7 +2172,7 @@ function showMobileFooter() {
 
     window.addEventListener("resize", () => {
         if (document.documentElement.clientWidth < 535) {
-            books.insertBefore(footerMobile, books.children[3]);
+            books.insertBefore(footerMobile, books.children[4]);
         }
         else {
             if (books.querySelector('.footer_mobile') ) {

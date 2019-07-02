@@ -27,6 +27,8 @@
 
     printBookAddingLink($admin);
 
+    printEvents($admin);
+
     if ($bookTitle != '') {
         // Книга месяца
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");

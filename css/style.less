@@ -273,11 +273,6 @@
 				background: none;
 				padding: 0;
 				box-shadow: none !important;
-				height: 160px;
-
-				@media @col-3 {
-					height: 465px;
-				}
 
 				&__cone {
 					position: absolute;
@@ -291,11 +286,11 @@
 			&_link-to-book-adding {
 				text-align: center;
 				height: 53px;
-				margin: auto;
 
 				@media @col-3 {
 					padding: 8px;
 					height: 465px;
+					border: 1px solid green;
 				}
 
 				&__link {
@@ -619,6 +614,45 @@
 			background: rgba(255, 204, 204, .5);
 		}
 
+		&__events {
+			grid-row: 4;
+			font-family: 'IBM Plex Sans', sans-serif;
+			font-size: 28px;
+
+			@media @col-3 {
+				margin-top: -5px;
+				font-size: 19px;
+				grid-row: 2;
+				grid-column-start: 1;
+				grid-column-end: 3;
+			}
+
+			@media @col-4 {
+				margin-top: -9px;
+				padding-left: 15px;
+				font-size: 33px;
+				grid-row-start: 1;
+				grid-row-end: 3;
+				grid-column-start: 3;
+				grid-column-end: 5;
+			}
+
+			@media @col-5 {
+				grid-column-start: 4;
+				grid-column-end: 6;
+			}
+
+			@media @col-6 {
+				grid-column-start: 5;
+				grid-column-end: 7;
+			}
+
+			@media @col-7 {
+				grid-column-start: 6;
+				grid-column-end: 8;
+			}
+		}
+
 		&__map {
 			margin-top: 22px;
 
@@ -879,11 +913,9 @@
 			&__description {
 				margin-top: 10px;
 				font-size: 28px;
-				line-height: 36px;
 
 				@media @col-3 {
 					font-size: 19px;
-					line-height: 24px;
 				}
 			}
 		}

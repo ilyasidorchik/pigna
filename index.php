@@ -48,9 +48,10 @@
             <?php
                 printBookAddingLink($admin);
 
+                printEvents($admin);
+
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
-
                 printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
             ?>
         </div>
