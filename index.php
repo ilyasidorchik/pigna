@@ -46,8 +46,7 @@
         </div>
         <div class="grid">
             <?php
-                printBookAddingLink($admin);
-
+                printBookAddingLink($admin, '');
                 printEvents($admin);
 
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');

@@ -25,11 +25,9 @@
     $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
     mysqli_set_charset($link, 'utf8');
 
-    printBookAddingLink($admin);
-
-    printEvents($admin);
-
     if ($bookTitle != '') {
+        printBookAddingLink($admin, ' grid__item_link-to-book-adding_position_in-the-end');
+
         // Книга месяца
         $result = mysqli_query($link, "SELECT * FROM catalogue WHERE monthBook = 1");
         while ($row = mysqli_fetch_assoc($result)) {
@@ -56,5 +54,7 @@
         printFoundBooks($link, "SELECT * FROM catalogue WHERE monthBook = 0 AND onHands = $onHandsEnd AND new = 0 ORDER BY id DESC", $partsCount, $bookTitleWords, $arrayID, $admin);
     }
     else {
+        printBookAddingLink($admin, '');
+        printEvents($admin);
         printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
     }

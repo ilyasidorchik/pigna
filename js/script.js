@@ -44,7 +44,7 @@ function start() {
     let bookEditingCover = document.querySelector('.book-editing__cover');
     let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
 
-    putInPlaceLinkToBookAdding(screen, books);
+
 
     adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
@@ -54,7 +54,7 @@ function start() {
 
         editTitle(screen, searchInput, h1);
 
-        putInPlaceLinkToBookAdding(screen, books);
+
 
         adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
     });
@@ -1295,11 +1295,9 @@ function searchBook(bookTitle) {
                 books.innerHTML = xhr.responseText;
                 let gridItemCount = books.querySelectorAll('.grid__item').length;
                 let screen = document.documentElement.clientWidth;
-
-                putInPlaceLinkToBookAdding(screen, books);
+                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
 
                 // Если ничего не нашлось, у пользователя — шишка по центру, у админа — плюс по центру
-                let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
                 switch (xhr.responseText) {
                     case '':
                         books.innerHTML = '<div class="grid__item grid__item_place grid__item_center"><img src="/img/cone_small-size.jpg" class="grid__item_place__cone"></div>';
@@ -1307,8 +1305,10 @@ function searchBook(bookTitle) {
                         footerMobile.classList.remove('footer_mobile_bordered');
                         break;
 
-                    case '<div class="grid__item grid__item_place grid__item_link-to-book-adding"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>':
-                        if (linkToBookAdding != null && !linkToBookAdding.classList.contains('grid__item_center')) {
+                    case '<div class="grid__item grid__item_place grid__item_link-to-book-adding grid__item_link-to-book-adding_position grid__item_link-to-book-adding_position_in-the-end"><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_desktop"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74.73 72.82" class="grid__item_link-to-book-adding__link__icon"><defs><style>.a{fill:url(#a);}</style><linearGradient id="a" x1="37.5" y1="1.06" x2="37.5" y2="73.88" gradientUnits="userSpaceOnUse"><stop offset="0" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_1"/><stop offset="1" class="grid__item_link-to-book-adding__link__icon__gradient-color grid__item_link-to-book-adding__link__icon__gradient-color_2"/></linearGradient></defs><title>Aggiungere un libro</title><path class="a" d="M33.84,40.81H.13V34.13H33.84V1.06h7.31V34.13H74.86v6.68H41.15V73.88H33.84Z" transform="translate(-0.13 -1.06)"/></svg></a><a href="+/" class="grid__item_link-to-book-adding__link grid__item_link-to-book-adding__link_mobile">Aggiungere nuovo libro…</a></div>':
+                        if (!linkToBookAdding.classList.contains('grid__item_center')) {
+                            linkToBookAdding.classList.remove('grid__item_link-to-book-adding_position');
+                            linkToBookAdding.classList.remove('grid__item_link-to-book-adding_position_in-the-end');
                             linkToBookAdding.classList.add('grid__item_center');
                         }
 
@@ -1317,6 +1317,8 @@ function searchBook(bookTitle) {
 
                     default:
                         if (linkToBookAdding != null && linkToBookAdding.classList.contains('grid__item_center')) {
+                            linkToBookAdding.classList.add('grid__item_link-to-book-adding_position');
+                            linkToBookAdding.classList.add('grid__item_link-to-book-adding_position_in-the-end');
                             linkToBookAdding.classList.remove('grid__item_center');
                         }
 
@@ -1375,6 +1377,16 @@ function searchBook(bookTitle) {
                     for (let i = 0; i < addingLink.length; i++) {
                         addingLink[i].setAttribute('href', '+/' + getParams);
                     }
+
+                    putInPlaceLinkToBookAdding(screen, books, titles.length, linkToBookAdding);
+
+                    window.addEventListener("resize", () => {
+                        screen = document.documentElement.clientWidth;
+
+                        putInPlaceLinkToBookAdding(screen, books, titles.length, linkToBookAdding);
+                    });
+
+
                 }
                 else {
                     if (document.querySelector('.admin') != null) {
@@ -1390,7 +1402,7 @@ function searchBook(bookTitle) {
                 // Футер
                 showMobileFooter();
 
-                let footer = document.querySelectorAll('.footer')[1];
+                let footer = document.querySelector('.footer_desktop');
                 if (xhr.responseText === '' || gridItemCount <= 7) {
                     footer.classList.add('footer_bottom-sticked');
                 }
@@ -2008,6 +2020,102 @@ function editTitle(screen, searchInput, h1) {
     }
 }
 
+function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding) {
+    if (itemsCount > 0) {
+        let monthBook = document.querySelector('.month-book');
+        if (monthBook != null) {
+            itemsCount++;
+        }
+
+        if (itemsCount < 6) {
+            if (screen < 535) {
+                removeLinkToBookAddingPosition(linkToBookAdding);
+                if (linkToBookAdding != null) {
+                    books.removeChild(linkToBookAdding);
+                }
+                books.insertBefore(linkToBookAdding, books.firstChild);
+            }
+            else {
+                addLinkToBookAddingPosition(linkToBookAdding);
+
+                if (screen < 711) {
+                    if (itemsCount < 2) {
+                        removeLinkToBookAddingPosition(linkToBookAdding);
+                        if (linkToBookAdding != null) {
+                            books.removeChild(linkToBookAdding);
+                        }
+                        books.insertBefore(linkToBookAdding, books.children[2]);
+                    }
+                }
+                else {
+                    addLinkToBookAddingPosition(linkToBookAdding);
+
+                    if (screen < 892) {
+                        if (itemsCount < 3) {
+                            removeLinkToBookAddingPosition(linkToBookAdding);
+                            if (linkToBookAdding != null) {
+                                books.removeChild(linkToBookAdding);
+                            }
+                            books.insertBefore(linkToBookAdding, books.children[3]);
+                        }
+                    }
+                    else {
+                        addLinkToBookAddingPosition(linkToBookAdding);
+
+                        if (screen < 1060) {
+                            if (itemsCount < 4) {
+                                removeLinkToBookAddingPosition(linkToBookAdding);
+                                if (linkToBookAdding != null) {
+                                    books.removeChild(linkToBookAdding);
+                                }
+                                books.insertBefore(linkToBookAdding, books.children[4]);
+                            }
+                        }
+                        else {
+                            addLinkToBookAddingPosition(linkToBookAdding);
+
+                            if (screen < 1230) {
+                                if (itemsCount < 5) {
+                                    removeLinkToBookAddingPosition(linkToBookAdding);
+                                    if (linkToBookAdding != null) {
+                                        books.removeChild(linkToBookAdding);
+                                    }
+                                    books.insertBefore(linkToBookAdding, books.children[5]);
+                                }
+                            }
+                            else {
+                                addLinkToBookAddingPosition(linkToBookAdding);
+
+                                if (itemsCount < 6) {
+                                    removeLinkToBookAddingPosition(linkToBookAdding);
+                                    if (linkToBookAdding != null) {
+                                        books.removeChild(linkToBookAdding);
+                                    }
+                                    books.insertBefore(linkToBookAdding, books.children[6]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function addLinkToBookAddingPosition(linkToBookAdding) {
+    if (!linkToBookAdding.classList.contains('grid__item_link-to-book-adding_position') && !linkToBookAdding.classList.contains('grid__item_link-to-book-adding_position_in-the-end')) {
+        linkToBookAdding.classList.add('grid__item_link-to-book-adding_position');
+        linkToBookAdding.classList.add('grid__item_link-to-book-adding_position_in-the-end');
+    }
+}
+
+function removeLinkToBookAddingPosition(linkToBookAdding) {
+    if (linkToBookAdding.classList.contains('grid__item_link-to-book-adding_position') && linkToBookAdding.classList.contains('grid__item_link-to-book-adding_position_in-the-end')) {
+        linkToBookAdding.classList.remove('grid__item_link-to-book-adding_position');
+        linkToBookAdding.classList.remove('grid__item_link-to-book-adding_position_in-the-end');
+    }
+}
+
 function addBookHover(gridItem) {
     gridItem.addEventListener('mouseover', (e) => {
         gridItem.classList.add('grid__item_hover');
@@ -2025,76 +2133,6 @@ function addBookHover(gridItem) {
     gridItem.addEventListener('mouseout', ()=> {
         gridItem.classList.remove('grid__item_hover');
     });
-}
-
-function putInPlaceLinkToBookAdding(screen, books) {
-    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
-
-    if (linkToBookAdding != null) {
-        books.removeChild(linkToBookAdding);
-
-        if (screen < 535) {
-            books.insertBefore(linkToBookAdding, books.firstChild);
-        }
-        else {
-            if (screen < 711) {
-                books.insertBefore(linkToBookAdding, books.children[2]);
-            }
-            else {
-                if (screen < 892) {
-                    books.insertBefore(linkToBookAdding, books.children[11]);
-                }
-                else {
-                    if (screen < 1060) {
-                        books.insertBefore(linkToBookAdding, books.children[2]);
-                    }
-                    else {
-                        if (screen < 1230) {
-                            books.insertBefore(linkToBookAdding, books.children[3]);
-                        }
-                        else {
-                            books.insertBefore(linkToBookAdding, books.children[4]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-function putInPlaceEvents(screen, books) {
-    let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
-
-    if (linkToBookAdding != null) {
-        books.removeChild(linkToBookAdding);
-
-        if (screen < 535) {
-            books.insertBefore(linkToBookAdding, books.firstChild);
-        }
-        else {
-            if (screen < 711) {
-                books.insertBefore(linkToBookAdding, books.children[2]);
-            }
-            else {
-                if (screen < 892) {
-                    books.insertBefore(linkToBookAdding, books.children[11]);
-                }
-                else {
-                    if (screen < 1060) {
-                        books.insertBefore(linkToBookAdding, books.children[2]);
-                    }
-                    else {
-                        if (screen < 1230) {
-                            books.insertBefore(linkToBookAdding, books.children[3]);
-                        }
-                        else {
-                            books.insertBefore(linkToBookAdding, books.children[4]);
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 function adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook) {
