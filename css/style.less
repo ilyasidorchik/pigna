@@ -284,14 +284,46 @@
 			}
 
 			&_link-to-book-adding {
+				box-sizing: border-box;
 				width: 100%;
 				height: 53px;
 				text-align: center;
 
 				@media @col-3 {
-					padding: 8px;
 					height: 465px;
-					border: 1px solid green;
+					position: relative;
+					border: 1px solid transparent;
+					background: #fff;
+					background-clip: padding-box;
+
+					&::after {
+						position: absolute;
+						content: '';
+						z-index: -1;
+						top: -1px;
+						right: -1px;
+						bottom: -1px;
+						left: -1px;
+						background: linear-gradient(#6FFC3E, #1E6B07); // #85dc54, #305d1c
+					}
+
+					&:hover {
+						&::after {
+							background: linear-gradient(#85dc54, #305d1c);
+						}
+
+						.grid__item_link-to-book-adding__icon__gradient-color {
+							transition: none;
+						}
+
+						.grid__item_link-to-book-adding__icon__gradient-color_1 {
+							stop-color: #85dc54;
+						}
+						.grid__item_link-to-book-adding__icon__gradient-color_2 {
+							stop-color: #305d1c;
+						}
+
+					}
 				}
 
 				&_position {
@@ -361,16 +393,6 @@
 
 				&__link {
 					display: block;
-					width: 53px;
-
-					@media @col-3 {
-						position: absolute;
-						top: calc(50% - 50px);
-						left: calc(50% - 50px);
-						width: 100px;
-						height: 98px;
-						margin: 0;
-					}
 
 					&_mobile {
 						display: block;
@@ -412,37 +434,31 @@
 
 					&_desktop {
 						display: none;
+						position: absolute;
+						top: -1px;
+						right: -1px;
+						bottom: -1px;
+						left: -1px;
 
 						@media @col-3 {
 							display: block;
 						}
 					}
+				}
 
-					&__icon {
-						display: block;
+				&__icon {
+					display: block;
+					width: 100px;
+					margin: auto;
 
-						&__gradient-color {
-							transition: stop-color .35s ease-out;
+					&__gradient-color {
+						transition: stop-color .35s ease-out;
 
-							&_1 {
-								stop-color: #6FFC3E;
-							}
-							&_2 {
-								stop-color: #1E6B07;
-							}
+						&_1 {
+							stop-color: #6FFC3E;
 						}
-					}
-
-					&:hover {
-						.grid__item_link-to-book-adding__link__icon__gradient-color {
-							transition: none;
-						}
-
-						.grid__item_link-to-book-adding__link__icon__gradient-color_1 {
-							stop-color: #85dc54;
-						}
-						.grid__item_link-to-book-adding__link__icon__gradient-color_2 {
-							stop-color: #305d1c;
+						&_2 {
+							stop-color: #1E6B07;
 						}
 					}
 				}
