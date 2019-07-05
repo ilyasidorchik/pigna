@@ -55,6 +55,6 @@
     }
     else {
         printBookAddingLink($admin, '');
-        printEvents($admin);
+        printEvents($link, $admin);
         printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
     }

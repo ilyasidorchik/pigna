@@ -44,8 +44,6 @@ function start() {
     let bookEditingCover = document.querySelector('.book-editing__cover');
     let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
 
-
-
     adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
     window.addEventListener("resize", () => {
@@ -54,14 +52,13 @@ function start() {
 
         editTitle(screen, searchInput, h1);
 
-
-
         adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
     });
 
+    // Запрет Энтера
     if (searchForm != null) {
         searchForm.addEventListener('keydown', () => {
-            if (event.keyCode == 13) {
+            if (event.keyCode === 13) {
                 event.preventDefault();
             }
         });
@@ -69,8 +66,9 @@ function start() {
 
     // Поиск по началу печати
     if (searchInput != null) {
+        // Чтобы пользователь мог начать писать поисковой запрос вне поискового поля
         window.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.altKey || e.metaKey) return;
+            if (e.target.classList.contains('grid__events__form__textarea') || (e.ctrlKey || e.altKey || e.metaKey) || (e.keyCode === 13)) return;
 
             searchInput.focus();
         });
@@ -83,6 +81,25 @@ function start() {
             }
         });
     }
+
+    // Добавление мероприятия
+    let eventTextarea = document.querySelector('.grid__events__form__textarea');
+    eventTextarea.addEventListener('input', ()=> {
+        let xhr = new XMLHttpRequest();
+        let params = 'event=' + eventTextarea.value;
+        xhr.open('POST', '../php/editEvent.php');
+        xhr.onreadystatechange=()=>{
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    //books.innerHTML = xhr.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhr.status);
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+    });
 
     // Футер
     if (footer != null) {

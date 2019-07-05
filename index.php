@@ -39,18 +39,18 @@
 				</svg>
             </div>
             <div class="search__form">
-                <form action="result.php" method="POST">
+                <form action="" method="POST">
                     <input type="text" name="title" placeholder="Cercare libri nella piccola biblioteca della Pigna" autofocus class="input input-h1" id="searchInput" autocomplete="off">
                 </form>
             </div>
         </div>
         <div class="grid">
             <?php
-                printBookAddingLink($admin, '');
-                printEvents($admin);
-
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
                 mysqli_set_charset($link, 'utf8');
+
+                printBookAddingLink($admin, '');
+                printEvents($link, $admin);
                 printAllBooks($link, $onHandsStart, $onHandsEnd, $admin);
             ?>
         </div>

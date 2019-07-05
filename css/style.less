@@ -733,6 +733,31 @@
 				grid-column-start: 6;
 				grid-column-end: 8;
 			}
+
+			&__form {
+				height: 100%;
+
+				&__textarea {
+					box-sizing: border-box;
+					width: 100%;
+					height: 100%;
+					padding: 0;
+					resize: none;
+					outline: none;
+					-moz-appearance: none;
+					border: none;
+					font-family: 'IBM Plex Sans', sans-serif;
+					font-size: 28px;
+
+					@media @col-3 {
+						font-size: 19px;
+					}
+
+					@media @col-4 {
+						font-size: 33px;
+					}
+				}
+			}
 		}
 
 		&__map {
@@ -1286,6 +1311,7 @@
 		&__input {
 			font-family: 'IBM Plex Sans', sans-serif;
 			outline: none;
+			-moz-appearance: none;
 			box-sizing: border-box;
 			width: 100%;
 			background: @input-background-color;
@@ -1411,6 +1437,7 @@
 		&__button {
 			font-family: 'IBM Plex Sans', sans-serif;
 			outline: none;
+			-moz-appearance: none;
 			cursor: pointer;
 			border: none;
 			.border-radius(@input-border-radius);
