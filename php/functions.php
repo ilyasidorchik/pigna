@@ -365,13 +365,16 @@ HERE;
     function printEvents($link, $admin) {
         $result = mysqli_query($link, "SELECT event FROM events WHERE id = 1");
         $row = mysqli_fetch_assoc($result);
+        $event = $row['event'];
 
-        // Типограф каждого абзаца, иначе склеиваются
-        $event = explode("\n\n", $row['event']);
-        for ($eventRowI = 0; $eventRowI < count($event); $eventRowI++) {
-            $event[$eventRowI] = typograf($event[$eventRowI]);
+        if ($event != '') {
+            // Типограф каждого абзаца, иначе склеиваются
+            $event = explode("\n\n", $event);
+            for ($eventRowI = 0; $eventRowI < count($event); $eventRowI++) {
+                $event[$eventRowI] = typograf($event[$eventRowI]);
+            }
+            $event = implode("\n\n", $event);
         }
-        $event = implode("\n\n", $event);
 
         if ($admin == 'admin') {
             echo <<<HERE
@@ -386,14 +389,6 @@ HERE;
             if ($event != '') {
                 $event = str_replace("\n", "<br>", $event);
                 echo '<div class="grid__events">'.$event.'</div>';
-
-                /*echo <<<HERE
-                    <div class="grid__events">
-                        <form class="grid__events__form">
-                            <textarea name="event" placeholder="Scriva l’evento qui" class="grid__events__form__textarea" readonly>$event</textarea>
-                        </form>
-                    </div>
-HERE;*/
             }
         }
     }
