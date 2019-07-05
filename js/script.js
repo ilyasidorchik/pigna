@@ -87,19 +87,28 @@ function start() {
             let xhr = new XMLHttpRequest();
             let params = 'event=' + eventTextarea.value;
             xhr.open('POST', '../php/editEvent.php');
-            xhr.onreadystatechange=()=>{
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        //books.innerHTML = xhr.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhr.status);
-                }
-            };
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send(params);
         });
     }
+
+    window.addEventListener("resize", () => {
+        screen = document.documentElement.clientWidth;
+        books = document.querySelectorAll('.grid')[0];
+
+        editTitle(screen, searchInput, h1);
+
+        adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
+
+        if (eventTextarea != null) {
+            if (screen < 535) {
+                autosize(eventTextarea);
+            }
+            else {
+                autosize.destroy(eventTextarea);
+            }
+        }
+    });
 
     window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
