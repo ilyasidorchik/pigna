@@ -371,13 +371,14 @@ HERE;
             echo <<<HERE
                 <div class="grid__events">
                     <form class="grid__events__form">
-                        <textarea name="event" class="grid__events__form__textarea">$event</textarea>
+                        <textarea name="event" placeholder="Scriva l’evento qui" class="grid__events__form__textarea">$event</textarea>
                     </form>
                 </div>
 HERE;
         }
         else {
-            echo '<div class="grid__events">'.$event.'</div>';
+            if ($event != '')
+                echo '<div class="grid__events">'.typograf($event).'</div>';
         }
     }
 
