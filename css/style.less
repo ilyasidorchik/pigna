@@ -700,6 +700,8 @@
 			grid-row: 4;
 			font-family: 'IBM Plex Sans', sans-serif;
 			font-size: 28px;
+			overflow: hidden;
+			max-height: 468px;
 
 			@media @col-3 {
 				margin-top: -5px;
@@ -707,6 +709,7 @@
 				grid-row: 2;
 				grid-column-start: 2;
 				grid-column-end: 4;
+				max-height: 243px;
 			}
 
 			@media @col-4 {
@@ -722,6 +725,7 @@
 			@media @col-5 {
 				grid-column-start: 4;
 				grid-column-end: 6;
+				max-height: 520px;
 			}
 
 			@media @col-6 {
