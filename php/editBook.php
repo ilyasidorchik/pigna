@@ -1,6 +1,10 @@
 <?php
-    require 'functions.php';
 
+require 'functions.php';
+
+$ini = parse_ini_file('../app.ini', true);
+
+if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
     $id = $_POST['id'];
 
     $title = str_replace("'", "\'", $_POST['title']);
@@ -18,8 +22,6 @@
     if ($description != '')
         $description = typograf($description);
 
-    $ini = parse_ini_file('../app.ini', true);
-
     $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
     mysqli_set_charset($link, 'utf8');
 
@@ -29,3 +31,4 @@
 
     // Добавление новой книги в базу данных
     mysqli_query($link, "UPDATE catalogue SET title = '$titleTypografed', author = '$authorTypografed', publishing = '$publishing', price = '$price', monthBook = '$monthBook', description = '$description' WHERE id = $id");
+}

@@ -1,15 +1,19 @@
 <?php
-	include 'php/functions.php';
+	require 'php/functions.php';
 
 	$ini = parse_ini_file('app.ini', true);
 
 	if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
 	    $admin = 'admin';
+
+	    // Книги на руках в начале, чтобы было удобно найти книгу и отметить, что её вернули
 	    $onHandsStart = 1;
 	    $onHandsEnd = 0;
 	}
 	else {
 	    $admin = '';
+
+        // Книги на руках в конце
 	    $onHandsStart = 0;
 	    $onHandsEnd = 1;
 	}

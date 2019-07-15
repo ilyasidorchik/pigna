@@ -1,6 +1,10 @@
 <?php
-    require 'functions.php';
 
+require 'functions.php';
+
+$ini = parse_ini_file('../app.ini', true);
+
+if (password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
     $id = $_POST['id'];
 
     if ($id == '') {
@@ -17,8 +21,6 @@
             $description = typograf($description);
     }
 
-    $ini = parse_ini_file('../app.ini', true);
-
     $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
     mysqli_set_charset($link, 'utf8');
 
@@ -29,3 +31,4 @@
         mysqli_query($link, "DELETE FROM catalogue WHERE id = '$id'");
 
     supportNewBooksAtRemoval($link);
+}
