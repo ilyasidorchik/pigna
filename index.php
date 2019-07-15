@@ -69,7 +69,7 @@
 				        <div class="pinterest"></div>
 			        </div>
 			        <p><a href="https://www.google.com/maps?ll=43.819368,7.774345&z=13&t=m&hl=en-US&gl=RU&mapclient=embed&q=Piazza+Capitolo,+1+18038+Sanremo+IM+Italy" class="link">Piazza del&nbsp;Capitolo,&nbsp;1</a>, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-			        <p>Siamo aperti martedì dalle&nbsp;15 alle 18 e&nbsp;sabato&nbsp;dalle&nbsp;9 alle 12.</p>
+			        <p>Siamo aperti mercoledì dalle 21 alle&nbsp;22:30 e sabato dalle&nbsp;9 alle 12.</p>
 		        </div>
 	        </div>
         </div>
