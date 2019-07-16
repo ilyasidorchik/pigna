@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
-    </list>
+    <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="726" column="38" selection-start-line="726" selection-start-column="38" selection-end-line="726" selection-end-column="38" />
+            <state relative-caret-position="486">
+              <caret line="727" column="13" lean-forward="true" selection-start-line="727" selection-start-column="13" selection-end-line="727" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -86,7 +84,6 @@
       <find>searchBook</find>
       <find>description</find>
       <find>book-adding</find>
-      <find>events</find>
       <find>sticker-</find>
       <find>salvato</find>
       <find>map</find>
@@ -100,6 +97,7 @@
       <find>showFooter</find>
       <find>footerDesktop</find>
       <find>-217px</find>
+      <find>events</find>
     </findStrings>
     <replaceStrings>
       <replace>Città editrice</replace>
@@ -206,10 +204,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-247" />
-    <option name="y" value="-1028" />
-    <option name="width" value="1776" />
-    <option name="height" value="1003" />
+    <option name="x" value="-337" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -435,12 +433,12 @@
       <workItem from="1563131860619" duration="1101000" />
       <workItem from="1563133365650" duration="2738000" />
       <workItem from="1563136977485" duration="10968000" />
-      <workItem from="1563295116794" duration="4392000" />
+      <workItem from="1563295116794" duration="5295000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="658282000" />
+    <option name="totallyTimeSpent" value="659185000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -702,8 +700,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="726" column="38" selection-start-line="726" selection-start-column="38" selection-end-line="726" selection-end-column="38" />
+        <state relative-caret-position="486">
+          <caret line="727" column="13" lean-forward="true" selection-start-line="727" selection-start-column="13" selection-end-line="727" selection-end-column="13" />
         </state>
       </provider>
     </entry>
