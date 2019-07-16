@@ -996,7 +996,11 @@ function start() {
         let date = new Date();
         let day = date.getDate();
         let month = convertMonth(date.getMonth() + 1);
-        let time = date.getHours() + ':' + date.getMinutes();
+        let hours = date.getHours();
+        if (hours.toString().length === 1) hours = '0' + hours;
+        let minutes = date.getMinutes();
+        if (minutes.toString().length === 1) minutes = '0' + minutes;
+        let time = hours + ':' + minutes;
         date = "Salvato il&nbsp;" + day + "&nbsp;" + month + ' alle&nbsp;' + time;
 
         titleInput.addEventListener('keyup', (e)=>{
