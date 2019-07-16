@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,16 +27,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="1609" column="18" lean-forward="true" selection-start-line="1609" selection-start-column="18" selection-end-line="1609" selection-end-column="24" />
+            <state relative-caret-position="445">
+              <caret line="726" column="38" selection-start-line="726" selection-start-column="38" selection-end-line="726" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
@@ -99,8 +98,8 @@
       <find>footerDestop</find>
       <find>closeFooter</find>
       <find>showFooter</find>
-      <find>-217px</find>
       <find>footerDesktop</find>
+      <find>-217px</find>
     </findStrings>
     <replaceStrings>
       <replace>Città editrice</replace>
@@ -189,8 +188,8 @@
         <option value="$PROJECT_DIR$/img/sticker-for-new1.svg" />
         <option value="$PROJECT_DIR$/img/sticker-for-new.svg" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/css/style.less" />
       </list>
     </option>
   </component>
@@ -436,12 +435,12 @@
       <workItem from="1563131860619" duration="1101000" />
       <workItem from="1563133365650" duration="2738000" />
       <workItem from="1563136977485" duration="10968000" />
-      <workItem from="1563295116794" duration="3992000" />
+      <workItem from="1563295116794" duration="4392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="657882000" />
+    <option name="totallyTimeSpent" value="658282000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -691,13 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="1609" column="18" lean-forward="true" selection-start-line="1609" selection-start-column="18" selection-end-line="1609" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -705,6 +697,13 @@
           <folding>
             <element signature="e#4#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="726" column="38" selection-start-line="726" selection-start-column="38" selection-end-line="726" selection-end-column="38" />
         </state>
       </provider>
     </entry>
