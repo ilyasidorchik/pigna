@@ -24,7 +24,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Piccola biblioteca della Pigna</title>
-	    <meta name="description" content="Storia locale, scienze, letteratura e arte">
+	    <meta name="description" content="Storia locale, scienze documentarie, letteratura e arte">
 	    <link rel="shortcut icon" href="/img/favicon.ico">
 	    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
         <link rel="stylesheet/less" type="text/css" href="/css/style.less">
@@ -48,6 +48,7 @@
                 </form>
             </div>
         </div>
+        <div class="description">Storia locale, scienze documentarie, letteratura&nbsp;e arte</div>
         <div class="grid">
             <?php
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');

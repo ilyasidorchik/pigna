@@ -1337,6 +1337,14 @@ function searchBook(bookTitle) {
     xhr.onreadystatechange=()=>{
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
+                let libraryDesc = document.querySelector('.description');
+                if (bookTitle !== '') {
+                    libraryDesc.style.display = 'none';
+                }
+                else {
+                    libraryDesc.style.display = 'block';
+                }
+
                 books.innerHTML = xhr.responseText;
                 let gridItemCount = books.querySelectorAll('.grid__item').length;
                 let screen = document.documentElement.clientWidth;
@@ -1430,8 +1438,6 @@ function searchBook(bookTitle) {
 
                         putInPlaceLinkToBookAdding(screen, books, titles.length, linkToBookAdding);
                     });
-
-
                 }
                 else {
                     if (document.querySelector('.admin') != null) {
