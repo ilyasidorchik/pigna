@@ -2387,6 +2387,21 @@ function getSelectionText() {
     return txt;
 }
 
+function initMap() {
+    let myLatLng = {lat: 43.8193683, lng: 7.77434489999996};
+
+    let map = new google.maps.Map(document.querySelector('.grid__map'), {
+        zoom: 14,
+        center: myLatLng
+    });
+
+    let marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Piazza del Capitolo, 1'
+    });
+}
+
 /*!
 	autosize 4.0.2
 	license: MIT
