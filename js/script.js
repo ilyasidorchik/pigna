@@ -35,7 +35,7 @@ function start() {
     let bookTitle;
     let screen = document.documentElement.clientWidth;
     let h1 = document.querySelector('.h1__link');
-    let footer = document.querySelector('.footer');
+    let footerDesktop = document.querySelector('.footer_desktop');
 
     editTitle(screen, searchInput, h1);
 
@@ -130,33 +130,62 @@ function start() {
 
 
     // Футер
-    if (footer != null) {
-        footer.addEventListener('mouseover', ()=>{
-            screen = document.documentElement.clientWidth;
+    if (footerDesktop != null) {
+        let footerHint = document.querySelector('.footer__hint');
 
-            if (screen < 535) {
-                //books.insertBefore(linkToBookAdding, books.firstChild);
+        screen = document.documentElement.clientWidth;
+
+        footerDesktop.addEventListener('mouseover', ()=>{
+            if (screen > 710 && screen < 1060) {
+                footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
             }
             else {
-                if (screen < 711) {
-                    //books.insertBefore(linkToBookAdding, books.children[2]);
+                footerDesktop.style.animation = 'closeFooter .25s linear';
+            }
+
+            if (footerDesktop.style.bottom !== '') {
+                footerDesktop.style.bottom = '0';
+            }
+
+            footerHint.addEventListener('click', () => {
+                if (screen > 710 && screen < 1060) {
+                    footerDesktop.style.bottom = '-406px';
                 }
                 else {
-                    if (screen < 892) {
-                        footer.style.animation = 'closeFooterCol5 .35s linear';
-                    }
-                    else {
-                        if (screen < 1060) {
-                            footer.style.animation = 'closeFooterCol5 .35s linear';
-                        }
-                        else {
-                            footer.style.animation = 'closeFooter .25s linear';
-                        }
-                    }
+                    footerDesktop.style.bottom = '-215px';
+                }
+            });
+        });
+
+        footerDesktop.addEventListener('mouseout', ()=>{
+            if (screen > 710 && screen < 1060) {
+                if (footerDesktop.style.bottom !== '') {
+                    footerDesktop.style.bottom = '-406px';
+                }
+            }
+            else {
+                if (footerDesktop.style.bottom !== '') {
+                    footerDesktop.style.bottom = '-215px';
+                }
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            screen = document.documentElement.clientWidth;
+
+            if (screen > 710 && screen < 1060) {
+                if (footerDesktop.style.bottom !== '-406px') {
+                    footerDesktop.style.bottom = '-406px';
+                }
+            }
+            else {
+                if (footerDesktop.style.bottom !== '-215px') {
+                    footerDesktop.style.bottom = '-215px';
                 }
             }
         });
     }
+
 
     // Форма входа в админку
     let passwordInput = document.querySelector('.form__element__input_password');
@@ -1454,13 +1483,13 @@ function searchBook(bookTitle) {
                 // Футер
                 showMobileFooter();
 
-                let footer = document.querySelector('.footer_desktop');
+                let footerDesktop = document.querySelector('.footer_desktop');
                 if (xhr.responseText === '' || gridItemCount <= 7) {
-                    footer.classList.add('footer_bottom-sticked');
+                    footerDesktop.classList.add('footer_bottom-sticked');
                 }
                 else {
-                    if (footer.classList.contains('footer_bottom-sticked')) {
-                        footer.classList.remove('footer_bottom-sticked');
+                    if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+                        footerDesktop.classList.remove('footer_bottom-sticked');
                     }
                 }
             }
@@ -2247,6 +2276,7 @@ function fixTitleHeightWhenLongAuthor() {
         }
     }
 }
+
 
 function showMobileFooter() {
     let screen = document.documentElement.clientWidth;

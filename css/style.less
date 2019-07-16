@@ -919,7 +919,7 @@
 			@media @col-4 {
 				z-index: 4;
 				position: fixed;
-				bottom: -412px;
+				bottom: -406px;
 
 				&:hover {
 					animation: showFooterCol5 .35s linear !important;
@@ -928,7 +928,7 @@
 			}
 
 			@media @col-6 {
-				bottom: -217px;
+				bottom: -215px;
 
 				&:hover {
 					animation: showFooter .25s linear !important;
@@ -938,6 +938,7 @@
 
 		&__hint {
 			display: none;
+			cursor: pointer;
 			width: 173px;
 			margin: 0 auto;
 			padding: 5px 0 6px;
@@ -1596,21 +1597,21 @@
 
 
 @keyframes showFooter {
-	from {bottom: -217px;}
+	from {bottom: -215px;}
 	to {bottom: 0;}
 }
 
 @keyframes closeFooter {
 	from {bottom: 0;}
-	to {bottom: -217px;}
+	to {bottom: -215px;}
 }
 
 @keyframes showFooterCol5 {
-	from {bottom: -412px;}
+	from {bottom: -406px;}
 	to {bottom: 0;}
 }
 
 @keyframes closeFooterCol5 {
 	from {bottom: 0;}
-	to {bottom: -412px;}
+	to {bottom: -406px;}
 }
