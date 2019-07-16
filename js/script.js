@@ -967,7 +967,8 @@ function start() {
         let date = new Date();
         let day = date.getDate();
         let month = convertMonth(date.getMonth() + 1);
-        date = "Salvato il&nbsp;" + day + "&nbsp;" + month;
+        let time = date.getHours() + ':' + date.getMinutes();
+        date = "Salvato il&nbsp;" + day + "&nbsp;" + month + ' alle&nbsp;' + time;
 
         titleInput.addEventListener('keyup', (e)=>{
             if (titleInput.value != '') {
