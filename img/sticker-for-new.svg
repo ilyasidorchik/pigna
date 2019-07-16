@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <linearGradient x1="62.3333874%" y1="9.66331742%" x2="-35.6552699%" y2="138.285109%" id="linearGradient-1">
-            <stop stop-color="#FFA841" offset="0%"></stop>
-            <stop stop-color="#FFF3E1" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Star" fill="url(#linearGradient-1)" fill-rule="nonzero" transform="translate(25.236029, 25.236029) rotate(-8.000000) translate(-25.236029, -25.236029) " points="25.2360292 43.8232688 18.7655531 49.3841749 15.9424095 41.3330509 7.55835971 42.9136988 9.13900758 34.529649 1.08788359 31.7065054 6.64878966 25.2360292 1.08788359 18.7655531 9.13900758 15.9424095 7.55835971 7.55835971 15.9424095 9.13900758 18.7655531 1.08788359 25.2360292 6.64878966 31.7065054 1.08788359 34.529649 9.13900758 42.9136988 7.55835971 41.3330509 15.9424095 49.3841749 18.7655531 43.8232688 25.2360292 49.3841749 31.7065054 41.3330509 34.529649 42.9136988 42.9136988 34.529649 41.3330509 31.7065054 49.3841749"></polygon>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50.1 50" style="enable-background:new 0 0 50.1 50;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Star_1_);}
+</style>
+<title>Artboard</title>
+<desc>Created with Sketch.</desc>
+<g id="Artboard">
+	<linearGradient id="Star_1_" gradientUnits="userSpaceOnUse" x1="12.5448" y1="46.6883" x2="37.5448" y2="3.387">
+		<stop  offset="0" style="stop-color:#F0C480"/>
+		<stop  offset="1" style="stop-color:#FD791E"/>
+	</linearGradient>
+	<polygon id="Star" class="st0" points="29.9,43 25,50 20.2,43 12.5,46.7 11.9,38.2 3.4,37.5 7.1,29.8 0,25 7.1,20.2 3.4,12.5 
+		11.9,11.9 12.5,3.4 20.2,7.1 25,0 29.9,7.1 37.5,3.4 38.2,11.9 46.7,12.5 43,20.2 50,25 43,29.8 46.7,37.5 38.2,38.2 37.5,46.7 	
+		"/>
+</g>
 </svg>
