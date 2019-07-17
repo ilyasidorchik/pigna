@@ -2270,7 +2270,15 @@ function showMobileFooter() {
     let screen = document.documentElement.clientWidth;
 
     if (screen < 535) {
-        books.insertBefore(footerMobile, books.children[4]);
+        let footerMobilePos = 0;
+        if (document.querySelector('.admin') != null) {
+            footerMobilePos = 4;
+        }
+        else {
+            footerMobilePos = 3;
+        }
+
+        books.insertBefore(footerMobile, books.children[footerMobilePos]);
     }
     else {
         if (books.querySelector('.footer_mobile')) {
@@ -2280,7 +2288,15 @@ function showMobileFooter() {
 
     window.addEventListener("resize", () => {
         if (document.documentElement.clientWidth < 535) {
-            books.insertBefore(footerMobile, books.children[4]);
+            let footerMobilePos = 0;
+            if (document.querySelector('.admin') != null) {
+                footerMobilePos = 4;
+            }
+            else {
+                footerMobilePos = 3;
+            }
+
+            books.insertBefore(footerMobile, books.children[footerMobilePos]);
         }
         else {
             if (books.querySelector('.footer_mobile') ) {

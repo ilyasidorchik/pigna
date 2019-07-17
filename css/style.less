@@ -715,16 +715,24 @@
 		}
 
 		&__events {
-			grid-row: 4;
+			grid-row: 3;
 			font-family: 'IBM Plex Sans', sans-serif;
 			font-size: 28px;
 			overflow: hidden;
 			max-height: 468px;
 
 			@media @before-col-3 {
-				margin-bottom: -16.5px;
+				margin-bottom: -7.5px;
 				padding-top: 15.5px;
 				border-top: 1px solid;
+			}
+
+			&_admin {
+				grid-row: 4;
+
+				@media @before-col-3 {
+					margin-bottom: -16.5px;
+				}
 			}
 
 			@media @col-3 {

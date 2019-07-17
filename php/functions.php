@@ -378,7 +378,7 @@ HERE;
 
         if ($admin == 'admin') {
             echo <<<HERE
-                <div class="grid__events">
+                <div class="grid__events grid__events_admin">
                     <form class="grid__events__form">
                         <textarea name="event" placeholder="Scriva l’evento qui" class="grid__events__form__textarea">$event</textarea>
                     </form>
