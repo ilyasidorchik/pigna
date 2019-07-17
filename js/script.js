@@ -67,9 +67,9 @@ function start() {
             searchInput.focus();
         });
 
-        searchInput.addEventListener('keyup', () => {
+        searchInput.addEventListener('input', () => {
             bookTitle = searchInput.value;
-            if (bookTitle.length != 1) {
+            if (bookTitle.length !== 1) {
                 event.preventDefault();
                 searchBook(bookTitle);
             }
@@ -194,20 +194,21 @@ function start() {
     }
 
     // Редактирование книги
-    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-    for (let i = 0; i < gridItems.length; i++) {
-        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+    if (document.querySelector('.admin') != null) {
+        let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
+        let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+        for (let i = 0; i < gridItems.length; i++) {
+            let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+            gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
 
-        addBookHover(gridItems[i]);
+            addBookHover(gridItems[i]);
 
-        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
+            onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
+        }
     }
 
-
     // На мобильном телефоне в портретном режиме не показывается обложка в форме
-    if (document.location.pathname === '/+/' || document.location.pathname === '/alterare/') {
+    if (document.querySelector('.admin') != null && (document.location.pathname === '/+/' || document.location.pathname === '/alterare/')) {
         let bookCoverOnMobile = document.querySelector('.page .book-editing__cover');
 
         let myMobile = {
