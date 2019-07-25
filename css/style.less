@@ -932,20 +932,6 @@
 			}
 		}
 
-		&_bottom-sticked {
-			@media @col-4 {
-				bottom: 0 !important;
-
-				.footer__hint {
-					display: none;
-				}
-
-				.footer__main {
-					border-top: none;
-				}
-			}
-		}
-
 		&_bottom-sticked-fixed {
 			@media @col-4 {
 				z-index: 4;
@@ -963,6 +949,24 @@
 
 				&:hover {
 					animation: showFooter .25s linear !important;
+				}
+			}
+		}
+
+		&_bottom-sticked {
+			@media @col-4 {
+				bottom: 0 !important;
+
+				.footer__hint {
+					display: none;
+				}
+
+				.footer__main {
+					border-top: none;
+				}
+
+				&:hover {
+					animation: none !important;
 				}
 			}
 		}

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +32,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="159" column="31" lean-forward="true" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
+            <state relative-caret-position="139">
+              <caret line="929" column="27" lean-forward="true" selection-start-line="929" selection-start-column="27" selection-end-line="929" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -39,8 +41,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="2267" column="47" selection-start-line="2267" selection-start-column="47" selection-end-line="2267" selection-end-column="47" />
+            <state relative-caret-position="-128">
+              <caret line="1486" column="25" selection-start-line="1486" selection-start-column="25" selection-end-line="1486" selection-end-column="25" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
               </folding>
@@ -51,8 +53,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="435">
+              <caret line="29" column="66" lean-forward="true" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -70,25 +72,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>salvato</find>
-      <find>map</find>
-      <find>footer__hint</find>
-      <find>hint</find>
-      <find>footerDes</find>
-      <find>footerDestop</find>
-      <find>closeFooter</find>
-      <find>showFooter</find>
-      <find>footerDesktop</find>
-      <find>-217px</find>
-      <find>autosize</find>
-      <find>eventText</find>
       <find>textarea</find>
       <find>autosize(</find>
       <find>autosize.</find>
       <find>grid__row</find>
       <find>events</find>
       <find>events }</find>
-      <find>footer</find>
       <find>admin</find>
       <find>author</find>
       <find>title</find>
@@ -100,9 +89,21 @@
       <find>document.querySelector('.admin') != null</find>
       <find>showFoot</find>
       <find>showFooterMobile</find>
+      <find>footer</find>
+      <find>sticked</find>
+      <find>search</find>
+      <find>footerDesk</find>
+      <find>handleEve</find>
+      <find>closeFooter</find>
+      <find>footerDesktop</find>
+      <find>closeFooterDe</find>
+      <find>closeFooterDesktop</find>
+      <find>searchBook</find>
+      <find>screen</find>
+      <find>gridItemCount</find>
+      <find>itemsCount</find>
     </findStrings>
     <replaceStrings>
-      <replace>newBookTitle</replace>
       <replace>newBookPublishingCity</replace>
       <replace>newBookPublishingYear</replace>
       <replace>newBookPrice</replace>
@@ -132,6 +133,7 @@
       <replace>-215px</replace>
       <replace>showFooterMobile</replace>
       <replace>isAdmin</replace>
+      <replace>gridItemCount</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -442,12 +444,12 @@
       <workItem from="1563478005151" duration="465000" />
       <workItem from="1563479661912" duration="103000" />
       <workItem from="1563532786897" duration="625000" />
-      <workItem from="1564044644668" duration="5290000" />
+      <workItem from="1564044644668" duration="10561000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="678594000" />
+    <option name="totallyTimeSpent" value="683865000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -671,22 +673,22 @@
     <entry file="file://$PROJECT_DIR$/test.html" />
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state relative-caret-position="435">
+          <caret line="29" column="66" lean-forward="true" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="159" column="31" lean-forward="true" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
+        <state relative-caret-position="139">
+          <caret line="929" column="27" lean-forward="true" selection-start-line="929" selection-start-column="27" selection-end-line="929" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="2267" column="47" selection-start-line="2267" selection-start-column="47" selection-end-line="2267" selection-end-column="47" />
+        <state relative-caret-position="-128">
+          <caret line="1486" column="25" selection-start-line="1486" selection-start-column="25" selection-end-line="1486" selection-end-column="25" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
           </folding>

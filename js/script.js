@@ -112,45 +112,10 @@ window.addEventListener("resize", () => {
 
 
 // Футер
-if (footerDesktop != null) {
-    let footerHint = document.querySelector('.footer__hint');
+if (footerDesktop) {
+    footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
 
-    screen = document.documentElement.clientWidth;
-
-    footerDesktop.addEventListener('mouseover', ()=>{
-        if (screen > 710 && screen < 1060) {
-            footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
-        }
-        else {
-            footerDesktop.style.animation = 'closeFooter .25s linear';
-        }
-
-        if (footerDesktop.style.bottom !== '') {
-            footerDesktop.style.bottom = '0';
-        }
-
-        footerHint.addEventListener('click', () => {
-            if (screen > 710 && screen < 1060) {
-                footerDesktop.style.bottom = '-406px';
-            }
-            else {
-                footerDesktop.style.bottom = '-215px';
-            }
-        });
-    });
-
-    footerDesktop.addEventListener('mouseout', ()=>{
-        if (screen > 710 && screen < 1060) {
-            if (footerDesktop.style.bottom !== '') {
-                footerDesktop.style.bottom = '-406px';
-            }
-        }
-        else {
-            if (footerDesktop.style.bottom !== '') {
-                footerDesktop.style.bottom = '-215px';
-            }
-        }
-    });
+    footerDesktop.addEventListener('mouseout', closeFooterDesktop);
 
     window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
@@ -166,6 +131,43 @@ if (footerDesktop != null) {
             }
         }
     });
+}
+
+function showAndSetAnimationFooterDesktop() {
+    let footerHint = document.querySelector('.footer__hint');
+
+    if (screen > 710 && screen < 1060) {
+        footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
+    }
+    else {
+        footerDesktop.style.animation = 'closeFooter .25s linear';
+    }
+
+    if (footerDesktop.style.bottom !== '') {
+        footerDesktop.style.bottom = '0';
+    }
+
+    footerHint.addEventListener('click', () => {
+        if (screen > 710 && screen < 1060) {
+            footerDesktop.style.bottom = '-406px';
+        }
+        else {
+            footerDesktop.style.bottom = '-215px';
+        }
+    });
+}
+
+function closeFooterDesktop() {
+    if (screen > 710 && screen < 1060) {
+        if (footerDesktop.style.bottom !== '') {
+            footerDesktop.style.bottom = '-406px';
+        }
+    }
+    else {
+        if (footerDesktop.style.bottom !== '') {
+            footerDesktop.style.bottom = '-215px';
+        }
+    }
 }
 
 
@@ -1412,8 +1414,8 @@ function searchBook(bookTitle) {
                 }
 
                 // Подставление текста из поиска при добавлении книги
+                let titles = document.querySelectorAll('.grid__item__authortitle__title');
                 if (bookTitle !== '' && isAdmin) {
-                    let titles = document.querySelectorAll('.grid__item__authortitle__title');
                     let authors = document.querySelectorAll('.grid__item__authortitle__author');
 
                     let titlesCoins = 0;
@@ -1453,8 +1455,6 @@ function searchBook(bookTitle) {
 
                         putInPlaceLinkToBookAdding(screen, books, titles.length, linkToBookAdding);
                     });
-
-                    if (footerMobile) showFooterMobile(screen, 'search', titles.length);
                 }
                 else {
                     if (isAdmin) {
@@ -1467,18 +1467,26 @@ function searchBook(bookTitle) {
 
                 fixTitleHeightWhenLongAuthor();
 
+                if (footerMobile) showFooterMobile(screen, 'search', titles.length);
+
                 let footerDesktop = document.querySelector('.footer_desktop');
-                if (xhr.responseText === '' || gridItemCount <= 7) {
-                    footerDesktop.classList.add('footer_bottom-sticked');
+                if (xhr.responseText === '' || gridItemCount < 8) {
+                    putInPlaceFooterDesktop(screen, gridItemCount);
                 }
                 else {
                     if (footerDesktop.classList.contains('footer_bottom-sticked')) {
                         footerDesktop.classList.remove('footer_bottom-sticked');
+                        footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                        footerDesktop.addEventListener('mouseout', closeFooterDesktop);
                     }
                 }
+
+                window.addEventListener("resize", () => {
+                    screen = document.documentElement.clientWidth;
+                    putInPlaceFooterDesktop(screen, gridItemCount);
+                });
             }
-            else
-                console.log('Ошибка: ' + xhr.status);
+            else console.log('Ошибка: ' + xhr.status);
         }
     };
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -2300,6 +2308,64 @@ function showFooterMobile(screen, context, booksCount) {
             }
         }
     });
+}
+
+function putInPlaceFooterDesktop(screen, gridItemCount) {
+    if (screen > 710 && screen < 892) {
+        if (gridItemCount < 5) {
+            footerDesktop.classList.add('footer_bottom-sticked');
+            footerDesktop.style.animation = '';
+            footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+            footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+        }
+        else {
+            if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+                footerDesktop.classList.remove('footer_bottom-sticked');
+                footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+            }
+        }
+    }
+    else {
+        if (screen < 1060) {
+            if (gridItemCount < 6) {
+                footerDesktop.classList.add('footer_bottom-sticked');
+                footerDesktop.style.animation = '';
+                footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+            }
+            else {
+                if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+                    footerDesktop.classList.remove('footer_bottom-sticked');
+                    footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                    footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+                }
+            }
+        }
+        else {
+            if (screen < 1230) {
+                if (gridItemCount < 7) {
+                    footerDesktop.classList.add('footer_bottom-sticked');
+                    footerDesktop.style.animation = '';
+                    footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                    footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+                }
+                else {
+                    if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+                        footerDesktop.classList.remove('footer_bottom-sticked');
+                        footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                        footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+                    }
+                }
+            }
+            else {
+                footerDesktop.classList.add('footer_bottom-sticked');
+                footerDesktop.style.animation = '';
+                footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+                footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+            }
+        }
+    }
 }
 
 function preventDefault() {
