@@ -1472,19 +1472,16 @@ function searchBook(bookTitle) {
                 let footerDesktop = document.querySelector('.footer_desktop');
                 if (xhr.responseText === '' || gridItemCount < 8) {
                     putInPlaceFooterDesktop(screen, gridItemCount);
+                    window.addEventListener("resize", putInPlaceFooterDesktop);
                 }
                 else {
                     if (footerDesktop.classList.contains('footer_bottom-sticked')) {
                         footerDesktop.classList.remove('footer_bottom-sticked');
                         footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
                         footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+                        window.removeEventListener("resize", putInPlaceFooterDesktop);
                     }
                 }
-
-                window.addEventListener("resize", () => {
-                    screen = document.documentElement.clientWidth;
-                    putInPlaceFooterDesktop(screen, gridItemCount);
-                });
             }
             else console.log('Ошибка: ' + xhr.status);
         }
@@ -2310,60 +2307,40 @@ function showFooterMobile(screen, context, booksCount) {
     });
 }
 
-function putInPlaceFooterDesktop(screen, gridItemCount) {
+function putInPlaceFooterDesktop() {
+    if (screen !== document.documentElement.clientWidth) screen = document.documentElement.clientWidth;
+    let gridItemCount = books.querySelectorAll('.grid__item').length;
+
     if (screen > 710 && screen < 892) {
-        if (gridItemCount < 5) {
-            footerDesktop.classList.add('footer_bottom-sticked');
-            footerDesktop.style.animation = '';
-            footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
-            footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
-        }
-        else {
-            if (footerDesktop.classList.contains('footer_bottom-sticked')) {
-                footerDesktop.classList.remove('footer_bottom-sticked');
-                footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                footerDesktop.addEventListener('mouseout', closeFooterDesktop);
-            }
-        }
+        if (gridItemCount < 5) makeFooterSticky();
+        else unmakeFooterSticky();
     }
     else {
         if (screen < 1060) {
-            if (gridItemCount < 6) {
-                footerDesktop.classList.add('footer_bottom-sticked');
-                footerDesktop.style.animation = '';
-                footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
-            }
-            else {
-                if (footerDesktop.classList.contains('footer_bottom-sticked')) {
-                    footerDesktop.classList.remove('footer_bottom-sticked');
-                    footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                    footerDesktop.addEventListener('mouseout', closeFooterDesktop);
-                }
-            }
+            if (gridItemCount < 6) makeFooterSticky();
+            else unmakeFooterSticky();
         }
         else {
             if (screen < 1230) {
-                if (gridItemCount < 7) {
-                    footerDesktop.classList.add('footer_bottom-sticked');
-                    footerDesktop.style.animation = '';
-                    footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                    footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
-                }
-                else {
-                    if (footerDesktop.classList.contains('footer_bottom-sticked')) {
-                        footerDesktop.classList.remove('footer_bottom-sticked');
-                        footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                        footerDesktop.addEventListener('mouseout', closeFooterDesktop);
-                    }
-                }
+                if (gridItemCount < 7) makeFooterSticky();
+                else unmakeFooterSticky();
             }
-            else {
-                footerDesktop.classList.add('footer_bottom-sticked');
-                footerDesktop.style.animation = '';
-                footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
-                footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
-            }
+            else unmakeFooterSticky();
+        }
+    }
+
+    function makeFooterSticky() {
+        footerDesktop.classList.add('footer_bottom-sticked');
+        footerDesktop.style.animation = '';
+        footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+        footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+    }
+
+    function unmakeFooterSticky() {
+        if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+            footerDesktop.classList.remove('footer_bottom-sticked');
+            footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+            footerDesktop.addEventListener('mouseout', closeFooterDesktop);
         }
     }
 }
