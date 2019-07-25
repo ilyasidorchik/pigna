@@ -1,3 +1,8 @@
+let isAdmin = document.querySelector('.admin');
+let screen = document.documentElement.clientWidth;
+let h1 = document.querySelector('.h1__link');
+let bookTitle;
+
 let searchForm = document.querySelector('.search__form form');
 let searchInput = document.getElementById('searchInput');
 
@@ -26,246 +31,329 @@ let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__descr
 let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
 
 // Футер
+let footerDesktop = document.querySelector('.footer_desktop');
 let footerMobile = document.querySelector('.footer_mobile');
-if (footerMobile != null) { showMobileFooter(); }
-
-document.addEventListener('DOMContentLoaded', start);
+if (footerMobile) showFooterMobile(screen, 'index', 'all books');
 
 /*! autosize 4.0.2; license: MIT; jacklmoore.com/autosize */
 !function(e,t){if("function"==typeof define&&define.amd)define(["module","exports"],t);else if("undefined"!=typeof exports)t(module,exports);else{var n={exports:{}};t(n,n.exports),e.autosize=n.exports}}(this,function(e,t){"use strict";var n,o,p="function"==typeof Map?new Map:(n=[],o=[],{has:function(e){return-1<n.indexOf(e)},get:function(e){return o[n.indexOf(e)]},set:function(e,t){-1===n.indexOf(e)&&(n.push(e),o.push(t))},delete:function(e){var t=n.indexOf(e);-1<t&&(n.splice(t,1),o.splice(t,1))}}),c=function(e){return new Event(e,{bubbles:!0})};try{new Event("test")}catch(e){c=function(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!1),t}}function r(r){if(r&&r.nodeName&&"TEXTAREA"===r.nodeName&&!p.has(r)){var e,n=null,o=null,i=null,d=function(){r.clientWidth!==o&&a()},l=function(t){window.removeEventListener("resize",d,!1),r.removeEventListener("input",a,!1),r.removeEventListener("keyup",a,!1),r.removeEventListener("autosize:destroy",l,!1),r.removeEventListener("autosize:update",a,!1),Object.keys(t).forEach(function(e){r.style[e]=t[e]}),p.delete(r)}.bind(r,{height:r.style.height,resize:r.style.resize,overflowY:r.style.overflowY,overflowX:r.style.overflowX,wordWrap:r.style.wordWrap});r.addEventListener("autosize:destroy",l,!1),"onpropertychange"in r&&"oninput"in r&&r.addEventListener("keyup",a,!1),window.addEventListener("resize",d,!1),r.addEventListener("input",a,!1),r.addEventListener("autosize:update",a,!1),r.style.overflowX="hidden",r.style.wordWrap="break-word",p.set(r,{destroy:l,update:a}),"vertical"===(e=window.getComputedStyle(r,null)).resize?r.style.resize="none":"both"===e.resize&&(r.style.resize="horizontal"),n="content-box"===e.boxSizing?-(parseFloat(e.paddingTop)+parseFloat(e.paddingBottom)):parseFloat(e.borderTopWidth)+parseFloat(e.borderBottomWidth),isNaN(n)&&(n=0),a()}function s(e){var t=r.style.width;r.style.width="0px",r.offsetWidth,r.style.width=t,r.style.overflowY=e}function u(){if(0!==r.scrollHeight){var e=function(e){for(var t=[];e&&e.parentNode&&e.parentNode instanceof Element;)e.parentNode.scrollTop&&t.push({node:e.parentNode,scrollTop:e.parentNode.scrollTop}),e=e.parentNode;return t}(r),t=document.documentElement&&document.documentElement.scrollTop;r.style.height="",r.style.height=r.scrollHeight+n+"px",o=r.clientWidth,e.forEach(function(e){e.node.scrollTop=e.scrollTop}),t&&(document.documentElement.scrollTop=t)}}function a(){u();var e=Math.round(parseFloat(r.style.height)),t=window.getComputedStyle(r,null),n="content-box"===t.boxSizing?Math.round(parseFloat(t.height)):r.offsetHeight;if(n<e?"hidden"===t.overflowY&&(s("scroll"),u(),n="content-box"===t.boxSizing?Math.round(parseFloat(window.getComputedStyle(r,null).height)):r.offsetHeight):"hidden"!==t.overflowY&&(s("hidden"),u(),n="content-box"===t.boxSizing?Math.round(parseFloat(window.getComputedStyle(r,null).height)):r.offsetHeight),i!==n){i=n;var o=c("autosize:resized");try{r.dispatchEvent(o)}catch(e){}}}}function i(e){var t=p.get(e);t&&t.destroy()}function d(e){var t=p.get(e);t&&t.update()}var l=null;"undefined"==typeof window||"function"!=typeof window.getComputedStyle?((l=function(e){return e}).destroy=function(e){return e},l.update=function(e){return e}):((l=function(e,t){return e&&Array.prototype.forEach.call(e.length?e:[e],function(e){return r(e)}),e}).destroy=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],i),e},l.update=function(e){return e&&Array.prototype.forEach.call(e.length?e:[e],d),e}),t.default=l,e.exports=t.default});
 
-function start() {
-    let bookTitle;
-    let screen = document.documentElement.clientWidth;
-    let h1 = document.querySelector('.h1__link');
-    let footerDesktop = document.querySelector('.footer_desktop');
+editTitle(screen, searchInput, h1);
+
+let bookEditing = document.querySelector('.book-editing');
+let bookEditingForm = document.querySelector('.book-editing__form');
+let bookEditingCover = document.querySelector('.book-editing__cover');
+let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
+
+adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
+
+// Запрет Энтера
+if (searchForm != null) {
+    searchForm.addEventListener('keydown', () => {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+        }
+    });
+}
+
+// Поиск по началу печати
+if (searchInput != null) {
+    // Чтобы пользователь мог начать писать поисковой запрос вне поискового поля
+    window.addEventListener('keydown', (e) => {
+        if (e.target.classList.contains('grid__events__form__textarea') || (e.ctrlKey || e.altKey || e.metaKey) || (e.keyCode === 13)) return;
+
+        searchInput.focus();
+    });
+
+    searchInput.addEventListener('input', () => {
+        bookTitle = searchInput.value;
+        if (bookTitle.length !== 1) {
+            event.preventDefault();
+            searchBook(bookTitle);
+        }
+    });
+}
+
+
+// Добавление мероприятия
+let eventTextarea = document.querySelector('.grid__events__form__textarea');
+
+if (eventTextarea != null) {
+    // Для показа на мобильном телефоне
+    if (screen < 535) {
+        autosize(eventTextarea);
+    }
+
+    eventTextarea.addEventListener('input', ()=> {
+        let xhr = new XMLHttpRequest();
+        let params = 'event=' + eventTextarea.value;
+        xhr.open('POST', '../php/editEvent.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+    });
+}
+
+window.addEventListener("resize", () => {
+    screen = document.documentElement.clientWidth;
 
     editTitle(screen, searchInput, h1);
 
-    let bookEditing = document.querySelector('.book-editing');
-    let bookEditingForm = document.querySelector('.book-editing__form');
-    let bookEditingCover = document.querySelector('.book-editing__cover');
-    let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
-
     adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
-    // Запрет Энтера
-    if (searchForm != null) {
-        searchForm.addEventListener('keydown', () => {
-            if (event.keyCode === 13) {
-                event.preventDefault();
-            }
-        });
-    }
-
-    // Поиск по началу печати
-    if (searchInput != null) {
-        // Чтобы пользователь мог начать писать поисковой запрос вне поискового поля
-        window.addEventListener('keydown', (e) => {
-            if (e.target.classList.contains('grid__events__form__textarea') || (e.ctrlKey || e.altKey || e.metaKey) || (e.keyCode === 13)) return;
-
-            searchInput.focus();
-        });
-
-        searchInput.addEventListener('input', () => {
-            bookTitle = searchInput.value;
-            if (bookTitle.length !== 1) {
-                event.preventDefault();
-                searchBook(bookTitle);
-            }
-        });
-    }
-
-
-    // Добавление мероприятия
-    let eventTextarea = document.querySelector('.grid__events__form__textarea');
-
     if (eventTextarea != null) {
-        // Для показа на мобильном телефоне
         if (screen < 535) {
             autosize(eventTextarea);
         }
-
-        eventTextarea.addEventListener('input', ()=> {
-            let xhr = new XMLHttpRequest();
-            let params = 'event=' + eventTextarea.value;
-            xhr.open('POST', '../php/editEvent.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
-        });
+        else {
+            autosize.destroy(eventTextarea);
+        }
     }
+});
 
-    window.addEventListener("resize", () => {
-        screen = document.documentElement.clientWidth;
 
-        editTitle(screen, searchInput, h1);
+// Футер
+if (footerDesktop != null) {
+    let footerHint = document.querySelector('.footer__hint');
 
-        adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
+    screen = document.documentElement.clientWidth;
 
-        if (eventTextarea != null) {
-            if (screen < 535) {
-                autosize(eventTextarea);
+    footerDesktop.addEventListener('mouseover', ()=>{
+        if (screen > 710 && screen < 1060) {
+            footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
+        }
+        else {
+            footerDesktop.style.animation = 'closeFooter .25s linear';
+        }
+
+        if (footerDesktop.style.bottom !== '') {
+            footerDesktop.style.bottom = '0';
+        }
+
+        footerHint.addEventListener('click', () => {
+            if (screen > 710 && screen < 1060) {
+                footerDesktop.style.bottom = '-406px';
             }
             else {
-                autosize.destroy(eventTextarea);
+                footerDesktop.style.bottom = '-215px';
+            }
+        });
+    });
+
+    footerDesktop.addEventListener('mouseout', ()=>{
+        if (screen > 710 && screen < 1060) {
+            if (footerDesktop.style.bottom !== '') {
+                footerDesktop.style.bottom = '-406px';
+            }
+        }
+        else {
+            if (footerDesktop.style.bottom !== '') {
+                footerDesktop.style.bottom = '-215px';
             }
         }
     });
 
-
-    // Футер
-    if (footerDesktop != null) {
-        let footerHint = document.querySelector('.footer__hint');
-
+    window.addEventListener("resize", () => {
         screen = document.documentElement.clientWidth;
 
-        footerDesktop.addEventListener('mouseover', ()=>{
-            if (screen > 710 && screen < 1060) {
-                footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
+        if (screen > 710 && screen < 1060) {
+            if (footerDesktop.style.bottom !== '-406px') {
+                footerDesktop.style.bottom = '-406px';
             }
-            else {
-                footerDesktop.style.animation = 'closeFooter .25s linear';
-            }
-
-            if (footerDesktop.style.bottom !== '') {
-                footerDesktop.style.bottom = '0';
-            }
-
-            footerHint.addEventListener('click', () => {
-                if (screen > 710 && screen < 1060) {
-                    footerDesktop.style.bottom = '-406px';
-                }
-                else {
-                    footerDesktop.style.bottom = '-215px';
-                }
-            });
-        });
-
-        footerDesktop.addEventListener('mouseout', ()=>{
-            if (screen > 710 && screen < 1060) {
-                if (footerDesktop.style.bottom !== '') {
-                    footerDesktop.style.bottom = '-406px';
-                }
-            }
-            else {
-                if (footerDesktop.style.bottom !== '') {
-                    footerDesktop.style.bottom = '-215px';
-                }
-            }
-        });
-
-        window.addEventListener("resize", () => {
-            screen = document.documentElement.clientWidth;
-
-            if (screen > 710 && screen < 1060) {
-                if (footerDesktop.style.bottom !== '-406px') {
-                    footerDesktop.style.bottom = '-406px';
-                }
-            }
-            else {
-                if (footerDesktop.style.bottom !== '-215px') {
-                    footerDesktop.style.bottom = '-215px';
-                }
-            }
-        });
-    }
-
-
-    // Форма входа в админку
-    let passwordInput = document.querySelector('.form__element__input_password');
-    if (passwordInput != null) {
-        passwordInput.focus();
-
-        let enterButton = document.querySelector('.form__element__button_entering');
-        enterButton.addEventListener('click', preventDefault);
-
-        passwordInput.addEventListener('keyup', () => {
-            if (passwordInput.value != '') {
-                passwordInput.classList.remove('form__element__input_invalid');
-
-                enterButton.removeEventListener('click', preventDefault);
-                enterButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                enterButton.addEventListener('click', preventDefault);
-                enterButton.classList.add('form__element__button-disabled');
-            }
-        });
-    }
-
-    // Редактирование книги
-    if (document.querySelector('.admin') != null) {
-        let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-        let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-        for (let i = 0; i < gridItems.length; i++) {
-            let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-            gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
-
-            addBookHover(gridItems[i]);
-
-            onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
         }
+        else {
+            if (footerDesktop.style.bottom !== '-215px') {
+                footerDesktop.style.bottom = '-215px';
+            }
+        }
+    });
+}
+
+
+// Форма входа в админку
+let passwordInput = document.querySelector('.form__element__input_password');
+if (passwordInput != null) {
+    passwordInput.focus();
+
+    let enterButton = document.querySelector('.form__element__button_entering');
+    enterButton.addEventListener('click', preventDefault);
+
+    passwordInput.addEventListener('keyup', () => {
+        if (passwordInput.value !== '') {
+            passwordInput.classList.remove('form__element__input_invalid');
+
+            enterButton.removeEventListener('click', preventDefault);
+            enterButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            enterButton.addEventListener('click', preventDefault);
+            enterButton.classList.add('form__element__button-disabled');
+        }
+    });
+}
+
+// Редактирование книги
+if (isAdmin) {
+    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
+    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
+    for (let i = 0; i < gridItems.length; i++) {
+        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
+        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+
+        addBookHover(gridItems[i]);
+
+        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
     }
+}
 
-    // На мобильном телефоне в портретном режиме не показывается обложка в форме
-    if (document.querySelector('.admin') != null && (document.location.pathname === '/+/' || document.location.pathname === '/alterare/')) {
-        let bookCoverOnMobile = document.querySelector('.page .book-editing__cover');
+// На мобильном телефоне в портретном режиме не показывается обложка в форме
+if (isAdmin && (document.location.pathname === '/+/' || document.location.pathname === '/alterare/')) {
+    let bookCoverOnMobile = document.querySelector('.page .book-editing__cover');
 
-        let myMobile = {
-            Android: function() {
-                return navigator.userAgent.match(/Android/i);
-            },
-            BlackBerry: function() {
-                return navigator.userAgent.match(/BlackBerry/i);
-            },
-            iOS: function() {
-                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-            },
-            Opera: function() {
-                return navigator.userAgent.match(/Opera Mini/i);
-            },
-            Windows: function() {
-                return navigator.userAgent.match(/IEMobile/i);
-            },
-            any: function() {
-                return (myMobile.Android() ||
-                    myMobile.BlackBerry() ||
-                    myMobile.iOS() ||
-                    myMobile.Opera() ||
-                    myMobile.Windows());
+    let myMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (myMobile.Android() ||
+                myMobile.BlackBerry() ||
+                myMobile.iOS() ||
+                myMobile.Opera() ||
+                myMobile.Windows());
+        }
+    };
+
+    if (myMobile.any() ) {
+        // Это мобильный телефон
+        bookCoverOnMobile.style.display = 'none';
+        document.querySelector('.page .book-editing__month-book__wrap').style.display = 'none';
+    }
+}
+
+// Форма добавления книги
+if (document.location.pathname === '/+/') {
+    titleInput.focus();
+
+    // Подстановка данных
+    let urlParams = document.location.search;
+
+    // недобавленной книги
+    let newBookTitle = localStorage.getItem('newBookTitle');
+    if (newBookTitle !== '') {
+        titleInput.value = newBookTitle;
+        bookAddingButton.classList.remove('form__element__button-disabled');
+
+        bookCoverTitle.innerHTML = newBookTitle;
+
+        let title = titleInput.value;
+        let xhrTypograf = new XMLHttpRequest();
+        let params = 'str=' + title;
+        xhrTypograf.open('POST', '../php/typograf.php');
+        xhrTypograf.onreadystatechange = () => {
+            if (xhrTypograf.readyState === 4) {
+                if (xhrTypograf.status === 200) {
+                    bookCoverTitle.innerHTML = xhrTypograf.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhrTypograf.status);
             }
         };
+        xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhrTypograf.send(params);
+    }
 
-        if (myMobile.any() ) {
-            // Это мобильный телефон
-            bookCoverOnMobile.style.display = 'none';
-            document.querySelector('.page .book-editing__month-book__wrap').style.display = 'none';
+    let newBookAuthor = localStorage.getItem('newBookAuthor');
+    if (newBookAuthor !== null && newBookAuthor !== '') {
+        authorInput.value = newBookAuthor;
+
+        bookCoverAuthor.innerHTML = newBookAuthor;
+        bookCoverAuthor.style.display = 'block';
+
+        let author = authorInput.value;
+        let xhrTypograf = new XMLHttpRequest();
+        let params = 'str=' + author;
+        xhrTypograf.open('POST', '../php/typograf.php');
+        xhrTypograf.onreadystatechange = () => {
+            if (xhrTypograf.readyState === 4) {
+                if (xhrTypograf.status === 200) {
+                    bookCoverAuthor.innerHTML = xhrTypograf.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhrTypograf.status);
+            }
+        };
+        xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhrTypograf.send(params);
+    }
+
+    let newBookPublishingCity = localStorage.getItem('newBookPublishingCity');
+    if (newBookPublishingCity != null) {
+        publishingCityInput.value = newBookPublishingCity;
+    }
+
+    let newBookPublishingYear = localStorage.getItem('newBookPublishingYear');
+    if (newBookPublishingYear != null) {
+        publishingYearInput.value = newBookPublishingYear;
+    }
+
+    if (newBookPublishingCity != null || newBookPublishingYear != null) {
+        if (publishingYearInput.value === '') {
+            bookCoverPublishing.innerHTML = publishingCityInput.value;
+        }
+        else {
+            if (publishingCityInput.value === '') {
+                bookCoverPublishing.innerHTML = publishingYearInput.value;
+            }
+            else {
+                bookCoverPublishing.innerHTML = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
         }
     }
 
-    // Форма добавления книги
-    if (document.location.pathname === '/+/') {
-        titleInput.focus();
+    let newBookMonthBookStatus = localStorage.getItem('newBookMonthBookStatus');
+    if (newBookMonthBookStatus !== null) {
+        if (newBookMonthBookStatus === '1') {
+            if (monthBookCheckbox.checked === false) {
+                monthBookCheckbox.checked = true;
+                toggleAppearingBlock(monthBookCheckbox);
+                bookCover.classList.toggle('grid__item_month-book-color');
+                bookCoverMonthBook.style.display = 'block';
+            }
+        }
+        else {
+            if (monthBookCheckbox.checked === true) {
+                monthBookCheckbox.checked = false;
+                toggleAppearingBlock(monthBookCheckbox);
+                bookCover.classList.toggle('grid__item_month-book-color');
+                bookCoverMonthBook.style.display = 'none';
+            }
+        }
 
-        // Подстановка данных
-        let urlParams = document.location.search;
+        let newBookMonthBookDesc = localStorage.getItem('newBookMonthBookDesc');
+        if (newBookMonthBookDesc != null && newBookMonthBookDesc !== '') {
+            monthBookDescInput.value = newBookMonthBookDesc;
 
-        // недобавленной книги
-        let newBookTitle = localStorage.getItem('newBookTitle');
-        if (newBookTitle !== '') {
-            titleInput.value = newBookTitle;
-            bookAddingButton.classList.remove('form__element__button-disabled');
+            bookCoverMonthBookDesc.innerHTML = newBookMonthBookDesc;
 
-            bookCoverTitle.innerHTML = newBookTitle;
-
-            let title = titleInput.value;
+            let description = newBookMonthBookDesc;
             let xhrTypograf = new XMLHttpRequest();
-            let params = 'str=' + title;
+            let params = 'str=' + description;
             xhrTypograf.open('POST', '../php/typograf.php');
             xhrTypograf.onreadystatechange = () => {
                 if (xhrTypograf.readyState === 4) {
                     if (xhrTypograf.status === 200) {
-                        bookCoverTitle.innerHTML = xhrTypograf.responseText;
+                        bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
                     }
                     else
                         console.log('Ошибка: ' + xhrTypograf.status);
@@ -274,12 +362,688 @@ function start() {
             xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhrTypograf.send(params);
         }
+        else if (newBookMonthBookStatus === '1') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+    }
 
-        let newBookAuthor = localStorage.getItem('newBookAuthor');
-        if (newBookAuthor !== null && newBookAuthor !== '') {
-            authorInput.value = newBookAuthor;
+    let newBookPriceStatus = localStorage.getItem('newBookPriceStatus');
+    let newBookPrice = localStorage.getItem('newBookPrice');
+    if (newBookPriceStatus === '1') {
+        priceCheckbox.checked = true;
+        toggleAppearingBlock(priceCheckbox);
+        stickerForPrice.style.display = 'block';
 
-            bookCoverAuthor.innerHTML = newBookAuthor;
+        if (newBookPrice <= 0) {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+        else {
+            stickerForPrice.innerHTML = newBookPrice + '&nbsp;€';
+        }
+    }
+    if (newBookPrice > 0) {
+        priceInput.value = newBookPrice;
+    }
+
+
+    // из поиска
+    if (urlParams !== '') {
+        let urlParamsType = urlParams.split('&')[0].replace('?type=', '');
+        let urlParamsText = decodeURI(urlParams.split('&')[1].replace('text=', ''));
+
+        if (urlParamsText !== '') {
+            switch (urlParamsType) {
+                case 'title':
+                    titleInput.value = urlParamsText;
+                    localStorage.setItem('newBookTitle', urlParamsText);
+
+                    bookAddingButton.classList.remove('form__element__button-disabled');
+
+                    bookCoverTitle.innerHTML = urlParamsText;
+
+                    let title = titleInput.value;
+                    let xhrTypografParamTitle = new XMLHttpRequest();
+                    let paramsTitle = 'str=' + title;
+                    xhrTypografParamTitle.open('POST', '../php/typograf.php');
+                    xhrTypografParamTitle.onreadystatechange = () => {
+                        if (xhrTypografParamTitle.readyState === 4) {
+                            if (xhrTypografParamTitle.status === 200) {
+                                bookCoverTitle.innerHTML = xhrTypografParamTitle.responseText;
+                            }
+                            else
+                                console.log('Ошибка: ' + xhrTypografParamTitle.status);
+                        }
+                    };
+                    xhrTypografParamTitle.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhrTypografParamTitle.send(paramsTitle);
+
+                    break;
+
+                case 'author':
+                    authorInput.value = urlParamsText;
+
+                    bookCoverAuthor.innerHTML = urlParamsText;
+                    bookCoverAuthor.style.display = 'block';
+
+                    let author = authorInput.value;
+                    let xhrTypografParamAuthor = new XMLHttpRequest();
+                    let paramsAuthor = 'str=' + author;
+                    xhrTypografParamAuthor.open('POST', '../php/typograf.php');
+                    xhrTypografParamAuthor.onreadystatechange = () => {
+                        if (xhrTypografParamAuthor.readyState === 4) {
+                            if (xhrTypografParamAuthor.status === 200) {
+                                bookCoverAuthor.innerHTML = xhrTypografParamAuthor.responseText;
+                            }
+                            else
+                                console.log('Ошибка: ' + xhrTypografParamAuthor.status);
+                        }
+                    };
+                    xhrTypografParamAuthor.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhrTypografParamAuthor.send(paramsAuthor);
+
+                    break;
+            }
+        }
+    }
+
+    // Обработчики полей
+    titleInput.addEventListener('keyup', (e) => {
+        if (titleInput.value !== '') {
+            titleInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked === true && priceInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        let title = titleInput.value;
+        let xhr = new XMLHttpRequest();
+        let params = 'str=' + title;
+        xhr.open('POST', '../php/typograf.php');
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    bookCoverTitle.innerHTML = xhr.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhr.status);
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+
+        localStorage.setItem('newBookTitle', title);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('newBookTitle');
+            localStorage.removeItem('newBookAuthor');
+            localStorage.removeItem('newBookPublishingCity');
+            localStorage.removeItem('newBookPublishingYear');
+            localStorage.removeItem('newBookMonthBookStatus');
+            localStorage.removeItem('newBookMonthBookDesc');
+            localStorage.removeItem('newBookPrice');
+        }
+    });
+
+    authorInput.addEventListener('keyup',(e)=>{
+        if (authorInput.value !== '') {
+            bookCoverAuthor.style.display = 'block';
+
+            let author = authorInput.value;
+            let xhr = new XMLHttpRequest();
+            let params = 'str=' + author;
+            xhr.open('POST', '../php/typograf.php');
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        bookCoverAuthor.innerHTML = xhr.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhr.status);
+                }
+            };
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        }
+        else {
+            bookCoverAuthor.style.display = 'none';
+        }
+
+        fixTitleHeightWhenLongAuthor();
+
+        let bookCoverAuthorHeight = window.getComputedStyle(bookCoverAuthor).height;
+        if (parseInt(bookCoverAuthorHeight) >= 30) {
+            bookAddingButton.setAttribute('data-sendToEditor', 'true');
+        }
+        else {
+            bookAddingButton.removeAttribute('data-sendToEditor');
+        }
+
+        localStorage.setItem('newBookAuthor', authorInput.value);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('newBookTitle');
+            localStorage.removeItem('newBookAuthor');
+            localStorage.removeItem('newBookPublishingCity');
+            localStorage.removeItem('newBookPublishingYear');
+            localStorage.removeItem('newBookMonthBookStatus');
+            localStorage.removeItem('newBookMonthBookDesc');
+            localStorage.removeItem('newBookPrice');
+        }
+    });
+
+    let bookCoverPuslishingData = '';
+    publishingCityInput.addEventListener('keyup', (e)=>{
+        if (publishingYearInput.value === '') {
+            bookCoverPuslishingData = publishingCityInput.value;
+        }
+        else {
+            if (publishingCityInput.value === '') {
+                bookCoverPuslishingData = publishingYearInput.value;
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+
+        localStorage.setItem('newBookPublishingCity', publishingCityInput.value);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('newBookTitle');
+            localStorage.removeItem('newBookAuthor');
+            localStorage.removeItem('newBookPublishingCity');
+            localStorage.removeItem('newBookPublishingYear');
+            localStorage.removeItem('newBookMonthBookStatus');
+            localStorage.removeItem('newBookMonthBookDesc');
+            localStorage.removeItem('newBookPrice');
+        }
+    });
+
+    publishingYearInput.onkeypress = allowDigit;
+    publishingYearInput.addEventListener('keyup', (e)=>{
+        if (publishingYearInput.value === '') {
+            if (publishingCityInput.value === '') {
+                bookCoverPuslishingData = '';
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value;
+            }
+        }
+        else {
+            if (publishingCityInput.value === '') {
+                bookCoverPuslishingData = publishingYearInput.value;
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+
+        localStorage.setItem('newBookPublishingYear', publishingYearInput.value);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('newBookTitle');
+            localStorage.removeItem('newBookAuthor');
+            localStorage.removeItem('newBookPublishingCity');
+            localStorage.removeItem('newBookPublishingYear');
+            localStorage.removeItem('newBookMonthBookStatus');
+            localStorage.removeItem('newBookMonthBookDesc');
+            localStorage.removeItem('newBookPrice');
+        }
+    });
+
+    monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
+    monthBookCheckbox.addEventListener("click", ()=>{
+        if (titleInput.value !== '') {
+            if (monthBookDescInput.value === '') {
+                bookAddingButton.classList.toggle('form__element__button-disabled');
+            }
+        }
+
+        if (priceCheckbox.checked === true && priceInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        bookCover.classList.toggle('grid__item_month-book-color');
+
+        if (bookCoverMonthBook.style.display === 'none') {
+            bookCoverMonthBook.style.display = 'block';
+        }
+        else {
+            bookCoverMonthBook.style.display = 'none';
+        }
+
+        let monthBookStatus = monthBookCheckbox.checked ? '1': '0';
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('newBookMonthBookStatus', monthBookStatus);
+    });
+
+    monthBookDescInput.addEventListener('keyup', ()=>{
+        if (titleInput.value !== '' && monthBookDescInput.value !== '') {
+            monthBookDescInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked === true && priceInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        let description = monthBookDescInput.value;
+
+        let xhr = new XMLHttpRequest();
+        let params = 'str=' + description;
+        xhr.open('POST', '../php/typograf.php');
+        xhr.onreadystatechange=()=>{
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    bookCoverMonthBookDesc.innerHTML = xhr.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhr.status);
+            }
+        };
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+
+        let monthBookStatus = monthBookCheckbox.checked ? '1': '0';
+
+        localStorage.setItem('newBookMonthBookStatus', monthBookStatus);
+        localStorage.setItem('newBookMonthBookDesc', description);
+    });
+    monthBookDescInput.addEventListener('copy', copyFix);
+
+
+    priceCheckbox.addEventListener("click", toggleAppearingBlock);
+    priceCheckbox.addEventListener("click", ()=>{
+        if (titleInput.value !== '') {
+            if (priceInput.value === '') {
+                bookAddingButton.classList.toggle('form__element__button-disabled');
+            }
+            else {
+                stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+            }
+        }
+
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (stickerForPrice.style.display === 'none') {
+            stickerForPrice.style.display = 'block';
+        }
+        else {
+            stickerForPrice.style.display = 'none';
+        }
+
+        let priceStatus = priceCheckbox.checked ? '1': '0';
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('newBookPriceStatus', priceStatus);
+        localStorage.setItem('newBookPrice', priceInput.value);
+    });
+
+    priceInput.onkeypress = allowDigit;
+    priceInput.addEventListener('keyup', (e)=>{
+        if (titleInput.value !== '' && priceInput.value !== '') {
+            priceInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceInput.value === '') {
+            stickerForPrice.innerHTML = '';
+        }
+        else {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+        }
+
+        localStorage.setItem('newBookPrice', priceInput.value);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('newBookTitle');
+            localStorage.removeItem('newBookAuthor');
+            localStorage.removeItem('newBookPublishingCity');
+            localStorage.removeItem('newBookPublishingYear');
+            localStorage.removeItem('newBookMonthBookStatus');
+            localStorage.removeItem('newBookMonthBookDesc');
+            localStorage.removeItem('newBookPrice');
+        }
+    });
+
+    bookAddingButton.addEventListener("click", ()=>{
+        event.preventDefault();
+
+        let sendToEditor = false;
+
+        if (bookAddingButton.hasAttribute('data-sendToEditor')) {
+            sendToEditor = true;
+        }
+
+        addBook(sendToEditor);
+
+        localStorage.removeItem('newBookTitle');
+        localStorage.removeItem('newBookAuthor');
+        localStorage.removeItem('newBookPublishingCity');
+        localStorage.removeItem('newBookPublishingYear');
+        localStorage.removeItem('newBookMonthBookStatus');
+        localStorage.removeItem('newBookMonthBookDesc');
+        localStorage.removeItem('newBookPrice');
+    });
+}
+
+// Редактирование книги
+if (document.location.pathname === '/alterare/') {
+    let url = document.location.search;
+    let id = url.replace('?libro=', '');
+
+    authorInput = document.querySelector('.form__element__input_author');
+    titleInput = document.querySelector('.form__element__input_title');
+    publishingCityInput = document.querySelector('.form__element__input_publishing-city');
+    publishingYearInput = document.querySelector('.form__element__input_publishing-year');
+    monthBookCheckbox = document.querySelector('.form__element__label__checkbox_description');
+    monthBookDescInput = document.querySelector('.form__element__input_month-book-description');
+    priceCheckbox = document.querySelector('.form__element__label__checkbox_price');
+    priceInput = document.querySelector('.form__element__input_price');
+    bookAddingButton = document.querySelector('.form__element__button_book-adding');
+
+    bookCover = document.querySelector('.book-editing__cover .grid__item');
+    bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
+    bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
+    bookCoverPublishing = document.querySelector('.grid__item__publishing');
+    bookCoverMonthBook = document.querySelector('.month-book');
+    bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
+    stickerForPrice = document.querySelector('.grid__item__sticker_price');
+
+    // Подстановка данных, которые не обновились для читателя
+    let titleSaved = localStorage.getItem('title' + id);
+    if (titleSaved != null) {
+        titleInput.value = titleSaved;
+
+        bookCoverTitle.innerHTML = titleSaved;
+
+        let title = titleInput.value;
+        let xhrTypograf = new XMLHttpRequest();
+        let params = 'str=' + title;
+        xhrTypograf.open('POST', '../php/typograf.php');
+        xhrTypograf.onreadystatechange = () => {
+            if (xhrTypograf.readyState === 4) {
+                if (xhrTypograf.status === 200) {
+                    bookCoverTitle.innerHTML = xhrTypograf.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhrTypograf.status);
+            }
+        };
+        xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhrTypograf.send(params);
+
+        let savingInfo = document.createElement('div');
+        savingInfo.className = "form__element__warning-small";
+        savingInfo.innerHTML = localStorage.getItem('savingTitleInfo' + id);
+        titleInput.parentNode.appendChild(savingInfo);
+    }
+
+    let authorSaved = localStorage.getItem('author' + id);
+    if (authorSaved != null) {
+        authorInput.value = authorSaved;
+
+        let savingInfo = document.createElement('div');
+        savingInfo.className = "form__element__warning-small";
+        savingInfo.innerHTML = localStorage.getItem('savingAuthorInfo' + id);
+        authorInput.parentNode.appendChild(savingInfo);
+
+        if (authorInput.value != '') {
+            bookCoverAuthor.style.display = 'block';
+            bookCoverAuthor.innerHTML = authorInput.value;
+
+            let author = authorInput.value;
+            let xhrTypograf = new XMLHttpRequest();
+            let params = 'str=' + author;
+            xhrTypograf.open('POST', '../php/typograf.php');
+            xhrTypograf.onreadystatechange = () => {
+                if (xhrTypograf.readyState === 4) {
+                    if (xhrTypograf.status === 200) {
+                        bookCoverAuthor.innerHTML = xhrTypograf.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhrTypograf.status);
+                }
+            };
+            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhrTypograf.send(params);
+        }
+        else {
+            bookCoverAuthor.style.display = 'none';
+        }
+    }
+
+    let publishingCitySaved = localStorage.getItem('publishingCity' + id);
+    if (publishingCitySaved != null) {
+        publishingCityInput.value = publishingCitySaved;
+
+        let savingInfo = document.createElement('div');
+        savingInfo.className = "form__element__warning-small";
+        savingInfo.innerHTML = localStorage.getItem('savingPublishingCityInfo' + id);
+        publishingCityInput.parentNode.appendChild(savingInfo);
+    }
+
+    let publishingYearSaved = localStorage.getItem('publishingYear' + id);
+    if (publishingYearSaved != null) {
+        publishingYearInput.value = publishingYearSaved;
+
+        let savingInfo = document.createElement('div');
+        savingInfo.className = "form__element__warning-small";
+        savingInfo.innerHTML = localStorage.getItem('savingPublishingYearInfo' + id);
+        publishingYearInput.parentNode.appendChild(savingInfo);
+    }
+
+    if (publishingCitySaved != null || publishingYearSaved != null) {
+        if (publishingYearInput.value == '') {
+            bookCoverPublishing.innerHTML = publishingCityInput.value;
+        }
+        else {
+            if (publishingCityInput.value == '') {
+                bookCoverPublishing.innerHTML = publishingYearInput.value;
+            }
+            else {
+                bookCoverPublishing.innerHTML = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+    }
+
+    let monthBookStatusSaved = localStorage.getItem('monthBookStatus' + id);
+    if (monthBookStatusSaved != null) {
+        if (monthBookStatusSaved === '1') {
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small form__element__warning-small-lower";
+            savingInfo.innerHTML = localStorage.getItem('savingMonthBookInfo' + id);
+            monthBookDescInput.parentNode.appendChild(savingInfo);
+
+            if (monthBookCheckbox.checked === false) {
+                monthBookCheckbox.checked = true;
+                toggleAppearingBlock(monthBookCheckbox);
+                bookCover.classList.toggle('grid__item_month-book-color');
+                bookCoverMonthBook.style.display = 'block';
+            }
+        }
+        else {
+            if (monthBookCheckbox.checked === true) {
+                monthBookCheckbox.checked = false;
+                toggleAppearingBlock(monthBookCheckbox);
+                bookCover.classList.toggle('grid__item_month-book-color');
+                bookCoverMonthBook.style.display = 'none';
+
+                let savingInfo = document.createElement('div');
+                savingInfo.className = "form__element__warning-small form__element__warning-small-checkbox";
+                savingInfo.innerHTML = localStorage.getItem('savingMonthBookInfo' + id);
+                monthBookCheckbox.parentNode.appendChild(savingInfo);
+            }
+        }
+
+        let monthBookDescSaved = localStorage.getItem('monthBookDesc' + id);
+        if (monthBookDescSaved != null && monthBookDescSaved !== '') {
+            bookCoverMonthBookDesc.innerHTML = monthBookDescSaved;
+            let description = monthBookDescSaved;
+            let xhrTypograf = new XMLHttpRequest();
+            let params = 'str=' + description;
+            xhrTypograf.open('POST', '../php/typograf.php');
+            xhrTypograf.onreadystatechange = () => {
+                if (xhrTypograf.readyState === 4) {
+                    if (xhrTypograf.status === 200) {
+                        bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
+                    }
+                    else
+                        console.log('Ошибка: ' + xhrTypograf.status);
+                }
+            };
+            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhrTypograf.send(params);
+
+            monthBookDescInput.value = monthBookDescSaved;
+        }
+        else if (monthBookStatusSaved === '1') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+    }
+
+    let priceStatusSaved = localStorage.getItem('priceStatus' + id);
+    let priceSaved = localStorage.getItem('price' + id);
+    if (priceStatusSaved != null) {
+        if (priceStatusSaved === '1') {
+            if (priceCheckbox.checked === false) {
+                priceCheckbox.checked = true;
+                toggleAppearingBlock(priceCheckbox);
+                stickerForPrice.style.display = 'block';
+            }
+
+            let savingInfo = document.createElement('div');
+            savingInfo.className = "form__element__warning-small";
+            savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
+            priceInput.parentNode.appendChild(savingInfo);
+
+            if (priceSaved <= 0) {
+                bookAddingButton.classList.add('form__element__button-disabled');
+            }
+            else {
+                stickerForPrice.innerHTML = priceSaved + '&nbsp;€';
+            }
+        }
+        else {
+            if (priceCheckbox.checked === true) {
+                priceCheckbox.checked = false;
+                toggleAppearingBlock(priceCheckbox);
+                stickerForPrice.style.display = 'none';
+
+                let savingInfo = document.createElement('div');
+                savingInfo.className = "form__element__warning-small form__element__warning-small-checkbox";
+                savingInfo.style.left = "121px";
+                savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
+                priceCheckbox.parentNode.appendChild(savingInfo);
+            }
+        }
+    }
+
+    if (priceSaved != null) {
+        if (priceSaved > 0) {
+            priceInput.value = priceSaved;
+        }
+        else {
+            priceInput.value = '';
+            stickerForPrice.innerHTML = '';
+        }
+    }
+
+
+    // Обработчики полей
+    let date = new Date();
+    let day = date.getDate();
+    let month = convertMonth(date.getMonth() + 1);
+    let hours = date.getHours();
+    if (hours.toString().length === 1) hours = '0' + hours;
+    let minutes = date.getMinutes();
+    if (minutes.toString().length === 1) minutes = '0' + minutes;
+    let time = hours + ':' + minutes;
+    date = "Salvato il&nbsp;" + day + "&nbsp;" + month + ' alle&nbsp;' + time;
+
+    titleInput.addEventListener('keyup', (e)=>{
+        if (titleInput.value != '') {
+            titleInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            titleInput.classList.add('form__element__input_invalid');
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        let title = titleInput.value;
+        let xhrTypograf = new XMLHttpRequest();
+        let params = 'str=' + title;
+        xhrTypograf.open('POST', '../php/typograf.php');
+        xhrTypograf.onreadystatechange = () => {
+            if (xhrTypograf.readyState === 4) {
+                if (xhrTypograf.status === 200) {
+                    bookCoverTitle.innerHTML = xhrTypograf.responseText;
+                }
+                else
+                    console.log('Ошибка: ' + xhrTypograf.status);
+            }
+        };
+        xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhrTypograf.send(params);
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('title' + id, title);
+        localStorage.setItem('savingTitleInfo' + id, date);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('title' + id);
+            localStorage.removeItem('savingTitleInfo' + id);
+            localStorage.removeItem('author' + id);
+            localStorage.removeItem('savingAuthorInfo' + id);
+            localStorage.removeItem('publishingYear' + id);
+            localStorage.removeItem('savingPublishingYearInfo' + id);
+            localStorage.removeItem('publishingCity' + id);
+            localStorage.removeItem('savingPublishingCityInfo' + id);
+            localStorage.removeItem('monthBookStatus' + id);
+            localStorage.removeItem('monthBookDesc' + id);
+            localStorage.removeItem('savingMonthBookInfo' + id);
+            localStorage.removeItem('priceStatus' + id);
+            localStorage.removeItem('price' + id);
+            localStorage.removeItem('savingPriceInfo' + id);
+        }
+    });
+
+    authorInput.addEventListener('keyup', (e)=>{
+        if (authorInput.value != '') {
             bookCoverAuthor.style.display = 'block';
 
             let author = authorInput.value;
@@ -298,1055 +1062,288 @@ function start() {
             xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhrTypograf.send(params);
         }
-
-        let newBookPublishingCity = localStorage.getItem('newBookPublishingCity');
-        if (newBookPublishingCity != null) {
-            publishingCityInput.value = newBookPublishingCity;
+        else {
+            bookCoverAuthor.style.display = 'none';
         }
 
-        let newBookPublishingYear = localStorage.getItem('newBookPublishingYear');
-        if (newBookPublishingYear != null) {
-            publishingYearInput.value = newBookPublishingYear;
-        }
+        fixTitleHeightWhenLongAuthor();
 
-        if (newBookPublishingCity != null || newBookPublishingYear != null) {
-            if (publishingYearInput.value === '') {
-                bookCoverPublishing.innerHTML = publishingCityInput.value;
+        // Добавление в локальное хранилище
+        localStorage.setItem('author' + id, authorInput.value);
+        localStorage.setItem('savingAuthorInfo' + id, date);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('title' + id);
+            localStorage.removeItem('savingTitleInfo' + id);
+            localStorage.removeItem('author' + id);
+            localStorage.removeItem('savingAuthorInfo' + id);
+            localStorage.removeItem('publishingYear' + id);
+            localStorage.removeItem('savingPublishingYearInfo' + id);
+            localStorage.removeItem('publishingCity' + id);
+            localStorage.removeItem('savingPublishingCityInfo' + id);
+            localStorage.removeItem('monthBookStatus' + id);
+            localStorage.removeItem('monthBookDesc' + id);
+            localStorage.removeItem('savingMonthBookInfo' + id);
+            localStorage.removeItem('priceStatus' + id);
+            localStorage.removeItem('price' + id);
+            localStorage.removeItem('savingPriceInfo' + id);
+        }
+    });
+
+
+    let bookCoverPuslishingData = '';
+    publishingCityInput.addEventListener('keyup', (e)=>{
+        if (publishingYearInput.value == '') {
+            bookCoverPuslishingData = publishingCityInput.value;
+        }
+        else {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = publishingYearInput.value;
             }
             else {
-                if (publishingCityInput.value === '') {
-                    bookCoverPublishing.innerHTML = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPublishing.innerHTML = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
             }
         }
 
-        let newBookMonthBookStatus = localStorage.getItem('newBookMonthBookStatus');
-        if (newBookMonthBookStatus !== null) {
-            if (newBookMonthBookStatus === '1') {
-                if (monthBookCheckbox.checked === false) {
-                    monthBookCheckbox.checked = true;
-                    toggleAppearingBlock(monthBookCheckbox);
-                    bookCover.classList.toggle('grid__item_month-book-color');
-                    bookCoverMonthBook.style.display = 'block';
-                }
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('publishingCity' + id, publishingCityInput.value);
+        localStorage.setItem('savingPublishingCityInfo' + id, date);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('title' + id);
+            localStorage.removeItem('savingTitleInfo' + id);
+            localStorage.removeItem('author' + id);
+            localStorage.removeItem('savingAuthorInfo' + id);
+            localStorage.removeItem('publishingYear' + id);
+            localStorage.removeItem('savingPublishingYearInfo' + id);
+            localStorage.removeItem('publishingCity' + id);
+            localStorage.removeItem('savingPublishingCityInfo' + id);
+            localStorage.removeItem('monthBookStatus' + id);
+            localStorage.removeItem('monthBookDesc' + id);
+            localStorage.removeItem('savingMonthBookInfo' + id);
+            localStorage.removeItem('priceStatus' + id);
+            localStorage.removeItem('price' + id);
+            localStorage.removeItem('savingPriceInfo' + id);
+        }
+    });
+
+    publishingYearInput.onkeypress = allowDigit;
+    publishingYearInput.addEventListener('keyup', (e)=>{
+        if (publishingYearInput.value == '') {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = '';
             }
             else {
-                if (monthBookCheckbox.checked === true) {
-                    monthBookCheckbox.checked = false;
-                    toggleAppearingBlock(monthBookCheckbox);
-                    bookCover.classList.toggle('grid__item_month-book-color');
-                    bookCoverMonthBook.style.display = 'none';
+                bookCoverPuslishingData = publishingCityInput.value;
+            }
+        }
+        else {
+            if (publishingCityInput.value == '') {
+                bookCoverPuslishingData = publishingYearInput.value;
+            }
+            else {
+                bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
+            }
+        }
+
+        bookCoverPublishing.innerHTML = bookCoverPuslishingData;
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('publishingYear' + id, publishingYearInput.value);
+        localStorage.setItem('savingPublishingYearInfo' + id, date);
+
+        if (e.keyCode === 13) {
+            localStorage.removeItem('title' + id);
+            localStorage.removeItem('savingTitleInfo' + id);
+            localStorage.removeItem('author' + id);
+            localStorage.removeItem('savingAuthorInfo' + id);
+            localStorage.removeItem('publishingYear' + id);
+            localStorage.removeItem('savingPublishingYearInfo' + id);
+            localStorage.removeItem('publishingCity' + id);
+            localStorage.removeItem('savingPublishingCityInfo' + id);
+            localStorage.removeItem('monthBookStatus' + id);
+            localStorage.removeItem('monthBookDesc' + id);
+            localStorage.removeItem('savingMonthBookInfo' + id);
+            localStorage.removeItem('priceStatus' + id);
+            localStorage.removeItem('price' + id);
+            localStorage.removeItem('savingPriceInfo' + id);
+        }
+    });
+
+    monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
+    monthBookCheckbox.addEventListener("click", ()=>{
+        if (titleInput.value != '') {
+            if (monthBookDescInput.value == '') {
+                bookAddingButton.classList.toggle('form__element__button-disabled');
+            }
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        bookCover.classList.toggle('grid__item_month-book-color');
+
+        if (bookCoverMonthBook.style.display == 'none') {
+            bookCoverMonthBook.style.display = 'block';
+        }
+        else {
+            bookCoverMonthBook.style.display = 'none';
+        }
+
+        let monthBookStatus = (monthBookCheckbox.checked) ? '1': '0';
+        let description = monthBookDescInput.value;
+
+        // Добавление в локальное хранилище
+        localStorage.setItem('monthBookStatus' + id, monthBookStatus);
+        localStorage.setItem('monthBookDesc' + id, description);
+        localStorage.setItem('savingMonthBookInfo' + id, date);
+    });
+
+    monthBookDescInput.addEventListener('keyup', ()=>{
+        if (titleInput.value != '' && monthBookDescInput.value != '') {
+            monthBookDescInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (priceCheckbox.checked == true && priceInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        let description = monthBookDescInput.value;
+        let xhrTypograf = new XMLHttpRequest();
+        let params = 'str=' + description;
+        xhrTypograf.open('POST', '../php/typograf.php');
+        xhrTypograf.onreadystatechange = () => {
+            if (xhrTypograf.readyState === 4) {
+                if (xhrTypograf.status === 200) {
+                    bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
                 }
+                else
+                    console.log('Ошибка: ' + xhrTypograf.status);
             }
+        };
+        xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhrTypograf.send(params);
 
-            let newBookMonthBookDesc = localStorage.getItem('newBookMonthBookDesc');
-            if (newBookMonthBookDesc != null && newBookMonthBookDesc !== '') {
-                monthBookDescInput.value = newBookMonthBookDesc;
+        let monthBookStatus = (monthBookCheckbox.checked) ? '1': '0';
 
-                bookCoverMonthBookDesc.innerHTML = newBookMonthBookDesc;
+        // Добавление в локальное хранилище
+        localStorage.setItem('monthBookStatus' + id, monthBookStatus);
+        localStorage.setItem('monthBookDesc' + id, description);
+        localStorage.setItem('savingMonthBookInfo' + id, date);
+    });
 
-                let description = newBookMonthBookDesc;
-                let xhrTypograf = new XMLHttpRequest();
-                let params = 'str=' + description;
-                xhrTypograf.open('POST', '../php/typograf.php');
-                xhrTypograf.onreadystatechange = () => {
-                    if (xhrTypograf.readyState === 4) {
-                        if (xhrTypograf.status === 200) {
-                            bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
-                        }
-                        else
-                            console.log('Ошибка: ' + xhrTypograf.status);
-                    }
-                };
-                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhrTypograf.send(params);
-            }
-            else if (newBookMonthBookStatus === '1') {
+
+    priceCheckbox.addEventListener("click", toggleAppearingBlock);
+    priceCheckbox.addEventListener("click", ()=>{
+        if (titleInput.value != '') {
+            if (priceCheckbox.checked == true && priceInput.value == '') {
                 bookAddingButton.classList.add('form__element__button-disabled');
             }
+            else {
+                bookAddingButton.classList.remove('form__element__button-disabled');
+            }
         }
 
-        let newBookPriceStatus = localStorage.getItem('newBookPriceStatus');
-        let newBookPrice = localStorage.getItem('newBookPrice');
-        if (newBookPriceStatus === '1') {
-            priceCheckbox.checked = true;
-            toggleAppearingBlock(priceCheckbox);
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
+        }
+
+        if (stickerForPrice.style.display == 'none') {
             stickerForPrice.style.display = 'block';
-
-            if (newBookPrice <= 0) {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-            else {
-                stickerForPrice.innerHTML = newBookPrice + '&nbsp;€';
-            }
         }
-        if (newBookPrice > 0) {
-            priceInput.value = newBookPrice;
+        else {
+            stickerForPrice.style.display = 'none';
         }
 
-
-        // из поиска
-        if (urlParams !== '') {
-            let urlParamsType = urlParams.split('&')[0].replace('?type=', '');
-            let urlParamsText = decodeURI(urlParams.split('&')[1].replace('text=', ''));
-
-            if (urlParamsText !== '') {
-                switch (urlParamsType) {
-                    case 'title':
-                        titleInput.value = urlParamsText;
-                        localStorage.setItem('newBookTitle', urlParamsText);
-
-                        bookAddingButton.classList.remove('form__element__button-disabled');
-
-                        bookCoverTitle.innerHTML = urlParamsText;
-
-                        let title = titleInput.value;
-                        let xhrTypografParamTitle = new XMLHttpRequest();
-                        let paramsTitle = 'str=' + title;
-                        xhrTypografParamTitle.open('POST', '../php/typograf.php');
-                        xhrTypografParamTitle.onreadystatechange = () => {
-                            if (xhrTypografParamTitle.readyState === 4) {
-                                if (xhrTypografParamTitle.status === 200) {
-                                    bookCoverTitle.innerHTML = xhrTypografParamTitle.responseText;
-                                }
-                                else
-                                    console.log('Ошибка: ' + xhrTypografParamTitle.status);
-                            }
-                        };
-                        xhrTypografParamTitle.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhrTypografParamTitle.send(paramsTitle);
-
-                        break;
-
-                    case 'author':
-                        authorInput.value = urlParamsText;
-
-                        bookCoverAuthor.innerHTML = urlParamsText;
-                        bookCoverAuthor.style.display = 'block';
-
-                        let author = authorInput.value;
-                        let xhrTypografParamAuthor = new XMLHttpRequest();
-                        let paramsAuthor = 'str=' + author;
-                        xhrTypografParamAuthor.open('POST', '../php/typograf.php');
-                        xhrTypografParamAuthor.onreadystatechange = () => {
-                            if (xhrTypografParamAuthor.readyState === 4) {
-                                if (xhrTypografParamAuthor.status === 200) {
-                                    bookCoverAuthor.innerHTML = xhrTypografParamAuthor.responseText;
-                                }
-                                else
-                                    console.log('Ошибка: ' + xhrTypografParamAuthor.status);
-                            }
-                        };
-                        xhrTypografParamAuthor.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhrTypografParamAuthor.send(paramsAuthor);
-
-                        break;
-                }
-            }
+        if (priceCheckbox.checked == true && priceInput.value != '') {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+        }
+        else {
+            stickerForPrice.innerHTML = '';
         }
 
-        // Обработчики полей
-        titleInput.addEventListener('keyup', (e) => {
-            if (titleInput.value !== '') {
-                titleInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
+        let priceStatus = (priceCheckbox.checked) ? '1': '0';
 
-            if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceCheckbox.checked === true && priceInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            let title = titleInput.value;
-            let xhr = new XMLHttpRequest();
-            let params = 'str=' + title;
-            xhr.open('POST', '../php/typograf.php');
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        bookCoverTitle.innerHTML = xhr.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhr.status);
-                }
-            };
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
-
-            localStorage.setItem('newBookTitle', title);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('newBookTitle');
-                localStorage.removeItem('newBookAuthor');
-                localStorage.removeItem('newBookPublishingCity');
-                localStorage.removeItem('newBookPublishingYear');
-                localStorage.removeItem('newBookMonthBookStatus');
-                localStorage.removeItem('newBookMonthBookDesc');
-                localStorage.removeItem('newBookPrice');
-            }
-        });
-
-        authorInput.addEventListener('keyup',(e)=>{
-            if (authorInput.value !== '') {
-                bookCoverAuthor.style.display = 'block';
-
-                let author = authorInput.value;
-                let xhr = new XMLHttpRequest();
-                let params = 'str=' + author;
-                xhr.open('POST', '../php/typograf.php');
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            bookCoverAuthor.innerHTML = xhr.responseText;
-                        }
-                        else
-                            console.log('Ошибка: ' + xhr.status);
-                    }
-                };
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.send(params);
-            }
-            else {
-                bookCoverAuthor.style.display = 'none';
-            }
-
-            fixTitleHeightWhenLongAuthor();
-
-            let bookCoverAuthorHeight = window.getComputedStyle(bookCoverAuthor).height;
-            if (parseInt(bookCoverAuthorHeight) >= 30) {
-                bookAddingButton.setAttribute('data-sendToEditor', 'true');
-            }
-            else {
-                bookAddingButton.removeAttribute('data-sendToEditor');
-            }
-
-            localStorage.setItem('newBookAuthor', authorInput.value);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('newBookTitle');
-                localStorage.removeItem('newBookAuthor');
-                localStorage.removeItem('newBookPublishingCity');
-                localStorage.removeItem('newBookPublishingYear');
-                localStorage.removeItem('newBookMonthBookStatus');
-                localStorage.removeItem('newBookMonthBookDesc');
-                localStorage.removeItem('newBookPrice');
-            }
-        });
-
-        let bookCoverPuslishingData = '';
-        publishingCityInput.addEventListener('keyup', (e)=>{
-            if (publishingYearInput.value === '') {
-                bookCoverPuslishingData = publishingCityInput.value;
-            }
-            else {
-                if (publishingCityInput.value === '') {
-                    bookCoverPuslishingData = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
-            }
-
-            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-
-            localStorage.setItem('newBookPublishingCity', publishingCityInput.value);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('newBookTitle');
-                localStorage.removeItem('newBookAuthor');
-                localStorage.removeItem('newBookPublishingCity');
-                localStorage.removeItem('newBookPublishingYear');
-                localStorage.removeItem('newBookMonthBookStatus');
-                localStorage.removeItem('newBookMonthBookDesc');
-                localStorage.removeItem('newBookPrice');
-            }
-        });
-
-        publishingYearInput.onkeypress = allowDigit;
-        publishingYearInput.addEventListener('keyup', (e)=>{
-            if (publishingYearInput.value === '') {
-                if (publishingCityInput.value === '') {
-                    bookCoverPuslishingData = '';
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value;
-                }
-            }
-            else {
-                if (publishingCityInput.value === '') {
-                    bookCoverPuslishingData = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
-            }
-
-            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-
-            localStorage.setItem('newBookPublishingYear', publishingYearInput.value);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('newBookTitle');
-                localStorage.removeItem('newBookAuthor');
-                localStorage.removeItem('newBookPublishingCity');
-                localStorage.removeItem('newBookPublishingYear');
-                localStorage.removeItem('newBookMonthBookStatus');
-                localStorage.removeItem('newBookMonthBookDesc');
-                localStorage.removeItem('newBookPrice');
-            }
-        });
-
-        monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
-        monthBookCheckbox.addEventListener("click", ()=>{
-            if (titleInput.value !== '') {
-                if (monthBookDescInput.value === '') {
-                    bookAddingButton.classList.toggle('form__element__button-disabled');
-                }
-            }
-
-            if (priceCheckbox.checked === true && priceInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            bookCover.classList.toggle('grid__item_month-book-color');
-
-            if (bookCoverMonthBook.style.display === 'none') {
-                bookCoverMonthBook.style.display = 'block';
-            }
-            else {
-                bookCoverMonthBook.style.display = 'none';
-            }
-
-            let monthBookStatus = monthBookCheckbox.checked ? '1': '0';
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('newBookMonthBookStatus', monthBookStatus);
-        });
-
-        monthBookDescInput.addEventListener('keyup', ()=>{
-            if (titleInput.value !== '' && monthBookDescInput.value !== '') {
-                monthBookDescInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceCheckbox.checked === true && priceInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            let description = monthBookDescInput.value;
-
-            let xhr = new XMLHttpRequest();
-            let params = 'str=' + description;
-            xhr.open('POST', '../php/typograf.php');
-            xhr.onreadystatechange=()=>{
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        bookCoverMonthBookDesc.innerHTML = xhr.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhr.status);
-                }
-            };
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
-
-            let monthBookStatus = monthBookCheckbox.checked ? '1': '0';
-
-            localStorage.setItem('newBookMonthBookStatus', monthBookStatus);
-            localStorage.setItem('newBookMonthBookDesc', description);
-        });
-        monthBookDescInput.addEventListener('copy', copyFix);
-
-
-        priceCheckbox.addEventListener("click", toggleAppearingBlock);
-        priceCheckbox.addEventListener("click", ()=>{
-            if (titleInput.value !== '') {
-                if (priceInput.value === '') {
-                    bookAddingButton.classList.toggle('form__element__button-disabled');
-                }
-                else {
-                    stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
-                }
-            }
-
-            if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (stickerForPrice.style.display === 'none') {
-                stickerForPrice.style.display = 'block';
-            }
-            else {
-                stickerForPrice.style.display = 'none';
-            }
-
-            let priceStatus = priceCheckbox.checked ? '1': '0';
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('newBookPriceStatus', priceStatus);
-            localStorage.setItem('newBookPrice', priceInput.value);
-        });
-
-        priceInput.onkeypress = allowDigit;
-        priceInput.addEventListener('keyup', (e)=>{
-            if (titleInput.value !== '' && priceInput.value !== '') {
-                priceInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceInput.value === '') {
-                stickerForPrice.innerHTML = '';
-            }
-            else {
-                stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
-            }
-
-            localStorage.setItem('newBookPrice', priceInput.value);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('newBookTitle');
-                localStorage.removeItem('newBookAuthor');
-                localStorage.removeItem('newBookPublishingCity');
-                localStorage.removeItem('newBookPublishingYear');
-                localStorage.removeItem('newBookMonthBookStatus');
-                localStorage.removeItem('newBookMonthBookDesc');
-                localStorage.removeItem('newBookPrice');
-            }
-        });
-
-        bookAddingButton.addEventListener("click", ()=>{
-            event.preventDefault();
-
-            let sendToEditor = false;
-
-            if (bookAddingButton.hasAttribute('data-sendToEditor')) {
-                sendToEditor = true;
-            }
-
-            addBook(sendToEditor);
-
-            localStorage.removeItem('newBookTitle');
-            localStorage.removeItem('newBookAuthor');
-            localStorage.removeItem('newBookPublishingCity');
-            localStorage.removeItem('newBookPublishingYear');
-            localStorage.removeItem('newBookMonthBookStatus');
-            localStorage.removeItem('newBookMonthBookDesc');
-            localStorage.removeItem('newBookPrice');
-        });
-    }
-
-    // Редактирование книги
-    if (document.location.pathname === '/alterare/') {
-        let url = document.location.search;
-        let id = url.replace('?libro=', '');
-
-        authorInput = document.querySelector('.form__element__input_author');
-        titleInput = document.querySelector('.form__element__input_title');
-        publishingCityInput = document.querySelector('.form__element__input_publishing-city');
-        publishingYearInput = document.querySelector('.form__element__input_publishing-year');
-        monthBookCheckbox = document.querySelector('.form__element__label__checkbox_description');
-        monthBookDescInput = document.querySelector('.form__element__input_month-book-description');
-        priceCheckbox = document.querySelector('.form__element__label__checkbox_price');
-        priceInput = document.querySelector('.form__element__input_price');
-        bookAddingButton = document.querySelector('.form__element__button_book-adding');
-
-        bookCover = document.querySelector('.book-editing__cover .grid__item');
-        bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
-        bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
-        bookCoverPublishing = document.querySelector('.grid__item__publishing');
-        bookCoverMonthBook = document.querySelector('.month-book');
-        bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
-        stickerForPrice = document.querySelector('.grid__item__sticker_price');
-
-        // Подстановка данных, которые не обновились для читателя
-        let titleSaved = localStorage.getItem('title' + id);
-        if (titleSaved != null) {
-            titleInput.value = titleSaved;
-
-            bookCoverTitle.innerHTML = titleSaved;
-
-            let title = titleInput.value;
-            let xhrTypograf = new XMLHttpRequest();
-            let params = 'str=' + title;
-            xhrTypograf.open('POST', '../php/typograf.php');
-            xhrTypograf.onreadystatechange = () => {
-                if (xhrTypograf.readyState === 4) {
-                    if (xhrTypograf.status === 200) {
-                        bookCoverTitle.innerHTML = xhrTypograf.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhrTypograf.status);
-                }
-            };
-            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhrTypograf.send(params);
-
-            let savingInfo = document.createElement('div');
-            savingInfo.className = "form__element__warning-small";
-            savingInfo.innerHTML = localStorage.getItem('savingTitleInfo' + id);
-            titleInput.parentNode.appendChild(savingInfo);
+        let price = 0;
+        if (priceInput.value !== '') {
+            price = priceInput.value;
         }
 
-        let authorSaved = localStorage.getItem('author' + id);
-        if (authorSaved != null) {
-            authorInput.value = authorSaved;
+        // Добавление в локальное хранилище
+        localStorage.setItem('priceStatus' + id, priceStatus);
+        localStorage.setItem('price' + id, price);
+        localStorage.setItem('savingPriceInfo' + id, date);
+    });
 
-            let savingInfo = document.createElement('div');
-            savingInfo.className = "form__element__warning-small";
-            savingInfo.innerHTML = localStorage.getItem('savingAuthorInfo' + id);
-            authorInput.parentNode.appendChild(savingInfo);
-
-            if (authorInput.value != '') {
-                bookCoverAuthor.style.display = 'block';
-                bookCoverAuthor.innerHTML = authorInput.value;
-
-                let author = authorInput.value;
-                let xhrTypograf = new XMLHttpRequest();
-                let params = 'str=' + author;
-                xhrTypograf.open('POST', '../php/typograf.php');
-                xhrTypograf.onreadystatechange = () => {
-                    if (xhrTypograf.readyState === 4) {
-                        if (xhrTypograf.status === 200) {
-                            bookCoverAuthor.innerHTML = xhrTypograf.responseText;
-                        }
-                        else
-                            console.log('Ошибка: ' + xhrTypograf.status);
-                    }
-                };
-                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhrTypograf.send(params);
-            }
-            else {
-                bookCoverAuthor.style.display = 'none';
-            }
+    priceInput.onkeypress = allowDigit;
+    priceInput.addEventListener('keyup', (e)=>{
+        if (titleInput.value != '' && priceInput.value != '') {
+            priceInput.classList.remove('form__element__input_invalid');
+            bookAddingButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        let publishingCitySaved = localStorage.getItem('publishingCity' + id);
-        if (publishingCitySaved != null) {
-            publishingCityInput.value = publishingCitySaved;
-
-            let savingInfo = document.createElement('div');
-            savingInfo.className = "form__element__warning-small";
-            savingInfo.innerHTML = localStorage.getItem('savingPublishingCityInfo' + id);
-            publishingCityInput.parentNode.appendChild(savingInfo);
+        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+            bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        let publishingYearSaved = localStorage.getItem('publishingYear' + id);
-        if (publishingYearSaved != null) {
-            publishingYearInput.value = publishingYearSaved;
-
-            let savingInfo = document.createElement('div');
-            savingInfo.className = "form__element__warning-small";
-            savingInfo.innerHTML = localStorage.getItem('savingPublishingYearInfo' + id);
-            publishingYearInput.parentNode.appendChild(savingInfo);
+        if (priceInput.value != '') {
+            stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
+        }
+        else {
+            stickerForPrice.innerHTML = '';
         }
 
-        if (publishingCitySaved != null || publishingYearSaved != null) {
-            if (publishingYearInput.value == '') {
-                bookCoverPublishing.innerHTML = publishingCityInput.value;
-            }
-            else {
-                if (publishingCityInput.value == '') {
-                    bookCoverPublishing.innerHTML = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPublishing.innerHTML = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
-            }
+        let priceStatus = (priceCheckbox.checked) ? '1': '0';
+
+        let price = 0;
+        if (priceInput.value !== '') {
+            price = priceInput.value;
         }
 
-        let monthBookStatusSaved = localStorage.getItem('monthBookStatus' + id);
-        if (monthBookStatusSaved != null) {
-            if (monthBookStatusSaved === '1') {
-                let savingInfo = document.createElement('div');
-                savingInfo.className = "form__element__warning-small form__element__warning-small-lower";
-                savingInfo.innerHTML = localStorage.getItem('savingMonthBookInfo' + id);
-                monthBookDescInput.parentNode.appendChild(savingInfo);
+        // Добавление в локальное хранилище
+        localStorage.setItem('priceStatus' + id, priceStatus);
+        localStorage.setItem('price' + id, price);
+        localStorage.setItem('savingPriceInfo' + id, date);
 
-                if (monthBookCheckbox.checked === false) {
-                    monthBookCheckbox.checked = true;
-                    toggleAppearingBlock(monthBookCheckbox);
-                    bookCover.classList.toggle('grid__item_month-book-color');
-                    bookCoverMonthBook.style.display = 'block';
-                }
-            }
-            else {
-                if (monthBookCheckbox.checked === true) {
-                    monthBookCheckbox.checked = false;
-                    toggleAppearingBlock(monthBookCheckbox);
-                    bookCover.classList.toggle('grid__item_month-book-color');
-                    bookCoverMonthBook.style.display = 'none';
-
-                    let savingInfo = document.createElement('div');
-                    savingInfo.className = "form__element__warning-small form__element__warning-small-checkbox";
-                    savingInfo.innerHTML = localStorage.getItem('savingMonthBookInfo' + id);
-                    monthBookCheckbox.parentNode.appendChild(savingInfo);
-                }
-            }
-
-            let monthBookDescSaved = localStorage.getItem('monthBookDesc' + id);
-            if (monthBookDescSaved != null && monthBookDescSaved !== '') {
-                bookCoverMonthBookDesc.innerHTML = monthBookDescSaved;
-                let description = monthBookDescSaved;
-                let xhrTypograf = new XMLHttpRequest();
-                let params = 'str=' + description;
-                xhrTypograf.open('POST', '../php/typograf.php');
-                xhrTypograf.onreadystatechange = () => {
-                    if (xhrTypograf.readyState === 4) {
-                        if (xhrTypograf.status === 200) {
-                            bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
-                        }
-                        else
-                            console.log('Ошибка: ' + xhrTypograf.status);
-                    }
-                };
-                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhrTypograf.send(params);
-
-                monthBookDescInput.value = monthBookDescSaved;
-            }
-            else if (monthBookStatusSaved === '1') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
+        if (e.keyCode === 13) {
+            localStorage.removeItem('title' + id);
+            localStorage.removeItem('savingTitleInfo' + id);
+            localStorage.removeItem('author' + id);
+            localStorage.removeItem('savingAuthorInfo' + id);
+            localStorage.removeItem('publishingYear' + id);
+            localStorage.removeItem('savingPublishingYearInfo' + id);
+            localStorage.removeItem('publishingCity' + id);
+            localStorage.removeItem('savingPublishingCityInfo' + id);
+            localStorage.removeItem('monthBookStatus' + id);
+            localStorage.removeItem('monthBookDesc' + id);
+            localStorage.removeItem('savingMonthBookInfo' + id);
+            localStorage.removeItem('priceStatus' + id);
+            localStorage.removeItem('price' + id);
+            localStorage.removeItem('savingPriceInfo' + id);
         }
+    });
 
-        let priceStatusSaved = localStorage.getItem('priceStatus' + id);
-        let priceSaved = localStorage.getItem('price' + id);
-        if (priceStatusSaved != null) {
-            if (priceStatusSaved === '1') {
-                if (priceCheckbox.checked === false) {
-                    priceCheckbox.checked = true;
-                    toggleAppearingBlock(priceCheckbox);
-                    stickerForPrice.style.display = 'block';
-                }
+    bookAddingButton.addEventListener("click", ()=>{
+        event.preventDefault();
+        editBook(id);
+    });
 
-                let savingInfo = document.createElement('div');
-                savingInfo.className = "form__element__warning-small";
-                savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
-                priceInput.parentNode.appendChild(savingInfo);
-
-                if (priceSaved <= 0) {
-                    bookAddingButton.classList.add('form__element__button-disabled');
-                }
-                else {
-                    stickerForPrice.innerHTML = priceSaved + '&nbsp;€';
-                }
-            }
-            else {
-                if (priceCheckbox.checked === true) {
-                    priceCheckbox.checked = false;
-                    toggleAppearingBlock(priceCheckbox);
-                    stickerForPrice.style.display = 'none';
-
-                    let savingInfo = document.createElement('div');
-                    savingInfo.className = "form__element__warning-small form__element__warning-small-checkbox";
-                    savingInfo.style.left = "121px";
-                    savingInfo.innerHTML = localStorage.getItem('savingPriceInfo' + id);
-                    priceCheckbox.parentNode.appendChild(savingInfo);
-                }
-            }
-        }
-
-        if (priceSaved != null) {
-            if (priceSaved > 0) {
-                priceInput.value = priceSaved;
-            }
-            else {
-                priceInput.value = '';
-                stickerForPrice.innerHTML = '';
-            }
-        }
-
-
-        // Обработчики полей
-        let date = new Date();
-        let day = date.getDate();
-        let month = convertMonth(date.getMonth() + 1);
-        let hours = date.getHours();
-        if (hours.toString().length === 1) hours = '0' + hours;
-        let minutes = date.getMinutes();
-        if (minutes.toString().length === 1) minutes = '0' + minutes;
-        let time = hours + ':' + minutes;
-        date = "Salvato il&nbsp;" + day + "&nbsp;" + month + ' alle&nbsp;' + time;
-
-        titleInput.addEventListener('keyup', (e)=>{
-            if (titleInput.value != '') {
-                titleInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                titleInput.classList.add('form__element__input_invalid');
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceCheckbox.checked == true && priceInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            let title = titleInput.value;
-            let xhrTypograf = new XMLHttpRequest();
-            let params = 'str=' + title;
-            xhrTypograf.open('POST', '../php/typograf.php');
-            xhrTypograf.onreadystatechange = () => {
-                if (xhrTypograf.readyState === 4) {
-                    if (xhrTypograf.status === 200) {
-                        bookCoverTitle.innerHTML = xhrTypograf.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhrTypograf.status);
-                }
-            };
-            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhrTypograf.send(params);
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('title' + id, title);
-            localStorage.setItem('savingTitleInfo' + id, date);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('title' + id);
-                localStorage.removeItem('savingTitleInfo' + id);
-                localStorage.removeItem('author' + id);
-                localStorage.removeItem('savingAuthorInfo' + id);
-                localStorage.removeItem('publishingYear' + id);
-                localStorage.removeItem('savingPublishingYearInfo' + id);
-                localStorage.removeItem('publishingCity' + id);
-                localStorage.removeItem('savingPublishingCityInfo' + id);
-                localStorage.removeItem('monthBookStatus' + id);
-                localStorage.removeItem('monthBookDesc' + id);
-                localStorage.removeItem('savingMonthBookInfo' + id);
-                localStorage.removeItem('priceStatus' + id);
-                localStorage.removeItem('price' + id);
-                localStorage.removeItem('savingPriceInfo' + id);
-            }
-        });
-
-        authorInput.addEventListener('keyup', (e)=>{
-            if (authorInput.value != '') {
-                bookCoverAuthor.style.display = 'block';
-
-                let author = authorInput.value;
-                let xhrTypograf = new XMLHttpRequest();
-                let params = 'str=' + author;
-                xhrTypograf.open('POST', '../php/typograf.php');
-                xhrTypograf.onreadystatechange = () => {
-                    if (xhrTypograf.readyState === 4) {
-                        if (xhrTypograf.status === 200) {
-                            bookCoverAuthor.innerHTML = xhrTypograf.responseText;
-                        }
-                        else
-                            console.log('Ошибка: ' + xhrTypograf.status);
-                    }
-                };
-                xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhrTypograf.send(params);
-            }
-            else {
-                bookCoverAuthor.style.display = 'none';
-            }
-
-            fixTitleHeightWhenLongAuthor();
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('author' + id, authorInput.value);
-            localStorage.setItem('savingAuthorInfo' + id, date);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('title' + id);
-                localStorage.removeItem('savingTitleInfo' + id);
-                localStorage.removeItem('author' + id);
-                localStorage.removeItem('savingAuthorInfo' + id);
-                localStorage.removeItem('publishingYear' + id);
-                localStorage.removeItem('savingPublishingYearInfo' + id);
-                localStorage.removeItem('publishingCity' + id);
-                localStorage.removeItem('savingPublishingCityInfo' + id);
-                localStorage.removeItem('monthBookStatus' + id);
-                localStorage.removeItem('monthBookDesc' + id);
-                localStorage.removeItem('savingMonthBookInfo' + id);
-                localStorage.removeItem('priceStatus' + id);
-                localStorage.removeItem('price' + id);
-                localStorage.removeItem('savingPriceInfo' + id);
-            }
-        });
-
-
-        let bookCoverPuslishingData = '';
-        publishingCityInput.addEventListener('keyup', (e)=>{
-            if (publishingYearInput.value == '') {
-                bookCoverPuslishingData = publishingCityInput.value;
-            }
-            else {
-                if (publishingCityInput.value == '') {
-                    bookCoverPuslishingData = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
-            }
-
-            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('publishingCity' + id, publishingCityInput.value);
-            localStorage.setItem('savingPublishingCityInfo' + id, date);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('title' + id);
-                localStorage.removeItem('savingTitleInfo' + id);
-                localStorage.removeItem('author' + id);
-                localStorage.removeItem('savingAuthorInfo' + id);
-                localStorage.removeItem('publishingYear' + id);
-                localStorage.removeItem('savingPublishingYearInfo' + id);
-                localStorage.removeItem('publishingCity' + id);
-                localStorage.removeItem('savingPublishingCityInfo' + id);
-                localStorage.removeItem('monthBookStatus' + id);
-                localStorage.removeItem('monthBookDesc' + id);
-                localStorage.removeItem('savingMonthBookInfo' + id);
-                localStorage.removeItem('priceStatus' + id);
-                localStorage.removeItem('price' + id);
-                localStorage.removeItem('savingPriceInfo' + id);
-            }
-        });
-
-        publishingYearInput.onkeypress = allowDigit;
-        publishingYearInput.addEventListener('keyup', (e)=>{
-            if (publishingYearInput.value == '') {
-                if (publishingCityInput.value == '') {
-                    bookCoverPuslishingData = '';
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value;
-                }
-            }
-            else {
-                if (publishingCityInput.value == '') {
-                    bookCoverPuslishingData = publishingYearInput.value;
-                }
-                else {
-                    bookCoverPuslishingData = publishingCityInput.value + ', ' + publishingYearInput.value;
-                }
-            }
-
-            bookCoverPublishing.innerHTML = bookCoverPuslishingData;
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('publishingYear' + id, publishingYearInput.value);
-            localStorage.setItem('savingPublishingYearInfo' + id, date);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('title' + id);
-                localStorage.removeItem('savingTitleInfo' + id);
-                localStorage.removeItem('author' + id);
-                localStorage.removeItem('savingAuthorInfo' + id);
-                localStorage.removeItem('publishingYear' + id);
-                localStorage.removeItem('savingPublishingYearInfo' + id);
-                localStorage.removeItem('publishingCity' + id);
-                localStorage.removeItem('savingPublishingCityInfo' + id);
-                localStorage.removeItem('monthBookStatus' + id);
-                localStorage.removeItem('monthBookDesc' + id);
-                localStorage.removeItem('savingMonthBookInfo' + id);
-                localStorage.removeItem('priceStatus' + id);
-                localStorage.removeItem('price' + id);
-                localStorage.removeItem('savingPriceInfo' + id);
-            }
-        });
-
-        monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
-        monthBookCheckbox.addEventListener("click", ()=>{
-            if (titleInput.value != '') {
-                if (monthBookDescInput.value == '') {
-                    bookAddingButton.classList.toggle('form__element__button-disabled');
-                }
-            }
-
-            if (priceCheckbox.checked == true && priceInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            bookCover.classList.toggle('grid__item_month-book-color');
-
-            if (bookCoverMonthBook.style.display == 'none') {
-                bookCoverMonthBook.style.display = 'block';
-            }
-            else {
-                bookCoverMonthBook.style.display = 'none';
-            }
-
-            let monthBookStatus = (monthBookCheckbox.checked) ? '1': '0';
-            let description = monthBookDescInput.value;
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('monthBookStatus' + id, monthBookStatus);
-            localStorage.setItem('monthBookDesc' + id, description);
-            localStorage.setItem('savingMonthBookInfo' + id, date);
-        });
-
-        monthBookDescInput.addEventListener('keyup', ()=>{
-            if (titleInput.value != '' && monthBookDescInput.value != '') {
-                monthBookDescInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceCheckbox.checked == true && priceInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            let description = monthBookDescInput.value;
-            let xhrTypograf = new XMLHttpRequest();
-            let params = 'str=' + description;
-            xhrTypograf.open('POST', '../php/typograf.php');
-            xhrTypograf.onreadystatechange = () => {
-                if (xhrTypograf.readyState === 4) {
-                    if (xhrTypograf.status === 200) {
-                        bookCoverMonthBookDesc.innerHTML = xhrTypograf.responseText;
-                    }
-                    else
-                        console.log('Ошибка: ' + xhrTypograf.status);
-                }
-            };
-            xhrTypograf.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhrTypograf.send(params);
-
-            let monthBookStatus = (monthBookCheckbox.checked) ? '1': '0';
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('monthBookStatus' + id, monthBookStatus);
-            localStorage.setItem('monthBookDesc' + id, description);
-            localStorage.setItem('savingMonthBookInfo' + id, date);
-        });
-
-
-        priceCheckbox.addEventListener("click", toggleAppearingBlock);
-        priceCheckbox.addEventListener("click", ()=>{
-            if (titleInput.value != '') {
-                if (priceCheckbox.checked == true && priceInput.value == '') {
-                    bookAddingButton.classList.add('form__element__button-disabled');
-                }
-                else {
-                    bookAddingButton.classList.remove('form__element__button-disabled');
-                }
-            }
-
-            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (stickerForPrice.style.display == 'none') {
-                stickerForPrice.style.display = 'block';
-            }
-            else {
-                stickerForPrice.style.display = 'none';
-            }
-
-            if (priceCheckbox.checked == true && priceInput.value != '') {
-                stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
-            }
-            else {
-                stickerForPrice.innerHTML = '';
-            }
-
-            let priceStatus = (priceCheckbox.checked) ? '1': '0';
-
-            let price = 0;
-            if (priceInput.value !== '') {
-                price = priceInput.value;
-            }
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('priceStatus' + id, priceStatus);
-            localStorage.setItem('price' + id, price);
-            localStorage.setItem('savingPriceInfo' + id, date);
-        });
-
-        priceInput.onkeypress = allowDigit;
-        priceInput.addEventListener('keyup', (e)=>{
-            if (titleInput.value != '' && priceInput.value != '') {
-                priceInput.classList.remove('form__element__input_invalid');
-                bookAddingButton.classList.remove('form__element__button-disabled');
-            }
-            else {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
-                bookAddingButton.classList.add('form__element__button-disabled');
-            }
-
-            if (priceInput.value != '') {
-                stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
-            }
-            else {
-                stickerForPrice.innerHTML = '';
-            }
-
-            let priceStatus = (priceCheckbox.checked) ? '1': '0';
-
-            let price = 0;
-            if (priceInput.value !== '') {
-                price = priceInput.value;
-            }
-
-            // Добавление в локальное хранилище
-            localStorage.setItem('priceStatus' + id, priceStatus);
-            localStorage.setItem('price' + id, price);
-            localStorage.setItem('savingPriceInfo' + id, date);
-
-            if (e.keyCode === 13) {
-                localStorage.removeItem('title' + id);
-                localStorage.removeItem('savingTitleInfo' + id);
-                localStorage.removeItem('author' + id);
-                localStorage.removeItem('savingAuthorInfo' + id);
-                localStorage.removeItem('publishingYear' + id);
-                localStorage.removeItem('savingPublishingYearInfo' + id);
-                localStorage.removeItem('publishingCity' + id);
-                localStorage.removeItem('savingPublishingCityInfo' + id);
-                localStorage.removeItem('monthBookStatus' + id);
-                localStorage.removeItem('monthBookDesc' + id);
-                localStorage.removeItem('savingMonthBookInfo' + id);
-                localStorage.removeItem('priceStatus' + id);
-                localStorage.removeItem('price' + id);
-                localStorage.removeItem('savingPriceInfo' + id);
-            }
-        });
-
-        bookAddingButton.addEventListener("click", ()=>{
-            event.preventDefault();
-            editBook(id);
-        });
-
-        // Удаление книги
-        let deleteLink = document.querySelector('.form__element__remove-link');
-        deleteLink.addEventListener('click', {handleEvent: removeBook, id: id});
-    }
-
-    fixTitleHeightWhenLongAuthor();
+    // Удаление книги
+    let deleteLink = document.querySelector('.form__element__remove-link');
+    deleteLink.addEventListener('click', {handleEvent: removeBook, id: id});
 }
+
+fixTitleHeightWhenLongAuthor();
 
 function searchBook(bookTitle) {
     let xhr = new XMLHttpRequest();
@@ -1366,7 +1363,6 @@ function searchBook(bookTitle) {
 
                 books.innerHTML = xhr.responseText;
                 let gridItemCount = books.querySelectorAll('.grid__item').length;
-                let screen = document.documentElement.clientWidth;
                 let linkToBookAdding = document.querySelector('.grid__item_link-to-book-adding');
 
                 // Если ничего не нашлось, у пользователя — шишка по центру, у админа — плюс по центру
@@ -1402,7 +1398,7 @@ function searchBook(bookTitle) {
                 }
 
                 // Редактирование книги
-                if (document.querySelector('.admin') != null) {
+                if (isAdmin) {
                     let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
                     let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
                     for (let i = 0; i < gridItems.length; i++) {
@@ -1416,7 +1412,7 @@ function searchBook(bookTitle) {
                 }
 
                 // Подставление текста из поиска при добавлении книги
-                if (bookTitle !== '' && document.querySelector('.admin') != null) {
+                if (bookTitle !== '' && isAdmin) {
                     let titles = document.querySelectorAll('.grid__item__authortitle__title');
                     let authors = document.querySelectorAll('.grid__item__authortitle__author');
 
@@ -1457,9 +1453,11 @@ function searchBook(bookTitle) {
 
                         putInPlaceLinkToBookAdding(screen, books, titles.length, linkToBookAdding);
                     });
+
+                    if (footerMobile) showFooterMobile(screen, 'search', titles.length);
                 }
                 else {
-                    if (document.querySelector('.admin') != null) {
+                    if (isAdmin) {
                         let addingLink = document.querySelectorAll('.grid__item_link-to-book-adding__link');
                         for (let i = 0; i < addingLink.length; i++) {
                             addingLink[i].setAttribute('href', '+/');
@@ -1468,9 +1466,6 @@ function searchBook(bookTitle) {
                 }
 
                 fixTitleHeightWhenLongAuthor();
-
-                // Футер
-                showMobileFooter();
 
                 let footerDesktop = document.querySelector('.footer_desktop');
                 if (xhr.responseText === '' || gridItemCount <= 7) {
@@ -2266,19 +2261,27 @@ function fixTitleHeightWhenLongAuthor() {
     }
 }
 
+function showFooterMobile(screen, context, booksCount) {
+    let footerMobilePos;
+    switch (context) {
+        case 'index':
+            footerMobilePos = (isAdmin) ? 3 : 2;
+            break;
 
-function showMobileFooter() {
-    let screen = document.documentElement.clientWidth;
+        case 'search':
+            footerMobilePos = (isAdmin) ? 2 : 1;
+
+            if (booksCount !== 1) {
+                if (!footerMobile.classList.contains('footer_mobile_bordered')) footerMobile.classList.add('footer_mobile_bordered');
+            }
+            else {
+                footerMobile.classList.remove('footer_mobile_bordered');
+            }
+            break;
+    }
+    if (document.querySelector('.month-book')) footerMobilePos++;
 
     if (screen < 535) {
-        let footerMobilePos = 0;
-        if (document.querySelector('.admin') != null) {
-            footerMobilePos = 4;
-        }
-        else {
-            footerMobilePos = 3;
-        }
-
         books.insertBefore(footerMobile, books.children[footerMobilePos]);
     }
     else {
@@ -2289,14 +2292,6 @@ function showMobileFooter() {
 
     window.addEventListener("resize", () => {
         if (document.documentElement.clientWidth < 535) {
-            let footerMobilePos = 0;
-            if (document.querySelector('.admin') != null) {
-                footerMobilePos = 4;
-            }
-            else {
-                footerMobilePos = 3;
-            }
-
             books.insertBefore(footerMobile, books.children[footerMobilePos]);
         }
         else {
