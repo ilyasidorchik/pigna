@@ -48,7 +48,7 @@ let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
 adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
 // Запрет Энтера
-if (searchForm != null) {
+if (searchForm) {
     searchForm.addEventListener('keydown', () => {
         if (event.keyCode === 13) {
             event.preventDefault();
@@ -57,7 +57,7 @@ if (searchForm != null) {
 }
 
 // Поиск по началу печати
-if (searchInput != null) {
+if (searchInput) {
     // Чтобы пользователь мог начать писать поисковой запрос вне поискового поля
     window.addEventListener('keydown', (e) => {
         if (e.target.classList.contains('grid__events__form__textarea') || (e.ctrlKey || e.altKey || e.metaKey) || (e.keyCode === 13)) return;
@@ -78,7 +78,7 @@ if (searchInput != null) {
 // Добавление мероприятия
 let eventTextarea = document.querySelector('.grid__events__form__textarea');
 
-if (eventTextarea != null) {
+if (eventTextarea) {
     // Для показа на мобильном телефоне
     if (screen < 535) {
         autosize(eventTextarea);
@@ -100,7 +100,7 @@ window.addEventListener("resize", () => {
 
     adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
 
-    if (eventTextarea != null) {
+    if (eventTextarea) {
         if (screen < 535) {
             autosize(eventTextarea);
         }
@@ -133,47 +133,9 @@ if (footerDesktop) {
     });
 }
 
-function showAndSetAnimationFooterDesktop() {
-    let footerHint = document.querySelector('.footer__hint');
-
-    if (screen > 710 && screen < 1060) {
-        footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
-    }
-    else {
-        footerDesktop.style.animation = 'closeFooter .25s linear';
-    }
-
-    if (footerDesktop.style.bottom !== '') {
-        footerDesktop.style.bottom = '0';
-    }
-
-    footerHint.addEventListener('click', () => {
-        if (screen > 710 && screen < 1060) {
-            footerDesktop.style.bottom = '-406px';
-        }
-        else {
-            footerDesktop.style.bottom = '-215px';
-        }
-    });
-}
-
-function closeFooterDesktop() {
-    if (screen > 710 && screen < 1060) {
-        if (footerDesktop.style.bottom !== '') {
-            footerDesktop.style.bottom = '-406px';
-        }
-    }
-    else {
-        if (footerDesktop.style.bottom !== '') {
-            footerDesktop.style.bottom = '-215px';
-        }
-    }
-}
-
-
 // Форма входа в админку
 let passwordInput = document.querySelector('.form__element__input_password');
-if (passwordInput != null) {
+if (passwordInput) {
     passwordInput.focus();
 
     let enterButton = document.querySelector('.form__element__button_entering');
@@ -300,16 +262,12 @@ if (document.location.pathname === '/+/') {
     }
 
     let newBookPublishingCity = localStorage.getItem('newBookPublishingCity');
-    if (newBookPublishingCity != null) {
-        publishingCityInput.value = newBookPublishingCity;
-    }
+    if (newBookPublishingCity) publishingCityInput.value = newBookPublishingCity;
 
     let newBookPublishingYear = localStorage.getItem('newBookPublishingYear');
-    if (newBookPublishingYear != null) {
-        publishingYearInput.value = newBookPublishingYear;
-    }
+    if (newBookPublishingYear) publishingYearInput.value = newBookPublishingYear;
 
-    if (newBookPublishingCity != null || newBookPublishingYear != null) {
+    if (newBookPublishingCity || newBookPublishingYear) {
         if (publishingYearInput.value === '') {
             bookCoverPublishing.innerHTML = publishingCityInput.value;
         }
@@ -343,7 +301,7 @@ if (document.location.pathname === '/+/') {
         }
 
         let newBookMonthBookDesc = localStorage.getItem('newBookMonthBookDesc');
-        if (newBookMonthBookDesc != null && newBookMonthBookDesc !== '') {
+        if (newBookMonthBookDesc && newBookMonthBookDesc !== '') {
             monthBookDescInput.value = newBookMonthBookDesc;
 
             bookCoverMonthBookDesc.innerHTML = newBookMonthBookDesc;
@@ -779,7 +737,7 @@ if (document.location.pathname === '/alterare/') {
 
     // Подстановка данных, которые не обновились для читателя
     let titleSaved = localStorage.getItem('title' + id);
-    if (titleSaved != null) {
+    if (titleSaved) {
         titleInput.value = titleSaved;
 
         bookCoverTitle.innerHTML = titleSaved;
@@ -807,7 +765,7 @@ if (document.location.pathname === '/alterare/') {
     }
 
     let authorSaved = localStorage.getItem('author' + id);
-    if (authorSaved != null) {
+    if (authorSaved) {
         authorInput.value = authorSaved;
 
         let savingInfo = document.createElement('div');
@@ -841,7 +799,7 @@ if (document.location.pathname === '/alterare/') {
     }
 
     let publishingCitySaved = localStorage.getItem('publishingCity' + id);
-    if (publishingCitySaved != null) {
+    if (publishingCitySaved) {
         publishingCityInput.value = publishingCitySaved;
 
         let savingInfo = document.createElement('div');
@@ -851,7 +809,7 @@ if (document.location.pathname === '/alterare/') {
     }
 
     let publishingYearSaved = localStorage.getItem('publishingYear' + id);
-    if (publishingYearSaved != null) {
+    if (publishingYearSaved) {
         publishingYearInput.value = publishingYearSaved;
 
         let savingInfo = document.createElement('div');
@@ -860,7 +818,7 @@ if (document.location.pathname === '/alterare/') {
         publishingYearInput.parentNode.appendChild(savingInfo);
     }
 
-    if (publishingCitySaved != null || publishingYearSaved != null) {
+    if (publishingCitySaved || publishingYearSaved) {
         if (publishingYearInput.value == '') {
             bookCoverPublishing.innerHTML = publishingCityInput.value;
         }
@@ -875,7 +833,7 @@ if (document.location.pathname === '/alterare/') {
     }
 
     let monthBookStatusSaved = localStorage.getItem('monthBookStatus' + id);
-    if (monthBookStatusSaved != null) {
+    if (monthBookStatusSaved) {
         if (monthBookStatusSaved === '1') {
             let savingInfo = document.createElement('div');
             savingInfo.className = "form__element__warning-small form__element__warning-small-lower";
@@ -904,7 +862,7 @@ if (document.location.pathname === '/alterare/') {
         }
 
         let monthBookDescSaved = localStorage.getItem('monthBookDesc' + id);
-        if (monthBookDescSaved != null && monthBookDescSaved !== '') {
+        if (monthBookDescSaved && monthBookDescSaved !== '') {
             bookCoverMonthBookDesc.innerHTML = monthBookDescSaved;
             let description = monthBookDescSaved;
             let xhrTypograf = new XMLHttpRequest();
@@ -931,7 +889,7 @@ if (document.location.pathname === '/alterare/') {
 
     let priceStatusSaved = localStorage.getItem('priceStatus' + id);
     let priceSaved = localStorage.getItem('price' + id);
-    if (priceStatusSaved != null) {
+    if (priceStatusSaved) {
         if (priceStatusSaved === '1') {
             if (priceCheckbox.checked === false) {
                 priceCheckbox.checked = true;
@@ -966,7 +924,7 @@ if (document.location.pathname === '/alterare/') {
         }
     }
 
-    if (priceSaved != null) {
+    if (priceSaved) {
         if (priceSaved > 0) {
             priceInput.value = priceSaved;
         }
@@ -1386,7 +1344,7 @@ function searchBook(bookTitle) {
                         break;
 
                     default:
-                        if (linkToBookAdding != null && linkToBookAdding.classList.contains('grid__item_center')) {
+                        if (linkToBookAdding && linkToBookAdding.classList.contains('grid__item_center')) {
                             linkToBookAdding.classList.add('grid__item_link-to-book-adding_position');
                             linkToBookAdding.classList.add('grid__item_link-to-book-adding_position_in-the-end');
                             linkToBookAdding.classList.remove('grid__item_center');
@@ -2020,7 +1978,7 @@ function returnBook() {
 
     let author = '';
     let authorBlock = document.querySelector('.grid__item__authortitle__author');
-    if (authorBlock != null) {
+    if (authorBlock) {
         author = authorBlock.innerHTML;
     }
 
@@ -2065,7 +2023,7 @@ function returnBook() {
 
 function editTitle(screen, searchInput, h1) {
     // Для главной страницы, когда плейсхолдер поискового поля имитирует h1
-    if (searchInput != null) {
+    if (searchInput) {
         if (screen < 711) {
             if (screen < 535) {
                 searchInput.placeholder = 'Pigna';
@@ -2080,7 +2038,7 @@ function editTitle(screen, searchInput, h1) {
     }
 
     // Для страниц добавления и редактирования книги
-    if (h1 != null) {
+    if (h1) {
         if (screen < 535) {
             h1.innerHTML = 'Pigna';
         }
@@ -2093,14 +2051,14 @@ function editTitle(screen, searchInput, h1) {
 function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding) {
     if (itemsCount > 0) {
         let monthBook = document.querySelector('.month-book');
-        if (monthBook != null) {
+        if (monthBook) {
             itemsCount++;
         }
 
         if (itemsCount < 6) {
             if (screen < 535) {
                 removeLinkToBookAddingPosition(linkToBookAdding);
-                if (linkToBookAdding != null) {
+                if (linkToBookAdding) {
                     books.removeChild(linkToBookAdding);
                 }
                 books.insertBefore(linkToBookAdding, books.firstChild);
@@ -2111,7 +2069,7 @@ function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding)
                 if (screen < 711) {
                     if (itemsCount < 2) {
                         removeLinkToBookAddingPosition(linkToBookAdding);
-                        if (linkToBookAdding != null) {
+                        if (linkToBookAdding) {
                             books.removeChild(linkToBookAdding);
                         }
                         books.insertBefore(linkToBookAdding, books.children[2]);
@@ -2123,7 +2081,7 @@ function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding)
                     if (screen < 892) {
                         if (itemsCount < 3) {
                             removeLinkToBookAddingPosition(linkToBookAdding);
-                            if (linkToBookAdding != null) {
+                            if (linkToBookAdding) {
                                 books.removeChild(linkToBookAdding);
                             }
                             books.insertBefore(linkToBookAdding, books.children[3]);
@@ -2135,7 +2093,7 @@ function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding)
                         if (screen < 1060) {
                             if (itemsCount < 4) {
                                 removeLinkToBookAddingPosition(linkToBookAdding);
-                                if (linkToBookAdding != null) {
+                                if (linkToBookAdding) {
                                     books.removeChild(linkToBookAdding);
                                 }
                                 books.insertBefore(linkToBookAdding, books.children[4]);
@@ -2147,7 +2105,7 @@ function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding)
                             if (screen < 1230) {
                                 if (itemsCount < 5) {
                                     removeLinkToBookAddingPosition(linkToBookAdding);
-                                    if (linkToBookAdding != null) {
+                                    if (linkToBookAdding) {
                                         books.removeChild(linkToBookAdding);
                                     }
                                     books.insertBefore(linkToBookAdding, books.children[5]);
@@ -2158,7 +2116,7 @@ function putInPlaceLinkToBookAdding(screen, books, itemsCount, linkToBookAdding)
 
                                 if (itemsCount < 6) {
                                     removeLinkToBookAddingPosition(linkToBookAdding);
-                                    if (linkToBookAdding != null) {
+                                    if (linkToBookAdding) {
                                         books.removeChild(linkToBookAdding);
                                     }
                                     books.insertBefore(linkToBookAdding, books.children[6]);
@@ -2206,7 +2164,7 @@ function addBookHover(gridItem) {
 }
 
 function adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook) {
-    if (bookEditing != null && bookEditingForm != null && bookEditingCover != null && bookEditingMonthBook != null) {
+    if (bookEditing && bookEditingForm && bookEditingCover && bookEditingMonthBook) {
         if (screen < 892) {
             bookEditing.insertBefore(bookEditingCover, bookEditingForm);
             bookEditing.insertBefore(bookEditingMonthBook, bookEditingForm);
@@ -2266,6 +2224,81 @@ function fixTitleHeightWhenLongAuthor() {
     }
 }
 
+function putInPlaceFooterDesktop() {
+    if (screen !== document.documentElement.clientWidth) screen = document.documentElement.clientWidth;
+    let gridItemCount = books.querySelectorAll('.grid__item').length;
+
+    if (screen > 710 && screen < 892) {
+        if (gridItemCount < 5) makeFooterSticky();
+        else unmakeFooterSticky();
+    }
+    else {
+        if (screen < 1060) {
+            if (gridItemCount < 6) makeFooterSticky();
+            else unmakeFooterSticky();
+        }
+        else {
+            if (screen < 1230) {
+                if (gridItemCount < 7) makeFooterSticky();
+                else unmakeFooterSticky();
+            }
+            else unmakeFooterSticky();
+        }
+    }
+
+    function makeFooterSticky() {
+        footerDesktop.classList.add('footer_bottom-sticked');
+        footerDesktop.style.animation = '';
+        footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
+        footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
+    }
+
+    function unmakeFooterSticky() {
+        if (footerDesktop.classList.contains('footer_bottom-sticked')) {
+            footerDesktop.classList.remove('footer_bottom-sticked');
+            footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+            footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+        }
+    }
+}
+
+function showAndSetAnimationFooterDesktop() {
+    let footerHint = document.querySelector('.footer__hint');
+
+    if (screen > 710 && screen < 1060) {
+        footerDesktop.style.animation = 'closeFooterCol5 .35s linear';
+    }
+    else {
+        footerDesktop.style.animation = 'closeFooter .25s linear';
+    }
+
+    if (footerDesktop.style.bottom !== '') {
+        footerDesktop.style.bottom = '0';
+    }
+
+    footerHint.addEventListener('click', () => {
+        if (screen > 710 && screen < 1060) {
+            footerDesktop.style.bottom = '-406px';
+        }
+        else {
+            footerDesktop.style.bottom = '-215px';
+        }
+    });
+}
+
+function closeFooterDesktop() {
+    if (screen > 710 && screen < 1060) {
+        if (footerDesktop.style.bottom !== '') {
+            footerDesktop.style.bottom = '-406px';
+        }
+    }
+    else {
+        if (footerDesktop.style.bottom !== '') {
+            footerDesktop.style.bottom = '-215px';
+        }
+    }
+}
+
 function showFooterMobile(screen, context, booksCount) {
     let footerMobilePos;
     switch (context) {
@@ -2305,44 +2338,6 @@ function showFooterMobile(screen, context, booksCount) {
             }
         }
     });
-}
-
-function putInPlaceFooterDesktop() {
-    if (screen !== document.documentElement.clientWidth) screen = document.documentElement.clientWidth;
-    let gridItemCount = books.querySelectorAll('.grid__item').length;
-
-    if (screen > 710 && screen < 892) {
-        if (gridItemCount < 5) makeFooterSticky();
-        else unmakeFooterSticky();
-    }
-    else {
-        if (screen < 1060) {
-            if (gridItemCount < 6) makeFooterSticky();
-            else unmakeFooterSticky();
-        }
-        else {
-            if (screen < 1230) {
-                if (gridItemCount < 7) makeFooterSticky();
-                else unmakeFooterSticky();
-            }
-            else unmakeFooterSticky();
-        }
-    }
-
-    function makeFooterSticky() {
-        footerDesktop.classList.add('footer_bottom-sticked');
-        footerDesktop.style.animation = '';
-        footerDesktop.removeEventListener('mouseover', showAndSetAnimationFooterDesktop);
-        footerDesktop.removeEventListener('mouseout', closeFooterDesktop);
-    }
-
-    function unmakeFooterSticky() {
-        if (footerDesktop.classList.contains('footer_bottom-sticked')) {
-            footerDesktop.classList.remove('footer_bottom-sticked');
-            footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
-            footerDesktop.addEventListener('mouseout', closeFooterDesktop);
-        }
-    }
 }
 
 function preventDefault() {
@@ -2433,7 +2428,7 @@ function copyFix() {
         selection = selection.split('\n').join(' ');
 
         let copyFixOld = document.querySelector('copy-fix');
-        if (copyFixOld != null) {
+        if (copyFixOld) {
             copyFixOld.parentNode.removeChild(copyFixOld);
         }
 
