@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +40,8 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+            <state relative-caret-position="296">
+              <caret line="2345" column="78" lean-forward="true" selection-start-line="2345" selection-start-column="78" selection-end-line="2345" selection-end-column="78" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
               </folding>
@@ -70,12 +71,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>admin</find>
       <find>author</find>
       <find>title</find>
       <find>.admin</find>
       <find>show</find>
-      <find>footerMobile</find>
       <find>showMobileFooter</find>
       <find>document.querySelector('.admin') != null</find>
       <find>showFoot</find>
@@ -100,9 +99,10 @@
       <find>footer</find>
       <find>resize</find>
       <find>!= null</find>
+      <find>footerMobile</find>
+      <find>event</find>
     </findStrings>
     <replaceStrings>
-      <replace>newBookPublishingCity</replace>
       <replace>newBookPublishingYear</replace>
       <replace>newBookPrice</replace>
       <replace>newBookMonthBookDesc</replace>
@@ -132,6 +132,7 @@
       <replace>showFooterMobile</replace>
       <replace>isAdmin</replace>
       <replace>gridItemCount</replace>
+      <replace>e</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -207,10 +208,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-323" />
-    <option name="y" value="-1056" />
-    <option name="width" value="1897" />
-    <option name="height" value="1049" />
+    <option name="x" value="-232" />
+    <option name="y" value="-1028" />
+    <option name="width" value="1731" />
+    <option name="height" value="987" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -442,12 +443,12 @@
       <workItem from="1563478005151" duration="465000" />
       <workItem from="1563479661912" duration="103000" />
       <workItem from="1563532786897" duration="625000" />
-      <workItem from="1564044644668" duration="13730000" />
+      <workItem from="1564044644668" duration="16221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="687034000" />
+    <option name="totallyTimeSpent" value="689525000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -685,8 +686,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="50" column="14" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
+        <state relative-caret-position="296">
+          <caret line="2345" column="78" lean-forward="true" selection-start-line="2345" selection-start-column="78" selection-end-line="2345" selection-end-column="78" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
           </folding>

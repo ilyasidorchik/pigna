@@ -2340,8 +2340,10 @@ function showFooterMobile(screen, context, booksCount) {
     });
 }
 
-function preventDefault() {
-    event.preventDefault();
+function preventDefault(event) {
+    event = event || window.event;
+
+    event.preventDefault ? event.preventDefault() : event.returnValue = false;
 }
 
 function getChar(event) {
