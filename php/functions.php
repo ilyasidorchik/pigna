@@ -297,7 +297,7 @@ HERE;
         }
 
         if ($admin != '') {
-            $id = "data-id=\"$id\"";
+            $id = " data-id=\"$id\"";
 
             $bookOnHandsTick = '';
             if ($onHands == 1)
@@ -323,7 +323,7 @@ HERE;
                     <?xml version="1.0" encoding="utf-8"?>
                     <!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 67.7 79.8" style="enable-background:new 0 0 67.7 79.8;" xml:space="preserve">
+                         viewBox="0 0 67.7 79.8" style="enable-background:new 0 0 67.7 79.8;" xml:space="preserve"$id>
                     <path class="grid__item__admin_edit__icon" d="M60.3,24.8L42.4,9.4C45.4,6,47.7,3.3,49,2c7.4-7.2,24.3,6.9,16.7,16.1C64.7,19.4,62.8,21.8,60.3,24.8z M21.4,73.1L0,79.8
                         l3.8-22.6c0,0,20.2-25.6,34-42.2l18,15.5C42.4,47,21.4,73.1,21.4,73.1z"/>
                     </svg>

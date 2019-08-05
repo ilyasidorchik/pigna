@@ -12,23 +12,23 @@ let books = document.querySelectorAll('.grid')[0];
 let formWrap = document.querySelector('.book-editing__form');
 let form = document.querySelector('.book-editing__form .form');
 
-let authorInput = document.querySelectorAll('.form__element__input_author')[0];
-let titleInput = document.querySelectorAll('.form__element__input_title')[0];
-let publishingCityInput = document.querySelectorAll('.form__element__input_publishing-city')[0];
-let publishingYearInput = document.querySelectorAll('.form__element__input_publishing-year')[0];
-let monthBookCheckbox = document.querySelectorAll('.form__element__label__checkbox_description')[0];
-let monthBookDescInput = document.querySelectorAll('.form__element__input_month-book-description')[0];
-let priceCheckbox = document.querySelectorAll('.form__element__label__checkbox_price')[0];
-let priceInput = document.querySelectorAll('.form__element__input_price')[0];
+let authorInput = document.querySelector('.form__element__input_author');
+let titleInput = document.querySelector('.form__element__input_title');
+let publishingCityInput = document.querySelector('.form__element__input_publishing-city');
+let publishingYearInput = document.querySelector('.form__element__input_publishing-year');
+let monthBookCheckbox = document.querySelector('.form__element__label__checkbox_description');
+let monthBookDescInput = document.querySelector('.form__element__input_month-book-description');
+let priceCheckbox = document.querySelector('.form__element__label__checkbox_price');
+let priceInput = document.querySelector('.form__element__input_price');
 let bookAddingButton = document.querySelector('.form__element__button_book-adding');
 
-let bookCover = document.querySelectorAll('.book-editing__cover .grid__item')[0];
-let bookCoverAuthor = document.querySelectorAll('.grid__item__authortitle__author')[0];
-let bookCoverTitle = document.querySelectorAll('.grid__item__authortitle__title')[0];
-let bookCoverPublishing = document.querySelectorAll('.grid__item__publishing')[0];
-let bookCoverMonthBook = document.querySelectorAll('.month-book')[0];
-let bookCoverMonthBookDesc = document.querySelectorAll('.month-book__wrap__description')[0];
-let stickerForPrice = document.querySelectorAll('.grid__item__sticker_price')[0];
+let bookCover = document.querySelector('.book-editing__cover .grid__item');
+let bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
+let bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
+let bookCoverPublishing = document.querySelector('.grid__item__publishing');
+let bookCoverMonthBook = document.querySelector('.month-book');
+let bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
+let stickerForPrice = document.querySelector('.grid__item__sticker_price');
 
 // Футер
 let footerDesktop = document.querySelector('.footer_desktop');
@@ -41,11 +41,10 @@ if (footerMobile) showFooterMobile(screen, 'index', 'all books');
 editTitle(screen, searchInput, h1);
 
 let bookEditing = document.querySelector('.book-editing');
-let bookEditingForm = document.querySelector('.book-editing__form');
 let bookEditingCover = document.querySelector('.book-editing__cover');
 let bookEditingMonthBook = document.querySelector('.book-editing__month-book');
 
-adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
+adaptBookForm(screen, bookEditing, formWrap, bookEditingCover, bookEditingMonthBook);
 
 // Запрет Энтера
 if (searchForm) {
@@ -98,7 +97,7 @@ window.addEventListener("resize", () => {
 
     editTitle(screen, searchInput, h1);
 
-    adaptBookForm(screen, bookEditing, bookEditingForm, bookEditingCover, bookEditingMonthBook);
+    adaptBookForm(screen, bookEditing, formWrap, bookEditingCover, bookEditingMonthBook);
 
     if (eventTextarea) {
         if (screen < 535) {
@@ -155,18 +154,113 @@ if (passwordInput) {
     });
 }
 
-// Редактирование книги
-if (isAdmin) {
-    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-    for (let i = 0; i < gridItems.length; i++) {
-        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
+// Редактирование книг на главной (переписано с помощью приёма делегирование)
+if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathname !== '/alterare/')) {
+    // Ховер книги
+    books.addEventListener('mouseover', (e) => {
+        let inputCheckbox = e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT';
+        let inGridItem = (e.target.tagName === 'svg' || e.target.tagName === 'path') ? true : e.target.className.substring(0,10) === 'grid__item' || inputCheckbox;
 
-        addBookHover(gridItems[i]);
+        if (inGridItem) {
+            let gridItem = getGridItem(e);
 
-        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
-    }
+            if (gridItem) {
+                if (!inputCheckbox) {
+                    gridItem.classList.add('grid__item_hover');
+
+                    if (!gridItem.classList.contains('grid__item_transition')) {
+                        gridItem.classList.add('grid__item_transition');
+                    }
+                }
+                else {
+                    gridItem.classList.remove('grid__item_transition');
+                }
+            }
+        }
+    });
+
+    books.addEventListener('mouseout', (e)=> {
+        let inGridItem = (e.target.tagName === 'svg' || e.target.tagName === 'path') ? true : e.target.className.substring(0,10) === 'grid__item';
+
+        if (inGridItem) {
+            let gridItem = getGridItem(e);
+
+            if (gridItem) {
+                if (gridItem.classList.contains('grid__item_hover')) {
+                    gridItem.classList.remove('grid__item_hover');
+                }
+            }
+        }
+    });
+
+    // Переход по ссылкам и чекбокс «Книга на руках»
+    books.addEventListener('click', (e) => {
+        let gridItem;
+        let id;
+
+        // Обработчики книг для перехода на страницу редактирования
+        if (e.target.className === 'grid__item') {
+            gridItem = e.target;
+            id = e.target.getAttribute('data-id');
+        }
+        else {
+            gridItem = e.target.offsetParent;
+            switch (e.target.tagName) {
+                case 'svg':
+                    gridItem = e.target.parentElement.parentElement.parentElement;
+                    break;
+                case 'path':
+                    gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+                    break;
+            }
+
+            id = gridItem.getAttribute('data-id');
+        }
+
+        // Обработчики чекбоксов «Книга на руках»
+        if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
+            let checkboxInput;
+            switch (e.target.tagName) {
+                case 'LABEL':
+                    checkboxInput = e.target.firstChild;
+                    break;
+                case 'SPAN':
+                    checkboxInput = e.target.previousSibling;
+                    break;
+                case 'INPUT':
+                    checkboxInput = e.target;
+                    break;
+            }
+
+            let onHandsStatus = (checkboxInput.checked) ? 1 : 0;
+
+
+            id = e.target.parentElement.parentElement.parentElement.getAttribute('data-id');
+            if (!e.target.parentElement.parentElement.parentElement.getAttribute('data-id')) {
+                id = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id');
+            }
+
+            let xhr = new XMLHttpRequest();
+            let params = 'id=' + id + '&onHandsStatus=' + onHandsStatus;
+
+            xhr.open('POST', '../php/toggleBookOnHands.php');
+            xhr.onreadystatechange=()=>{
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+
+                    }
+                    else {
+                        console.log('Ошибка: ' + xhr.status);
+                    }
+                }
+            };
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(params);
+        }
+        else {
+            if (id) window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
+        }
+    });
 }
 
 // На мобильном телефоне в портретном режиме не показывается обложка в форме
@@ -1305,6 +1399,61 @@ if (document.location.pathname === '/alterare/') {
 
 fixTitleHeightWhenLongAuthor();
 
+function getGridItem(e) {
+    let gridItem;
+
+    switch (e.target.tagName) {
+        case 'svg':
+            gridItem = e.target.parentElement.parentElement.parentElement;
+            break;
+        case 'path':
+            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            break;
+        case 'LABEL':
+            gridItem = e.target.parentElement.parentElement.parentElement;
+            break;
+        case 'SPAN':
+            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            break;
+        case 'INPUT':
+            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            break;
+        default:
+            if (e.target.className === 'grid__item' || e.target.className.substring(0,11) === 'grid__item ') {
+                gridItem = e.target;
+            }
+            else {
+                if (e.target.offsetParent.className === 'grid__item' || e.target.offsetParent.className.substring(0, 11) === 'grid__item ') {
+                    return gridItem = e.target.offsetParent;
+                }
+                if (e.target.parentElement.className === 'grid__item' || e.target.parentElement.className.substring(0, 11) === 'grid__item ') {
+                    return gridItem = e.target.parentElement;
+                }
+                if (e.target.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.className.substring(0, 11) === 'grid__item ') {
+                    return gridItem = e.target.parentElement.parentElement;
+                }
+                if (e.relatedTarget) {
+                    if (e.relatedTarget.className === 'grid__item' || e.relatedTarget.className.substring(0, 11) === 'grid__item ') {
+                        return gridItem = e.relatedTarget;
+                    }
+                }
+                if (e.fromElement) {
+                    if (e.fromElement.className === 'grid__item' || e.fromElement.className.substring(0, 11) === 'grid__item ') {
+                        return gridItem = e.fromElement;
+                    }
+                    if (e.fromElement.parentElement) {
+                        if (e.fromElement.parentElement.className === 'grid__item' || e.fromElement.parentElement.className.substring(0, 11) === 'grid__item ') {
+                            return gridItem = e.fromElement.parentElement;
+                        }
+                    }
+                }
+            }
+            break;
+    }
+
+    return gridItem;
+}
+
 function searchBook(bookTitle) {
     let xhr = new XMLHttpRequest();
     let params = 'bookTitle=' + bookTitle;
@@ -1934,7 +2083,33 @@ function toggleBookOnHands(e) {
     xhr.send(params);
 }
 
-function openEditPage(e) {
+/*function toggleBookOnHands(e) {
+    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands')[this.number];
+
+    let onHandsStatus = 1;
+    if (onHandsCheckbox.checked === false) {
+        onHandsStatus = 0;
+    }
+
+    let xhr = new XMLHttpRequest();
+    let params = 'id=' + this.id + '&onHandsStatus=' + onHandsStatus;
+
+    xhr.open('POST', '../php/toggleBookOnHands.php');
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+
+            }
+            else {
+                console.log('Ошибка: ' + xhr.status);
+            }
+        }
+    };
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+}*/
+
+/*function openEditPage(e) {
     let book = document.querySelectorAll('.grid__item[data-id]')[this.number];
     let id = book.getAttribute('data-id');
     if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
@@ -1943,7 +2118,7 @@ function openEditPage(e) {
     else {
         window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
     }
-}
+}*/
 
 function removeBook() {
     let xhr = new XMLHttpRequest();

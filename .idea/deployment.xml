@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="sidorchik.ru" notifyRemoteChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="accademiapigna" notifyRemoteChanges="true">
     <serverData>
-      <paths name="sidorchik.ru">
+      <paths name="accademiapigna">
         <serverdata>
           <mappings>
-            <mapping deploy="/accademiapigna.sidorchik.ru" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
