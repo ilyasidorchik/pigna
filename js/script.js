@@ -1506,20 +1506,6 @@ function searchBook(bookTitle) {
 
                 }
 
-                // Редактирование книги
-                if (isAdmin) {
-                    let gridItems = document.querySelectorAll('.page.admin .grid__item[data-id]');
-                    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands');
-                    for (let i = 0; i < gridItems.length; i++) {
-                        let id = document.querySelectorAll('.grid__item[data-id]')[i].getAttribute('data-id');
-                        gridItems[i].addEventListener('click', {handleEvent: openEditPage, number: i}, true);
-
-                        addBookHover(gridItems[i]);
-
-                        onHandsCheckbox[i].addEventListener('click', {handleEvent: toggleBookOnHands, number: i, id: id}, true);
-                    }
-                }
-
                 // Подставление текста из поиска при добавлении книги
                 let titles = document.querySelectorAll('.grid__item__authortitle__title');
                 if (bookTitle !== '' && isAdmin) {
@@ -2056,69 +2042,6 @@ function returnBookEditingForm(id) {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(params);
 }
-
-function toggleBookOnHands(e) {
-    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands')[this.number];
-
-    let onHandsStatus = 1;
-    if (onHandsCheckbox.checked === false) {
-        onHandsStatus = 0;
-    }
-
-    let xhr = new XMLHttpRequest();
-    let params = 'id=' + this.id + '&onHandsStatus=' + onHandsStatus;
-
-    xhr.open('POST', '../php/toggleBookOnHands.php');
-    xhr.onreadystatechange=()=>{
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-
-            }
-            else {
-                console.log('Ошибка: ' + xhr.status);
-            }
-        }
-    };
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(params);
-}
-
-/*function toggleBookOnHands(e) {
-    let onHandsCheckbox = document.querySelectorAll('.form__element__label__checkbox_on-hands')[this.number];
-
-    let onHandsStatus = 1;
-    if (onHandsCheckbox.checked === false) {
-        onHandsStatus = 0;
-    }
-
-    let xhr = new XMLHttpRequest();
-    let params = 'id=' + this.id + '&onHandsStatus=' + onHandsStatus;
-
-    xhr.open('POST', '../php/toggleBookOnHands.php');
-    xhr.onreadystatechange=()=>{
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-
-            }
-            else {
-                console.log('Ошибка: ' + xhr.status);
-            }
-        }
-    };
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(params);
-}*/
-
-/*function openEditPage(e) {
-    let book = document.querySelectorAll('.grid__item[data-id]')[this.number];
-    let id = book.getAttribute('data-id');
-    if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
-
-    }
-    else {
-        window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
-    }
-}*/
 
 function removeBook() {
     let xhr = new XMLHttpRequest();
