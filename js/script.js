@@ -110,51 +110,6 @@ window.addEventListener("resize", () => {
     }
 });
 
-
-// Футер
-if (footerDesktop) {
-    footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
-
-    footerDesktop.addEventListener('mouseout', closeFooterDesktop);
-
-    window.addEventListener("resize", () => {
-        screen = document.documentElement.clientWidth;
-
-        if (screen > 710 && screen < 1060) {
-            if (footerDesktop.style.bottom !== '-406px') {
-                footerDesktop.style.bottom = '-406px';
-            }
-        }
-        else {
-            if (footerDesktop.style.bottom !== '-215px') {
-                footerDesktop.style.bottom = '-215px';
-            }
-        }
-    });
-}
-
-// Форма входа в админку
-let passwordInput = document.querySelector('.form__element__input_password');
-if (passwordInput) {
-    passwordInput.focus();
-
-    let enterButton = document.querySelector('.form__element__button_entering');
-    enterButton.addEventListener('click', preventDefault);
-
-    passwordInput.addEventListener('keyup', () => {
-        if (passwordInput.value !== '') {
-            passwordInput.classList.remove('form__element__input_invalid');
-
-            enterButton.removeEventListener('click', preventDefault);
-            enterButton.classList.remove('form__element__button-disabled');
-        }
-        else {
-            enterButton.addEventListener('click', preventDefault);
-            enterButton.classList.add('form__element__button-disabled');
-        }
-    });
-}
-
 // Редактирование книг на главной (переписано с помощью приёма «делегирование»)
 if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathname !== '/alterare/')) {
     // Ховер книги
@@ -198,50 +153,96 @@ if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathna
     books.addEventListener('click', (e) => {
         // Обработчики книг для перехода на страницу редактирования
         let gridItem = getGridItem(e);
-        let id = gridItem.getAttribute('data-id');
+        if (gridItem) {
+            let id = gridItem.getAttribute('data-id');
 
-        // Обработчики чекбоксов «Книга на руках»
-        if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
-            let checkboxInput;
-            switch (e.target.tagName) {
-                case 'LABEL':
-                    checkboxInput = e.target.firstChild;
-                    break;
-                case 'SPAN':
-                    checkboxInput = e.target.previousSibling;
-                    break;
-                case 'INPUT':
-                    checkboxInput = e.target;
-                    break;
-            }
-
-            let onHandsStatus = (checkboxInput.checked) ? 1 : 0;
-
-
-            id = e.target.parentElement.parentElement.parentElement.getAttribute('data-id');
-            if (!e.target.parentElement.parentElement.parentElement.getAttribute('data-id')) {
-                id = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id');
-            }
-
-            let xhr = new XMLHttpRequest();
-            let params = 'id=' + id + '&onHandsStatus=' + onHandsStatus;
-
-            xhr.open('POST', '../php/toggleBookOnHands.php');
-            xhr.onreadystatechange=()=>{
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-
-                    }
-                    else {
-                        console.log('Ошибка: ' + xhr.status);
-                    }
+            // Обработчики чекбоксов «Книга на руках»
+            if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
+                let checkboxInput;
+                switch (e.target.tagName) {
+                    case 'LABEL':
+                        checkboxInput = e.target.firstChild;
+                        break;
+                    case 'SPAN':
+                        checkboxInput = e.target.previousSibling;
+                        break;
+                    case 'INPUT':
+                        checkboxInput = e.target;
+                        break;
                 }
-            };
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+
+                let onHandsStatus = (checkboxInput.checked) ? 1 : 0;
+
+
+                id = e.target.parentElement.parentElement.parentElement.getAttribute('data-id');
+                if (!e.target.parentElement.parentElement.parentElement.getAttribute('data-id')) {
+                    id = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id');
+                }
+
+                let xhr = new XMLHttpRequest();
+                let params = 'id=' + id + '&onHandsStatus=' + onHandsStatus;
+
+                xhr.open('POST', '../php/toggleBookOnHands.php');
+                xhr.onreadystatechange=()=>{
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+
+                        }
+                        else {
+                            console.log('Ошибка: ' + xhr.status);
+                        }
+                    }
+                };
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(params);
+            }
+            else {
+                if (id) window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
+            }
+        }
+    });
+}
+
+// Футер
+if (footerDesktop) {
+    footerDesktop.addEventListener('mouseover', showAndSetAnimationFooterDesktop);
+
+    footerDesktop.addEventListener('mouseout', closeFooterDesktop);
+
+    window.addEventListener("resize", () => {
+        screen = document.documentElement.clientWidth;
+
+        if (screen > 710 && screen < 1060) {
+            if (footerDesktop.style.bottom !== '-406px') {
+                footerDesktop.style.bottom = '-406px';
+            }
         }
         else {
-            if (id) window.location.replace('http://accademiapigna.sidorchik.ru/alterare/?libro=' + id);
+            if (footerDesktop.style.bottom !== '-215px') {
+                footerDesktop.style.bottom = '-215px';
+            }
+        }
+    });
+}
+
+// Форма входа в админку
+let passwordInput = document.querySelector('.form__element__input_password');
+if (passwordInput) {
+    passwordInput.focus();
+
+    let enterButton = document.querySelector('.form__element__button_entering');
+    enterButton.addEventListener('click', preventDefault);
+
+    passwordInput.addEventListener('keyup', () => {
+        if (passwordInput.value !== '') {
+            passwordInput.classList.remove('form__element__input_invalid');
+
+            enterButton.removeEventListener('click', preventDefault);
+            enterButton.classList.remove('form__element__button-disabled');
+        }
+        else {
+            enterButton.addEventListener('click', preventDefault);
+            enterButton.classList.add('form__element__button-disabled');
         }
     });
 }
@@ -1370,12 +1371,16 @@ function getGridItem(e) {
     switch (e.target.tagName) {
         case 'svg':
         case 'LABEL':
-            gridItem = e.target.parentElement.parentElement.parentElement;
+            if (e.target.parentElement.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.parentElement.className.substring(0,11) === 'grid__item ') {
+                gridItem = e.target.parentElement.parentElement.parentElement;
+            }
             break;
         case 'path':
         case 'SPAN':
         case 'INPUT':
-            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            if (e.target.parentElement.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.parentElement.className.substring(0,11) === 'grid__item ') {
+                gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            }
             break;
         default:
             if (e.target.className === 'grid__item' || e.target.className.substring(0,11) === 'grid__item ') {
