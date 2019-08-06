@@ -30,6 +30,7 @@ let bookCoverMonthBook = document.querySelector('.month-book');
 let bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
 let stickerForPrice = document.querySelector('.grid__item__sticker_price');
 
+
 // Футер
 let footerDesktop = document.querySelector('.footer_desktop');
 let footerMobile = document.querySelector('.footer_mobile');
@@ -811,24 +812,6 @@ if (document.location.pathname === '/alterare/') {
     let url = document.location.search;
     let id = url.replace('?libro=', '');
 
-    authorInput = document.querySelector('.form__element__input_author');
-    titleInput = document.querySelector('.form__element__input_title');
-    publishingCityInput = document.querySelector('.form__element__input_publishing-city');
-    publishingYearInput = document.querySelector('.form__element__input_publishing-year');
-    monthBookCheckbox = document.querySelector('.form__element__label__checkbox_description');
-    monthBookDescInput = document.querySelector('.form__element__input_month-book-description');
-    priceCheckbox = document.querySelector('.form__element__label__checkbox_price');
-    priceInput = document.querySelector('.form__element__input_price');
-    bookAddingButton = document.querySelector('.form__element__button_book-adding');
-
-    bookCover = document.querySelector('.book-editing__cover .grid__item');
-    bookCoverAuthor = document.querySelector('.grid__item__authortitle__author');
-    bookCoverTitle = document.querySelector('.grid__item__authortitle__title');
-    bookCoverPublishing = document.querySelector('.grid__item__publishing');
-    bookCoverMonthBook = document.querySelector('.month-book');
-    bookCoverMonthBookDesc = document.querySelector('.month-book__wrap__description');
-    stickerForPrice = document.querySelector('.grid__item__sticker_price');
-
     // Подстановка данных, которые не обновились для читателя
     let titleSaved = localStorage.getItem('title' + id);
     if (titleSaved) {
@@ -867,7 +850,7 @@ if (document.location.pathname === '/alterare/') {
         savingInfo.innerHTML = localStorage.getItem('savingAuthorInfo' + id);
         authorInput.parentNode.appendChild(savingInfo);
 
-        if (authorInput.value != '') {
+        if (authorInput.value !== '') {
             bookCoverAuthor.style.display = 'block';
             bookCoverAuthor.innerHTML = authorInput.value;
 
@@ -913,11 +896,11 @@ if (document.location.pathname === '/alterare/') {
     }
 
     if (publishingCitySaved || publishingYearSaved) {
-        if (publishingYearInput.value == '') {
+        if (publishingYearInput.value === '') {
             bookCoverPublishing.innerHTML = publishingCityInput.value;
         }
         else {
-            if (publishingCityInput.value == '') {
+            if (publishingCityInput.value === '') {
                 bookCoverPublishing.innerHTML = publishingYearInput.value;
             }
             else {
@@ -1041,7 +1024,7 @@ if (document.location.pathname === '/alterare/') {
     date = "Salvato il&nbsp;" + day + "&nbsp;" + month + ' alle&nbsp;' + time;
 
     titleInput.addEventListener('keyup', (e)=>{
-        if (titleInput.value != '') {
+        if (titleInput.value !== '') {
             titleInput.classList.remove('form__element__input_invalid');
             bookAddingButton.classList.remove('form__element__button-disabled');
         }
@@ -1050,11 +1033,11 @@ if (document.location.pathname === '/alterare/') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (priceCheckbox.checked == true && priceInput.value == '') {
+        if (priceCheckbox.checked === true && priceInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
@@ -1097,7 +1080,7 @@ if (document.location.pathname === '/alterare/') {
     });
 
     authorInput.addEventListener('keyup', (e)=>{
-        if (authorInput.value != '') {
+        if (authorInput.value !== '') {
             bookCoverAuthor.style.display = 'block';
 
             let author = authorInput.value;
@@ -1147,11 +1130,11 @@ if (document.location.pathname === '/alterare/') {
 
     let bookCoverPuslishingData = '';
     publishingCityInput.addEventListener('keyup', (e)=>{
-        if (publishingYearInput.value == '') {
+        if (publishingYearInput.value === '') {
             bookCoverPuslishingData = publishingCityInput.value;
         }
         else {
-            if (publishingCityInput.value == '') {
+            if (publishingCityInput.value === '') {
                 bookCoverPuslishingData = publishingYearInput.value;
             }
             else {
@@ -1185,8 +1168,8 @@ if (document.location.pathname === '/alterare/') {
 
     publishingYearInput.onkeypress = allowDigit;
     publishingYearInput.addEventListener('keyup', (e)=>{
-        if (publishingYearInput.value == '') {
-            if (publishingCityInput.value == '') {
+        if (publishingYearInput.value === '') {
+            if (publishingCityInput.value === '') {
                 bookCoverPuslishingData = '';
             }
             else {
@@ -1194,7 +1177,7 @@ if (document.location.pathname === '/alterare/') {
             }
         }
         else {
-            if (publishingCityInput.value == '') {
+            if (publishingCityInput.value === '') {
                 bookCoverPuslishingData = publishingYearInput.value;
             }
             else {
@@ -1228,19 +1211,19 @@ if (document.location.pathname === '/alterare/') {
 
     monthBookCheckbox.addEventListener("click", toggleAppearingBlock);
     monthBookCheckbox.addEventListener("click", ()=>{
-        if (titleInput.value != '') {
-            if (monthBookDescInput.value == '') {
+        if (titleInput.value !== '') {
+            if (monthBookDescInput.value === '') {
                 bookAddingButton.classList.toggle('form__element__button-disabled');
             }
         }
 
-        if (priceCheckbox.checked == true && priceInput.value == '') {
+        if (priceCheckbox.checked === true && priceInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
         bookCover.classList.toggle('grid__item_month-book-color');
 
-        if (bookCoverMonthBook.style.display == 'none') {
+        if (bookCoverMonthBook.style.display === 'none') {
             bookCoverMonthBook.style.display = 'block';
         }
         else {
@@ -1257,7 +1240,7 @@ if (document.location.pathname === '/alterare/') {
     });
 
     monthBookDescInput.addEventListener('keyup', ()=>{
-        if (titleInput.value != '' && monthBookDescInput.value != '') {
+        if (titleInput.value !== '' && monthBookDescInput.value !== '') {
             monthBookDescInput.classList.remove('form__element__input_invalid');
             bookAddingButton.classList.remove('form__element__button-disabled');
         }
@@ -1265,7 +1248,7 @@ if (document.location.pathname === '/alterare/') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (priceCheckbox.checked == true && priceInput.value == '') {
+        if (priceCheckbox.checked === true && priceInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
@@ -1296,8 +1279,8 @@ if (document.location.pathname === '/alterare/') {
 
     priceCheckbox.addEventListener("click", toggleAppearingBlock);
     priceCheckbox.addEventListener("click", ()=>{
-        if (titleInput.value != '') {
-            if (priceCheckbox.checked == true && priceInput.value == '') {
+        if (titleInput.value !== '') {
+            if (priceCheckbox.checked === true && priceInput.value === '') {
                 bookAddingButton.classList.add('form__element__button-disabled');
             }
             else {
@@ -1305,18 +1288,18 @@ if (document.location.pathname === '/alterare/') {
             }
         }
 
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (stickerForPrice.style.display == 'none') {
+        if (stickerForPrice.style.display === 'none') {
             stickerForPrice.style.display = 'block';
         }
         else {
             stickerForPrice.style.display = 'none';
         }
 
-        if (priceCheckbox.checked == true && priceInput.value != '') {
+        if (priceCheckbox.checked === true && priceInput.value !== '') {
             stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
         }
         else {
@@ -1338,7 +1321,7 @@ if (document.location.pathname === '/alterare/') {
 
     priceInput.onkeypress = allowDigit;
     priceInput.addEventListener('keyup', (e)=>{
-        if (titleInput.value != '' && priceInput.value != '') {
+        if (titleInput.value !== '' && priceInput.value !== '') {
             priceInput.classList.remove('form__element__input_invalid');
             bookAddingButton.classList.remove('form__element__button-disabled');
         }
@@ -1346,11 +1329,11 @@ if (document.location.pathname === '/alterare/') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (monthBookCheckbox.checked == true && monthBookDescInput.value == '') {
+        if (monthBookCheckbox.checked === true && monthBookDescInput.value === '') {
             bookAddingButton.classList.add('form__element__button-disabled');
         }
 
-        if (priceInput.value != '') {
+        if (priceInput.value !== '') {
             stickerForPrice.innerHTML = priceInput.value + '&thinsp;€';
         }
         else {
@@ -1633,8 +1616,8 @@ function addBook(sendToEditor) {
     let publishingYear = publishingYearInput.value;
 
     let publishing = publishingCity;
-    if (publishingYear != '') {
-        if (publishingCity != '') {
+    if (publishingYear !== '') {
+        if (publishingCity !== '') {
             publishing += ', ';
         }
         publishing += publishingYear;
@@ -1642,7 +1625,7 @@ function addBook(sendToEditor) {
 
     let monthBook = monthBookCheckbox.checked;
     let description = monthBookDescInput.value;
-    if (monthBook == true) {
+    if (monthBook === true) {
         monthBook = 1;
 
         if (description === '') {
@@ -1659,8 +1642,8 @@ function addBook(sendToEditor) {
     }
 
     let price = priceInput.value;
-    if (priceCheckbox.checked == true) {
-        if (price == '') {
+    if (priceCheckbox.checked === true) {
+        if (price === '') {
             priceInput.focus();
             priceInput.classList.add('form__element__input_invalid');
             return;
@@ -1670,7 +1653,7 @@ function addBook(sendToEditor) {
         }
     }
     else {
-        if (price == '') {
+        if (price === '') {
             price = 0;
         }
     }
@@ -1727,7 +1710,7 @@ function editBook(id) {
     let title = titleInput.value;
 
     // Если не заполнено поле — у него появляется фокус и обводка
-    if (title == '') {
+    if (title === '') {
         titleInput.focus();
         titleInput.classList.add('form__element__input_invalid');
         return;
@@ -1744,8 +1727,8 @@ function editBook(id) {
     let publishingYear = publishingYearInput.value;
 
     let publishing = publishingCity;
-    if (publishingYear != '') {
-        if (publishingCity != '') {
+    if (publishingYear !== '') {
+        if (publishingCity !== '') {
             publishing += ', ';
         }
         publishing += publishingYear;
@@ -1770,8 +1753,8 @@ function editBook(id) {
     }
 
     let price = priceInput.value;
-    if (priceCheckbox.checked == true) {
-        if (price == '') {
+    if (priceCheckbox.checked === true) {
+        if (price === '') {
             priceInput.focus();
             priceInput.classList.add('form__element__input_invalid');
             return;
@@ -1899,7 +1882,7 @@ function clearBookAddingForm() {
     monthBookDescInput.value = '';
     let monthBookDescLabel = document.querySelector('.form__label_description');
     let monthBookDescInputBlock = document.querySelector('.form__element_description');
-    if (monthBookDescInputBlock.style.display == 'block') {
+    if (monthBookDescInputBlock.style.display === 'block') {
         monthBookDescLabel.style.display = 'none';
         monthBookDescInputBlock.style.display = 'none';
     }
@@ -1908,7 +1891,7 @@ function clearBookAddingForm() {
     priceInput.value = '';
     let priceLabel = document.querySelector('.form__label_price');
     let priceInputBlock = document.querySelector('.form__element_price');
-    if (priceInputBlock.style.display == 'block') {
+    if (priceInputBlock.style.display === 'block') {
         priceLabel.style.display = 'none';
         priceInputBlock.style.display = 'none';
     }
@@ -1938,7 +1921,7 @@ function returnBookEditingForm(id) {
     let publishingYear = publishingYearInput.getAttribute('data-publishingYear');
 
     let publishing = publishingCity;
-    if (publishingYear != '') {
+    if (publishingYear !== '') {
         publishing += ', ' + publishingYear;
     }
 
@@ -2085,14 +2068,14 @@ function returnBook() {
     let monthBookBlock = document.querySelector('.month-book');
     let description = '';
     let monthBook = 0;
-    if (monthBookBlock.style.display == 'block') {
+    if (monthBookBlock.style.display === 'block') {
         monthBook = 1;
         description = document.querySelector('.month-book__wrap__description').innerHTML;
     }
 
     let price = 0;
     let priceBlock = document.querySelector('.grid__item__sticker_price');
-    if (priceBlock.style.display == 'block') {
+    if (priceBlock.style.display === 'block') {
         price = priceBlock.innerHTML;
     }
 
@@ -2450,7 +2433,7 @@ function getChar(event) {
         return String.fromCharCode(event.keyCode) // IE
     }
 
-    if (event.which != 0 && event.charCode != 0) {
+    if (event.which !== 0 && event.charCode !== 0) {
         if (event.which < 32) return null;
         return String.fromCharCode(event.which) // остальные
     }
@@ -2474,7 +2457,7 @@ function allowDigit(e) {
         return false;
     }
 
-    if (publishingYearInput.value == '' && chr == '0') {
+    if (publishingYearInput.value === '' && chr === '0') {
         return false;
     }
 }
