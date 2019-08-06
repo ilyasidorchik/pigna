@@ -1369,17 +1369,11 @@ function getGridItem(e) {
 
     switch (e.target.tagName) {
         case 'svg':
-            gridItem = e.target.parentElement.parentElement.parentElement;
-            break;
-        case 'path':
-            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
-            break;
         case 'LABEL':
             gridItem = e.target.parentElement.parentElement.parentElement;
             break;
+        case 'path':
         case 'SPAN':
-            gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
-            break;
         case 'INPUT':
             gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
             break;
