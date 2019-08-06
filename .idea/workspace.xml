@@ -31,22 +31,10 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="171" column="71" selection-start-line="171" selection-start-column="71" selection-end-line="171" selection-end-column="71" />
+            <state relative-caret-position="513">
+              <caret line="2374" column="47" selection-start-line="2374" selection-start-column="47" selection-end-line="2374" selection-end-column="47" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/functions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="303" column="45" lean-forward="true" selection-start-line="303" selection-start-column="45" selection-end-line="303" selection-end-column="45" />
-              <folding>
-                <element signature="e#76#84#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,7 +74,6 @@
       <find>__item</find>
       <find>authortitle</find>
       <find>checkbox</find>
-      <find>searchBook</find>
       <find>openE</find>
       <find>search</find>
       <find>bookCover</find>
@@ -95,6 +82,7 @@
       <find>sdfdsfsdfdsf</find>
       <find>mobile</find>
       <find>chec</find>
+      <find>searchBook</find>
     </findStrings>
     <replaceStrings>
       <replace>newBookMonthBookDesc</replace>
@@ -446,12 +434,12 @@
       <workItem from="1565078767242" duration="996000" />
       <workItem from="1565079831021" duration="120000" />
       <workItem from="1565080444241" duration="43000" />
-      <workItem from="1565081238080" duration="3633000" />
+      <workItem from="1565081238080" duration="4946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="721454000" />
+    <option name="totallyTimeSpent" value="722767000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -474,7 +462,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.24707136" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21864952" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21864952" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297568" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -711,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="171" column="71" selection-start-line="171" selection-start-column="71" selection-end-line="171" selection-end-column="71" />
+        <state relative-caret-position="513">
+          <caret line="2374" column="47" selection-start-line="2374" selection-start-column="47" selection-end-line="2374" selection-end-column="47" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
           </folding>

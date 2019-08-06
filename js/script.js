@@ -1509,7 +1509,14 @@ function searchBook(bookTitle) {
 
                 fixTitleHeightWhenLongAuthor();
 
-                if (footerMobile) showFooterMobile(screen, 'search', titles.length);
+                if (footerMobile) {
+                    if (titles.length < 1000) {
+                        showFooterMobile(screen, 'search', titles.length);
+                    }
+                    else {
+                        showFooterMobile(screen, 'index', 'all books');
+                    }
+                }
 
                 let footerDesktop = document.querySelector('.footer_desktop');
                 if (xhr.responseText === '' || gridItemCount < 8) {
@@ -2356,7 +2363,7 @@ function showFooterMobile(screen, context, booksCount) {
         case 'search':
             footerMobilePos = (isAdmin) ? 2 : 1;
 
-            if (booksCount !== 1) {
+            if (booksCount > 1) {
                 if (!footerMobile.classList.contains('footer_mobile_bordered')) footerMobile.classList.add('footer_mobile_bordered');
             }
             else {
