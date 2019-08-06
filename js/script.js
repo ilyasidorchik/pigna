@@ -155,7 +155,7 @@ if (passwordInput) {
     });
 }
 
-// Редактирование книг на главной (переписано с помощью приёма делегирование)
+// Редактирование книг на главной (переписано с помощью приёма «делегирование»)
 if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathname !== '/alterare/')) {
     // Ховер книги
     books.addEventListener('mouseover', (e) => {
@@ -194,29 +194,11 @@ if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathna
         }
     });
 
-    // Переход по ссылкам и чекбокс «Книга на руках»
+    // Ссылка на страницу редактирования и чекбокс «Книга на руках»
     books.addEventListener('click', (e) => {
-        let gridItem;
-        let id;
-
         // Обработчики книг для перехода на страницу редактирования
-        if (e.target.className === 'grid__item') {
-            gridItem = e.target;
-            id = e.target.getAttribute('data-id');
-        }
-        else {
-            gridItem = e.target.offsetParent;
-            switch (e.target.tagName) {
-                case 'svg':
-                    gridItem = e.target.parentElement.parentElement.parentElement;
-                    break;
-                case 'path':
-                    gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
-                    break;
-            }
-
-            id = gridItem.getAttribute('data-id');
-        }
+        let gridItem = getGridItem(e);
+        let id = gridItem.getAttribute('data-id');
 
         // Обработчики чекбоксов «Книга на руках»
         if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
