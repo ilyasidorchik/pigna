@@ -159,40 +159,27 @@ if (isAdmin && (document.location.pathname !== '/+/' && document.location.pathna
             // Обработчики чекбоксов «Книга на руках»
             if (e.target.tagName === 'LABEL' || e.target.tagName === 'SPAN' || e.target.tagName === 'INPUT') {
                 let checkboxInput;
+                let onHandsStatus;
                 switch (e.target.tagName) {
                     case 'LABEL':
-                        checkboxInput = e.target.firstChild;
+                        checkboxInput = e.target.children[0];
                         break;
                     case 'SPAN':
-                        checkboxInput = e.target.previousSibling;
+                        checkboxInput = e.target.parentElement.children[0];
+                        break;
+                    case 'LABEL':
+                    case 'SPAN':
+                        onHandsStatus = (checkboxInput.checked) ? 0 : 1;
                         break;
                     case 'INPUT':
                         checkboxInput = e.target;
+                        onHandsStatus = (checkboxInput.checked) ? 1 : 0;
                         break;
-                }
-
-                let onHandsStatus = (checkboxInput.checked) ? 1 : 0;
-
-
-                id = e.target.parentElement.parentElement.parentElement.getAttribute('data-id');
-                if (!e.target.parentElement.parentElement.parentElement.getAttribute('data-id')) {
-                    id = e.target.parentElement.parentElement.parentElement.parentElement.getAttribute('data-id');
                 }
 
                 let xhr = new XMLHttpRequest();
                 let params = 'id=' + id + '&onHandsStatus=' + onHandsStatus;
-
                 xhr.open('POST', '../php/toggleBookOnHands.php');
-                xhr.onreadystatechange=()=>{
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-
-                        }
-                        else {
-                            console.log('Ошибка: ' + xhr.status);
-                        }
-                    }
-                };
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.send(params);
             }
@@ -1372,19 +1359,19 @@ function getGridItem(e) {
         case 'svg':
         case 'LABEL':
             if (e.target.parentElement.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.parentElement.className.substring(0,11) === 'grid__item ') {
-                gridItem = e.target.parentElement.parentElement.parentElement;
+                return gridItem = e.target.parentElement.parentElement.parentElement;
             }
             break;
         case 'path':
         case 'SPAN':
         case 'INPUT':
-            if (e.target.parentElement.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.parentElement.className.substring(0,11) === 'grid__item ') {
-                gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
+            if (e.target.parentElement.parentElement.parentElement.parentElement.className === 'grid__item' || e.target.parentElement.parentElement.parentElement.parentElement.className.substring(0,11) === 'grid__item ') {
+                return gridItem = e.target.parentElement.parentElement.parentElement.parentElement;
             }
             break;
         default:
             if (e.target.className === 'grid__item' || e.target.className.substring(0,11) === 'grid__item ') {
-                gridItem = e.target;
+                return gridItem = e.target;
             }
             else {
                 if (e.target.offsetParent.className === 'grid__item' || e.target.offsetParent.className.substring(0, 11) === 'grid__item ') {
@@ -1414,8 +1401,6 @@ function getGridItem(e) {
             }
             break;
     }
-
-    return gridItem;
 }
 
 function searchBook(bookTitle) {
