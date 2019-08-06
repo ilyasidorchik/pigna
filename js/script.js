@@ -1514,7 +1514,7 @@ function searchBook(bookTitle) {
                         showFooterMobile(screen, 'search', titles.length);
                     }
                     else {
-                        showFooterMobile(screen, 'index', 'all books');
+                        showFooterMobile(screen, 'index-after-search', 'all books');
                     }
                 }
 
@@ -2357,6 +2357,7 @@ function showFooterMobile(screen, context, booksCount) {
     let footerMobilePos;
     switch (context) {
         case 'index':
+        case 'index-after-search':
             footerMobilePos = (isAdmin) ? 3 : 2;
             break;
 
@@ -2382,8 +2383,13 @@ function showFooterMobile(screen, context, booksCount) {
         }
     }
 
-    window.addEventListener("resize", () => {
+    window.removeEventListener("resize", showFooterMobileInRightPlace);
+    window.addEventListener("resize", showFooterMobileInRightPlace);
+
+    function showFooterMobileInRightPlace() {
         if (document.documentElement.clientWidth < 535) {
+            if (context === 'index-after-search') footerMobilePos++;
+
             books.insertBefore(footerMobile, books.children[footerMobilePos]);
         }
         else {
@@ -2391,7 +2397,7 @@ function showFooterMobile(screen, context, booksCount) {
                 books.removeChild(footerMobile);
             }
         }
-    });
+    }
 }
 
 function preventDefault(event) {

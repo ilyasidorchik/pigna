@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a7d99c2-4210-45eb-baac-510d635fe4b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +30,7 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
+            <state relative-caret-position="313">
               <caret line="2374" column="47" selection-start-line="2374" selection-start-column="47" selection-end-line="2374" selection-end-column="47" />
               <folding>
                 <element signature="e#4#10#0" expanded="true" />
@@ -53,8 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hand</find>
-      <find>screen</find>
       <find>putInPlaceFoo</find>
       <find>footer</find>
       <find>resize</find>
@@ -83,6 +80,8 @@
       <find>mobile</find>
       <find>chec</find>
       <find>searchBook</find>
+      <find>addEventListener</find>
+      <find>showFooterMobile</find>
     </findStrings>
     <replaceStrings>
       <replace>newBookMonthBookDesc</replace>
@@ -434,12 +433,12 @@
       <workItem from="1565078767242" duration="996000" />
       <workItem from="1565079831021" duration="120000" />
       <workItem from="1565080444241" duration="43000" />
-      <workItem from="1565081238080" duration="4946000" />
+      <workItem from="1565081238080" duration="5989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="722767000" />
+    <option name="totallyTimeSpent" value="723810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -699,7 +698,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="313">
           <caret line="2374" column="47" selection-start-line="2374" selection-start-column="47" selection-end-line="2374" selection-end-column="47" />
           <folding>
             <element signature="e#4#10#0" expanded="true" />
