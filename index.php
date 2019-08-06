@@ -33,12 +33,8 @@
     <body class="page<?php echo $admin ? ' '.$admin : $admin; ?>">
         <div class="search">
             <div class="search__icon">
-	            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	                 viewBox="0 0 27.9 50" style="enable-background:new 0 0 27.9 50;" xml:space="preserve">
-					<style type="text/css">
-						.st0{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;}
-					</style>
-		            <circle class="st0" cx="10.9" cy="24.1" r="9.4"/>
+	            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.9 50" xml:space="preserve" class="search__icon__svg">
+		            <circle cx="10.9" cy="24.1" r="9.4" class="search__icon__svg__circle"/>
 		            <rect x="20" y="27.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -18.3066 25.467)" width="3.2" height="14.5"/>
 				</svg>
             </div>
