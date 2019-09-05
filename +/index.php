@@ -4,7 +4,8 @@
 
 	$password = $_POST['password'];
 
-	if ($password == $ini[admin][password] && !isset($_COOKIE["admin_rights"]))
+
+	if ($password == $ini[admin][password] && !password_verify($ini[admin][password], $_COOKIE['admin_rights']))
         SetCookie('admin_rights', $hash, time()+60*60*24*365*10, '/');
 ?>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
     <body class="page">
         <h1 class="h1 input-h1"><a href="/" class="link h1__link">Piccola biblioteca della Pigna</a></h1>
         <?php
-            if (password_verify($ini[admin][password], $_COOKIE['admin_rights']) || $password == $ini[admin][password]) {
+            if ($password == $ini[admin][password] || password_verify($ini[admin][password], $_COOKIE['admin_rights'])) {
             	echo <<<HERE
 					<div class="book-editing">
 				        <h2 class="h2">Nuovo libro</h2>
