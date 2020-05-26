@@ -44,7 +44,7 @@
                 </form>
             </div>
         </div>
-        <div class="description">Storia locale, scienze documentarie, letteratura&nbsp;e arte</div>
+        <div class="description">Storia locale, scienze documentarie, letteratura&nbsp;ed arte</div>
         <div class="grid">
             <?php
                 $link = mysqli_connect($ini[database][host], $ini[database][user], $ini[database][password], $ini[database][name]) or die('Ошибка');
