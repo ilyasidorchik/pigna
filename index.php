@@ -66,7 +66,7 @@
 				        <div class="pinterest"></div>
 			        </div>
 			        <p><a href="https://www.google.com/maps?ll=43.819368,7.774345&z=13&t=m&hl=en-US&gl=RU&mapclient=embed&q=Piazza+Capitolo,+1+18038+Sanremo+IM+Italy" class="link">Piazza del&nbsp;Capitolo,&nbsp;1</a>, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-			        <p>Siamo aperti mercoledì dalle 21 alle&nbsp;22:30 e sabato dalle&nbsp;9 alle 12.</p>
+			        <p>Siamo aperti mercoledì dalle 15&nbsp;alle&nbsp;18 e sabato dalle 9 alle 12.</p>
 		        </div>
 	        </div>
         </div>
@@ -85,7 +85,7 @@
 				        <div class="pinterest">Pinteressarsi</div>
 			        </div>
 			        <p class="grid__description__text">Piazza del&nbsp;Capitolo,&nbsp;1, Sanremo&nbsp;· <nobr><a href="tel:+390184501132" class="link">+39 0184 501-132</a></nobr><span class="footer__main__middle-dot">&nbsp;·</span> <a href="mailto:piccolabibliopigna@gmail.com" class="link">piccolabibliopigna@gmail.com</a></p>
-			        <p class="grid__description__text">Siamo aperti martedì dalle 15 alle 18 e sabato dalle 9 alle 12.</p>
+			        <p class="grid__description__text">Siamo aperti martedì dalle 15&nbsp;alle&nbsp;18 e sabato dalle 9&nbsp;alle&nbsp;12.</p>
 			        <p>
 				        Autore dell’idea e progettista <nobr><a href="http://robertblinov.net/" class="link">Robert Blinov</a>,</nobr>
 				        <br>direttore d’arte e tecnologo <nobr><a href="http://sidorchik.ru/" class="link">Ilià Sidorcic</a></nobr>
