@@ -65,11 +65,16 @@ if (searchInput) {
         searchInput.focus();
     });
 
+    
+    let searchBookDebounceTimeout = null;
+    
     searchInput.addEventListener('input', () => {
         bookTitle = searchInput.value;
         if (bookTitle.length !== 1) {
             event.preventDefault();
-            searchBook(bookTitle);
+            
+            clearTimeout(searchBookDebounceTimeout);
+            searchBookDebounceTimeout = setTimeout(() => searchBook(bookTitle), 300);
         }
     });
 }
