@@ -74,7 +74,7 @@ if (searchInput) {
             event.preventDefault();
             
             clearTimeout(searchBookDebounceTimeout);
-            searchBookDebounceTimeout = setTimeout(() => searchBook(bookTitle), 300);
+            searchBookDebounceTimeout = setTimeout(() => searchBook(bookTitle), 100);
         }
     });
 }
